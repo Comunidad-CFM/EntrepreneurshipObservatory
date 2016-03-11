@@ -2,9 +2,10 @@
 	'use strict';
 
 	angular
-		.module('observatoryApp', ['ui.router', 'satellizer'])
+		.module('observatoryApp', ['satellizer', 'ngRoute', 'ngCookies'])
 		.factory('Auth', Auth)
 		.config(config)
+        .run(run)
         .constant('API_AUTH', '/api/authenticate');
 
     function Auth($cookies, $location) {
@@ -18,12 +19,7 @@
 	    function logIn(user) {
             $cookies.putObject('session', user);
             
-            if(user.type === "A") {
-	            $location.path('/admin');
-	        }
-	        else {
-	            $location.path('/user');
-	        }
+            $location.path('/user');
         }
 
         function logOut() {
@@ -32,18 +28,13 @@
         }
 
         function checkStatus() {
-            var rutasPrivadas = ["/","/user","/admin"];
+            var rutasPrivadas = ['/','/user'];
             
             if(this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) == "undefined") {
                 $location.path("/");
             }
             else if(this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) != "undefined") {
-            	if($cookies.getObject('session').type === 'A') {
-                	$location.path('/admin');
-		        }
-		        else {
-		            $location.path('/user');
-		        }
+	            $location.path('/user');
             }
         }
 
@@ -58,26 +49,26 @@
         }
 	}
 	
-	function config($stateProvider, $urlRouterProvider, $authProvider, API_AUTH) {
-		// Satellizer configuration that specifies which API
-        // route the JWT should be retrieved from
+	function config($routeProvider, $authProvider, API_AUTH) {
+		// Se le indica a Satellizer cual es la dirección de la API
         $authProvider.loginUrl = API_AUTH;
 
-        // Redirect to the auth state if any other states
-        // are requested other than users
-        $urlRouterProvider.otherwise('/auth');
-        
-        $stateProvider
-            .state('auth', {
-                url: '/auth',
-                templateUrl: '../templates/auth.view.html',
+        $routeProvider
+            .when('/', {
+                templateUrl: './app/templates/auth.view.html',
                 controller: 'AuthController'
             })
-            .state('users', {
-                url: '/users',
-                templateUrl: '../templates/user.view.html',
-                controller: 'UserController'
-            });
+            .when('/user', {
+                templateUrl: './app/templates/user.view.html',
+                controller: 'UserController'  
+            })
+            .otherwise('/');
 	}
+
+    function run($rootScope, Auth) {
+        $rootScope.$on('$routeChangeStart', function() {
+            Auth.checkStatus();
+        });
+    }
 
 }());
