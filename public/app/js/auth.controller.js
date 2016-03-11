@@ -35,7 +35,7 @@
 				}
 				$http({
 					method: 'POST',
-					url: 'api/authenticate/user' + $.param(response.data),
+					url: 'api/authenticate/user?' + $.param(response.data),
 					data: inData
 				})
 				.then(function(data) {
