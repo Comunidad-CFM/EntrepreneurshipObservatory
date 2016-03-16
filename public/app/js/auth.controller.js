@@ -32,27 +32,30 @@
 			$auth.login($scope.credentials)
 			.then(function(token) {
 				$scope.token = token.data.token;
-				return $http.get('api/authenticate/token');
+				
+				$http.get('api/authenticate/token')
+				.success(function(isAuthenticated) {
+					if(isAuthenticated[0] === 'user_found'){
+						$http.get('api/user?email=' + $scope.credentials.email)
+						.success(function(user) {
+							user[0].token = $scope.token; // Se agrega el token a la info del user
+							Auth.logIn(user[0]); // Se manda a almacenar en las cookies y se renderiza
+						})
+						.error(function(err) {
+							console.log('Error en getUser ->',err);
+						});
+					}
+					else {
+						console.log('Error en el token');
+					}
+				})
+				.error(function(err) {
+					console.log(err);
+				});
 			}, function(err) {
 				console.log(err);
 				$scope.errorLogin = true;
-			})
-			.then(function(isAuthenticated) {
-				if(isAuthenticated.data[0] === 'user_found'){
-					//$http.get('api/authenticate/user?email=' + $scope.credentials.email)
-					$http.get('api/user?email=' + $scope.credentials.email)
-					.success(function(user) {
-						user[0].token = $scope.token; // Se agrega el token a la info del user
-						Auth.logIn(user[0]); // Se manda a almacenar en las cookies y se renderiza
-					})
-					.error(function(err) {
-						console.log('Error en getUser ->',err);
-					});
-				}
-				else {
-					console.log('Error en el token');
-				}
-            });
+			});
 		}
 	}
 
