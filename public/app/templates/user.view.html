@@ -1,6 +1,7 @@
 <div class="col-sm-6 col-sm-offset-3">
     <div class="well">
-        <h3>Users</h3>  
+        <h3>Welcome {{user.name}}</h3> 
+        <br> 
         <button class="btn btn-primary" style="margin-bottom: 10px" ng-click="getUsers();">Get Users!</button>
         <button class="btn btn-warning" style="margin-bottom: 10px" ng-click="logOut();">Log out</button>
         <ul class="list-group" ng-if="users">

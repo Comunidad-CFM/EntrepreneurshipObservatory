@@ -19,7 +19,7 @@ class AuthenticateController extends Controller {
    	}
 
      /**
-     * Return the user
+     * Return all users
      *
      * @return Response
      */
@@ -51,11 +51,11 @@ class AuthenticateController extends Controller {
     }
 
     /**
-     * Return the authenticated user
+     * Return the user's token state
      *
      * @return Response
      */
-    public function getAuthenticatedUser(Request $request) {
+    public function isAuthenticated() {
         try {
             if (! $user = JWTAuth::parseToken()->authenticate()) {
                 return response()->json(['user_not_found'], 404);
@@ -67,9 +67,9 @@ class AuthenticateController extends Controller {
         } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
             return response()->json(['token_absent'], $e->getStatusCode());
         }
-        
-        return User::where('email', $request->input('email'))
-            ->select('id', 'name')
-            ->get();
+
+        // the token is valid and we have found the user via the sub claim
+        //return response()->json(compact('user'));
+        return response()->json(['user_found'], 200);;
     }
 }
