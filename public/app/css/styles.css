@@ -4,15 +4,17 @@
 /*
  * General styles
  */
-body, html {
-    height: 100%;
-    background-repeat: no-repeat;
+body {
     font-family: 'Lato', sans-serif;
-    /*background-color: #003D78;*/
+    font-size: 16px;
+	text-align: justify;
 }
 
-.roboto {
-    font-family: 'Roboto', sans-serif;
+.baskerville {
+    font-family: 'Libre Baskerville', serif;
+}
+.pacifico {
+    font-family: 'Pacifico', cursive;
 }
 
 .card-container.card {
@@ -97,4 +99,13 @@ body, html {
 
 .btn-signin:hover {
     background-color: #0685FF;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: normal;
+}
+.subtitle {
+    font: bold;
+    font-size: 18px;
 }
