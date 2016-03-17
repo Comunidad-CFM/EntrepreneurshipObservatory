@@ -15,18 +15,17 @@
         $scope.passConf = "123";
         $scope.tipo='A';
         $scope.$watch('passConf', validate);
+
         function validate (){
-         if($scope.pass !== $scope.passConf){
-             
-             $scope.errorPass = true;
-         }else{
-             $scope.errorPass = false;
-         }                    
+         	if($scope.pass !== $scope.passConf) {
+            	$scope.errorPass = true;
+	         }
+    	     else {
+        	    $scope.errorPass = false;
+         	}                    
         }
         
-        
         $scope.store = function() {
-            
 			var data = {
                 cedula: $scope.cedula,
                 nombre: $scope.nombre,
@@ -35,7 +34,6 @@
 				email: $scope.email,
 				contrasena: $scope.pass,
                 tipo: $scope.tipo
-                
 			}
 
 			$http({

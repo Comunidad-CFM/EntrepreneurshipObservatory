@@ -27,9 +27,11 @@
 				data: data
 			})
 			.success(function(response) {
+				console.log(response);
 				defered.resolve(response[0]);
 			})
 			.error(function(err) {
+				console.log(err);
 				defered.reject(err);
 			});
 

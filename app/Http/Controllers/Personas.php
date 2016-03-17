@@ -23,8 +23,8 @@ class Personas extends Controller
         $persona->apellido2 = $request->input('apellido2');
         $persona->email = $request->input('email');
         $persona->contrasena = $request->input('contrasena');
-        $persona->tipo   = $request->input('tipo');        
-                
+        $persona->tipo = $request->input('tipo');        
+        
         $persona->save();
 
         return 'Persona registrada correctamente';

@@ -21,7 +21,6 @@ class CreatePersonasTable extends Migration
             $table->string('tipo', 1);
             $table->string('email', 50);
             $table->string('contrasena', 50);
-            
             $table->timestamps();
         });
     }
