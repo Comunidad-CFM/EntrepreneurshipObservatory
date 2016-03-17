@@ -14,6 +14,8 @@
         $scope.pass = "123";
         $scope.passConf = "123";
         $scope.tipo='A';
+        $scope.registro = false;
+        $scope.store = store;
         $scope.$watch('passConf', validate);
 
         function validate (){
@@ -25,7 +27,7 @@
          	}                    
         }
         
-        $scope.store = function() {
+        function store() {
 			var data = {
                 cedula: $scope.cedula,
                 nombre: $scope.nombre,
@@ -35,7 +37,7 @@
 				contrasena: $scope.pass,
                 tipo: $scope.tipo
 			}
-
+            
 			$http({
 				method: 'POST',
 				url: '/api/personas/registro',
@@ -43,6 +45,16 @@
 			})
 			.success(function(response) {
 				console.log(response);
+                if(response === 'true') {
+                    $scope.registro = true;
+                    $scope.msgRegistro = 'La persona se ha agregado correctamente';
+                    $scope.styleRegistro = 'alert-success';
+                }
+                else {
+                    $scope.registro = true;
+                    $scope.msgRegistro = 'Error, el email ya se encuentra registrado.';
+                    $scope.styleRegistro = 'alert-danger';
+                }
 			})
 			.error(function(err) {
 				console.log(err);

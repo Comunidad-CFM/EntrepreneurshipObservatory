@@ -6,27 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-<<<<<<< HEAD
-    'CreateAplicacionesRespuestasTable' => $baseDir . '/database/migrations/2016_03_17_052752_create_aplicaciones_respuestas_table.php',
-    'CreateAplicacionesTable' => $baseDir . '/database/migrations/2016_03_17_052735_create_aplicaciones_table.php',
-    'CreateEncuestasPreguntasTable' => $baseDir . '/database/migrations/2016_03_17_052715_create_encuestas_preguntas_table.php',
-    'CreateEncuestasTable' => $baseDir . '/database/migrations/2016_03_17_052643_create_encuestas_table.php',
-    'CreateIndicadoresTable' => $baseDir . '/database/migrations/2016_03_17_052346_create_indicadores_table.php',
-    'CreateOpcionesRespuestaTable' => $baseDir . '/database/migrations/2016_03_17_052222_create_opciones_respuesta_table.php',
-    'CreatePeriodosTable' => $baseDir . '/database/migrations/2016_03_17_052042_create_periodos_table.php',
-    'CreatePersonasSectoresTable' => $baseDir . '/database/migrations/2016_03_17_052521_create_personas_sectores_table.php',
-    'CreatePersonasTable' => $baseDir . '/database/migrations/2016_03_17_052311_create_personas_table.php',
-    'CreatePreguntasTable' => $baseDir . '/database/migrations/2016_03_17_052543_create_preguntas_table.php',
-    'CreateRegionesTable' => $baseDir . '/database/migrations/2016_03_17_052252_create_regiones_table.php',
-    'CreateSectoresIndicadoresTable' => $baseDir . '/database/migrations/2016_03_17_052617_create_sectores_indicadores_table.php',
-    'CreateSectoresTable' => $baseDir . '/database/migrations/2016_03_17_052324_create_sectores_table.php',
-    'CreateTerritoriosSectoresTable' => $baseDir . '/database/migrations/2016_03_17_052440_create_territorios_sectores_table.php',
-    'CreateTerritoriosTable' => $baseDir . '/database/migrations/2016_03_17_052410_create_territorios_table.php',
-=======
-    'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-    'CreatePersonasTable' => $baseDir . '/database/migrations/2016_03_17_040120_create_personas_table.php',
-    'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
->>>>>>> 63cd263dc695d14a3e660a8822d4f4569a455389
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
