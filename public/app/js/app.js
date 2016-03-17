@@ -2,11 +2,10 @@
 	'use strict';
 
 	angular
-		.module('observatoryApp', ['satellizer', 'ngRoute', 'ngCookies'])
+		.module('observatoryApp', ['ngRoute', 'ngCookies'])
 		.factory('Auth', Auth)
 		.config(config)
-        .run(run)
-        .constant('API_AUTH', '/api/authenticate');
+        .run(run);
 
     function Auth($cookies, $location) {
 	    return {
@@ -19,7 +18,8 @@
 	    function logIn(user) {
             $cookies.putObject('session', user);
             
-            $location.path('/user');
+            if(user.tipo === 'A')
+               $location.path('/admin');
         }
 
         function logOut() {
@@ -28,13 +28,14 @@
         }
 
         function checkStatus() {
-            var rutasPrivadas = ['/','/user'];
+            var rutasPrivadas = ['/','/admin'];
             
             if(this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) == "undefined") {
                 $location.path("/");
             }
             else if(this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) != "undefined") {
-	            $location.path('/user');
+                if($cookies.getObject('session').tipo === 'A')
+	               $location.path('/admin');
             }
         }
 
@@ -49,18 +50,15 @@
         }
 	}
 	
-	function config($routeProvider, $authProvider, API_AUTH) {
-		// Se le indica a Satellizer cual es la dirección de la API
-        $authProvider.loginUrl = API_AUTH;
-
+	function config($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: './app/templates/auth.view.html',
-                controller: 'AuthController'
+                templateUrl: './app/Login/login.view.htm',
+                controller: 'LoginController'
             })
-            .when('/user', {
-                templateUrl: './app/templates/user.view.html',
-                controller: 'UserController'  
+            .when('/admin', {
+                templateUrl: './app/Admin/admin.view.htm',
+                controller: 'AdminController'
             })
             .otherwise('/');
 	}

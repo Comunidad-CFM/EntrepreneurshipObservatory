@@ -27,8 +27,5 @@ Route::get('/', function () {
 */
 
 Route::group(['prefix' => 'api'], function () {
-    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]); 
-    Route::post('authenticate', 'AuthenticateController@authenticate'); // Verifica el login
-    Route::get('authenticate/token', 'AuthenticateController@isAuthenticated'); // Verifica el token
-    Route::get('user', 'Users@getUserByEmail'); // Devuelve el usuario por email
+    Route::post('personas/login', 'Personas@logIn');
 });
