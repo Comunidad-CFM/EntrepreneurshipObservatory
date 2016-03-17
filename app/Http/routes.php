@@ -27,5 +27,6 @@ Route::get('/', function () {
 */
 
 Route::group(['prefix' => 'api'], function () {
-    Route::post('personas/login', 'Personas@logIn');
+    Route::post('login', 'Personas@logIn');
+    Route::post('personas/registro', 'Personas@store');
 });

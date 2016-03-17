@@ -11,16 +11,15 @@
 	<link rel="stylesheet" href='<?= asset('app/css/pacifico.css') ?>' type='text/css'>
 </head>
 <body>
-
-	<div class="container">
-		<div ng-view></div>
-	</div>
+	<div ng-view></div>
 
 	<!-- Application Dependencies -->
 	<script type="text/javascript" src="<?= asset('node_modules/angular/angular.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/angular-route/angular-route.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/angular-cookies/angular-cookies.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/jquery/dist/jquery.min.js') ?>"></script>
+
+	<script type="text/javascript" src="<?= asset('node_modules/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
 
 	<!-- Application Scripts -->
 	<script type="text/javascript" src="<?= asset('app/js/app.js') ?>"></script>

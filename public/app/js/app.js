@@ -53,11 +53,11 @@
 	function config($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: './app/Login/login.view.htm',
+                templateUrl: './app/Login/login.view.html',
                 controller: 'LoginController'
             })
             .when('/admin', {
-                templateUrl: './app/Admin/admin.view.htm',
+                templateUrl: './app/Admin/admin.view.html',
                 controller: 'AdminController'
             })
             .otherwise('/');

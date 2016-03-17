@@ -23,7 +23,7 @@
 
 			$http({
 				method: 'POST',
-				url: '/api/personas/login',
+				url: '/api/login',
 				data: data
 			})
 			.success(function(response) {
