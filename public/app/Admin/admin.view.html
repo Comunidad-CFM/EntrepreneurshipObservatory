@@ -1,72 +1,69 @@
 <nav class="navbar navbar-default">
-	<div class="container">
-  		<div class="navbar-header">
-    		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navBar">
-      			<span class="sr-only">Toggle navigation</span>
-          		<span class="icon-bar"></span>
-          		<span class="icon-bar"></span>
-          		<span class="icon-bar"></span>
-    		</button>
-    		<a class="navbar-brand" href="#/admin">Observatorio Empresarial</a>
-  		</div>
-  		<div class="navbar-collapse collapse navBar">
-    		<ul class="nav navbar-nav navbar-right">
-    			<li class="dropdown">
-		        	<a href="" class="dropdown-toggle" data-toggle="dropdown">Encuestas <b class="caret"></b></a>
-		        	<ul class="dropdown-menu">
-		          		<li ng-click="activeNav='agregarEncuesta'"><a><span class=""></span>&nbsp;&nbsp;Agregar</a></li>
-		                <li ng-click="activeNav='gestionEncuesta'"><a>Modificar/Eliminar</a></li>
-		        	</ul>
-		      	</li>
-		      	<li class="dropdown">
-		        	<a href="" class="dropdown-toggle" data-toggle="dropdown">Personas <b class="caret"></b></a>
-		        	<ul class="dropdown-menu">
-		          		<li ng-click="activeNav='agregarPersona'"><a><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Agregar</a></li>
-		                <li ng-click="activeNav='gestionPersona'"><a>Modificar/Eliminar</a></li>
-		        	</ul>
-		      	</li>
-		      	<li class="dropdown">
-		        	<a href="" class="dropdown-toggle" data-toggle="dropdown">Preguntas <b class="caret"></b></a>
-		        	<ul class="dropdown-menu">
-		          		<li ng-click="activeNav='agregarPregunta'"><a><span class=""></span>&nbsp;&nbsp;Agregar</a></li>
-		                <li ng-click="activeNav='gestionPregunta'"><a>Modificar/Eliminar</a></li>
-		        	</ul>
-		      	</li>
-        		<li class="dropdown">
-		        	<a href="" class="dropdown-toggle" data-toggle="dropdown">{{user.nombre}} <b class="caret"></b></a>
-		        	<ul class="dropdown-menu">
-		          		<li ng-click="logOut();"><a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Log out</a></li>
-		        	</ul>
-		      	</li>
-    		</ul>
- 		</div>
-	</div>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navBar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/admin">Observatorio Empresarial</a>
+        </div>
+        <div class="navbar-collapse collapse navBar">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Encuestas <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li ng-click="activeNav='agregarEncuesta'"><a><span class=""></span>&nbsp;&nbsp;Agregar</a></li>
+                        <li ng-click="activeNav='gestionEncuesta'"><a>Modificar/Eliminar</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Personas <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li ng-click="activeNav='agregarPersona'"><a><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Agregar</a></li>
+                        <li ng-click="activeNav='gestionPersona'"><a>Modificar/Eliminar</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Preguntas <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li ng-click="activeNav='agregarPregunta'"><a><span class=""></span>&nbsp;&nbsp;Agregar</a></li>
+                        <li ng-click="activeNav='gestionPregunta'"><a>Modificar/Eliminar</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">{{user.nombre}} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li ng-click="logOut();"><a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
 <div class="container" ng-switch="activeNav">
-	<div ng-switch-when="personas">
-		<div ng-include="'./templates/personas.view.htm'"></div>
-	</div>
-	<div ng-switch-when="agregarPersona">
-		<div class="text-center">
-    		<label class="title baskerville">Registro de personas</label>
-    	</div>
-	    <form class="container col-md-offset-4 col-md-4">
-	        <div class="form-group">
-	            <label for="cedula">Cedula: </label>
-	            <input class="form-control" type="text" name="cedula" id="cedula" required autofocus placeholder="Número de cedula" pattern="[0-9]{9,}" title="Por favor ingrese su numero de cedula correctamente">
-	        </div>
-	        <div class="form-group">
-	            <label for="nombre">Nombre: </label>
-	            <input class="form-control" type="text" name="nombre" id="name" required  placeholder="Nombre" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras">
-	        </div>
-	        <div class="form-group">
-	            <label for="apellido1">Primer Apellido: </label>
-	            <input class="form-control" type="text" name="apellido1" id="apellido1" required  placeholder="Primer Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras">
-	        </div>
-	        <div class="form-group">
-	            <label for="name">Segundo Apellido: </label>
-	            <input class="form-control" type="text" name="apellido2" id="apellido2" required  placeholder="Segundo Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras">
-	        </div>
+    <div ng-switch-when="agregarPersona" ng-controller="PersonasController">
+        <div class="text-center">
+            <label class="title baskerville">Registro de personas</label>
+        </div>
+        <form class="container col-md-offset-4 col-md-4">
+            <div class="form-group">
+                <label for="cedula">Cedula: </label>
+                <input ng-model="cedula" class="form-control" type="text" name="cedula" id="cedula" required autofocus placeholder="Número de cedula" pattern="[0-9]{9,}" title="Número de cédula con ceros, sin espacios ni guiones">
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre: </label>
+                <input ng-model="nombre" class="form-control" type="text" name="nombre" id="name" required placeholder="Nombre" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras">
+            </div>
+            <div class="form-group">
+                <label for="apellido1">Primer Apellido: </label>
+                <input ng-model="apellido1" class="form-control" type="text" name="apellido1" id="apellido1" required placeholder="Primer Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras">
+            </div>
+            <div class="form-group">
+                <label for="apellido2">Segundo Apellido: </label>
+                <input ng-model="apellido2" class="form-control" type="text" name="apellido2" id="apellido2" required placeholder="Segundo Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras">
+            </div>
 
 	        <div class="form-group">
 	            <label for="name">Contraseña: </label>
@@ -124,4 +121,5 @@
     		<label class="title baskerville">Gestión de preguntas</label>
     	</div>
 	</div>
+
 </div>
