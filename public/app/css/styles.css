@@ -41,6 +41,8 @@ a:link {
 }
 
 textarea {
+    height: 500px;
+    width: 500px;
     resize: none;
 }
 
@@ -224,7 +226,8 @@ footer {
 }
 
 /* Box personas */  
-.nueva-persona-box, .gestion-personas-box {
+.nueva-persona-box, .gestion-personas-box,
+.nueva-encuesta-box, .gestion-encuestas-box {
     background-color: #FAFAFA;
     border: 1px solid #E5E5E5;
     padding: 20px;
@@ -249,4 +252,10 @@ footer {
 }
 @media only screen and (min-width:2000px){
     
+}
+
+.float-right {
+    margin-top: -5px;
+    position:relative;
+    float:right;
 }

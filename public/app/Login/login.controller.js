@@ -5,7 +5,7 @@
 		.module('observatoryApp')
 		.controller('LoginController', LoginController);
 
-	function LoginController($scope, $http, LoginFactory, Auth) {
+	function LoginController($scope, LoginFactory, Auth) {
 		$scope.email = 'fauri@gmail.com';
 		$scope.contrasena = '12345';
 		$scope.error = false;

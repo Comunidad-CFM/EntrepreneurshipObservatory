@@ -7,11 +7,13 @@
 
     function PersonasController($scope, $http, $timeout, PersonasFactory) {
         $scope.nueva = false;
-        $scope.texto = 'Mostrar formulario';
+        $scope.texto = 'Mostrar formulario de agregar nueva persona';
         $scope.registro = false;
         $scope.store = store;
-        $scope.getPersonas = getPersonas;
         $scope.mostrarFormulario = mostrarFormulario;
+        $scope.modificar = modificar;
+        $scope.eliminar = eliminar;
+        $scope.getPersonas = getPersonas;
 
         function setData() {
             $scope.cedula = '';
@@ -71,11 +73,19 @@
             $scope.nueva = !$scope.nueva;
 
             if($scope.nueva) {
-                $scope.texto = 'Ocultar formulario';
+                $scope.texto = 'Ocultar formulario de agregar nueva persona';
             }
             else {
-                $scope.texto = 'Mostrar formulario';
+                $scope.texto = 'Mostrar formulario de agregar nueva persona';
             }
+        }
+
+        function modificar(id) {
+            console.log('Modificar ->',id);
+        }
+
+        function eliminar(id) {
+            console.log('Eliminar ->',id);
         }
 
         function getPersonas() {
