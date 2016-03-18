@@ -5,15 +5,28 @@
         .module('observatoryApp')
         .controller('PersonasController', PersonasController);
 
-    function PersonasController($scope,$http) {        
-        $scope.cedula = "123456789";
-        $scope.nombre = "Manfred";
-        $scope.apellido1 = "Artavia";
-        $scope.apellido2 = "Gomez";
-        $scope.email = "m@gmai.com";
-        $scope.pass = "123";
-        $scope.passConf = "123";
-        $scope.tipo='A';
+    function PersonasController($scope, $http, $timeout, PersonasFactory) {
+        $scope.nueva = false;
+        $scope.texto = 'Mostrar formulario de agregar nueva persona';
+        $scope.registro = false;
+        $scope.store = store;
+        $scope.mostrarFormulario = mostrarFormulario;
+        $scope.modificar = modificar;
+        $scope.eliminar = eliminar;
+        $scope.getPersonas = getPersonas;
+
+        function setData() {
+            $scope.cedula = '';
+            $scope.nombre = '';
+            $scope.apellido1 = '';
+            $scope.apellido2 = '';
+            $scope.email = '';
+            $scope.pass = '';
+            $scope.passConf = '';
+            $scope.tipo ='A';
+        }
+        setData();
+
         $scope.$watch('passConf', validate);
 
         function validate (){
@@ -25,32 +38,64 @@
          	}                    
         }
         
-        $scope.store = function() {
-			var data = {
+        function store() {
+            var data = {
                 cedula: $scope.cedula,
                 nombre: $scope.nombre,
                 apellido1: $scope.apellido1,
                 apellido2: $scope.apellido2,
-				email: $scope.email,
-				contrasena: $scope.pass,
+                email: $scope.email,
+                contrasena: $scope.pass,
                 tipo: $scope.tipo
-			}
+            }
 
-			$http({
-				method: 'POST',
-				url: '/api/personas/registro',
-				data: data
-			})
-			.success(function(response) {
-				console.log(response);
-			})
-			.error(function(err) {
-				console.log(err);
-			});
+            PersonasFactory.store(data)
+            .then(function(response) {
+                if(response === 'true') {
+                    $scope.registro = true;
+                    $scope.msgRegistro = 'La persona se ha agregado correctamente.';
+                    $scope.styleRegistro = 'success-box';
+                    setData();
+
+                    $timeout(function() {
+                        $scope.registro = false;
+                    }, 5000);
+                }
+                else {
+                    $scope.registro = true;
+                    $scope.msgRegistro = 'Error, el email ya se encuentra registrado.';
+                    $scope.styleRegistro = 'error-box';
+                }
+            });
 		}
+
+        function mostrarFormulario() {
+            $scope.nueva = !$scope.nueva;
+
+            if($scope.nueva) {
+                $scope.texto = 'Ocultar formulario de agregar nueva persona';
+            }
+            else {
+                $scope.texto = 'Mostrar formulario de agregar nueva persona';
+            }
+        }
+
+        function modificar(id) {
+            console.log('Modificar ->',id);
+        }
+
+        function eliminar(id) {
+            console.log('Eliminar ->',id);
+        }
+
+        function getPersonas() {
+            PersonasFactory.getAll()
+            .then(function(response) {
+                $scope.personas = response;
+            });
+        }
+
+        getPersonas();
     }
-
-
-
 
 })();

@@ -4,6 +4,8 @@
 	angular
 		.module('observatoryApp', ['ngRoute', 'ngCookies'])
 		.factory('Auth', Auth)
+        .filter('user', user)
+        .filter('estado', estado)
 		.config(config)
         .run(run);
 
@@ -50,6 +52,30 @@
         }
 	}
 	
+    function user() {
+        var filter = function(usuario, argumento) {
+            if(usuario === 'A')
+                return 'Administrador';
+            else if(usuario === 'B')
+                return 'Empresario';
+            else
+                return 'Encuestador';
+        }
+
+        return filter;
+    }
+
+    function estado() {
+        var filter = function(estado, argumento) {
+            if(estado === 0)
+                return 'Inactiva';
+            else
+                return 'Activa';
+        }
+
+        return filter;
+    }
+
 	function config($routeProvider) {
         $routeProvider
             .when('/', {

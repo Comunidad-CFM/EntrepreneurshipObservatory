@@ -27,7 +27,7 @@ class Personas extends Controller
         
         $persona->save();
 
-        return 'Persona registrada correctamente';
+        return 'true';
     }
     
     /**
@@ -36,6 +36,10 @@ class Personas extends Controller
      * @return Response
      */
     public function logIn(Request $request) {
-        return Persona::where('email', $request->input('email'))->where('contrasena', $request->input('contrasena'))->select('id', 'cedula', 'nombre', 'apellido1', 'apellido2', 'email', 'tipo')->get();
+        return Persona::where('email', $request->input('email'))->where('contrasena', md5($request->input('contrasena')))->select('id', 'cedula', 'nombre', 'apellido1', 'apellido2', 'email', 'tipo')->get();
+    }
+
+    public function getAll() {
+        return Persona::all();
     }
 }

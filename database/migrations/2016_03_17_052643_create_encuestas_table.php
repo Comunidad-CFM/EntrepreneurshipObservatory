@@ -16,8 +16,8 @@ class CreateEncuestasTable extends Migration
             $table->increments('id');
             $table->string('descripcion', 500);
             $table->boolean('estado');
-            $table->dateTime('fechaCreacion');
-            $table->dateTime('fechaModificacion');
+            $table->date('fechaCreacion');
+            $table->date('fechaModificacion');
             $table->integer('persona_id')->unsigned();
             $table->timestamps();
 

@@ -2,14 +2,15 @@
 	'use strict';
 
 	angular
-	.module('observatoryApp')
-	.controller('LoginController', LoginController);
+		.module('observatoryApp')
+		.controller('LoginController', LoginController);
 
-	function LoginController($scope, $http, LoginFactory, Auth) {
+	function LoginController($scope, LoginFactory, Auth) {
 		$scope.email = 'fauri@gmail.com';
 		$scope.contrasena = '12345';
 		$scope.error = false;
 		$scope.logIn = logIn;
+		$scope.goBottom = goBottom;
 
 		function logIn() {
 			$scope.error = false;
@@ -23,6 +24,12 @@
 					$scope.error = true;
 				}
 			});
+		}
+
+		function goBottom() {
+	        $('html, body').animate({ 
+	        	scrollTop: $(document).height() 
+	        }, 1500);
 		}
 	}
 

@@ -1,15 +1,28 @@
-<h1 class="text-center roboto">Observatorio Empresarial</h1>
-<div class="card card-container">
-    <form name="formLogin" class="form-login form-horizontal" novalidate="">
-        <div>
-            <input type="text" id="inputEmail" class="form-control" name="inputEmail" placeholder="Email" ng-model="email" ng-required="true" autofocus>
-            <span class="help-inline red" ng-show="formLogin.inputEmail.$invalid && formLogin.inputEmail.$touched">El email es requerido.</span>
-        </div>
-        <div>
-            <input type="password" id="inputContrasena" class="form-control" name="inputContrasena" placeholder="Contraseña" ng-model="contrasena" ng-required="true">
-            <span class="help-inline red" ng-show="formLogin.inputContrasena.$invalid && formLogin.inputContrasena.$touched">La contraseña es requerida.</span>
-        </div>
-        <div ng-show="error" class="red text-center">El email o la contraseña son incorrectos.</div>
-        <button class="btn btn-primary btn-login" ng-click="logIn();" ng-disabled="formLogin.$invalid"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Log in</button>
-    </form>
+<div class="cover">
+    <span class="icon fa fa-arrow-down" ng-click="goBottom();"></span>
 </div>
+<div class="login-box">
+    <label class="text-center kaushan">Observatorio Empresarial</label>
+    <div class="card card-container">
+        <form name="formLogin" class="form-login form-horizontal" novalidate="">
+            <div>
+                <input type="text" id="inputEmail" class="form-control" name="inputEmail" placeholder="Email" ng-model="email" ng-required="true">
+                <span class="help-inline red" ng-show="formLogin.inputEmail.$invalid && formLogin.inputEmail.$touched">El email es requerido.</span>
+            </div>
+            <div>
+                <input type="password" id="inputContrasena" class="form-control" name="inputContrasena" placeholder="Contraseña" ng-model="contrasena" ng-required="true">
+                <span class="help-inline red" ng-show="formLogin.inputContrasena.$invalid && formLogin.inputContrasena.$touched">La contraseña es requerida.</span>
+            </div>
+            <div ng-show="error" class="error-box">El email o la contraseña son incorrectos.</div>
+            <button class="btn btn-primary btn-login" ng-click="logIn();" ng-disabled="formLogin.$invalid"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Log in</button>
+        </form>
+    </div>
+</div>
+<footer class="text-center kaushan">
+    <div class="col-md-6 col-xs-12">
+        <p>&COPY; 2016 Observatorio Empresarial</p>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <p>Proyecto TEC</p>
+    </div>
+</footer>
