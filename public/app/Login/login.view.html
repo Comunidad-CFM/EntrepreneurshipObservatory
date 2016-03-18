@@ -1,8 +1,8 @@
 <div class="cover">
     <span class="icon fa fa-arrow-down" ng-click="goBottom();"></span>
 </div>
-<div class="box-login">
-    <h1 class="text-center kaushan">Observatorio Empresarial</h1>
+<div class="login-box">
+    <label class="text-center kaushan">Observatorio Empresarial</label>
     <div class="card card-container">
         <form name="formLogin" class="form-login form-horizontal" novalidate="">
             <div>
@@ -13,7 +13,7 @@
                 <input type="password" id="inputContrasena" class="form-control" name="inputContrasena" placeholder="Contraseña" ng-model="contrasena" ng-required="true">
                 <span class="help-inline red" ng-show="formLogin.inputContrasena.$invalid && formLogin.inputContrasena.$touched">La contraseña es requerida.</span>
             </div>
-            <div ng-show="error" class="red text-center">El email o la contraseña son incorrectos.</div>
+            <div ng-show="error" class="error-box">El email o la contraseña son incorrectos.</div>
             <button class="btn btn-primary btn-login" ng-click="logIn();" ng-disabled="formLogin.$invalid"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Log in</button>
         </form>
     </div>

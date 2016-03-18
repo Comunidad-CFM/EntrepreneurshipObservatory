@@ -4,6 +4,7 @@
 	angular
 		.module('observatoryApp', ['ngRoute', 'ngCookies'])
 		.factory('Auth', Auth)
+        .directive('userType', tipoUsuario)
 		.config(config)
         .run(run);
 
@@ -50,6 +51,23 @@
         }
 	}
 	
+    function tipoUsuario(tipo) {
+        switch(tipo) {
+            case 'A':
+                return 'Administrador';
+                break;
+            case 'B':
+                return 'Empresario';
+                break;
+            case 'E':
+                return 'Encuestador';
+                break;
+            default:
+                return '';
+                break;
+        }
+    }
+
 	function config($routeProvider) {
         $routeProvider
             .when('/', {

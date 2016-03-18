@@ -28,5 +28,6 @@
 	<script type="text/javascript" src="<?= asset('app/Admin/admin.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Login/login.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Personas/personas.controller.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Personas/personas.factory.js') ?>"></script>
 </body>
 </html>

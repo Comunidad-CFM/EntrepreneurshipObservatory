@@ -11,11 +11,12 @@
         </div>
         <div class="navbar-collapse collapse navBar">
             <ul class="nav navbar-nav navbar-right">
-                <li ng-click="activeNav='encuestas'"><a><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Encuestas</a></li>
-                <li ng-click="activeNav='personas'"><a><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Personas</a></li>
-                <li ng-click="activeNav='preguntas'"><a><span class="fa fa-question"></span>&nbsp;&nbsp;Preguntas</a></li>
+                <li><a>{{user.nombre}}</a></li>
+                <li ng-class="styleEncuestas" ng-click="Nav='encuestas'; styleEncuestas='active'; stylePersonas=''; stylePreguntas='';"><a><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Encuestas</a></li>
+                <li ng-class="stylePersonas" ng-click="Nav='personas'; styleEncuestas=''; stylePersonas='active'; stylePreguntas='';"><a><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Personas</a></li>
+                <li ng-class="stylePreguntas" ng-click="Nav='preguntas'; styleEncuestas=''; stylePersonas=''; stylePreguntas='active';"><a><span class="fa fa-question"></span>&nbsp;&nbsp;Preguntas</a></li>
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-option-vertical"></span>&nbsp;&nbsp;{{user.nombre}} <b class="caret"></b></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-option-vertical"></span></a>
                     <ul class="dropdown-menu">
                         <li ng-click="logOut();"><a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Log out</a></li>
                     </ul>
@@ -24,55 +25,118 @@
         </div>
     </div>
 </nav>
-<div class="container" ng-switch="activeNav">
+<div class="container" ng-switch="Nav">
     <div ng-switch-when="personas" ng-controller="PersonasController">
-        <div class="text-center">
+        <div class="text-center margin">
             <label class="title kaushan">Gestión de personas</label>
         </div>
-        <form class="container col-md-offset-4 col-md-4">
-            <label class="baskerville">Registro de personas</label>
-            <div class="form-group">
-                <label for="cedula">Cedula: </label>
-                <input ng-model="cedula" class="form-control" type="text" name="cedula" id="cedula" required autofocus placeholder="Número de cedula" pattern="[0-9]{9,}" title="Número de cédula con ceros, sin espacios ni guiones.">
+        <div class="nueva-persona-box">
+            <div>
+                <label class="subtitle baskerville">Agregar nueva persona</label>
             </div>
-            <div class="form-group">
-                <label for="nombre">Nombre: </label>
-                <input ng-model="nombre" class="form-control" type="text" name="nombre" id="name" required placeholder="Nombre" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+            <button class="btn btn-default margin" ng-click="mostrarFormulario();"><span ng-class="{'glyphicon glyphicon-chevron-down':!nueva, 'glyphicon glyphicon-chevron-up':nueva}"></span>&nbsp;&nbsp;{{texto}}</button>
+            <form class="container" ng-show="nueva">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <p>
+                                <label for="cedula">Cédula</label>
+                                <input ng-model="cedula" class="form-control" type="text" name="cedula" id="cedula" required autofocus placeholder="Número de cédula" pattern="[0-9]{9,}" title="Número de cédula con ceros, sin espacios ni guiones.">
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>
+                                <label for="nombre">Nombre</label>
+                                <input ng-model="nombre" class="form-control" type="text" name="nombre" id="name" required placeholder="Nombre" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <p>
+                                <label for="email">Email</label>
+                                <input ng-model="email" class="form-control" type="text" name="email" id="email" required  placeholder="Email" title="Por favor ingrese un email valido.">
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>
+                                <label for="apellido1">Primer Apellido</label>
+                                <input ng-model="apellido1" class="form-control" type="text" name="apellido1" id="apellido1" required placeholder="Primer Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <p>
+                                <label for="name">Contraseña</label>
+                                <input ng-model="pass" class="form-control" type="password" name="pass" id="pass" required  placeholder="Contraseña" pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos caracteres.">
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>
+                                <label for="apellido2">Segundo Apellido</label>
+                                <input ng-model="apellido2" class="form-control" type="text" name="apellido2" id="apellido2" required placeholder="Segundo Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <p>
+                                <label for="name">Confirmar Contraseña</label>
+                                <input ng-model="passConf" class="form-control" type="password" name="passConf" id="passConf" required  placeholder="Confirmar Contraseña" pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos letras.">
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>
+                                <label for="name">Tipo de usuario</label>
+                                <select ng-model="tipo" class="form-control">
+                                    <option value="A">Administrador</option>
+                                    <option value="B">Empresario</option>
+                                    <option value="E">Encuestador</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>
+                        </div>
+                        <center>
+                            <button class="btn btn-default btn-primary margin" ng-disabled="errorPass" ng-click="store();"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                        </center>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="gestion-personas-box">
+            <div>
+                <label class="subtitle baskerville">Todas las personas</label>
             </div>
-            <div class="form-group">
-                <label for="apellido1">Primer Apellido: </label>
-                <input ng-model="apellido1" class="form-control" type="text" name="apellido1" id="apellido1" required placeholder="Primer Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
-            </div>
-            <div class="form-group">
-                <label for="apellido2">Segundo Apellido: </label>
-                <input ng-model="apellido2" class="form-control" type="text" name="apellido2" id="apellido2" required placeholder="Segundo Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
-            </div>
-            <div class="form-group">
-                <label for="email">Email: </label>
-                <input ng-model="email" class="form-control" type="text" name="email" id="email" required  placeholder="Email" title="Por favor ingrese un email valido.">
-            </div>
-	        <div class="form-group">
-	            <label for="name">Contraseña: </label>
-	            <input ng-model="pass" class="form-control" type="password" name="pass" id="pass" required  placeholder="Contraseña" pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos caracteres.">
-	        </div>
-	        <div class="form-group">
-	            <label for="name">Confirmar Contraseña: </label>
-	            <input ng-model="passConf" class="form-control" type="password" name="passConf" id="passConf" required  placeholder="Confirmar Contraseña" pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos letras.">
-	        </div>
-            <div class="form-group">
-                <label for="name">Tipo de usuario: </label>
-                <select ng-model="tipo" class="form-control">
-                    <option value="A">Administrador</option>
-                    <option value="B">Empresario</option>
-                    <option value="E">Encuestador</option>
-                </select>
-            </div>
-	        <center>
-                <div ng-show="errorPass" class="alert alert-danger text-center">Las contraseñas no coinciden.</div>
-                <div ng-show="registro" class="alert text-center" ng-style="styleRegistro">{{msgRegistro}}</div>
-	            <button type="submit" class="btn btn-default btn-primary" ng-disabled="errorPass" ng-click="store();">Submit</button>
-	        </center>
-	    </form>
+            <table class="table margin" ng-show="personas">
+                <thead>
+                    <tr>
+                        <th>Cédula</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Tipo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="persona in personas">
+                        <td>{{persona.cedula}}</td>
+                        <td>{{persona.nombre}} {{persona.apellido1}} {{persona.apellido2}}</td>
+                        <td>{{persona.email}}</td>
+                        <td>{{persona.tipo}}</td>
+                        <td>
+                            <button class="btn btn-warning" title="Modificar usuario"><span class="glyphicon glyphicon-edit"></span></button>
+                            <button class="btn btn-danger" title="Eliminar usuario"><span class="glyphicon glyphicon-trash"></span></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="info-box margin" ng-show="!personas">No hay usuarios registrados.</div>
+        </div>
 	</div>
 	<div ng-switch-when="encuestas">
 		<div class="text-center">

@@ -2,8 +2,8 @@
 	'use strict';
 
 	angular
-	.module('observatoryApp')
-	.factory('LoginFactory', LoginFactory);
+		.module('observatoryApp')
+		.factory('LoginFactory', LoginFactory);
 
 	function LoginFactory($http, $q) {
 		var factory = {
@@ -27,11 +27,9 @@
 				data: data
 			})
 			.success(function(response) {
-				console.log(response);
 				defered.resolve(response[0]);
 			})
 			.error(function(err) {
-				console.log(err);
 				defered.reject(err);
 			});
 

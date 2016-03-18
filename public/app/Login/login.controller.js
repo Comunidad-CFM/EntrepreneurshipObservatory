@@ -2,8 +2,8 @@
 	'use strict';
 
 	angular
-	.module('observatoryApp')
-	.controller('LoginController', LoginController);
+		.module('observatoryApp')
+		.controller('LoginController', LoginController);
 
 	function LoginController($scope, $http, LoginFactory, Auth) {
 		$scope.email = 'fauri@gmail.com';
