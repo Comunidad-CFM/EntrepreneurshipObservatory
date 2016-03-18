@@ -127,7 +127,7 @@
                         <td>{{persona.cedula}}</td>
                         <td>{{persona.nombre}} {{persona.apellido1}} {{persona.apellido2}}</td>
                         <td>{{persona.email}}</td>
-                        <td>{{persona.tipo}}</td>
+                        <td>{{persona.tipo | user}}</td>
                         <td>
                             <button class="btn btn-warning" title="Modificar usuario"><span class="glyphicon glyphicon-edit"></span></button>
                             <button class="btn btn-danger" title="Eliminar usuario"><span class="glyphicon glyphicon-trash"></span></button>
