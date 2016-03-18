@@ -14,7 +14,7 @@ class CreateAplicacionesTable extends Migration
     {
         Schema::create('aplicaciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->dateTime('fechaAplicacion');
+            $table->date('fechaAplicacion');
             $table->integer('encuesta_id')->unsigned();
             $table->integer('persona_id')->unsigned();
             $table->integer('periodo_id')->unsigned();

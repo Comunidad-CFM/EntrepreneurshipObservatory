@@ -53,7 +53,7 @@
             .then(function(response) {
                 if(response === 'true') {
                     $scope.registro = true;
-                    $scope.msgRegistro = 'La persona se ha agregado correctamente';
+                    $scope.msgRegistro = 'La persona se ha agregado correctamente.';
                     $scope.styleRegistro = 'success-box';
                     setData();
 

@@ -31,4 +31,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('personas/registro', 'Personas@store');
     Route::post('preguntas/registro', 'Indicadores@store');
     Route::get('personas/todas', 'Personas@getAll');
+    Route::post('encuestas/registro', 'Encuestas@store');
+    Route::get('encuestas/todas', 'Encuestas@getAll');
 });

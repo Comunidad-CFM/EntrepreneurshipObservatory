@@ -155,20 +155,49 @@
                             <textarea ng-model="descripcion" class="form-control" autofocus placeholder="Descripción" title="La descripción debe tener al menos 5 caracteres."></textarea>
                         </p>
                     </div>
-                </div>
-                <div class="col-md-12">
                     <div class="col-md-12">
-                        <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>
+                        <div>
+                            <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>
+                        </div>
+                        <center>
+                            <button class="btn btn-primary margin" ng-disabled="emptyData" ng-click="agregar();"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                        </center>
                     </div>
-                    <center>
-                        <button class="btn btn-primary margin" ng-disabled="emptyData" ng-click="agregar();"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
-                    </center>
                 </div>
             </form>
         </div>
         <div class="gestion-encuestas-box">
-            <label class="subtitle baskerville">Encuestas</label>
-            <button class="btn btn-default margin float-right" ng-click="mostrarFormulario();" title="{{texto}}"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
+            <div>
+                <label class="subtitle baskerville">Encuestas</label>
+                <button class="btn btn-default margin float-right" ng-click="mostrarFormulario();" title="{{texto}}"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
+            </div>
+            <table class="table margin" ng-show="encuestas">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Estado</th>
+                        <th>Fecha de creación</th>
+                        <th>Fecha de modificación</th>
+                        <th>Creador</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="encuesta in encuestas">
+                        <td>{{encuesta.descripcion}}</td>
+                        <td>{{encuesta.estado | estado}}</td>
+                        <td>{{encuesta.fechaCreacion}}</td>
+                        <td>{{encuesta.fechaModificacion}}</td>
+                        <td>{{encuesta.persona_id}}</td>
+                        <td>
+                            <button class="btn btn-warning" ng-click="modificar(encuesta.id);" title="Modificar encuesta"><span class="glyphicon glyphicon-edit"></span></button>
+                            &nbsp;&nbsp;
+                            <button class="btn btn-danger" ng-click="eliminar(encuesta.id);" title="Eliminar encuesta"><span class="glyphicon glyphicon-trash"></span></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="info-box margin" ng-show="!encuestas">No hay encuestas registradas.</div>
         </div>
 	</div>
 	<div ng-switch-when="preguntas">

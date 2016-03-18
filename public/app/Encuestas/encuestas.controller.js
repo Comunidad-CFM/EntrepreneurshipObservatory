@@ -5,12 +5,15 @@
 		.module('observatoryApp')
 		.controller('EncuestasController', EncuestasController);
 
-	function EncuestasController($scope, $timeout, $filter, $cookies) {
+	function EncuestasController($scope, $timeout, $filter, $cookies, EncuestasFactory) {
 		$scope.descripcion = '';
 		$scope.nueva = false;
+		$scope.registro = false;
         $scope.texto = 'Mostrar formulario de agregar nueva encuesta';
         $scope.mostrarFormulario = mostrarFormulario;
         $scope.agregar = agregar;
+        $scope.modificar = modificar;
+        $scope.eliminar = eliminar;
 
         $scope.$watch('descripcion', validate);
 
@@ -26,10 +29,10 @@
             $scope.nueva = !$scope.nueva;
 
             if($scope.nueva) {
-                $scope.texto = 'Ocultar formulario de agregar nueva persona';
+                $scope.texto = 'Ocultar formulario de agregar nueva encuesta';
             }
             else {
-                $scope.texto = 'Mostrar formulario de agregar nueva persona';
+                $scope.texto = 'Mostrar formulario de agregar nueva encuesta';
             }
         }
 
@@ -42,9 +45,43 @@
         		fechaModificacion: fechaActual,
         		persona_id: $cookies.getObject('session').id,
         	};
-        	
-        	console.log(encuesta);
+
+        	EncuestasFactory.store(encuesta)
+        	.then(function(response) {
+        		if(response === 'true') {
+                    $scope.registro = true;
+                    $scope.msgRegistro = 'La encuesta se ha agregado correctamente.';
+                    $scope.styleRegistro = 'success-box';
+                    $scope.descripcion = '';
+
+                    $timeout(function() {
+                        $scope.registro = false;
+                    }, 5000);
+                }
+                else {
+                    $scope.registro = true;
+                    $scope.msgRegistro = 'Ha ocurrido un error al agregar la encuesta.';
+                    $scope.styleRegistro = 'error-box';
+                }
+        	});
         }
+
+        function modificar(id) {
+			console.log('Modificar ->',id);        	
+        }
+
+        function eliminar(id) {
+            console.log('Eliminar ->',id);
+        }
+
+        function getAll() {
+        	EncuestasFactory.getAll()
+        	.then(function(response) {
+        		$scope.encuestas = response;
+        	});
+        }
+
+        getAll();
 	}
 
 })();
