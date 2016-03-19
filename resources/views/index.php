@@ -31,5 +31,10 @@
 	<script type="text/javascript" src="<?= asset('app/Personas/personas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Encuestas/encuestas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Encuestas/encuestas.factory.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Preguntas/pregunta.controller.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Preguntas/preguntas.factory.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Indicadores/indicador.factory.js') ?>"></script>
+
+
 </body>
 </html>

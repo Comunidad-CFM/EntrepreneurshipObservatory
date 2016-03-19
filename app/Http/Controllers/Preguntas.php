@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Indicadore;
+use App\Pregunta;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class Indicadores extends Controller
+class Preguntas extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class Indicadores extends Controller
      */
     public function getAll($id = null) {
 
-        return Indicadore::all();
+        return Pregunta::all();
     }
 
     /**
@@ -26,14 +26,15 @@ class Indicadores extends Controller
      * @return Response
      */
     public function store(Request $request) {
-        $indicador = new Indicador;
+        $pregunta = new Pregunta;
 
-        $indicador->nombre = $request->input('nombre');
-        $indicador->descripcion = $request->input('descripcion');
+        $pregunta->enunciado = $request->input('enunciado');
+        $pregunta->tipo = $request->input('tipo');
+        $pregunta->indicador_id = $request->input('indicador_id');
 
-        $indicador->save();
+        $pregunta->save();
 
-        return 'Indicador record successfully created with id ' . $indicador->id;
+        return 'true';
     }
 
     /**
@@ -43,7 +44,7 @@ class Indicadores extends Controller
      * @return Response
      */
     public function show($id) {
-        return Indicador::find($id);
+        return Pregunta::find($id);
     }
 
     /**
@@ -54,13 +55,15 @@ class Indicadores extends Controller
      * @return Response
      */
     public function update(Request $request, $id) {
-        $indicador = Indicador::find($id);
+        $pregunta = Pregunta::find($id);
 
-        $indicador->nombre = $request->input('nombre');
-        $indicador->descripcion = $request->input('descripcion');
-        $indicador->save();
+        $pregunta->enunciado = $request->input('enunciado');
+        $pregunta->tipo = $request->input('tipo');
+        $pregunta->indicador_id = $request->input('indicador_id');
 
-        return "Sucess updating user #" . $indicador->id;
+        $pregunta->save();
+
+        return "Sucess updating user #" . $pregunta->id;
     }
 
     /**
@@ -70,11 +73,12 @@ class Indicadores extends Controller
      * @return Response
      */
     public function destroy(Request $request) {
-        $indicador = Indicador::find($request->input('id'));
+        $pregunta = Pregunta::find($request->input('id'));
 
-        $indicador->delete();
+        $pregunta->delete();
 
-        return "Indicador record successfully deleted #" . $request->input('id');
+        return "Pregunta record successfully deleted #" . $request->input('id');
     }
 }
+
 
