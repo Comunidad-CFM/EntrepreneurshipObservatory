@@ -22,7 +22,7 @@ class Personas extends Controller
         $persona->apellido1 = $request->input('apellido1');
         $persona->apellido2 = $request->input('apellido2');
         $persona->email = $request->input('email');
-        $persona->contrasena = $request->input('contrasena');
+        $persona->contrasena = md5($request->input('contrasena'));
         $persona->tipo = $request->input('tipo');        
         
         $persona->save();

@@ -53,7 +53,7 @@
 	}
 	
     function user() {
-        var filter = function(usuario, argumento) {
+        var filter = function(usuario) {
             if(usuario === 'A')
                 return 'Administrador';
             else if(usuario === 'B')
@@ -66,7 +66,7 @@
     }
 
     function estado() {
-        var filter = function(estado, argumento) {
+        var filter = function(estado) {
             if(estado === 0)
                 return 'Inactiva';
             else

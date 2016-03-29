@@ -6,11 +6,17 @@
     <div class="card card-container">
         <form name="formLogin" class="form-login form-horizontal" novalidate="">
             <div>
-                <input type="text" id="inputEmail" class="form-control" name="inputEmail" placeholder="Email" ng-model="email" ng-required="true">
+                <div class="inner-addon right-addon">
+                    <i class="fa fa-envelope-o"></i>
+                    <input type="text" id="inputEmail" class="form-control" name="inputEmail" placeholder="Email" ng-model="email" ng-required="true">
+                </div>
                 <span class="help-inline red" ng-show="formLogin.inputEmail.$invalid && formLogin.inputEmail.$touched">El email es requerido.</span>
             </div>
             <div>
-                <input type="password" id="inputContrasena" class="form-control" name="inputContrasena" placeholder="Contraseña" ng-model="contrasena" ng-required="true">
+                <div class="inner-addon right-addon">
+                    <i class="fa fa-key"></i>
+                    <input type="password" id="inputContrasena" class="form-control" name="inputContrasena" placeholder="Contraseña" ng-model="contrasena" ng-required="true">
+                </div>
                 <span class="help-inline red" ng-show="formLogin.inputContrasena.$invalid && formLogin.inputContrasena.$touched">La contraseña es requerida.</span>
             </div>
             <div ng-show="error" class="error-box">El email o la contraseña son incorrectos.</div>
