@@ -72,12 +72,12 @@ class Preguntas extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy(Request $request) {
-        $pregunta = Pregunta::find($request->input('id'));
+    public function destroy($id) {
+        $pregunta = Pregunta::find($id);
 
         $pregunta->delete();
 
-        return "Pregunta record successfully deleted #" . $request->input('id');
+        return "Pregunta record successfully deleted #" . $id;
     }
 }
 
