@@ -11,7 +11,7 @@
                 <div class="col-md-12">
                     <p>
                         <label for="descripcion">Descripción</label>
-                        <textarea ng-model="descripcion" class="form-control" autofocus placeholder="Descripción" title="La descripción debe tener al menos 5 caracteres."></textarea>
+                        <textarea ng-model="descripcion" class="form-control" rows="7" autofocus placeholder="Descripción" title="La descripción debe tener al menos 5 caracteres."></textarea>
                     </p>
                 </div>
                 <div class="col-md-12">
@@ -29,23 +29,25 @@
         <div>
             <label class="subtitle baskerville">Encuestas</label>
             <button class="btn btn-default margin float-right" ng-click="mostrarFormulario();" title="{{texto}}"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
-        </div>
-        <div class="col-md-12 col-sm-12 margin" ng-show="encuestas">
-            <div class="col-md-4 col-sm-4 card-box" ng-repeat="encuesta in encuestas">
-                <div class="inner">
-                    <div class="title-card">
-                        <label class="subtitle">{{encuesta.descripcion}}</label>
-                    </div>
-                    <div class="body-card">
-                        <p class="card-text">Creada por {{encuesta.persona_id}} el {{encuesta.fechaCreacion}} y modificada el {{encuesta.fechaModificacion}}.</p>
-                        <p class="card-text">
-                            Está {{encuesta.estado | estado}}.
-                        </p>
-                    </div>
-                    <div class="footer-card-box">
-                        <span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#editarEncuesta" ng-click="editandoEncuesta(encuesta.id, encuesta.descripcion);" title="Modificar encuesta"></span>
-                        &nbsp;
-                        <span class="glyphicon glyphicon-trash" ng-click="modificar(encuesta.id);" title="Eliminar encuesta"></span>
+            <div class="col-md-12 col-sm-12 margin" ng-show="encuestas">
+                <div class="col-md-4 col-sm-4 card-box" ng-repeat="encuesta in encuestas">
+                    <div class="inner">
+                        <div class="title-card">
+                            <label class="subtitle">{{encuesta.descripcion}}</label>
+                        </div>
+                        <div class="body-card">
+                            <p>Creada por {{encuesta.nombre}} {{encuesta.apellido1}} {{encuesta.apellido2}} el {{encuesta.fechaCreacion}} y modificada el {{encuesta.fechaModificacion}}.</p>
+                            <p>Está {{encuesta.estado | estado}}.</p>
+                        </div>
+                        <div class="footer-card-box">
+                            <span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editarEncuesta" ng-click="editandoEncuesta(encuesta.id, encuesta.descripcion);" title="Modificar encuesta"></span>
+                            &nbsp;&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-tasks" data-toggle="modal" data-target="#armarEncuesta"  ng-click="armandoEncuesta(encuesta.id);" title="Armar encuesta"></span>
+                            &nbsp;&nbsp;&nbsp;
+                            <span ng-class="{'fa fa-toggle-on': encuesta.estado == 1, 'fa fa-toggle-off': encuesta.estado == 0}" ng-click="cambiarEstado(encuesta);" title="Activar/inactivar encuesta"></span>
+                            &nbsp;&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-trash" ng-click="eliminar($event, encuesta.id);" title="Eliminar encuesta"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,17 +61,65 @@
             <div class="modal-content">
                 <div class="modal-header montserrat">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <label class="title">Editar encuesta</label>
+                    <label class="title">Modificar encuesta</label>
                 </div>
                 <div class="modal-body">
-                    <div class="col-md-12">
+                    <div>
                         <label for="descripcion">Descripción</label>
-                        <textarea ng-model="descripcion" class="form-control" autofocus placeholder="Descripción" title="La descripción debe tener al menos 5 caracteres."></textarea>
+                        <textarea ng-model="descripcion" class="form-control" rows="7" placeholder="Descripción" title="La descripción debe tener al menos 5 caracteres."></textarea>
                     </div>
+                    <div ng-show="editar" class="margin" ng-class="styleEditar">{{msgEditar}}</div>
                 </div>
                 <div class="modal-footer">
-                    <button id="cerrarEditarEncuesta" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel</button>
-                    <button class="btn btn-success" ng-disabled="emptyData" data-ng-click="modificar(); $event.stopPropagation()"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Guardar</button>
+                    <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel</button>
+                    <button class="btn btn-success" ng-disabled="emptyData" data-ng-click="modificar(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulario armar encuesta -->
+    <div id="armarEncuesta" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header montserrat">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <label class="title">Armar encuesta</label>
+                </div>
+                <div class="modal-body">
+                    <div class="info-box">Jale las preguntas de un lado a otro para armar la encuesta.</div>
+                    <div class="simpleDemo margin">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="row">
+                                <div ng-repeat="(listName, list) in preguntas" class="col-md-6 col-sm-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <label ng-if="listName == 'preguntas'"class="panel-title">Banco de preguntas</label>
+                                            <label ng-if="listName == 'banco'"class="panel-title">Preguntas de la encuesta</label>
+                                        </div>
+                                        <div class="panel-body">
+                                            <ul dnd-list="list">
+                                                <li ng-repeat="item in list"
+                                                    dnd-draggable="item"
+                                                    dnd-moved="list.splice($index, 1)"
+                                                    dnd-effect-allowed="move"
+                                                    dnd-selected="models.selected = item"
+                                                    ng-class="{'selected': models.selected === item}"
+                                                    ng-mouseleave="changeState(item);">
+                                                    {{item.label}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="armarOk" class="margin" ng-class="styleArmar">{{msgArmar}}</div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel</button>
+                    <button class="btn btn-success" data-ng-click="armar(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
                 </div>
             </div>
         </div>

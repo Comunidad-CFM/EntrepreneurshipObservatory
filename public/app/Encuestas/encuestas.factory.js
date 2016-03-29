@@ -9,7 +9,9 @@
 		var factory = {
 			store: store,
 			getAll: getAll,
-			edit: edit
+			edit: edit,
+			remove: remove,
+			changeState, changeState
 		};
 
 		return factory;
@@ -62,6 +64,49 @@
 			})
 			.error(function(err) {
 				defered.reject(err);
+			});
+
+			return defered.promise;
+		}
+
+		function remove(id) {
+			var defered = $q.defer();
+			var data = {
+				id: id
+			};
+
+			$http({
+				method: 'POST',
+				url: 'api/encuestas/remove',
+				data: data
+			})
+			.success(function(response) {
+				defered.resolve(response);
+			})
+			.error(function(err) {
+				defered.reject(err);
+			})
+
+			return defered.promise;
+		}
+
+		function changeState(id, state) {
+			var defered = $q.defer();
+			var data = {
+				id: id,
+				state: state
+			};
+			
+			$http({
+				method: 'POST',
+				url: 'api/encuestas/changeState',
+				data: data
+			})
+			.success(function(response) {
+				defered.resolve(response);
+			})
+			.error(function(err) {
+				defered.reject(err)
 			});
 
 			return defered.promise;

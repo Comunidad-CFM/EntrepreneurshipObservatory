@@ -29,14 +29,16 @@ class Encuestas extends Controller
     }
 
     public function getAll() {
-        return Encuesta::all();
+        return Encuesta::join('personas', 'encuestas.persona_id', '=', 'personas.id')
+                ->select('encuestas.id', 'encuestas.descripcion', 'encuestas.estado', 'encuestas.fechaCreacion', 'encuestas.fechaModificacion', 'personas.nombre', 'personas.apellido1', 'personas.apellido2')
+                ->orderBy('encuestas.id', 'asc')
+                ->get();
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  Request  $request
-     * @param  int  $id
      * @return Response
      */
     public function update(Request $request) {
@@ -44,6 +46,36 @@ class Encuestas extends Controller
 
         $encuesta->descripcion = $request->input('descripcion');
         $encuesta->fechaModificacion = $request->input('fecha');
+
+        $encuesta->save();
+
+        return 'true';
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function remove(Request $request) {
+        $encuesta = Encuesta::find($request->input('id'));
+
+        $encuesta->delete();
+
+        return 'true';
+    }
+
+    /**
+     * Change the state of a inquest.
+     *
+     * @param  Request $request
+     * @return Response
+     */
+    public function changeState(Request $request) {
+        $encuesta = Encuesta::find($request->input('id'));
+
+        $encuesta->estado = $request->input('state');
 
         $encuesta->save();
 
