@@ -1,0 +1,77 @@
+<div ng-controller="EncuestasController">
+    <div class="text-center margin">
+        <label class="title kaushan">Gestión de encuestas</label>
+    </div>
+    <div class="nueva-encuesta-box" ng-show="nueva">
+        <div>
+            <label class="subtitle baskerville">Agregar nueva encuesta</label>
+        </div>
+        <form class="container margin">
+            <div class="col-md-offset-2 col-md-8">
+                <div class="col-md-12">
+                    <p>
+                        <label for="descripcion">Descripción</label>
+                        <textarea ng-model="descripcion" class="form-control" autofocus placeholder="Descripción" title="La descripción debe tener al menos 5 caracteres."></textarea>
+                    </p>
+                </div>
+                <div class="col-md-12">
+                    <div>
+                        <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>
+                    </div>
+                    <center>
+                        <button class="btn btn-primary margin" ng-disabled="emptyData" ng-click="agregar();"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                    </center>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="gestion-encuestas-box">
+        <div>
+            <label class="subtitle baskerville">Encuestas</label>
+            <button class="btn btn-default margin float-right" ng-click="mostrarFormulario();" title="{{texto}}"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
+        </div>
+        <div class="col-md-12 col-sm-12 margin" ng-show="encuestas">
+            <div class="col-md-4 col-sm-4 card-box" ng-repeat="encuesta in encuestas">
+                <div class="inner">
+                    <div class="title-card">
+                        <label class="subtitle">{{encuesta.descripcion}}</label>
+                    </div>
+                    <div class="body-card">
+                        <p class="card-text">Creada por {{encuesta.persona_id}} el {{encuesta.fechaCreacion}} y modificada el {{encuesta.fechaModificacion}}.</p>
+                        <p class="card-text">
+                            Está {{encuesta.estado | estado}}.
+                        </p>
+                    </div>
+                    <div class="footer-card-box">
+                        <span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#editarEncuesta" ng-click="editandoEncuesta(encuesta.id, encuesta.descripcion);" title="Modificar encuesta"></span>
+                        &nbsp;
+                        <span class="glyphicon glyphicon-trash" ng-click="modificar(encuesta.id);" title="Eliminar encuesta"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-box margin" ng-show="!encuestas">No hay encuestas registradas.</div>
+    </div>
+
+    <!-- Formulario editar -->
+    <div id="editarEncuesta" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header montserrat">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <label class="title">Editar encuesta</label>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <label for="descripcion">Descripción</label>
+                        <textarea ng-model="descripcion" class="form-control" autofocus placeholder="Descripción" title="La descripción debe tener al menos 5 caracteres."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="cerrarEditarEncuesta" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel</button>
+                    <button class="btn btn-success" ng-disabled="emptyData" data-ng-click="modificar(); $event.stopPropagation()"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

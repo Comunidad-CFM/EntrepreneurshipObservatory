@@ -14,6 +14,7 @@
         $scope.agregar = agregar;
         $scope.modificar = modificar;
         $scope.eliminar = eliminar;
+        $scope.editandoEncuesta = editandoEncuesta;
 
         $scope.$watch('descripcion', validate);
 
@@ -66,12 +67,25 @@
         	});
         }
 
-        function modificar(id) {
-			console.log('Modificar ->',id);        	
+        function modificar() {
+		    EncuestasFactory.edit($scope.id, $scope.descripcion, $filter('date')(new Date(), 'yyyy-MM-dd'))
+            .then(function(response) {
+                if(response === 'true') {
+                    getAll();
+                    document.getElementById('cerrarEditarEncuesta').click();
+                }
+                else {
+                    console.log('error');
+                }
+            });
         }
 
         function eliminar(id) {
             console.log('Eliminar ->',id);
+        }
+        function editandoEncuesta(id, descripcion) {
+            $scope.descripcion = descripcion;
+            $scope.id = id;
         }
 
         function getAll() {

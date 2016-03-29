@@ -101,13 +101,15 @@
                     <td>{{persona.email}}</td>
                     <td>{{persona.tipo | user}}</td>
                     <td>
-                        <button class="btn btn-warning" ng-click="modificar(persona.id);" title="Modificar usuario"><span class="glyphicon glyphicon-edit"></span></button>
-                        &nbsp;&nbsp;
-                        <button class="btn btn-danger" ng-click="eliminar(persona.id);" title="Eliminar usuario"><span class="glyphicon glyphicon-trash"></span></button>
+                        <span class="glyphicon glyphicon-edit" ng-click="modificar(persona.id);" title="Modificar usuario"></span>
+                        &nbsp;
+                        <span class="glyphicon glyphicon-trash" ng-click="eliminar(persona.id);" title="Eliminar usuario"></span>
                     </td>
                 </tr>
             </tbody>
         </table>
         <div class="info-box margin" ng-show="!personas">No hay usuarios registrados.</div>
     </div>
+
+    <!-- Formulario editar -->
 </div>
