@@ -258,6 +258,9 @@ footer {
     position:relative;
     float:right;
 }
+.combo-indicador {
+    width: 100% !important;
+}
 
 
 /* Addons */
