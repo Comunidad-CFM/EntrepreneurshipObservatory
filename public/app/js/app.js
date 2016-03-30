@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-		.module('observatoryApp', ['ngRoute', 'ngCookies'])
+		.module('observatoryApp', ['ngCookies', 'ngMaterial', 'ngRoute', 'dndLists'])
 		.factory('Auth', Auth)
         .filter('user', user)
         .filter('estado', estado)
@@ -68,9 +68,9 @@
     function estado() {
         var filter = function(estado) {
             if(estado === 0)
-                return 'Inactiva';
+                return 'inactiva';
             else
-                return 'Activa';
+                return 'activa';
         }
 
         return filter;
