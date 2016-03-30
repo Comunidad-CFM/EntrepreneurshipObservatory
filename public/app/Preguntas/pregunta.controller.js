@@ -10,7 +10,8 @@
         $scope.store = store;
         $scope.store1 = store1;
         $scope.estado = "agregar";
-
+        var indicadores = '';
+        $scope.indicadores = indicadores;
         $scope.modificar = modificar;
         $scope.modificar2 = modificar2;
         $scope.eliminar = eliminar;
@@ -70,7 +71,6 @@
         }
 
         function modificar(pregunta) {
-            console.log('Modificar ->',pregunta);
             $scope.id = pregunta.id;
             $scope.enunciado = pregunta.enunciado;
             if (pregunta.tipo === 't')
@@ -93,14 +93,15 @@
 
             $http({
                 method: 'POST',
-                url: "/preguntas/update",
-                data: $.param(data)
+                url: "/api/preguntas/" + $scope.id,
+                data: data
             }).success(function(response) {
                 console.log(response);
             }).error(function(response) {
                 console.log(response);
                 alert('This is embarassing. An error has occured. Please check the log for details');
             });
+
         }
 
         //Elimina pregunta
@@ -138,6 +139,7 @@
             IndicadorFactory.getAll()
                 .then(function(response) {
                     $scope.indicadores = response;
+                    indicadores = response;
                 });
 
         }
@@ -152,7 +154,10 @@
 
         getPreguntas();
 
-
+        function getNombreIndicador(id)
+        {
+            return $scope.indicadores.nombre[id];
+        }
     }
 
 })();

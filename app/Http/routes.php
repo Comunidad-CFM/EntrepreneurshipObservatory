@@ -36,7 +36,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('indicadores/todos', 'Indicadores@getAll');
     Route::post('preguntas/registro', 'Preguntas@store');
     Route::get('preguntas/todas', 'Preguntas@getAll');
-    Route::post('/preguntas/update', 'Preguntas@update');
+    Route::post('/preguntas/{id}', 'Preguntas@update');
     Route::delete('/preguntas/{id}', 'Preguntas@destroy');
-    Route::post('/encuestas/update', 'Encuestas@update');
+
 });
