@@ -26,7 +26,7 @@
                     <div class="col-md-6">
                         <p>
                             <label for="email">Email</label>
-                            <input ng-model="persona.email" class="form-control" type="text" name="email" id="email" required placeholder="Email" title="Por favor ingrese un email valido." ng-blur="validateEmail();">
+                            <input ng-model="persona.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" type="text" name="email" id="email" required placeholder="Email" title="Por favor ingrese un email valido." ng-blur="validateEmail();">
                             <div class="error-box" ng-show="coincidenciaCorreo">
                                 Error, el correo ya existe
                             </div>
@@ -85,7 +85,7 @@
     <div class="gestion-personas-box">
         <div>
             <label class="subtitle baskerville">Personas</label>
-            <button class="btn btn-default margin float-right" ng-click=" setData();mostrarFormulario();" title="{{texto}}"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
+            <button class="btn btn-default margin float-right" ng-click="mostrarFormulario();" title="{{texto}}"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
         </div>
         <table class="table margin" ng-show="personas">
             <thead>
@@ -104,8 +104,9 @@
                     <td>{{persona.email}}</td>
                     <td>{{persona.tipo | user}}</td>
                     <td>
+                        <div ng-show="registro" class="margin" ng-class="styleEditar">{{msgRegistro}}</div>
                         <span class="glyphicon glyphicon-pencil" ng-click="editandoPersona(persona);" data-toggle="modal" data-target="#editarPersona" title="Modificar usuario"></span> &nbsp;
-                        <span class="glyphicon glyphicon-trash" ng-click="eliminar(persona.id);" title="Eliminar usuario"></span>
+                        <span class="glyphicon glyphicon-trash" ng-click="eliminar($event,persona.id);" title="Eliminar usuario"></span>
                     </td>
                 </tr>
             </tbody>
@@ -142,7 +143,7 @@
                                 <div class="col-md-6">
                                     <p>
                                         <label for="email">Email</label>
-                                        <input ng-model="persona.email" class="form-control" type="text" name="email" id="email" required placeholder="Email" title="Por favor ingrese un email valido." ng-blur="validateEmail();">
+                                        <input ng-model="persona.email" class="form-control" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" id="email" required placeholder="Email" title="Por favor ingrese un email valido." ng-blur="validateEmail();">
                                         <div class="error-box" ng-show="coincidenciaCorreo">
                                             Error, el correo ya existe
                                         </div>
@@ -180,8 +181,10 @@
                 <center>
                     <div class="modal-footer">
                         <center>
+                            <div ng-show="editar" class="margin" ng-class="styleEditar">{{msgEditar}}</div>
                             <button id="cerrarEditarEncuesta" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel</button>
                             <button class="btn btn-success" ng-disabled="emptyData || coincidenciaCorreo" data-ng-click="modificar(persona); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                            
                         </center>
                     </div>
             </div>

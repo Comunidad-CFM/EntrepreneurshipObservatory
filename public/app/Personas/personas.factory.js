@@ -94,7 +94,7 @@
 				data: persona
 			})
             .success(function(response){
-                defered.resolve(response[0]);
+                defered.resolve(response);
             })
             .error(function(err){
                 defered.reject(err);
