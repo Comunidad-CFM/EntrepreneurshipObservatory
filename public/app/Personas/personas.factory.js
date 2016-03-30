@@ -8,7 +8,8 @@
 	function PersonasFactory($http, $q) {
 		var factory = {
 			store: store,
-			getAll: getAll
+			getAll: getAll,
+            ifExist: ifExist
 		};
 
 		return factory;
@@ -46,6 +47,24 @@
 
 			return promise;
 		}
+        
+        function ifExist(email){
+            var defered = $q.defer();            
+            $http({
+				method: 'POST',
+				url: '/api/personas/ifExist',
+				data: {
+                    email: email
+                }
+			})
+            .success(function(response){
+                defered.resolve(response[0]);
+            })
+            .error(function(err){
+                defered.reject(err);
+            })
+            return defered.promise;
+        }
 	}
 
 })();

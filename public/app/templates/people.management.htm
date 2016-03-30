@@ -12,13 +12,13 @@
                     <div class="col-md-6">
                         <p>
                             <label for="cedula">Cédula</label>
-                            <input ng-model="cedula" class="form-control" type="text" name="cedula" id="cedula" required autofocus placeholder="Número de cédula" pattern="[0-9]{9,}" title="Número de cédula con ceros, sin espacios ni guiones.">
+                            <input ng-model="persona.cedula" class="form-control" type="text" name="cedula" id="cedula" required autofocus placeholder="Número de cédula" pattern="[0-9]{9,}" title="Número de cédula con ceros, sin espacios ni guiones.">
                         </p>
                     </div>
                     <div class="col-md-6">
                         <p>
                             <label for="nombre">Nombre</label>
-                            <input ng-model="nombre" class="form-control" type="text" name="nombre" id="name" required placeholder="Nombre" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                            <input ng-model="persona.nombre" class="form-control" type="text" name="nombre" id="name" required placeholder="Nombre" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
                         </p>
                     </div>
                 </div>
@@ -26,13 +26,16 @@
                     <div class="col-md-6">
                         <p>
                             <label for="email">Email</label>
-                            <input ng-model="email" class="form-control" type="text" name="email" id="email" required  placeholder="Email" title="Por favor ingrese un email valido.">
+                            <input ng-model="persona.email" class="form-control" type="text" name="email" id="email" required placeholder="Email" title="Por favor ingrese un email valido." ng-blur="validateEmail();">
+                            <div class="error-box" ng-show="coincidenciaCorreo">
+                                Error, el correo ya existe
+                            </div>
                         </p>
                     </div>
                     <div class="col-md-6">
                         <p>
                             <label for="apellido1">Primer Apellido</label>
-                            <input ng-model="apellido1" class="form-control" type="text" name="apellido1" id="apellido1" required placeholder="Primer Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                            <input ng-model="persona.apellido1" class="form-control" type="text" name="apellido1" id="apellido1" required placeholder="Primer Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
                         </p>
                     </div>
                 </div>
@@ -40,13 +43,13 @@
                     <div class="col-md-6">
                         <p>
                             <label for="name">Contraseña</label>
-                            <input ng-model="pass" class="form-control" type="password" name="pass" id="pass" required  placeholder="Contraseña" pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos caracteres.">
+                            <input ng-model="persona.pass" class="form-control" type="password" name="pass" id="pass" required placeholder="Contraseña" pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos caracteres.">
                         </p>
                     </div>
                     <div class="col-md-6">
                         <p>
                             <label for="apellido2">Segundo Apellido</label>
-                            <input ng-model="apellido2" class="form-control" type="text" name="apellido2" id="apellido2" required placeholder="Segundo Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                            <input ng-model="persona.apellido2" class="form-control" type="text" name="apellido2" id="apellido2" required placeholder="Segundo Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
                         </p>
                     </div>
                 </div>
@@ -54,13 +57,13 @@
                     <div class="col-md-6">
                         <p>
                             <label for="name">Confirmar Contraseña</label>
-                            <input ng-model="passConf" class="form-control" type="password" name="passConf" id="passConf" required  placeholder="Confirmar Contraseña" pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos letras.">
+                            <input ng-model="persona.passConf" class="form-control" type="password" name="passConf" id="passConf" required placeholder="Confirmar Contraseña" pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos letras.">
                         </p>
                     </div>
                     <div class="col-md-6">
                         <p>
                             <label for="name">Tipo de usuario</label>
-                            <select ng-model="tipo" class="form-control">
+                            <select ng-model="persona.tipo" class="form-control">
                                 <option value="A">Administrador</option>
                                 <option value="B">Empresario</option>
                                 <option value="E">Encuestador</option>
@@ -73,7 +76,7 @@
                         <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>
                     </div>
                     <center>
-                        <button class="btn btn-primary margin" ng-disabled="errorPass" ng-click="store();"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                        <button class="btn btn-primary margin" ng-disabled="errorPass || emptyData || coincidenciaEmail" ng-click="store();"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
                     </center>
                 </div>
             </div>
@@ -82,7 +85,7 @@
     <div class="gestion-personas-box">
         <div>
             <label class="subtitle baskerville">Personas</label>
-            <button class="btn btn-default margin float-right" ng-click="mostrarFormulario();" title="{{texto}}"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
+            <button class="btn btn-default margin float-right" ng-click=" setData();mostrarFormulario();" title="{{texto}}"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
         </div>
         <table class="table margin" ng-show="personas">
             <thead>
@@ -101,8 +104,7 @@
                     <td>{{persona.email}}</td>
                     <td>{{persona.tipo | user}}</td>
                     <td>
-                        <span class="glyphicon glyphicon-edit" ng-click="modificar(persona.id);" title="Modificar usuario"></span>
-                        &nbsp;
+                        <span class="glyphicon glyphicon-pencil" ng-click="editandoPersona(persona);" data-toggle="modal" data-target="#editarPersona" title="Modificar usuario"></span> &nbsp;
                         <span class="glyphicon glyphicon-trash" ng-click="eliminar(persona.id);" title="Eliminar usuario"></span>
                     </td>
                 </tr>
@@ -112,4 +114,77 @@
     </div>
 
     <!-- Formulario editar -->
+    <div id="editarPersona" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header montserrat">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <label class="title">Editar Persona</label>
+                </div>
+                <div class="modal-body">
+                    <form class="container margin">
+                        <div class="col-md-offset-2 col-md-8">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <p>
+                                        <label for="cedula">Cédula</label>
+                                        <input ng-model="persona.cedula" class="form-control" type="text" name="cedula" id="cedula" required autofocus placeholder="Número de cédula" pattern="[0-9]{9,}" title="Número de cédula con ceros, sin espacios ni guiones.">
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>
+                                        <label for="nombre">Nombre</label>
+                                        <input ng-model="persona.nombre" class="form-control" type="text" name="nombre" id="name" required placeholder="Nombre" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <p>
+                                        <label for="email">Email</label>
+                                        <input ng-model="persona.email" class="form-control" type="text" name="email" id="email" required placeholder="Email" title="Por favor ingrese un email valido." ng-blur="validateEmail();">
+                                        <div class="error-box" ng-show="coincidenciaCorreo">
+                                            Error, el correo ya existe
+                                        </div>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>
+                                        <label for="apellido1">Primer Apellido</label>
+                                        <input ng-model="persona.apellido1" class="form-control" type="text" name="apellido1" id="apellido1" required placeholder="Primer Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <p>
+                                        <label for="name">Tipo de usuario</label>
+                                        <select ng-model="persona.tipo" class="form-control">
+                                            <option value="A">Administrador</option>
+                                            <option value="B">Empresario</option>
+                                            <option value="E">Encuestador</option>
+                                        </select>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>
+                                        <label for="apellido2">Segundo Apellido</label>
+                                        <input ng-model="persona.apellido2" class="form-control" type="text" name="apellido2" id="apellido2" required placeholder="Segundo Apellido" pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <center>
+                    <div class="modal-footer">
+                        <center>
+                            <button id="cerrarEditarEncuesta" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel</button>
+                            <button class="btn btn-success" ng-disabled="emptyData || coincidenciaCorreo" data-ng-click="modificar(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                        </center>
+                    </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -31,6 +31,16 @@ class Personas extends Controller
     }
     
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function ifExist(Request $request) {
+        return Persona::where('email', $request->input('email'))->select('email')->get();        
+    }
+    
+    /**
      * Return a specific user by email.
      *
      * @return Response
