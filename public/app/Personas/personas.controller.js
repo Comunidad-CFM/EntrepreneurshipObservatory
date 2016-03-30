@@ -14,12 +14,12 @@
         $scope.modificar = modificar;
         $scope.eliminar = eliminar;
         $scope.getPersonas = getPersonas;
-        $scope.emptyData = true;
         $scope.editandoPersona = editandoPersona;
         $scope.validateEmail = validateEmail;
 
 
         function setData() {
+            console.log("Set data");
             $scope.persona = {
                 cedula: '',
                 nombre: '',
@@ -34,6 +34,7 @@
         setData();
 
         $scope.$watch('passConf', validatePass);
+        $scope.$watch('passConf', validate);
         $scope.$watch('pass', validate);
         $scope.$watch('nombre', validate);
         $scope.$watch('apellido1', validate);
@@ -108,13 +109,22 @@
             }
         }
 
-        function modificar(id) {
-            console.log('Modificar ->', id);
-        }
+        function modificar(persona) {
+            PersonasFactory.edit($scope.persona)
+                .then(function(response){
+                console.log("hola desde la respuesta de modificar");   
+            });
 
-        function eliminar(id) {
-            console.log('Eliminar ->', id);
         }
+        
+        function eliminar(id){
+            
+            PersonasFactory.remove(id)
+            .then(function(response){
+                console.log(response);
+            });
+        }
+      
 
         function getPersonas() {
             PersonasFactory.getAll()

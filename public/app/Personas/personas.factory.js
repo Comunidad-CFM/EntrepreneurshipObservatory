@@ -9,7 +9,9 @@
 		var factory = {
 			store: store,
 			getAll: getAll,
-            ifExist: ifExist
+            ifExist: ifExist,
+            edit: edit,
+            remove: remove
 		};
 
 		return factory;
@@ -32,6 +34,24 @@
 
 			return promise;
 		}
+        function remove(id){
+            var data = {
+				id: id
+			};
+
+            var defered = $q.defer();
+            $http({
+                method: 'POST',
+                url: 'api/personas/eliminarPers',
+                data: data
+            }).success(function(response){
+                defered.resolve(response);
+            })
+            .error(function(err){
+                defered.reject(err);
+            })
+            return defered.promise;
+        }
 
 		function getAll() {
 			var defered = $q.defer();
@@ -56,6 +76,22 @@
 				data: {
                     email: email
                 }
+			})
+            .success(function(response){
+                defered.resolve(response[0]);
+            })
+            .error(function(err){
+                defered.reject(err);
+            })
+            return defered.promise;
+        }
+        
+        function edit(persona){
+            var defered = $q.defer();            
+            $http({
+				method: 'POST',
+				url: '/api/personas/editarPers',
+				data: persona
 			})
             .success(function(response){
                 defered.resolve(response[0]);

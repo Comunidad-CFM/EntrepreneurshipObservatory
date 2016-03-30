@@ -31,7 +31,26 @@ class Personas extends Controller
     }
     
     /**
-     * Store a newly created resource in storage.
+     * Update the specified resource in storage.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function update(Request $request) {
+        $persona = Persona::find($request->input('id'));
+        $persona->nombre = $request->input('nombre');  
+        $persona->apellido1 = $request->input('apellido1');
+        $persona->apellido2 = $request->input('apellido2');
+        $persona->email = $request->input('email');          
+        $persona->cedula = $request->input('cedula');   
+        
+        $persona->save();
+
+        return 'true';
+    }
+    
+    /**
+     * Verify an existing email
      *
      * @param  Request  $request
      * @return Response
@@ -51,5 +70,19 @@ class Personas extends Controller
 
     public function getAll() {
         return Persona::all();
+    }
+    
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function remove(Request $request) {          
+        $persona = Persona::find($request->input('id'));
+
+        $persona->delete();
+
+        return 'true';
     }
 }
