@@ -71,7 +71,7 @@ textarea {
     color: #E74C3C;
 }
 
-.navbar-nav li, select, .cover .icon, .glyphicon {
+.navbar-nav li, select, .cover .icon, .glyphicon, input[type="checkbox"] {
     cursor: pointer;
 }
 
@@ -335,7 +335,11 @@ footer {
 .fa-toggle-on, .fa-toggle-off {
     font-size: 25px;
 }
-.glyphicon-trash:hover, .glyphicon-pencil:hover, .glyphicon-tasks:hover, .fa-toggle-on:hover, .fa-toggle-off:hover {
+.fa-users {
+    color: #00844A;
+    font-size: 22px;
+}
+.glyphicon-trash:hover, .glyphicon-pencil:hover, .glyphicon-tasks:hover, .fa-toggle-on:hover, .fa-toggle-off:hover, .fa-users:hover {
     transform: scale(1.2);
 }
 

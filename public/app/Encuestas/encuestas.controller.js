@@ -5,7 +5,7 @@
 		.module('observatoryApp')
 		.controller('EncuestasController', EncuestasController);
 
-	function EncuestasController($scope, $timeout, $filter, $cookies, $mdDialog, EncuestasFactory) {
+	function EncuestasController($scope, $timeout, $filter, $cookies, $mdDialog, EncuestasFactory, PreguntasFactory, PersonasFactory) {
 		$scope.descripcion = '';
 		$scope.nueva = false;
 		$scope.registro = false;
@@ -18,6 +18,9 @@
         $scope.cambiarEstado = cambiarEstado;
         $scope.armandoEncuesta = armandoEncuesta;
         $scope.armar = armar;
+        $scope.asignandoUsuarios = asignandoUsuarios;
+        $scope.asignarUsuarios = asignarUsuarios;
+        $scope.marcarTodos = marcarTodos;
 
         $scope.$watch('descripcion', validate);
 
@@ -126,9 +129,10 @@
             };
             $scope.changeState = changeState;
 
-            for (var i = 1; i <= 10; ++i) {
-                $scope.preguntas.preguntas.push({label: "Pregunta " + i, state: false});
-            }
+            PreguntasFactory.getAll()
+            .then(function(response) {
+                $scope.preguntas.preguntas = response;
+            });
         }
 
         function cambiarEstado(encuesta) {
@@ -188,6 +192,30 @@
             });
             
             return response;
+        }
+
+        function asignandoUsuarios(id) {
+            $scope.id = id;
+
+            PersonasFactory.getBusinessmen()
+            .then(function(response) {
+                $scope.empresarios = response;
+            });
+        }
+
+        function asignarUsuarios() {
+            console.log('Asignando usuarios a la encuesta ', $scope.id);
+        }
+
+        function marcarTodos() {
+            var checkboxes = document.getElementsByName('buss'),
+                i = 0,
+                length = checkboxes.length,
+                state = document.getElementById('bussMaster').checked;
+
+            for( ; i < length; i++) {
+                checkboxes[i].checked = state;
+            }
         }
 	}
 

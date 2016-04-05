@@ -46,6 +46,8 @@
                             &nbsp;&nbsp;&nbsp;
                             <span ng-class="{'fa fa-toggle-on': encuesta.estado == 1, 'fa fa-toggle-off': encuesta.estado == 0}" ng-click="cambiarEstado(encuesta);" title="Activar/inactivar encuesta"></span>
                             &nbsp;&nbsp;&nbsp;
+                            <span class="fa fa-users" data-toggle="modal" data-target="#asignarUsuarios" ng-click="asignandoUsuarios(encuesta.id);" title="Asignar usuarios a la encuesta"></span>
+                            &nbsp;&nbsp;&nbsp;
                             <span class="glyphicon glyphicon-trash" ng-click="eliminar($event, encuesta.id);" title="Eliminar encuesta"></span>
                         </div>
                     </div>
@@ -106,7 +108,7 @@
                                                     dnd-selected="models.selected = item"
                                                     ng-class="{'selected': models.selected === item}"
                                                     ng-mouseleave="changeState(item);">
-                                                    {{item.label}}
+                                                    {{item.enunciado}}
                                                 </li>
                                             </ul>
                                         </div>
@@ -120,6 +122,44 @@
                 <div class="modal-footer">
                     <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel</button>
                     <button class="btn btn-success" data-ng-click="armar(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Asignar usuarios a la encuesta -->
+    <div id="asignarUsuarios" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header montserrat">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <label class="title">Asignar usuarios</label>
+                </div>
+                <div class="modal-body">
+                    <table class="table margin">
+                        <thead>
+                            <tr>
+                                <th><input id="bussMaster" type="checkbox" ng-click="marcarTodos();"></th>
+                                <th>Cédula</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="empresario in empresarios">
+                                <th><input type="checkbox" name="buss" value="true"></th>
+                                <td>{{empresario.cedula}}</td>
+                                <td>{{empresario.nombre}} {{empresario.apellido1}} {{empresario.apellido2}}</td>
+                                <td>{{empresario.email}}</td>
+                                <td>{{empresario.tipo | user}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel</button>
+                    <button class="btn btn-success" data-ng-click="asignarUsuarios(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
                 </div>
             </div>
         </div>

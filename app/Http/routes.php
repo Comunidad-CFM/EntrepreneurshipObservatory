@@ -34,6 +34,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('personas/eliminarPers', 'Personas@remove');
     Route::post('preguntas/registro', 'Indicadores@store');
     Route::get('personas/todas', 'Personas@getAll');
+    Route::get('personas/empresarios', 'Personas@getBusinessmen');
     Route::post('encuestas/registro', 'Encuestas@store');
     Route::get('encuestas/todas', 'Encuestas@getAll');
     Route::get('indicadores/todos', 'Indicadores@getAll');

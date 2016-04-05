@@ -9,6 +9,7 @@
 		var factory = {
 			store: store,
 			getAll: getAll,
+			getBusinessmen: getBusinessmen,
             ifExist: ifExist,
             edit: edit,
             remove: remove
@@ -66,6 +67,20 @@
 			});
 
 			return promise;
+		}
+
+		function getBusinessmen() {
+			var defered = $q.defer();
+
+			$http.get('/api/personas/empresarios')
+			.success(function(response) {
+				defered.resolve(response);
+			})
+			.error(function(err) {
+				defered.reject(err);
+			});
+
+			return defered.promise;
 		}
         
         function ifExist(email){
