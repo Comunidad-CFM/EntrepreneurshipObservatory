@@ -54,8 +54,8 @@ class Preguntas extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id) {
-        $pregunta = Pregunta::find($id);
+    public function update(Request $request) {
+        $pregunta = Pregunta::find($request->input('id'));
 
         $pregunta->enunciado = $request->input('enunciado');
         $pregunta->tipo = $request->input('tipo');
@@ -63,7 +63,8 @@ class Preguntas extends Controller
 
         $pregunta->save();
 
-        return "Sucess updating user #" . $pregunta->id;
+        //return "Sucess updating user #" . $pregunta->id;
+        return 'true';
     }
 
     /**

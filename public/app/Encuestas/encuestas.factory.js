@@ -11,7 +11,7 @@
 			getAll: getAll,
 			edit: edit,
 			remove: remove,
-			changeState, changeState
+			changeState: changeState
 		};
 
 		return factory;

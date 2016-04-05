@@ -8,6 +8,7 @@
     function PreguntasFactory($http, $q) {
         var factory = {
             store: store,
+            edit: edit,
             getAll: getAll
         };
 
@@ -45,6 +46,24 @@
                 });
 
             return promise;
+        }
+
+        function edit(pregunta) {
+            var defered = $q.defer();
+
+            $http({
+                method: 'POST',
+                url: "/api/preguntas/editar",
+                data: pregunta
+                
+            }).success(function(response) {
+                defered.resolve(response);
+
+            }).error(function(err) {
+                defered.reject(err);
+
+            });
+            return defered.promise;
         }
     }
 

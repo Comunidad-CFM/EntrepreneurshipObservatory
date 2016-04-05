@@ -2,556 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="814f84ac-015a-4a65-a90c-c89f4806a36b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/list/demoListControls/img/100-0.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/list/demoListControls/img/100-1.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/list/demoListControls/img/100-2.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/js/angular-drag-and-drop-lists.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-animate/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-animate/angular-animate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-animate/angular-animate.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-animate/angular-animate.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-animate/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-animate/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-animate/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-aria/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-aria/angular-aria.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-aria/angular-aria.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-aria/angular-aria.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-aria/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-aria/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-aria/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/CHANGELOG.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/angular-material-mocks.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/angular-material.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/angular-material.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/angular-material.layouts.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/angular-material.layouts.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/angular-material.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/angular-material.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/angular-material.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/bottomSheet/demoBasicUsage/img/icons/copy.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/bottomSheet/demoBasicUsage/img/icons/copy2.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/bottomSheet/demoBasicUsage/img/icons/facebook.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/bottomSheet/demoBasicUsage/img/icons/hangout.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/bottomSheet/demoBasicUsage/img/icons/mail.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/bottomSheet/demoBasicUsage/img/icons/message.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/bottomSheet/demoBasicUsage/img/icons/print.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/bottomSheet/demoBasicUsage/img/icons/share-arrow.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/bottomSheet/demoBasicUsage/img/icons/twitter.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/bottomSheet/demoBasicUsage/img/icons/upload.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/chips/demoBasicUsage/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/chips/demoContactChips/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/gridList/demoBasicUsage/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/gridList/demoDynamicTiles/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/gridList/demoResponsiveUsage/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/icon/demoLoadSvgIconsFromUrl/img/icons/addShoppingCart.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/icon/demoLoadSvgIconsFromUrl/img/icons/android.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/icon/demoLoadSvgIconsFromUrl/img/icons/cake.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/icon/demoSvgIconSets/assets/cake.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/icon/demoSvgIconSets/assets/core-icons.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/icon/demoSvgIconSets/assets/social-icons.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/icon/demoSvgIconsFromURL/img/icons/addShoppingCart.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/icon/demoSvgIconsFromURL/img/icons/android.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/icon/demoSvgIconsFromURL/img/icons/cake.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/icon/demoUsingTemplateCache/assets/android.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/icon/demoUsingTemplateCache/assets/cake.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/icon/demoUsingTemplateCache/assets/core-icons.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/input/demoIcons/icons/ic_email_24px.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/input/demoIcons/icons/ic_person_24px.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/input/demoIcons/icons/ic_phone_24px.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/input/demoIcons/icons/ic_place_24px.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/input/demoIcons/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/tabs/demoDynamicHeight/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/tabs/demoDynamicTabs/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/tabs/demoStaticTabs/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/toolbar/demoBasicUsage/img/icons/favorite.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/toolbar/demoBasicUsage/img/icons/menu.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/demos/toolbar/demoBasicUsage/img/icons/more_vert.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/autocomplete/autocomplete-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/autocomplete/autocomplete-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/autocomplete/autocomplete.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/autocomplete/autocomplete.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/autocomplete/autocomplete.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/autocomplete/autocomplete.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/backdrop/backdrop-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/backdrop/backdrop-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/backdrop/backdrop.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/backdrop/backdrop.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/backdrop/backdrop.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/backdrop/backdrop.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/bottomSheet/bottomSheet-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/bottomSheet/bottomSheet-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/bottomSheet/bottomSheet.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/bottomSheet/bottomSheet.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/bottomSheet/bottomSheet.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/bottomSheet/bottomSheet.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/button/button-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/button/button-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/button/button.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/button/button.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/button/button.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/button/button.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/card/card-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/card/card-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/card/card.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/card/card.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/card/card.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/card/card.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/checkbox/checkbox-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/checkbox/checkbox-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/checkbox/checkbox.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/checkbox/checkbox.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/checkbox/checkbox.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/checkbox/checkbox.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/chips/chips-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/chips/chips-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/chips/chips.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/chips/chips.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/chips/chips.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/chips/chips.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/content/content-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/content/content-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/content/content.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/content/content.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/content/content.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/content/content.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/core/core.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/core/core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/core/core.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/core/core.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/core/default-theme.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/datepicker/datepicker-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/datepicker/datepicker-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/datepicker/datepicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/datepicker/datepicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/datepicker/datepicker.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/datepicker/datepicker.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/dialog/dialog-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/dialog/dialog-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/dialog/dialog.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/dialog/dialog.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/dialog/dialog.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/dialog/dialog.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/divider/divider-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/divider/divider-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/divider/divider.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/divider/divider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/divider/divider.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/divider/divider.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/fabActions/fabActions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/fabActions/fabActions.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/fabSpeedDial/fabSpeedDial.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/fabSpeedDial/fabSpeedDial.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/fabSpeedDial/fabSpeedDial.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/fabSpeedDial/fabSpeedDial.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/fabToolbar/fabToolbar.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/fabToolbar/fabToolbar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/fabToolbar/fabToolbar.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/fabToolbar/fabToolbar.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/fabTrigger/fabTrigger.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/fabTrigger/fabTrigger.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/gridList/gridList-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/gridList/gridList.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/gridList/gridList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/gridList/gridList.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/gridList/gridList.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/icon/icon-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/icon/icon-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/icon/icon.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/icon/icon.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/icon/icon.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/icon/icon.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/input/input-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/input/input-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/input/input.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/input/input.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/input/input.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/input/input.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/list/list-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/list/list-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/list/list.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/list/list.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/list/list.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/list/list.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/menu/menu-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/menu/menu-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/menu/menu.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/menu/menu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/menu/menu.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/menu/menu.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/menuBar/menuBar-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/menuBar/menuBar-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/menuBar/menuBar.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/menuBar/menuBar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/menuBar/menuBar.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/menuBar/menuBar.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/progressCircular/progressCircular-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/progressCircular/progressCircular-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/progressCircular/progressCircular.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/progressCircular/progressCircular.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/progressCircular/progressCircular.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/progressCircular/progressCircular.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/progressLinear/progressLinear-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/progressLinear/progressLinear-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/progressLinear/progressLinear.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/progressLinear/progressLinear.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/progressLinear/progressLinear.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/progressLinear/progressLinear.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/radioButton/radioButton-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/radioButton/radioButton-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/radioButton/radioButton.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/radioButton/radioButton.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/radioButton/radioButton.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/radioButton/radioButton.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/select/select-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/select/select-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/select/select.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/select/select.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/select/select.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/select/select.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/showHide/showHide.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/showHide/showHide.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/sidenav/sidenav-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/sidenav/sidenav-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/sidenav/sidenav.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/sidenav/sidenav.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/sidenav/sidenav.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/sidenav/sidenav.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/slider/slider-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/slider/slider-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/slider/slider.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/slider/slider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/slider/slider.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/slider/slider.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/sticky/sticky.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/sticky/sticky.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/sticky/sticky.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/sticky/sticky.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/subheader/subheader-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/subheader/subheader-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/subheader/subheader.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/subheader/subheader.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/subheader/subheader.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/subheader/subheader.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/swipe/swipe.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/swipe/swipe.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/switch/switch-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/switch/switch-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/switch/switch.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/switch/switch.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/switch/switch.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/switch/switch.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/tabs/tabs-arrow.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/tabs/tabs-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/tabs/tabs-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/tabs/tabs.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/tabs/tabs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/tabs/tabs.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/tabs/tabs.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/textField/textField-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/textField/textField.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/textField/textField.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/toast/toast-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/toast/toast-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/toast/toast.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/toast/toast.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/toast/toast.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/toast/toast.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/toolbar/toolbar-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/toolbar/toolbar-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/toolbar/toolbar.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/toolbar/toolbar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/toolbar/toolbar.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/toolbar/toolbar.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/tooltip/tooltip-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/tooltip/tooltip-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/tooltip/tooltip.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/tooltip/tooltip.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/tooltip/tooltip.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/tooltip/tooltip.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/virtualRepeat/virtualRepeat.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/virtualRepeat/virtualRepeat.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/virtualRepeat/virtualRepeat.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/virtualRepeat/virtualRepeat.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/whiteframe/whiteframe.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/whiteframe/whiteframe.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/whiteframe/whiteframe.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/closure/whiteframe/whiteframe.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/css/angular-material-layout.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/css/angular-material-layouts.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/autocomplete/autocomplete-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/autocomplete/autocomplete-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/autocomplete/autocomplete.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/autocomplete/autocomplete.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/autocomplete/autocomplete.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/autocomplete/autocomplete.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/autocomplete/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/backdrop/backdrop-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/backdrop/backdrop-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/backdrop/backdrop.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/backdrop/backdrop.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/backdrop/backdrop.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/backdrop/backdrop.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/backdrop/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/bottomSheet/bottomSheet-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/bottomSheet/bottomSheet-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/bottomSheet/bottomSheet.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/bottomSheet/bottomSheet.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/bottomSheet/bottomSheet.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/bottomSheet/bottomSheet.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/bottomSheet/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/button/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/button/button-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/button/button-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/button/button.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/button/button.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/button/button.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/button/button.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/card/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/card/card-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/card/card-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/card/card.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/card/card.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/card/card.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/card/card.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/checkbox/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/checkbox/checkbox-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/checkbox/checkbox-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/checkbox/checkbox.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/checkbox/checkbox.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/checkbox/checkbox.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/checkbox/checkbox.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/chips/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/chips/chips-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/chips/chips-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/chips/chips.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/chips/chips.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/chips/chips.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/chips/chips.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/content/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/content/content-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/content/content-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/content/content.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/content/content.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/content/content.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/content/content.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/core/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/core/core.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/core/core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/core/core.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/core/core.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/core/default-theme.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/datepicker/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/datepicker/datepicker-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/datepicker/datepicker-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/datepicker/datepicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/datepicker/datepicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/datepicker/datepicker.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/datepicker/datepicker.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/dialog/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/dialog/dialog-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/dialog/dialog-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/dialog/dialog.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/dialog/dialog.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/dialog/dialog.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/dialog/dialog.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/divider/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/divider/divider-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/divider/divider-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/divider/divider.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/divider/divider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/divider/divider.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/divider/divider.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabActions/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabActions/fabActions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabActions/fabActions.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabSpeedDial/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabSpeedDial/fabSpeedDial.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabSpeedDial/fabSpeedDial.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabSpeedDial/fabSpeedDial.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabSpeedDial/fabSpeedDial.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabToolbar/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabToolbar/fabToolbar.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabToolbar/fabToolbar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabToolbar/fabToolbar.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabToolbar/fabToolbar.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabTrigger/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabTrigger/fabTrigger.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/fabTrigger/fabTrigger.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/gridList/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/gridList/gridList.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/gridList/gridList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/gridList/gridList.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/gridList/gridList.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/icon/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/icon/icon-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/icon/icon-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/icon/icon.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/icon/icon.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/icon/icon.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/icon/icon.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/input/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/input/input-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/input/input-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/input/input.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/input/input.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/input/input.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/input/input.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/list/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/list/list-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/list/list-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/list/list.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/list/list.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/list/list.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/list/list.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menu/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menu/menu-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menu/menu-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menu/menu.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menu/menu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menu/menu.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menu/menu.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menuBar/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menuBar/menuBar-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menuBar/menuBar-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menuBar/menuBar.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menuBar/menuBar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menuBar/menuBar.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/menuBar/menuBar.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressCircular/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressCircular/progressCircular-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressCircular/progressCircular-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressCircular/progressCircular.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressCircular/progressCircular.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressCircular/progressCircular.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressCircular/progressCircular.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressLinear/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressLinear/progressLinear-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressLinear/progressLinear-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressLinear/progressLinear.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressLinear/progressLinear.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressLinear/progressLinear.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/progressLinear/progressLinear.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/radioButton/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/radioButton/radioButton-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/radioButton/radioButton-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/radioButton/radioButton.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/radioButton/radioButton.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/radioButton/radioButton.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/radioButton/radioButton.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/select/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/select/select-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/select/select-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/select/select.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/select/select.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/select/select.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/select/select.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/showHide/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/showHide/showHide.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/showHide/showHide.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/sidenav/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/sidenav/sidenav-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/sidenav/sidenav-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/sidenav/sidenav.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/sidenav/sidenav.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/sidenav/sidenav.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/sidenav/sidenav.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/slider/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/slider/slider-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/slider/slider-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/slider/slider.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/slider/slider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/slider/slider.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/slider/slider.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/sticky/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/sticky/sticky.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/sticky/sticky.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/sticky/sticky.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/sticky/sticky.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/subheader/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/subheader/subheader-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/subheader/subheader-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/subheader/subheader.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/subheader/subheader.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/subheader/subheader.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/subheader/subheader.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/swipe/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/swipe/swipe.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/swipe/swipe.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/switch/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/switch/switch-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/switch/switch-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/switch/switch.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/switch/switch.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/switch/switch.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/switch/switch.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tabs/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tabs/tabs-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tabs/tabs-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tabs/tabs.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tabs/tabs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tabs/tabs.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tabs/tabs.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/textField/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/textField/textField-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/textField/textField-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/textField/textField.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/textField/textField.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/textField/textField.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/textField/textField.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toast/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toast/toast-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toast/toast-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toast/toast.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toast/toast.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toast/toast.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toast/toast.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toolbar/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toolbar/toolbar-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toolbar/toolbar-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toolbar/toolbar.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toolbar/toolbar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toolbar/toolbar.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/toolbar/toolbar.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tooltip/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tooltip/tooltip-default-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tooltip/tooltip-default-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tooltip/tooltip.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tooltip/tooltip.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tooltip/tooltip.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/tooltip/tooltip.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/virtualRepeat/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/virtualRepeat/virtualRepeat.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/virtualRepeat/virtualRepeat.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/virtualRepeat/virtualRepeat.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/virtualRepeat/virtualRepeat.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/whiteframe/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/whiteframe/whiteframe.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/whiteframe/whiteframe.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/whiteframe/whiteframe.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/modules/js/whiteframe/whiteframe.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-material/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-messages/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-messages/angular-messages.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-messages/angular-messages.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-messages/angular-messages.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-messages/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-messages/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/node_modules/angular-messages/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/blade.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Encuestas.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Encuestas.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Preguntas.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Preguntas.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/Encuestas/encuestas.controller.js" afterPath="$PROJECT_DIR$/public/app/Encuestas/encuestas.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/Encuestas/encuestas.factory.js" afterPath="$PROJECT_DIR$/public/app/Encuestas/encuestas.factory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/css/styles.css" afterPath="$PROJECT_DIR$/public/app/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/js/app.js" afterPath="$PROJECT_DIR$/public/app/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/templates/survey.management.htm" afterPath="$PROJECT_DIR$/public/app/templates/survey.management.htm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/index.php" afterPath="$PROJECT_DIR$/resources/views/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/Indicadores/indicador.factory.js" afterPath="$PROJECT_DIR$/public/app/Indicadores/indicador.factory.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/Preguntas/pregunta.controller.js" afterPath="$PROJECT_DIR$/public/app/Preguntas/pregunta.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/Preguntas/preguntas.factory.js" afterPath="$PROJECT_DIR$/public/app/Preguntas/preguntas.factory.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/templates/people.management.htm" afterPath="$PROJECT_DIR$/public/app/templates/people.management.htm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/templates/question.management.htm" afterPath="$PROJECT_DIR$/public/app/templates/question.management.htm" />
     </list>
     <ignored path="EntrepreneurshipObservatory.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -576,38 +36,18 @@
       <file leaf-file-name="pregunta.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/Preguntas/pregunta.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+            <state relative-caret-position="727">
+              <caret line="106" column="92" selection-start-line="106" selection-start-column="92" selection-end-line="106" selection-end-column="92" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="preguntas.factory.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="preguntas.factory.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/app/Preguntas/preguntas.factory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Preguntas.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Preguntas.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="51" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7755582">
-              <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+            <state relative-caret-position="44">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -616,11 +56,19 @@
       <file leaf-file-name="encuestas.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/Encuestas/encuestas.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="30" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
-              <folding>
-                <marker date="1459296125451" expanded="true" signature="6370:6373" placeholder="{...}" />
-              </folding>
+            <state relative-caret-position="1694">
+              <caret line="77" column="29" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Preguntas.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Preguntas.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="65" column="10" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -628,18 +76,28 @@
       <file leaf-file-name="encuestas.factory.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/Encuestas/encuestas.factory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+            <state relative-caret-position="-610">
+              <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/app/Admin/admin.view.html">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+            <state relative-caret-position="616">
+              <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="people.management.htm" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/app/templates/people.management.htm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="67">
+              <caret line="106" column="65" selection-start-line="106" selection-start-column="65" selection-end-line="106" selection-end-column="101" />
               <folding />
             </state>
           </provider>
@@ -648,8 +106,8 @@
       <file leaf-file-name="question.management.htm" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/templates/question.management.htm">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="64" column="33" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="33" />
+            <state relative-caret-position="-826">
+              <caret line="66" column="87" selection-start-line="66" selection-start-column="71" selection-end-line="66" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -678,20 +136,22 @@
         <option value="$PROJECT_DIR$/public/app/Pregunta/pregunta.controller.js" />
         <option value="$PROJECT_DIR$/app/Indicador.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Indicadores.php" />
-        <option value="$PROJECT_DIR$/public/app/Indicadores/indicador.factory.js" />
         <option value="$PROJECT_DIR$/public/app/css/styles.css" />
         <option value="$PROJECT_DIR$/app/Indicadore.php" />
         <option value="$PROJECT_DIR$/app/Pregunta.php" />
         <option value="$PROJECT_DIR$/resources/views/index.php" />
         <option value="$USER_HOME$/Desktop/form.html" />
         <option value="$PROJECT_DIR$/public/app/Personas/personas.controller.js" />
-        <option value="$PROJECT_DIR$/public/app/Preguntas/preguntas.factory.js" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Preguntas.php" />
         <option value="$PROJECT_DIR$/public/app/templates/question.management.html" />
         <option value="$PROJECT_DIR$/public/app/Admin/admin.view.html" />
+        <option value="$PROJECT_DIR$/public/app/Indicadores/indicador.factory.js" />
+        <option value="$PROJECT_DIR$/public/app/templates/people.management.htm" />
+        <option value="$PROJECT_DIR$/public/app/Encuestas/encuestas.factory.js" />
         <option value="$PROJECT_DIR$/public/app/templates/question.management.htm" />
-        <option value="$PROJECT_DIR$/public/app/Preguntas/pregunta.controller.js" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Preguntas.php" />
+        <option value="$PROJECT_DIR$/public/app/Preguntas/pregunta.controller.js" />
+        <option value="$PROJECT_DIR$/public/app/Preguntas/preguntas.factory.js" />
       </list>
     </option>
   </component>
@@ -755,7 +215,7 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -765,43 +225,11 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -811,19 +239,19 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -833,19 +261,15 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Preguntas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -855,103 +279,19 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Personas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Login" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Indicadores" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Encuestas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -961,19 +301,11 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -983,29 +315,15 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1015,19 +333,19 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="EntrepreneurshipObservatory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1064,6 +382,7 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
       <node-options />
       <gulpfile />
       <tasks />
@@ -1074,11 +393,14 @@
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run-script" />
       <scripts />
+      <node-interpreter value="project" />
       <envs />
       <method />
     </configuration>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -1087,13 +409,19 @@
       <changelist id="814f84ac-015a-4a65-a90c-c89f4806a36b" name="Default" comment="" />
       <created>1458180852673</created>
       <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
       <updated>1458180852673</updated>
+      <workItem from="1459305444948" duration="516000" />
+      <workItem from="1459305999111" duration="8379000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="8895000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19166666" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1133,28 +461,28 @@
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/Desktop/form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="31" column="94" selection-start-line="31" selection-start-column="77" selection-end-line="31" selection-end-column="94" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="228" column="21" selection-start-line="228" selection-start-column="21" selection-end-line="228" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Personas/personas.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Preguntas/pregunta.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
           <folding />
         </state>
@@ -1162,14 +490,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Pregunta.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="8" column="72" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Admin/admin.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1177,14 +505,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Personas/personas.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Preguntas/pregunta.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1192,14 +520,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Pregunta.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="8" column="72" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Admin/admin.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="213" column="76" selection-start-line="213" selection-start-column="76" selection-end-line="213" selection-end-column="76" />
           <folding />
         </state>
@@ -1207,14 +535,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Personas/personas.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Preguntas/pregunta.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
@@ -1222,14 +550,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_03_17_052346_create_indicadores_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Admin/admin.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="218" column="0" selection-start-line="218" selection-start-column="0" selection-end-line="218" selection-end-column="0" />
           <folding />
         </state>
@@ -1237,229 +565,189 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Indicadores/indicador.factory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Personas.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Persona.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Login/login.factory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Login/login.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="5" column="50" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.035252646">
+        <state relative-caret-position="0">
           <caret line="126" column="14" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.env.example">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.22222222">
+        <state relative-caret-position="0">
           <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Encuestas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.580645">
-          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_03_17_052346_create_indicadores_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Persona.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23266745">
+        <state relative-caret-position="0">
           <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Encuesta.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Indicadores.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.025851939">
+        <state relative-caret-position="0">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Indicadore.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20681551">
+        <state relative-caret-position="0">
           <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="9" selection-end-column="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Admin/admin.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.025851939">
+        <state relative-caret-position="0">
           <caret line="228" column="21" selection-start-line="228" selection-start-column="21" selection-end-line="228" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Desktop/form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.925373">
+        <state relative-caret-position="0">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="117" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Login/login.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="33" column="69" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Personas.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.35484">
+        <state relative-caret-position="0">
           <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="43" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Personas/personas.factory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Pregunta.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20681551">
+        <state relative-caret-position="0">
           <caret line="8" column="72" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Personas/personas.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="7" column="45" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/Encuestas/encuestas.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="30" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
-          <folding>
-            <marker date="1459296125451" expanded="true" signature="6370:6373" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/Encuestas/encuestas.factory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Preguntas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="51" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/templates/people.management.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9565217">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Admin/admin.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="748">
           <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
           <folding />
         </state>
@@ -1467,39 +755,80 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/Indicadores/indicador.factory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37414965">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        <state relative-caret-position="0">
+          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/Preguntas/preguntas.factory.js">
+    <entry file="file://$PROJECT_DIR$/public/app/templates/people.management.htm">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="67">
+          <caret line="106" column="65" selection-start-line="106" selection-start-column="65" selection-end-line="106" selection-end-column="101" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/templates/question.management.htm">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="33" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="33" />
+        <state relative-caret-position="-826">
+          <caret line="66" column="87" selection-start-line="66" selection-start-column="71" selection-end-line="66" selection-end-column="87" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/Preguntas/pregunta.controller.js">
+    <entry file="file://$PROJECT_DIR$/public/app/Encuestas/encuestas.factory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        <state relative-caret-position="-610">
+          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7755582">
-          <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+        <state relative-caret-position="616">
+          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Encuestas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Preguntas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="65" column="10" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/Encuestas/encuestas.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1694">
+          <caret line="77" column="29" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/Preguntas/pregunta.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="727">
+          <caret line="106" column="92" selection-start-line="106" selection-start-column="92" selection-end-line="106" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/Preguntas/preguntas.factory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
