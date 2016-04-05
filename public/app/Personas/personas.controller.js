@@ -5,7 +5,7 @@
         .module('observatoryApp')
         .controller('PersonasController', PersonasController);
 
-    function PersonasController($scope, $http, $timeout, PersonasFactory) {
+    function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog) {
         $scope.nueva = false;
         $scope.texto = 'Mostrar formulario de agregar nueva persona';
         $scope.registro = false;
@@ -19,7 +19,6 @@
 
 
         function setData() {
-            console.log("Set data");
             $scope.persona = {
                 cedula: '',
                 nombre: '',
@@ -58,33 +57,41 @@
                     $scope.emptyData = false;
                 }
             } catch (e) {
-                console.log(e);
+
             }
         }
 
         function store() {
-            PersonasFactory.store($scope.persona)
-                .then(function(response) {
-                    if (response === 'true') {
-                        $scope.registro = true;
-                        $scope.msgRegistro = 'La persona se ha agregado correctamente.';
-                        $scope.styleRegistro = 'success-box';
-                        setData();
+            $scope.registro = false;
+            validate();
+            if ($scope.emptyData !== true) {
+                PersonasFactory.store($scope.persona)
+                    .then(function(response) {
+                        console.log(response);
+                        if (response === 'true') {
+                            $scope.registro = true;
+                            $scope.msgRegistro = 'La persona se ha agregado correctamente.';
+                            $scope.styleRegistro = 'success-box';
+                            $scope.descripcion = '';
 
-                        $timeout(function() {
-                            $scope.registro = false;
-                        }, 5000);
-                    } else {
-                        $scope.registro = true;
-                        $scope.msgRegistro = 'Error, el email ya se encuentra registrado.';
-                        $scope.styleRegistro = 'error-box';
-                    }
-                });
+                            $timeout(function() {
+                                $scope.registro = false;
+                            }, 5000);
+                            getPersonas();
+                            setData();
+
+                        } else {
+                            $scope.registro = true;
+                            $scope.msgRegistro = 'Error, el email ya se encuentra registrado.';
+                            $scope.styleRegistro = 'error-box';
+                        }
+                    });
+            }
         }
 
         function editandoPersona(persona) {
             $scope.persona = persona;
-            console.log(persona);
+            $scope.editar = false;
         }
 
 
@@ -94,12 +101,15 @@
             PersonasFactory.ifExist($scope.persona.email)
                 .then(function(response) {
                     if (response !== undefined) {
-                        $scope.coincidenciaCorreo = true
+                        $scope.coincidenciaCorreo = true;
+                    }
+                    else{
+                        $scope.coincidenciaCorreo = false;
                     }
                 })
         }
 
-        function mostrarFormulario() {
+        function mostrarFormulario() {            
             $scope.nueva = !$scope.nueva;
 
             if ($scope.nueva) {
@@ -109,22 +119,45 @@
             }
         }
 
-        function modificar(persona) {
-            PersonasFactory.edit($scope.persona)
-                .then(function(response){
-                console.log("hola desde la respuesta de modificar");   
-            });
+        function modificar(persona) {  
+            document.getElementById('showAgregarPersonas').click();
+            PersonasFactory.edit(persona)
+                .then(function(response) {
+                    if (response === 'true') {
+                        setData();
+                        getPersonas();
+                        $scope.editar = true;
+                        $scope.msgEditar = 'La persona se ha modificado correctamente.';
+                        $scope.styleEditar = 'success-box';
+                        
+                    } else {
+                        $scope.editar = true;
+                        $scope.msgEditar = 'Ha ocurrido un error al modificar la persona.';
+                        $scope.styleEditar = 'error-box';
+                    }
+                });
 
         }
-        
-        function eliminar(id){
-            
-            PersonasFactory.remove(id)
-            .then(function(response){
-                console.log(response);
-            });
+
+        function eliminar(ev, id) {
+
+            var confirm = $mdDialog.confirm()
+                .title('¿Desea eliminar la persona?')
+                .textContent('Si la elimina, se eliminará de todo el sistema.')
+                .ariaLabel('Lucky day')
+                .targetEvent(ev)
+                .ok('Sí')
+                .cancel('No');
+
+            $mdDialog.show(confirm)
+                .then(function() {
+                    PersonasFactory.remove(id)
+                        .then(function(response) {
+                            getPersonas();
+                        });
+                }, function() {});
         }
-      
+
 
         function getPersonas() {
             PersonasFactory.getAll()
