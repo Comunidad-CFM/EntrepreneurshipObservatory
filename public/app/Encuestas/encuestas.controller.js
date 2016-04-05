@@ -150,7 +150,6 @@
         	EncuestasFactory.getAll()
         	.then(function(response) {
         		$scope.encuestas = response;
-                console.log(response);
         	});
         }
 
