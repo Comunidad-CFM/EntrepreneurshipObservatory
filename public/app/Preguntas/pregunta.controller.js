@@ -44,6 +44,8 @@
                         $scope.msgRegistro = 'La pregunta se ha agregado correctamente.';
                         $scope.styleRegistro = 'success-box';
                         setData();
+                        $scope.preguntas = "";
+                        getPreguntas();
 
                         $timeout(function() {
                             $scope.registro = false;
