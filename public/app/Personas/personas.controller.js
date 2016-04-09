@@ -101,10 +101,12 @@
 //validar cedula existente
         function validateID() {  
             $scope.coincidenciaCedula = false;
-             console.log($scope.persona.cedula);            
-            if($scope.persona.cedula != currentCedula){
-                $scope.msgCedula = "";                            
-                
+             if(isNaN($scope.persona.cedula)) {
+                $scope.coincidenciaCedula = true;
+                $scope.msgCedula = "El número de cédula tiene un formato incorrecto, debe ir sin guiones o espacios"
+            }
+            else if($scope.persona.cedula != currentCedula){
+                $scope.msgCedula = "";                                            
                 PersonasFactory.ifExist($scope.persona.cedula,"cedula")
                     .then(function(response) {
                         if (response !== undefined) {
