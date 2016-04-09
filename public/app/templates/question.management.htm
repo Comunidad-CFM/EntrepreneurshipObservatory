@@ -66,7 +66,8 @@
                 <td>
                     <span class="glyphicon glyphicon-pencil" ng-click="editandoPregunta(pregunta);" data-toggle="modal" data-target="#editarPregunta" title="Modificar pregunta"></span>
                     &nbsp;&nbsp;
-                    <span class="glyphicon glyphicon-trash" ng-click="eliminar(pregunta.id);" title="Eliminar pregunta"></span>
+                    <!--span class="glyphicon glyphicon-trash" ng-click="eliminar(pregunta.id);" title="Eliminar pregunta"></span-->
+                    <span class="glyphicon glyphicon-trash" ng-click="eliminar($event,pregunta.id);" title="Eliminar pregunta"></span>
                 </td>
             </tr>
             </tbody>
@@ -115,17 +116,6 @@
                                     </p>
                                 </div>
                             </div>
-
-                            <!--div class="col-md-12">
-                                <div class="col-md-6">
-                                    <div>
-                                        <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>
-                                    </div>
-                                    <center>
-                                        <button ng-click="store1();" class="btn btn-primary margin"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
-                                    </center>
-                                </div>
-                            </div-->
                         </div>
                     </form>
                 </div>

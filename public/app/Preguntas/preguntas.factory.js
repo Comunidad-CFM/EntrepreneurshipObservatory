@@ -9,6 +9,7 @@
         var factory = {
             store: store,
             edit: edit,
+            remove : remove,
             getAll: getAll
         };
 
@@ -63,6 +64,25 @@
                 defered.reject(err);
 
             });
+            return defered.promise;
+        }
+
+        function remove(id){
+            var data = {
+                id: id
+            };
+
+            var defered = $q.defer();
+            $http({
+                method: 'POST',
+                url: '/api/preguntas/eliminar',
+                data: data
+            }).success(function(response){
+                    defered.resolve(response);
+                })
+                .error(function(err){
+                    defered.reject(err);
+                })
             return defered.promise;
         }
     }

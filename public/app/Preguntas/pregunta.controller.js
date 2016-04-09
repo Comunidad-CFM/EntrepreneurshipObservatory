@@ -5,7 +5,7 @@
         .module('observatoryApp')
         .controller('PreguntaController', PreguntaController);
 
-    function PreguntaController($scope, $timeout, $http, PreguntasFactory, IndicadorFactory) {
+    function PreguntaController($scope, $timeout, $http, PreguntasFactory, IndicadorFactory, $mdDialog) {
 
         $scope.store = store;
         var indicadores = '';
@@ -37,7 +37,6 @@
 
             PreguntasFactory.store(data)
                 .then(function(response) {
-                    console.log(response);
 
                     if(response === 'true') {
                         $scope.registro = true;
@@ -113,23 +112,40 @@
         }
 
         //Elimina pregunta
-        function eliminar(id) {
-            console.log('Eliminar ->',id);
-            var isConfirmDelete = confirm('Esta seguro que desea eliminar esta pregunta?');
-            if (isConfirmDelete) {
-                $http({
-                    method: 'DELETE',
-                    url: '/api/preguntas/' + id
-                }).
-                success(function(data) {
-                    console.log(data);
-                    alert('Se ha eliminado la pregunta');
-                }).
-                error(function(data) {
-                    console.log(data);
-                    alert('No se puede eliminar');
-                });
-            }
+        function eliminar(ev, id) {
+
+
+            //var isConfirmDelete = confirm();
+            var confirm = $mdDialog.confirm('?')
+                .title('¿Esta seguro que desea eliminar esta pregunta?')
+                .textContent('La pregunta se eliminará de todo el sistema.')
+                .ariaLabel('Lucky day')
+                .targetEvent(ev)
+                .ok('Sí')
+                .cancel('No');
+
+            $mdDialog.show(confirm)
+                .then(function() {
+                    PreguntasFactory.remove(id)
+                        .then(function(response) {
+                            getPreguntas();
+                        });
+                }, function() {});
+            //
+            // if (isConfirmDelete) {
+            //     $http({
+            //         method: 'DELETE',
+            //         url: '/api/preguntas/' + id
+            //     }).
+            //     success(function(data) {
+            //         console.log(data);
+            //         alert('Se ha eliminado la pregunta');
+            //     }).
+            //     error(function(data) {
+            //         console.log(data);
+            //         alert('No se puede eliminar');
+            //     });
+            // }
         }
 
         function mostrarFormulario() {
