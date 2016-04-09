@@ -4,5 +4,3 @@
 Homestead.yaml
 Homestead.json
 .env
-/.idea/workspace.xml
-/app/Http/routes.php
