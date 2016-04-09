@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
                 ['cedula' => '2-0723-0152', 'nombre' => 'Fauricio', 'apellido1' => 'Rojas', 'apellido2' => 'Hernandez', 'tipo' => 'A', 'email' => 'fauri@gmail.com', 'contrasena' => md5('12345')],
                 ['cedula' => '2-0735-0236', 'nombre' => 'Manfred', 'apellido1' => 'Artavia', 'apellido2' => 'Gomez', 'tipo' => 'A', 'email' => 'manfred@gmail.com', 'contrasena' => md5('12345')],
                 ['cedula' => '1-1415-0859', 'nombre' => 'Carlos', 'apellido1' => 'Jimenez', 'apellido2' => 'Gonzalez', 'tipo' => 'A', 'email' => 'carlos@gmail.com', 'contrasena' => md5('12345')],
+                ['cedula' => '8-8888-8888', 'nombre' => 'Cristian', 'apellido1' => 'Salas', 'apellido2' => 'Salazar', 'tipo' => 'B', 'email' => 'cristian@gmail.com', 'contrasena' => md5('12345')],
+                ['cedula' => '9-9999-9999', 'nombre' => 'Kenneth', 'apellido1' => 'Perez', 'apellido2' => 'Alfaro', 'tipo' => 'B', 'email' => 'kenneth@gmail.com', 'contrasena' => md5('12345')]
         );
         
         DB::table('indicadores') -> delete();

@@ -85,4 +85,14 @@ class Personas extends Controller
 
         return 'true';
     }
+
+    /**
+     * Get all bussinessmen of the database.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function getBusinessmen() {
+        return Persona::where('tipo', 'B')->get();  
+    }
 }
