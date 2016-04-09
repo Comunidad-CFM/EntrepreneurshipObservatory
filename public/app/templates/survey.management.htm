@@ -19,7 +19,7 @@
                         <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>
                     </div>
                     <center>
-                        <button class="btn btn-primary margin" ng-disabled="emptyData" ng-click="agregar();"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                        <button class="btn btn-success margin" ng-disabled="emptyData" ng-click="agregar();"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
                     </center>
                 </div>
             </div>
@@ -58,7 +58,7 @@
     </div>
 
     <!-- Formulario editar -->
-    <div id="editarEncuesta" class="modal fade">
+    <div id="editarEncuesta" class="modal fade" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header montserrat">
@@ -73,7 +73,7 @@
                     <div ng-show="editar" class="margin" ng-class="styleEditar">{{msgEditar}}</div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel</button>
+                    <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
                     <button class="btn btn-success" ng-disabled="emptyData" data-ng-click="modificar(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
                 </div>
             </div>
@@ -81,7 +81,7 @@
     </div>
 
     <!-- Formulario armar encuesta -->
-    <div id="armarEncuesta" class="modal fade">
+    <div id="armarEncuesta" class="modal fade" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header montserrat">
@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel</button>
+                    <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
                     <button class="btn btn-success" data-ng-click="armar(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
                 </div>
             </div>
@@ -127,7 +127,7 @@
     </div>
 
     <!-- Asignar usuarios a la encuesta -->
-    <div id="asignarUsuarios" class="modal fade">
+    <div id="asignarUsuarios" class="modal fade" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header montserrat">
@@ -157,7 +157,7 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel</button>
+                    <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
                     <button class="btn btn-success" data-ng-click="asignarUsuarios(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
                 </div>
             </div>

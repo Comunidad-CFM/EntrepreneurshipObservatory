@@ -21,6 +21,7 @@
         $scope.asignandoUsuarios = asignandoUsuarios;
         $scope.asignarUsuarios = asignarUsuarios;
         $scope.marcarTodos = marcarTodos;
+        var respaldoPreguntas;
 
         $scope.$watch('descripcion', validate);
 
@@ -122,16 +123,28 @@
         function armandoEncuesta(id) {
             $scope.armarOk = false;
             $scope.id = id;
-
             $scope.preguntas = {
                 "banco": [],
                 "preguntas": []
             };
-            $scope.changeState = changeState;
 
-            PreguntasFactory.getAll()
+            EncuestasFactory.getQuestions(id)
             .then(function(response) {
-                $scope.preguntas.preguntas = response;
+                respaldoPreguntas = [];
+                $scope.preguntas.banco = response;
+                
+                angular.forEach(response, function(question) {
+                    respaldoPreguntas.push(question);
+                });
+            })
+            .then(function() {
+                PreguntasFactory.getAll()
+                .then(function(response) {
+                    $scope.preguntas.preguntas = response;
+                })
+                .then(function() {
+                    $scope.preguntas = EncuestasFactory.removeItems($scope.preguntas);
+                });
             });
         }
 
@@ -144,6 +157,10 @@
 
         function armar() {
             console.log('Armando ->',$scope.id);
+            var questionsList = EncuestasFactory.questionsChanged(respaldoPreguntas, $scope.preguntas.banco);
+            
+            // Preguntar si el array de preguntas a eliminar no es vacio, llamar al metodo del factory
+            // Preguntar si el array de preguntas a agregar no es vacio, llamar al metodo del factory
 
             $scope.armarOk = true;
             $scope.msgArmar = 'Las preguntas se han agregado a la encuesta correctamente.';
@@ -158,41 +175,6 @@
         }
 
         getAll();
-
-        function changeState(encuesta) {
-            var state = changedState(encuesta);
-            
-            if(angular.equals(state,'Banco') && !encuesta.state) {
-                console.log('Pasa al banco la',encuesta.label);
-                encuesta.state = true;
-                // Change in DB
-            }
-            else if(angular.equals(state,'inactivas') && encuesta.state) {
-                console.log('Pasa a las preguntas la',encuesta.label);
-                encuesta.state = false;
-                // Change in DB
-            }
-            else {
-                console.log('Nada por hacer');
-            }
-        }
-
-        function changedState(item) {
-            var response = '';
-
-            angular.forEach($scope.encuestas, function(encuestas, key) {
-                angular.forEach(encuestas, function(encuesta) {
-                    if(angular.equals(encuesta, item)) {
-                        if(key === 'Preguntas')
-                            response = 'Preguntas';
-                        else
-                            response = 'Banco';
-                    }
-                });
-            });
-            
-            return response;
-        }
 
         function asignandoUsuarios(id) {
             $scope.id = id;
