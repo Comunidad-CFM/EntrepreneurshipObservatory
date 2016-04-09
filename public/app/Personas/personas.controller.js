@@ -17,7 +17,8 @@
         $scope.editandoPersona = editandoPersona;
         $scope.validateEmail = validateEmail;
         $scope.validateID = validateID;
-
+        var currentEmail = "";
+        var currentCedula = "";
 
         function setData() {
             $scope.persona = {
@@ -89,36 +90,38 @@
                     });
             }
         }
-
+    
         function editandoPersona(persona) {
             $scope.persona = persona;
+            currentEmail = $scope.persona.email;     
+            currentCedula = $scope.persona.cedula;            
             $scope.editar = false;
         }
 
 //validar cedula existente
-        function validateID() {     
-            console.log($scope.persona);
-            $scope.msgCedula = "";
-            if(isNaN($scope.persona.cedula)) {
-                $scope.coincidenciaCedula = true;
-                $scope.msgCedula = "Digite el número de cédula sin guiones";
-            }        
+        function validateID() {  
             $scope.coincidenciaCedula = false;
-            PersonasFactory.ifExist($scope.persona.cedula,"cedula")
-                .then(function(response) {
-                    if (response !== undefined) {
-                        $scope.coincidenciaCedula = true;
-                        $scope.msgCedula = "El número de cédula ya está registrado";
-                    }
-                    else{
-                        $scope.coincidenciaCedula = false;
-                    }
-                })
+             console.log($scope.persona.cedula);            
+            if($scope.persona.cedula != currentCedula){
+                $scope.msgCedula = "";                            
+                
+                PersonasFactory.ifExist($scope.persona.cedula,"cedula")
+                    .then(function(response) {
+                        if (response !== undefined) {
+                            $scope.coincidenciaCedula = true;
+                            $scope.msgCedula = "El número de cédula ya está registrado";
+                        }
+                        else{
+                            $scope.coincidenciaCedula = false;
+                        }
+                    })
+            }
         }
 
         //validar email existente
-        function validateEmail() {            
+        function validateEmail() {   
             $scope.coincidenciaCorreo = false;
+            if($scope.persona.email != currentEmail){                     
             PersonasFactory.ifExist($scope.persona.email,"email")
                 .then(function(response) {
                     if (response !== undefined) {
@@ -128,6 +131,7 @@
                         $scope.coincidenciaCorreo = false;
                     }
                 })
+            }
         }
 
         
@@ -142,8 +146,7 @@
             }
         }
 
-        function modificar(persona) {  
-            document.getElementById('showAgregarPersonas').click();
+        function modificar(persona) {              
             PersonasFactory.edit(persona)
                 .then(function(response) {
                     if (response === 'true') {

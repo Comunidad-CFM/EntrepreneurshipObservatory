@@ -127,12 +127,15 @@
                 </div>
                 <div class="modal-body">
                     <form class="container margin">
-                        <div class="col-md-offset-2 col-md-8">
+                        <div class="col-md-8">
                             <div class="col-md-12">
                                 <div class="col-md-6">
                                     <p>
                                         <label for="cedula">Cédula</label>
-                                        <input ng-model="persona.cedula" class="form-control" type="text" name="cedula" id="cedula" required autofocus placeholder="Número de cédula" pattern="[0-9]{9,}" title="Número de cédula con ceros, sin espacios ni guiones.">
+                                        <input ng-model="persona.cedula" class="form-control" type="text" name="cedula" id="cedula" required autofocus placeholder="Número de cédula" title="Número de cédula con ceros, sin espacios ni guiones." ng-blur="validateID();">
+                                    <div class="error-box" ng-show="coincidenciaCedula">
+                                        {{msgCedula}}
+                                    </div>
                                     </p>
                                 </div>
                                 <div class="col-md-6">

@@ -89,7 +89,8 @@
                     <label class="title">Armar encuesta</label>
                 </div>
                 <div class="modal-body">
-                    <div class="info-box">Jale las preguntas de un lado a otro para armar la encuesta.</div>
+                    <div class="info-box">Mueva las preguntas de un lado a otro para armar la encuesta.</div>
+                    <div ng-show="armarOk" class="margin" ng-class="styleArmar">{{msgArmar}}</div>
                     <div class="simpleDemo margin">
                         <div class="col-md-12 col-sm-12">
                             <div class="row">
@@ -106,8 +107,7 @@
                                                     dnd-moved="list.splice($index, 1)"
                                                     dnd-effect-allowed="move"
                                                     dnd-selected="models.selected = item"
-                                                    ng-class="{'selected': models.selected === item}"
-                                                    ng-mouseleave="changeState(item);">
+                                                    ng-class="{'selected': models.selected === item}">
                                                     {{item.enunciado}}
                                                 </li>
                                             </ul>
@@ -117,7 +117,6 @@
                             </div>
                         </div>
                     </div>
-                    <div ng-show="armarOk" class="margin" ng-class="styleArmar">{{msgArmar}}</div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel</button>
