@@ -81,4 +81,19 @@ class Encuestas extends Controller
 
         return 'true';
     }
+
+    /**
+     * Get al questions of a test.
+     *
+     * @param  Request $request
+     * @return Response
+     */
+    public function getQuestions(Request $request) {
+        return Encuesta::join('encuestas_preguntas', 'encuestas.id', '=', 'encuestas_preguntas.encuesta_id')
+                ->join('preguntas', 'encuestas_preguntas.pregunta_id', '=', 'preguntas.id')
+                ->select('encuestas_preguntas.id', 'encuestas_preguntas.pregunta_id', 'preguntas.enunciado')
+                ->orderBy('encuestas_preguntas.id', 'asc')
+                ->where('encuestas.id', '=', $request->input('id'))
+                ->get();
+    }
 }
