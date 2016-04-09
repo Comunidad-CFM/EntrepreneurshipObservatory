@@ -41,7 +41,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('preguntas/registro', 'Preguntas@store');
     Route::get('preguntas/todas', 'Preguntas@getAll');
     Route::post('preguntas/editar', 'Preguntas@update');
-    Route::delete('/preguntas/{id}', 'Preguntas@destroy');
+    Route::post('preguntas/eliminar', 'Preguntas@destroy');
     Route::post('/encuestas/update', 'Encuestas@update');
     Route::post('/encuestas/remove', 'Encuestas@remove');
     Route::post('/encuestas/changeState', 'Encuestas@changeState');

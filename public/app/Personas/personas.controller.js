@@ -16,6 +16,7 @@
         $scope.getPersonas = getPersonas;
         $scope.editandoPersona = editandoPersona;
         $scope.validateEmail = validateEmail;
+        $scope.validateID = validateID;
 
 
         function setData() {
@@ -94,11 +95,31 @@
             $scope.editar = false;
         }
 
+//validar cedula existente
+        function validateID() {     
+            console.log($scope.persona);
+            $scope.msgCedula = "";
+            if(isNaN($scope.persona.cedula)) {
+                $scope.coincidenciaCedula = true;
+                $scope.msgCedula = "Digite el número de cédula sin guiones";
+            }        
+            $scope.coincidenciaCedula = false;
+            PersonasFactory.ifExist($scope.persona.cedula,"cedula")
+                .then(function(response) {
+                    if (response !== undefined) {
+                        $scope.coincidenciaCedula = true;
+                        $scope.msgCedula = "El número de cédula ya está registrado";
+                    }
+                    else{
+                        $scope.coincidenciaCedula = false;
+                    }
+                })
+        }
 
         //validar email existente
-        function validateEmail() {
+        function validateEmail() {            
             $scope.coincidenciaCorreo = false;
-            PersonasFactory.ifExist($scope.persona.email)
+            PersonasFactory.ifExist($scope.persona.email,"email")
                 .then(function(response) {
                     if (response !== undefined) {
                         $scope.coincidenciaCorreo = true;
@@ -109,9 +130,11 @@
                 })
         }
 
+        
+        
+
         function mostrarFormulario() {            
             $scope.nueva = !$scope.nueva;
-
             if ($scope.nueva) {
                 $scope.texto = 'Ocultar formulario de agregar nueva persona';
             } else {

@@ -83,16 +83,17 @@
 			return defered.promise;
 		}
         
-        function ifExist(email){
+
+        function ifExist(field,fieldToValidate){             
             var defered = $q.defer();            
             $http({
 				method: 'POST',
 				url: '/api/personas/ifExist',
 				data: {
-                    email: email
-                }
+					field:field,
+					fieldToValidate: fieldToValidate }                
 			})
-            .success(function(response){
+            .success(function(response){            	    
                 defered.resolve(response[0]);
             })
             .error(function(err){
