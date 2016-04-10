@@ -34,14 +34,14 @@
         }
         setData();
 
-        $scope.$watch('passConf', validatePass);
-        $scope.$watch('passConf', validate);
-        $scope.$watch('pass', validate);
-        $scope.$watch('nombre', validate);
-        $scope.$watch('apellido1', validate);
-        $scope.$watch('apellido2', validate);
-        $scope.$watch('email', validate);
-        $scope.$watch('cedula', validate);
+        $scope.$watch('persona.passConf', validatePass);
+        $scope.$watch('persona.passConf', validate);
+        $scope.$watch('persona.pass', validate);
+        $scope.$watch('persona.nombre', validate);
+        $scope.$watch('persona.apellido1', validate);
+        $scope.$watch('persona.apellido2', validate);
+        $scope.$watch('persona.email', validate);
+        $scope.$watch('persona.cedula', validate);
 
         function validatePass() {
             if ($scope.pass !== $scope.passConf) {
