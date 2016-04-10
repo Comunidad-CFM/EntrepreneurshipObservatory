@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
             ['nombre' => 'Industria manufacturera','descripcion' => 'N/A'],
             ['nombre' => 'Comercio y reparación','descripcion' => 'N/A'],
             ['nombre' => 'Turismo','descripcion' => 'N/A'],
-            ['nombre' => 'Otros Servicios:','descripcion' => 'N/A']
+            ['nombre' => 'Otros servicios','descripcion' => 'N/A']
         );
 
 

@@ -69,7 +69,7 @@ textarea {
     color: #E74C3C;
 }
 
-.navbar-nav li, select, .cover .icon, .glyphicon, input[type="checkbox"], .btn {
+.navbar-nav li, select, .cover .icon, input[type="checkbox"], .btn {
     cursor: pointer;
 }
 
