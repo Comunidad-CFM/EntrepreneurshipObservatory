@@ -11,14 +11,14 @@
         </div>
         <div class="navbar-collapse collapse navBar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a>{{user.nombre}}</a></li>
+                <li><a class="userName">{{user.nombre}}</a></li>
                 <li ng-class="styleEncuestas" ng-click="Nav='encuestas'; styleEncuestas='active'; stylePersonas=''; stylePreguntas='';"><a><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Encuestas</a></li>
-                <li ng-class="stylePersonas" ng-click="Nav='personas'; styleEncuestas=''; stylePersonas='active'; stylePreguntas='';"><a><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Personas</a></li>
+                <li ng-class="stylePersonas" ng-click="Nav='personas'; styleEncuestas=''; stylePersonas='active'; stylePreguntas='';"><a><span class="fa fa-users"></span>&nbsp;&nbsp;Personas</a></li>
                 <li ng-class="stylePreguntas" ng-click="Nav='preguntas'; styleEncuestas=''; stylePersonas=''; stylePreguntas='active';"><a><span class="fa fa-question"></span>&nbsp;&nbsp;Preguntas</a></li>
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-option-vertical"></span></a>
                     <ul class="dropdown-menu">
-                        <li ng-click="logOut();"><a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Log out</a></li>
+                        <li ng-click="logOut();"><a><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Salir</a></li>
                     </ul>
                 </li>
             </ul>

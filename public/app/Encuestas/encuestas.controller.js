@@ -35,6 +35,7 @@
 
         function mostrarFormulario() {
             $scope.nueva = !$scope.nueva;
+            $scope.descripcion = '';
 
             if($scope.nueva) {
                 $scope.texto = 'Ocultar formulario de agregar nueva encuesta';
