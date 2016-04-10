@@ -44,16 +44,18 @@
         $scope.$watch('persona.cedula', validate);
 
         function validatePass() {
-            if ($scope.pass !== $scope.passConf) {
+            $scope.errorPass = false;
+            if ($scope.persona.pass !== $scope.persona.passConf) {
                 $scope.errorPass = true;
             } else {
                 $scope.errorPass = false;
             }
         }
 
-        function validate() {
-            try {
-                if (!$scope.pass.length || !$scope.nombre.length || !$scope.apellido1.length || !$scope.apellido2.length || !$scope.cedula.length || !$scope.email.length) {
+        function validate() {                        
+            try {   
+                $scope.emptyData = false;                        
+                if (!$scope.persona.pass.length || $scope.persona.nombre.length === 0 || !$scope.persona.apellido1.length || !$scope.persona.apellido2.length || !$scope.persona.cedula.length || !$scope.persona.email.length) {                    
                     $scope.emptyData = true;
                 } else {
                     $scope.emptyData = false;

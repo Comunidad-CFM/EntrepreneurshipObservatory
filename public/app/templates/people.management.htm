@@ -6,7 +6,7 @@
         <div>
             <label class="subtitle baskerville">Agregar nueva persona</label>
         </div>
-        <form class="container margin">
+        <form class="container margin" autocomplete="off">
             <div class="col-md-offset-2 col-md-8">
                 <div class="col-md-12">
                     <div class="col-md-6">
@@ -25,6 +25,8 @@
                         </p>
                     </div>
                 </div>
+                <input style="display:none">
+                <input type="password" style="display:none">
                 <div class="col-md-12">
                     <div class="col-md-6">
                         <p>
@@ -45,7 +47,7 @@
                 <div class="col-md-12">
                     <div class="col-md-6">
                         <p>
-                            <label for="name">Contraseña</label>
+                            <label for="pass">Contraseña</label>
                             <input ng-model="persona.pass" class="form-control" type="password" name="pass" id="pass" required placeholder="Contraseña" pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos caracteres.">
                         </p>
                     </div>
@@ -61,6 +63,9 @@
                         <p>
                             <label for="name">Confirmar Contraseña</label>
                             <input ng-model="persona.passConf" class="form-control" type="password" name="passConf" id="passConf" required placeholder="Confirmar Contraseña" pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos letras.">
+                             <div class="error-box" ng-show="errorPass">
+                                Las contraseñas no coinciden.
+                            </div>
                         </p>
                     </div>
                     <div class="col-md-6">
