@@ -156,20 +156,41 @@
             });
         }
 
+        function agregarPreguntas(questions) {
+            if(questions.length) {
+                EncuestasFactory.addQuestionsToSurvey($scope.id, questions)
+                .then(function(response) {
+                    return response;
+                });
+            }
+
+            return 'true';
+        }
+
+        function eliminarPreguntas(questions) {
+            if(questions.length) {
+                EncuestasFactory.deleteQuestionsToSurvey(questions)
+                .then(function(response) {
+                    return response;
+                });
+            }
+
+            return 'true';
+        }
+
         function armar() {
-            console.log('Armando ->',$scope.id);
             var questionsList = EncuestasFactory.questionsChanged(respaldoPreguntas, $scope.preguntas.banco);
 
-            EncuestasFactory.addQuestionsToSurvey($scope.id, questionsList.agregar)
-            .then(function(response) {
-            	console.log(response);
-            });
-            // Preguntar si el array de preguntas a eliminar no es vacio, llamar al metodo del factory
-            // Preguntar si el array de preguntas a agregar no es vacio, llamar al metodo del factory
+            if(agregarPreguntas(questionsList.agregar) === 'true' && eliminarPreguntas(questionsList.eliminar) === 'true') {
+                $scope.msgArmar = 'La encuesta se ha armado correctamente.';
+                $scope.styleArmar = 'success-box';
+            }
+            else {
+                $scope.msgArmar = 'Ha ocurrido un error al armar la encuesta.';
+                $scope.styleArmar = 'error-box';   
+            }
 
             $scope.armarOk = true;
-            $scope.msgArmar = 'Las preguntas se han agregado a la encuesta correctamente.';
-            $scope.styleArmar = 'success-box';
         }
 
         function getAll() {

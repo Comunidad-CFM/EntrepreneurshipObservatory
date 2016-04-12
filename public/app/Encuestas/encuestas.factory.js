@@ -179,7 +179,7 @@
 			  		}
 				}
 
-				if(question) {
+				if(question || !currentList.length) {
 					preguntas.eliminar.push(oldList[i].id);
 				}
 
@@ -234,10 +234,10 @@
 			return defered.promise;
 		}
 
-		function deleteQuestionsToSurvey(question) {
+		function deleteQuestionsToSurvey(questions) {
 			var defered = $q.defer(),
 				data = {
-					id: question.id
+					questions: questions
 				};
 
 			$http({

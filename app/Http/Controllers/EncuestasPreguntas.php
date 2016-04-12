@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Encuestas_Pregunta;
+use App\EncuestasPregunta;
 
-class Encuestas_Preguntas extends Controller
+class EncuestasPreguntas extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -20,12 +20,12 @@ class Encuestas_Preguntas extends Controller
         $questionsId = explode(',', $questionsId);
 
         foreach ($questionsId as $id) {
-            $encuestas_Pregunta = new Encuestas_Pregunta;
+            $encuestasPregunta = new EncuestasPregunta;
 
-            $encuestas_Pregunta->pregunta_id = (int)$id;
-            $encuestas_Pregunta->encuesta_id = $encuestaId;
+            $encuestasPregunta->pregunta_id = (int)$id;
+            $encuestasPregunta->encuesta_id = $encuestaId;
 
-            //$encuestas_Pregunta->save();
+            $encuestasPregunta->save();
         }
 
         return 'true';
@@ -38,9 +38,13 @@ class Encuestas_Preguntas extends Controller
      * @return Response
      */
     public function remove(Request $request) {
-        $encuestaPreguntas = EncuestaPreguntas::find($request->input('id'));
+        $questionsId = substr(json_encode($request->input('questions')), 1, -1);
+        $questionsId = explode(',', $questionsId);
 
-        $encuestaPreguntas->delete();
+        foreach ($questionsId as $id) {
+            $encuestasPregunta = EncuestasPregunta::find((int)$id);
+            $encuestasPregunta->delete();
+        }
 
         return 'true';
     }
