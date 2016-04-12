@@ -95,6 +95,7 @@
     
         function editandoPersona(persona) {
             $scope.persona = persona;
+            $scope.nueva = false;
             currentEmail = $scope.persona.email;     
             currentCedula = $scope.persona.cedula;            
             $scope.editar = false;
@@ -143,6 +144,7 @@
 
         function mostrarFormulario() {            
             $scope.nueva = !$scope.nueva;
+            setData();
             if ($scope.nueva) {
                 $scope.texto = 'Ocultar formulario de agregar nueva persona';
             } else {
