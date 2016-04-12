@@ -159,7 +159,11 @@
         function armar() {
             console.log('Armando ->',$scope.id);
             var questionsList = EncuestasFactory.questionsChanged(respaldoPreguntas, $scope.preguntas.banco);
-            
+
+            EncuestasFactory.addQuestionsToSurvey($scope.id, questionsList.agregar)
+            .then(function(response) {
+            	console.log(response);
+            });
             // Preguntar si el array de preguntas a eliminar no es vacio, llamar al metodo del factory
             // Preguntar si el array de preguntas a agregar no es vacio, llamar al metodo del factory
 

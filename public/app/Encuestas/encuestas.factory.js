@@ -159,7 +159,7 @@
 		}
 
 		function questionsChanged(oldList, currentList) {
-			var question = null,
+			var question = false,
 				i = 0,
 				j = 0,
 				preguntas = {
@@ -171,16 +171,16 @@
 			for ( ; i < oldList.length; i++) {
 				for ( ; j < currentList.length; j++) {
 					if(oldList[i].pregunta_id === currentList[j].pregunta_id) {
-						question = null;
+						question = false;
 						break;
 			  		}
 			  		else {
-			  			question = oldList[i];	
+			  			question = true;	
 			  		}
 				}
 
-				if(question !== null) {
-					preguntas.eliminar.push(question);
+				if(question) {
+					preguntas.eliminar.push(oldList[i].id);
 				}
 
 				j = 0;
@@ -188,13 +188,13 @@
 
 			i = 0;
 			j = 0;
-			question = null;
+			question = false;
 
 			// Verifica las preguntas que hay que agregar a la encuesta.
 			for ( ; i < currentList.length; i++) {
 				for ( ; j < oldList.length; j++) {
 					if(currentList[i].pregunta_id === oldList[j].pregunta_id) {
-						question = null;
+						question = false;
 						break;
 			  		}
 			  		else {
@@ -202,8 +202,8 @@
 			  		}
 				}
 
-				if(question !== null) {
-					preguntas.agregar.push(question);
+				if(question || !oldList.length) {
+					preguntas.agregar.push(currentList[i].id);
 				}
 
 				j = 0;
@@ -212,16 +212,16 @@
 			return preguntas;
 		}
 
-		function addQuestionsToSurvey(id, question) {
+		function addQuestionsToSurvey(encuestaId, questions) {
 			var defered = $q.defer(),
 				data = {
-					encuesta_id: id,
-					pregunta_id: question.pregunta_id
+					encuestaId: encuestaId,
+					questions: questions
 				};
 
 			$http({
 				method: 'POST',
-				url: 'api/encuestaPreguntas/store',
+				url: 'api/encuestasPreguntas/store',
 				data: data
 			})
 			.success(function(response) {
@@ -242,7 +242,7 @@
 
 			$http({
 				method: 'POST',
-				url: 'api/encuestaPreguntas/remove',
+				url: 'api/encuestasPreguntas/remove',
 				data: data
 			})
 			.success(function(response) {

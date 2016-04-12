@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Encuestapregunta;
+use App\Encuestas_Pregunta;
 
-class EncuestaPreguntas extends Controller
+class Encuestas_Preguntas extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -15,12 +15,18 @@ class EncuestaPreguntas extends Controller
      * @return Response
      */
     public function store(Request $request) {
-        $encuestaPreguntas = new EncuestaPreguntas;
+        $encuestaId = $request->input('encuestaId');
+        $questionsId = substr(json_encode($request->input('questions')), 1, -1);
+        $questionsId = explode(',', $questionsId);
 
-        $encuestaPreguntas->pregunta_id = $request->input('pregunta_id');
-        $encuestaPreguntas->encuesta_id = $request->input('encuesta_id');
+        foreach ($questionsId as $id) {
+            $encuestas_Pregunta = new Encuestas_Pregunta;
 
-        $encuestaPreguntas->save();
+            $encuestas_Pregunta->pregunta_id = (int)$id;
+            $encuestas_Pregunta->encuesta_id = $encuestaId;
+
+            //$encuestas_Pregunta->save();
+        }
 
         return 'true';
     }
