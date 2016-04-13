@@ -198,14 +198,6 @@
                 });
         }
 
-        function getFactores() {
-            SectoresFactory.getAll()
-                .then(function(response) {
-                    $scope.sectores = response;
-                });
-                console.log(response);
-        }
-   //     getSectores();
         getPersonas();
     }
 
