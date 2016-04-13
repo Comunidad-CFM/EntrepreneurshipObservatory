@@ -111,8 +111,7 @@
                     <td>{{persona.nombre}} {{persona.apellido1}} {{persona.apellido2}}</td>
                     <td>{{persona.email}}</td>
                     <td>{{persona.tipo | user}}</td>
-                    <td>
-                        <div ng-show="registro" class="margin" ng-class="styleEditar">{{msgRegistro}}</div>
+                    <td>            
                         <span class="glyphicon glyphicon-pencil" ng-click="editandoPersona(persona);" data-toggle="modal" data-target="#editarPersona" title="Modificar usuario"></span> &nbsp;
                         <span class="glyphicon glyphicon-trash" ng-click="eliminar($event,persona.id);" title="Eliminar usuario"></span>
                     </td>
