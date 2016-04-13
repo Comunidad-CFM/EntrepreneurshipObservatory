@@ -18,7 +18,7 @@
         $scope.validateEmail = validateEmail;
         $scope.validateID = validateID;
         var currentEmail = "";
-        var currentCedula = "";
+        var currentCedula = "";     
 
         function setData() {
             $scope.persona = {
@@ -196,6 +196,14 @@
                 .then(function(response) {
                     $scope.personas = response;
                 });
+        }
+
+        function getSectores() {
+            SectoresFactory.getAll()
+                .then(function(response) {
+                    $scope.sectores = response;
+                });
+                console.log($scope.sectores);
         }
 
         getPersonas();

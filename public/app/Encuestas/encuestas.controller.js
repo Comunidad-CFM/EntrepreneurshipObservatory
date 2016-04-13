@@ -5,7 +5,7 @@
 		.module('observatoryApp')
 		.controller('EncuestasController', EncuestasController);
 
-	function EncuestasController($scope, $timeout, $filter, $cookies, $mdDialog, EncuestasFactory, PreguntasFactory, PersonasFactory) {
+	function EncuestasController($scope, $timeout, $filter, $cookies, $mdDialog, EncuestasFactory, PreguntasFactory, PersonasFactory, AplicacionesFactory) {
 		$scope.descripcion = '';
 		$scope.nueva = false;
 		$scope.registro = false;
@@ -21,7 +21,8 @@
         $scope.asignandoUsuarios = asignandoUsuarios;
         $scope.asignarUsuarios = asignarUsuarios;
         $scope.marcarTodos = marcarTodos;
-        var respaldoPreguntas;
+        var respaldoPreguntas,
+            respaldoEmpresarios;
 
         $scope.$watch('descripcion', validate);
 
@@ -144,7 +145,7 @@
                     $scope.preguntas.preguntas = response;
                 })
                 .then(function() {
-                    $scope.preguntas = EncuestasFactory.removeItems($scope.preguntas);
+                    $scope.preguntas = EncuestasFactory.removeQuestions($scope.preguntas);
                 });
             });
         }
@@ -207,23 +208,37 @@
 
             PersonasFactory.getBusinessmen()
             .then(function(response) {
-                $scope.empresarios = response;
+                return response;
+            })
+            .then(function(empresarios) {
+                AplicacionesFactory.getForSurvey($scope.id)
+                .then(function(response) {
+                    respaldoEmpresarios = [];
+
+                    angular.forEach(response, function(entrepreneur) {
+                        respaldoEmpresarios.push(entrepreneur);
+                    });
+
+                    return response;
+                })
+                .then(function(entrepreneurs) {
+                    $scope.empresarios = EncuestasFactory.removeEntrepreneur(entrepreneurs, empresarios);
+                });
             });
         }
 
         function asignarUsuarios() {
             console.log('Asignando usuarios a la encuesta ', $scope.id);
+            console.log('Nueva',$scope.empresarios);
+            console.log('Vieja',respaldoEmpresarios);
         }
 
         function marcarTodos() {
-            var checkboxes = document.getElementsByName('buss'),
-                i = 0,
-                length = checkboxes.length,
-                state = document.getElementById('bussMaster').checked;
+            var state = document.getElementById('bussMaster').checked;
 
-            for( ; i < length; i++) {
-                checkboxes[i].checked = state;
-            }
+            angular.forEach($scope.empresarios, function(empresario) {
+                empresario.state = state;
+            });
         }
 	}
 

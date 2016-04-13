@@ -7,6 +7,7 @@ use App\Indicadore;
 use App\Regione;
 use App\Territorio;
 use App\Sectore;
+use App\Periodo;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,6 +18,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Comando para resetear los id auto_increment.
+        // ALTER TABLE tablename AUTO_INCREMENT = 1;
         Model::unguard();
 
         DB::table('personas')->delete();
@@ -60,6 +63,13 @@ class DatabaseSeeder extends Seeder
             ['nombre' => 'Otros servicios','descripcion' => 'N/A']
         );
 
+        DB::table('periodos') -> delete();
+        $periodos = array(
+            ['anio' => date ("Y")-1,'cuatrimestre' => 3],
+            ['anio' => date ("Y"),'cuatrimestre' => 1],
+            ['anio' => date ("Y"),'cuatrimestre' => 2],
+        );
+
 
 
         // Loop through each user above and create the record for them in the database
@@ -81,6 +91,10 @@ class DatabaseSeeder extends Seeder
 
         foreach ($sectores as $sector) {
             Sectore::create($sector);        
+        }
+
+        foreach ($periodos as $periodo) {
+            Periodo::create($periodo);        
         }
 
         Model::reguard();
