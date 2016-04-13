@@ -39,6 +39,7 @@
 	<script type="text/javascript" src="<?= asset('app/Preguntas/pregunta.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Preguntas/preguntas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Indicadores/indicador.factory.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Aplicaciones/aplicaciones.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/js/angular-drag-and-drop-lists.js') ?>"></script>
 </body>
 </html>

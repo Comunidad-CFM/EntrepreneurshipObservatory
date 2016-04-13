@@ -13,10 +13,11 @@
 			remove: remove,
 			changeState: changeState,
 			getQuestions: getQuestions,
-			removeItems: removeItems,
+			removeQuestions: removeQuestions,
 			questionsChanged: questionsChanged,
 			addQuestionsToSurvey: addQuestionsToSurvey,
-			deleteQuestionsToSurvey: deleteQuestionsToSurvey
+			deleteQuestionsToSurvey: deleteQuestionsToSurvey,
+			removeEntrepreneur: removeEntrepreneur
 		};
 
 		return factory;
@@ -146,7 +147,7 @@
 			return list;
 		}
 
-		function removeItems(list) {
+		function removeQuestions(list) {
 			angular.forEach(list.banco, function(question) {
 				angular.forEach(list.preguntas, function(item) {
 			  		if(question.pregunta_id === item.id) {
@@ -253,6 +254,19 @@
 			});
 
 			return defered.promise;
+		}
+
+		function removeEntrepreneur(listEntrepreneur, listPersons) {
+			angular.forEach(listPersons, function(person) {
+				person.state = false;
+				angular.forEach(listEntrepreneur, function(entrepreneur) {
+			  		if(person.id === entrepreneur.idPersona) {
+			  			person.state = true;
+			  		}
+				});	  	
+			});
+
+			return listPersons;
 		}
 	}
 })();
