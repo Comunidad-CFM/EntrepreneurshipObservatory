@@ -47,6 +47,10 @@ textarea {
     margin: 10px 0px 10px 0px;
 }
 
+.margin-top {
+    margin-top: 10px;
+}
+
 .baskerville {
     font-family: 'Libre Baskerville', serif;
 }
