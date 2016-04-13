@@ -48,7 +48,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('/encuestas/getQuestions', 'Encuestas@getQuestions');
     Route::post('/encuestasPreguntas/store', 'EncuestasPreguntas@store');
     Route::post('/encuestasPreguntas/remove', 'EncuestasPreguntas@remove');
-
     Route::post('/aplicaciones/getForSurvey', 'Aplicaciones@getForSurvey');
-
+    Route::get('sectores/todas', 'Sectores@getAll');
 });

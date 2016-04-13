@@ -18,7 +18,7 @@
         $scope.validateEmail = validateEmail;
         $scope.validateID = validateID;
         var currentEmail = "";
-        var currentCedula = "";
+        var currentCedula = "";     
 
         function setData() {
             $scope.persona = {
@@ -55,7 +55,7 @@
         function validate() {                        
             try {   
                 $scope.emptyData = false;                        
-                if (!$scope.persona.pass.length || $scope.persona.nombre.length === 0 || !$scope.persona.apellido1.length || !$scope.persona.apellido2.length || !$scope.persona.cedula.length || !$scope.persona.email.length) {                    
+                if (!$scope.persona.pass.length || !$scope.persona.nombre.length || !$scope.persona.apellido1.length || !$scope.persona.apellido2.length || !$scope.persona.cedula.length || !$scope.persona.email.length) {                    
                     $scope.emptyData = true;
                 } else {
                     $scope.emptyData = false;
@@ -198,6 +198,14 @@
                 });
         }
 
+        function getFactores() {
+            SectoresFactory.getAll()
+                .then(function(response) {
+                    $scope.sectores = response;
+                });
+                console.log(response);
+        }
+   //     getSectores();
         getPersonas();
     }
 
