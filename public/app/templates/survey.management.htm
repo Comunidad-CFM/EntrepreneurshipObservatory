@@ -146,7 +146,7 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="empresario in empresarios">
-                                <th><input type="checkbox" name="buss" value="true"></th>
+                                <th><input type="checkbox" value="true" ng-model="empresario.state"></th>
                                 <td>{{empresario.cedula}}</td>
                                 <td>{{empresario.nombre}} {{empresario.apellido1}} {{empresario.apellido2}}</td>
                                 <td>{{empresario.email}}</td>
