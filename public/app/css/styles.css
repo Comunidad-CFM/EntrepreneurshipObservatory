@@ -40,13 +40,15 @@ a:link {
 }
 
 textarea {
-    height: 500px;
-    width: 500px;
     resize: none;
 }
 
 .margin {
     margin: 10px 0px 10px 0px;
+}
+
+.margin-top {
+    margin-top: 10px;
 }
 
 .baskerville {
@@ -71,7 +73,7 @@ textarea {
     color: #E74C3C;
 }
 
-.navbar-nav li, select, .cover .icon, .glyphicon, input[type="checkbox"] {
+.navbar-nav li, select, .cover .icon, input[type="checkbox"], .btn {
     cursor: pointer;
 }
 
@@ -80,13 +82,6 @@ textarea {
     width: 350px;
     padding: 40px 40px;
     border: 1px solid #cccccc; 
-}
-
-.btn {
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    cursor: pointer;
 }
 
 /*
@@ -140,25 +135,17 @@ textarea {
 }
 
 .btn-login {
-    background-color: #0066CC;
-    padding: 0px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 14px;
+    font-size: 15px;
     height: 44px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    border: none;
-    -o-transition: all 0.218s;
-    -moz-transition: all 0.218s;
-    -webkit-transition: all 0.218s;
-    transition: all 0.218s;
     margin-top: 20px;
+    letter-spacing: 1px;
 }
 
-.btn-login:hover {
-    background-color: #0685FF;
+.userName {
+    cursor: default;
+}
+.active {
+    background-color: #2196F3 !important;
 }
 
 /* Footer */
@@ -235,10 +222,6 @@ footer {
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-.modal-footer{
-    border: none;
 }
 
 @media only screen and (min-width:1440px){
@@ -335,20 +318,83 @@ footer {
 .fa-toggle-on, .fa-toggle-off {
     font-size: 25px;
 }
-.fa-users {
+.gestion-encuestas-box .fa-users {
     color: #00844A;
     font-size: 22px;
 }
-.glyphicon-trash:hover, .glyphicon-pencil:hover, .glyphicon-tasks:hover, .fa-toggle-on:hover, .fa-toggle-off:hover, .fa-users:hover {
+.glyphicon-trash:hover, .glyphicon-pencil:hover, .glyphicon-tasks:hover, .fa-toggle-on:hover, .fa-toggle-off:hover, .gestion-encuestas-box .fa-users:hover {
     transform: scale(1.2);
 }
 
 
 
 
+.modal-header {
+    background-color: #F6F5F5;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.modal.fade .modal-dialog {
+    -webkit-transform: scale(0.1);
+    -moz-transform: scale(0.1);
+    -ms-transform: scale(0.1);
+    transform: scale(0.1);
+    top: 300px;
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
 
+.modal.fade.in .modal-dialog {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform: translate3d(0, -300px, 0);
+    transform: translate3d(0, -300px, 0);
+    opacity: 1;
+}
 
-
+.btn {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: all 500ms ease;
+    font-weight: 700;
+    padding: 6px 8px 6px 8px;
+}
+.btn-danger {
+    border: 2px solid #D74932;
+    background-color: transparent;
+    color: #D74932;
+}
+.btn-danger:hover {
+    color: white;
+    background-color: #D74932;
+    border: 2px solid #D74932;
+}
+.btn-primary {
+    border: 2px solid #337ab7;
+    background-color: transparent;
+    color: #337ab7;
+}
+.btn-primary:hover {
+    color: white;
+    background-color: #337ab7;
+    border: 2px solid #337ab7;
+}
+.btn-success {
+    border: 2px solid #00844A;
+    background-color: transparent;
+    color: #00844A;
+}
+.btn-success:hover {
+    color: white;
+    background-color: #00844A;
+    border: 2px solid #00844A;
+}
 
 
 

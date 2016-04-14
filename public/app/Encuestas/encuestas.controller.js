@@ -5,7 +5,7 @@
 		.module('observatoryApp')
 		.controller('EncuestasController', EncuestasController);
 
-	function EncuestasController($scope, $timeout, $filter, $cookies, $mdDialog, EncuestasFactory, PreguntasFactory, PersonasFactory) {
+	function EncuestasController($scope, $timeout, $filter, $cookies, $mdDialog, EncuestasFactory, PreguntasFactory, PersonasFactory, AplicacionesFactory) {
 		$scope.descripcion = '';
 		$scope.nueva = false;
 		$scope.registro = false;
@@ -21,6 +21,8 @@
         $scope.asignandoUsuarios = asignandoUsuarios;
         $scope.asignarUsuarios = asignarUsuarios;
         $scope.marcarTodos = marcarTodos;
+        var respaldoPreguntas,
+            respaldoEmpresarios;
 
         $scope.$watch('descripcion', validate);
 
@@ -34,6 +36,7 @@
 
         function mostrarFormulario() {
             $scope.nueva = !$scope.nueva;
+            $scope.descripcion = '';
 
             if($scope.nueva) {
                 $scope.texto = 'Ocultar formulario de agregar nueva encuesta';
@@ -122,16 +125,28 @@
         function armandoEncuesta(id) {
             $scope.armarOk = false;
             $scope.id = id;
-
             $scope.preguntas = {
                 "banco": [],
                 "preguntas": []
             };
-            $scope.changeState = changeState;
 
-            PreguntasFactory.getAll()
+            EncuestasFactory.getQuestions(id)
             .then(function(response) {
-                $scope.preguntas.preguntas = response;
+                respaldoPreguntas = [];
+                $scope.preguntas.banco = response;
+                
+                angular.forEach(response, function(question) {
+                    respaldoPreguntas.push(question);
+                });
+            })
+            .then(function() {
+                PreguntasFactory.getAll()
+                .then(function(response) {
+                    $scope.preguntas.preguntas = response;
+                })
+                .then(function() {
+                    $scope.preguntas = EncuestasFactory.removeQuestions($scope.preguntas);
+                });
             });
         }
 
@@ -142,12 +157,41 @@
             });
         }
 
+        function agregarPreguntas(questions) {
+            if(questions.length) {
+                EncuestasFactory.addQuestionsToSurvey($scope.id, questions)
+                .then(function(response) {
+                    return response;
+                });
+            }
+
+            return 'true';
+        }
+
+        function eliminarPreguntas(questions) {
+            if(questions.length) {
+                EncuestasFactory.deleteQuestionsToSurvey(questions)
+                .then(function(response) {
+                    return response;
+                });
+            }
+
+            return 'true';
+        }
+
         function armar() {
-            console.log('Armando ->',$scope.id);
+            var questionsList = EncuestasFactory.questionsChanged(respaldoPreguntas, $scope.preguntas.banco);
+
+            if(agregarPreguntas(questionsList.agregar) === 'true' && eliminarPreguntas(questionsList.eliminar) === 'true') {
+                $scope.msgArmar = 'La encuesta se ha armado correctamente.';
+                $scope.styleArmar = 'success-box';
+            }
+            else {
+                $scope.msgArmar = 'Ha ocurrido un error al armar la encuesta.';
+                $scope.styleArmar = 'error-box';   
+            }
 
             $scope.armarOk = true;
-            $scope.msgArmar = 'Las preguntas se han agregado a la encuesta correctamente.';
-            $scope.styleArmar = 'success-box';
         }
 
         function getAll() {
@@ -159,63 +203,42 @@
 
         getAll();
 
-        function changeState(encuesta) {
-            var state = changedState(encuesta);
-            
-            if(angular.equals(state,'Banco') && !encuesta.state) {
-                console.log('Pasa al banco la',encuesta.label);
-                encuesta.state = true;
-                // Change in DB
-            }
-            else if(angular.equals(state,'inactivas') && encuesta.state) {
-                console.log('Pasa a las preguntas la',encuesta.label);
-                encuesta.state = false;
-                // Change in DB
-            }
-            else {
-                console.log('Nada por hacer');
-            }
-        }
-
-        function changedState(item) {
-            var response = '';
-
-            angular.forEach($scope.encuestas, function(encuestas, key) {
-                angular.forEach(encuestas, function(encuesta) {
-                    if(angular.equals(encuesta, item)) {
-                        if(key === 'Preguntas')
-                            response = 'Preguntas';
-                        else
-                            response = 'Banco';
-                    }
-                });
-            });
-            
-            return response;
-        }
-
         function asignandoUsuarios(id) {
             $scope.id = id;
 
             PersonasFactory.getBusinessmen()
             .then(function(response) {
-                $scope.empresarios = response;
+                return response;
+            })
+            .then(function(empresarios) {
+                AplicacionesFactory.getForSurvey($scope.id)
+                .then(function(response) {
+                    respaldoEmpresarios = [];
+
+                    angular.forEach(response, function(entrepreneur) {
+                        respaldoEmpresarios.push(entrepreneur);
+                    });
+
+                    return response;
+                })
+                .then(function(entrepreneurs) {
+                    $scope.empresarios = EncuestasFactory.removeEntrepreneur(entrepreneurs, empresarios);
+                });
             });
         }
 
         function asignarUsuarios() {
             console.log('Asignando usuarios a la encuesta ', $scope.id);
+            console.log('Nueva',$scope.empresarios);
+            console.log('Vieja',respaldoEmpresarios);
         }
 
         function marcarTodos() {
-            var checkboxes = document.getElementsByName('buss'),
-                i = 0,
-                length = checkboxes.length,
-                state = document.getElementById('bussMaster').checked;
+            var state = document.getElementById('bussMaster').checked;
 
-            for( ; i < length; i++) {
-                checkboxes[i].checked = state;
-            }
+            angular.forEach($scope.empresarios, function(empresario) {
+                empresario.state = state;
+            });
         }
 	}
 

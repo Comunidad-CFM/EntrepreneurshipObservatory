@@ -16,7 +16,9 @@
         $scope.getPersonas = getPersonas;
         $scope.editandoPersona = editandoPersona;
         $scope.validateEmail = validateEmail;
-
+        $scope.validateID = validateID;
+        var currentEmail = "";
+        var currentCedula = "";     
 
         function setData() {
             $scope.persona = {
@@ -32,26 +34,28 @@
         }
         setData();
 
-        $scope.$watch('passConf', validatePass);
-        $scope.$watch('passConf', validate);
-        $scope.$watch('pass', validate);
-        $scope.$watch('nombre', validate);
-        $scope.$watch('apellido1', validate);
-        $scope.$watch('apellido2', validate);
-        $scope.$watch('email', validate);
-        $scope.$watch('cedula', validate);
+        $scope.$watch('persona.passConf', validatePass);
+        $scope.$watch('persona.passConf', validate);
+        $scope.$watch('persona.pass', validate);
+        $scope.$watch('persona.nombre', validate);
+        $scope.$watch('persona.apellido1', validate);
+        $scope.$watch('persona.apellido2', validate);
+        $scope.$watch('persona.email', validate);
+        $scope.$watch('persona.cedula', validate);
 
         function validatePass() {
-            if ($scope.pass !== $scope.passConf) {
+            $scope.errorPass = false;
+            if ($scope.persona.pass !== $scope.persona.passConf) {
                 $scope.errorPass = true;
             } else {
                 $scope.errorPass = false;
             }
         }
 
-        function validate() {
-            try {
-                if (!$scope.pass.length || !$scope.nombre.length || !$scope.apellido1.length || !$scope.apellido2.length || !$scope.cedula.length || !$scope.email.length) {
+        function validate() {                        
+            try {   
+                $scope.emptyData = false;                        
+                if (!$scope.persona.pass.length || !$scope.persona.nombre.length || !$scope.persona.apellido1.length || !$scope.persona.apellido2.length || !$scope.persona.cedula.length || !$scope.persona.email.length) {                    
                     $scope.emptyData = true;
                 } else {
                     $scope.emptyData = false;
@@ -88,17 +92,42 @@
                     });
             }
         }
-
+    
         function editandoPersona(persona) {
             $scope.persona = persona;
+            $scope.nueva = false;
+            currentEmail = $scope.persona.email;     
+            currentCedula = $scope.persona.cedula;            
             $scope.editar = false;
         }
 
+//validar cedula existente
+        function validateID() {  
+            $scope.coincidenciaCedula = false;
+             if(isNaN($scope.persona.cedula)) {
+                $scope.coincidenciaCedula = true;
+                $scope.msgCedula = "El número de cédula tiene un formato incorrecto, debe ir sin guiones o espacios"
+            }
+            else if($scope.persona.cedula != currentCedula){
+                $scope.msgCedula = "";                                            
+                PersonasFactory.ifExist($scope.persona.cedula,"cedula")
+                    .then(function(response) {
+                        if (response !== undefined) {
+                            $scope.coincidenciaCedula = true;
+                            $scope.msgCedula = "El número de cédula ya está registrado";
+                        }
+                        else{
+                            $scope.coincidenciaCedula = false;
+                        }
+                    })
+            }
+        }
 
         //validar email existente
-        function validateEmail() {
+        function validateEmail() {   
             $scope.coincidenciaCorreo = false;
-            PersonasFactory.ifExist($scope.persona.email)
+            if($scope.persona.email != currentEmail){                     
+            PersonasFactory.ifExist($scope.persona.email,"email")
                 .then(function(response) {
                     if (response !== undefined) {
                         $scope.coincidenciaCorreo = true;
@@ -107,11 +136,15 @@
                         $scope.coincidenciaCorreo = false;
                     }
                 })
+            }
         }
+
+        
+        
 
         function mostrarFormulario() {            
             $scope.nueva = !$scope.nueva;
-
+            setData();
             if ($scope.nueva) {
                 $scope.texto = 'Ocultar formulario de agregar nueva persona';
             } else {
@@ -119,8 +152,7 @@
             }
         }
 
-        function modificar(persona) {  
-            document.getElementById('showAgregarPersonas').click();
+        function modificar(persona) {              
             PersonasFactory.edit(persona)
                 .then(function(response) {
                     if (response === 'true') {
