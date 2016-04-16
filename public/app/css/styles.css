@@ -3,6 +3,29 @@ body {
     font-size: 16px;
 	text-align: justify;
 }
+.navbar-default {
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+    background-color: #AF3030;
+    border: 0;
+    border-radius: 0;
+    color: white;
+}
+.navbar-default .navbar-brand {
+    color: #FFF;
+    cursor: default;
+}
+.navbar-default .navbar-brand:hover {
+    color: #000;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #FFF;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #555;
+    background-color: #e7e7e7;
+}
+
 .cover{
     position: relative;
     background: url(../imagenes/portada2.jpg);
@@ -75,6 +98,9 @@ textarea {
 
 .navbar-nav li, select, .cover .icon, input[type="checkbox"], .btn {
     cursor: pointer;
+}
+.panel-body ul li {
+    cursor: move;
 }
 
 /* Login */
