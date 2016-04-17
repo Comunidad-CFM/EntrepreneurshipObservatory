@@ -1,5 +1,7 @@
 body {
-    font-family: 'Lato', sans-serif;
+    /*font-family: 'Lato', sans-serif;*/
+    /*font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;*/
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
 	text-align: justify;
 }
@@ -48,7 +50,7 @@ body {
 .login-box {
     padding: 50px 0px 80px 0px;
     background-color: #2196F3;
-    height: 90vh;
+    height: 93vh;
 }
 .login-box label {
     color: white;
@@ -82,21 +84,17 @@ textarea {
     margin-top: 10px;
 }
 
-.baskerville {
-    font-family: 'Libre Baskerville', serif;
-}
-.pacifico {
-    font-family: 'Pacifico', cursive;
-}
 .kaushan {
     font-family: 'Kaushan Script', cursive;
 }
-.title {
-    font-size: 25px;
+.title-1 {
+    font-size: 26px;
     font-weight: normal;
 }
-.subtitle {
-    font: bold;
+.title-2 {
+    font-size: 20px;
+}
+.title-3 {
     font-size: 18px;
 }
 
@@ -111,11 +109,39 @@ textarea {
         text-shadow: 4px 4px 5px rgba(0,0,0,0.5);
         width: 100%;
     }
+    table {
+        overflow-x: auto;
+        display: block;
+    }
 }
 @media screen and (min-width: 360px) {
     .title {
         font-size: 22px;
         font-weight: normal;
+    }
+    table {
+        overflow-x: auto;
+        display: block;
+    }
+}
+@media screen and (min-width: 480px) {
+    .title {
+        font-size: 22px;
+        font-weight: normal;
+    }
+    table {
+        overflow-x: auto;
+        display: block;
+    }
+}
+@media screen and (min-width: 640px) {
+    .title {
+        font-size: 20px;
+        font-weight: normal;
+    }
+    table {
+        overflow-x: auto;
+        display: table;
     }
 }
 @media screen and (min-width: 768px) {
@@ -127,8 +153,38 @@ textarea {
         font-size: 15px;
     }
     footer {
-        font-size: 25px;
+        font-size: 20px;
     }
+    table {
+        overflow-x: auto;
+        display: table;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .title {
+        font-size: 25px;
+        font-weight: normal;
+    }
+    footer {
+        font-size: 16px;
+    }
+    table {
+        overflow-x: auto;
+        display: table;
+    }
+}
+@media only screen and (min-width:1440px){
+    .login-box {
+        height: 93vh;
+        padding: 150px 0px 150px 0px;
+    }
+
+    footer {
+        height: 7vh;
+    }
+}
+@media only screen and (min-width:2000px){
+    
 }
 
 .red {
@@ -176,6 +232,7 @@ textarea {
     direction: ltr;
     height: 44px;
     font-size: 16px;
+    text-align: center;
 }
 
 .form-login input[type=email],
@@ -215,12 +272,12 @@ textarea {
 
 /* Footer */
 footer {
-    height: 10vh;
+    height: 7vh;
     width: 100%;
     clear: both;
     color: #666;
     background: #141419;
-    line-height: 40px;
+    line-height: 20px;
     overflow: hidden;
     padding: 10px 0px 10px 0px;
 }
@@ -276,9 +333,8 @@ footer {
     text-align: center;
 }
 
-/* Box navs */  
-.nueva-persona-box, .gestion-personas-box,
-.nueva-encuesta-box, .gestion-encuestas-box {
+/* Box navs */
+.gestion-box {
     background-color: #FAFAFA;
     border: 1px solid #E5E5E5;
     padding: 20px;
@@ -288,19 +344,8 @@ footer {
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
-
-@media only screen and (min-width:1440px){
-    .login-box {
-        height: 93vh;
-        padding: 150px 0px 150px 0px;
-    }
-
-    footer {
-        height: 7vh;
-    }
-}
-@media only screen and (min-width:2000px){
-    
+.gestion-box .container {
+    width: auto;
 }
 
 .float-right {
@@ -338,19 +383,14 @@ footer {
 
 /* tarjetas de sesiones */
 .card-box {
-    padding: 0 5px 0 5px;
+    padding: 0 7px 0 7px;
 }
 .card-box .inner {
     background-color: #FAFAFA;
     border: 1px solid #E5E5E5;
     padding: 15px;
     border-radius: 5px;
-    margin: 5px 0px 5px 0px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-}
-.card-box .inner:hover {
+    margin: 7px 0px 7px 0px;
     -moz-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
@@ -383,11 +423,11 @@ footer {
 .fa-toggle-on, .fa-toggle-off {
     font-size: 25px;
 }
-.gestion-encuestas-box .fa-users {
+.gestion-box .fa-users {
     color: #00844A;
     font-size: 22px;
 }
-.glyphicon-trash:hover, .glyphicon-pencil:hover, .glyphicon-tasks:hover, .fa-toggle-on:hover, .fa-toggle-off:hover, .gestion-encuestas-box .fa-users:hover {
+.glyphicon-trash:hover, .glyphicon-pencil:hover, .glyphicon-tasks:hover, .fa-toggle-on:hover, .fa-toggle-off:hover, .gestion-box .fa-users:hover {
     transform: scale(1.2);
 }
 
@@ -441,14 +481,14 @@ footer {
     border: 2px solid #D74932;
 }
 .btn-primary {
-    border: 2px solid #337ab7;
+    border: 2px solid #155685;
     background-color: transparent;
-    color: #337ab7;
+    color: #155685;
 }
 .btn-primary:hover {
     color: white;
-    background-color: #337ab7;
-    border: 2px solid #337ab7;
+    background-color: #155685;
+    border: 2px solid #155685;
 }
 .btn-success {
     border: 2px solid #00844A;

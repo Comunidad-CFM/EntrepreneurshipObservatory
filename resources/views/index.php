@@ -8,9 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="<?= asset('node_modules/font-awesome/css/font-awesome.min.css') ?>">
 	<link rel="stylesheet" type="text/css" href="<?= asset('node_modules/angular-material/angular-material.min.css') ?>">
 	<link rel="stylesheet" type="text/css" href="<?= asset('app/css/styles.css') ?>">
-	<link rel="stylesheet" type="text/css" href='<?= asset('app/css/baskerville.css') ?>'>
-	<link rel="stylesheet" type="text/css" href='<?= asset('app/css/lato.css') ?>'>
-	<link rel="stylesheet" type="text/css" href='<?= asset('app/css/pacifico.css') ?>'>
+	<link rel="stylesheet" type="text/css" href='<?= asset('app/css/roboto.css') ?>'>
 	<link rel="stylesheet" type="text/css" href='<?= asset('app/css/kaushan.css') ?>'>
 </head>
 <body>

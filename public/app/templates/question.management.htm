@@ -1,12 +1,12 @@
 <div ng-controller="PreguntaController">
     <div class="text-center margin">
-        <label class="title kaushan">Gestión de preguntas</label>
+        <label class="title-1 kaushan">Gestión de preguntas</label>
     </div>
-    <div class="nueva-persona-box" ng-show="nueva">
+    <div class="gestion-box" ng-show="nueva">
         <div>
-            <label class="subtitle baskerville">Agregar pregunta</label>
+            <label class="title-2">Agregar pregunta</label>
         </div>
-        <form class="margin">
+        <form class="container margin">
             <div class="col-md-offset-2 col-md-8">
                 <div class="col-md-12">
                     <p>
@@ -40,9 +40,9 @@
             </div>
         </form>
     </div>
-    <div class="gestion-personas-box">
+    <div class="gestion-box">
         <div>
-            <label class="subtitle baskerville">Preguntas</label>
+            <label class="title-2">Preguntas</label>
             <button class="btn btn-default margin float-right" ng-click="mostrarFormulario();" title="{{texto}}"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
         </div>
         <table class="table margin" ng-show="preguntas">
