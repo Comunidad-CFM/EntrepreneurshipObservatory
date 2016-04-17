@@ -6,7 +6,7 @@
         <div>
             <label class="subtitle baskerville">Agregar nueva encuesta</label>
         </div>
-        <form class="container margin">
+        <form class="margin">
             <div class="col-md-offset-2 col-md-8">
                 <div class="col-md-12">
                     <p>
@@ -30,7 +30,7 @@
             <label class="subtitle baskerville">Encuestas</label>
             <button class="btn btn-default margin float-right" ng-click="mostrarFormulario();" title="{{texto}}"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
             <div class="col-md-12 col-sm-12 margin" ng-show="encuestas">
-                <div class="col-md-4 col-sm-4 card-box" ng-repeat="encuesta in encuestas">
+                <div class="col-md-4 col-sm-6 card-box" ng-repeat="encuesta in encuestas">
                     <div class="inner">
                         <div class="title-card">
                             <label class="subtitle">{{encuesta.descripcion}}</label>

@@ -10,6 +10,7 @@ body {
     border: 0;
     border-radius: 0;
     color: white;
+    opacity: 0.95;
 }
 .navbar-default .navbar-brand {
     color: #FFF;
@@ -24,6 +25,13 @@ body {
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
     color: #555;
     background-color: #e7e7e7;
+}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: #000;
+    background-color: transparent;
+}
+.content {
+    padding-top: 70px;
 }
 
 .cover{
@@ -90,6 +98,37 @@ textarea {
 .subtitle {
     font: bold;
     font-size: 18px;
+}
+
+@media screen and (min-width: 240px) {
+    .title {
+        font-size: 20px;
+        font-weight: normal;
+    }
+    .login-box label {
+        color: white;
+        font-size: 40px;
+        text-shadow: 4px 4px 5px rgba(0,0,0,0.5);
+        width: 100%;
+    }
+}
+@media screen and (min-width: 360px) {
+    .title {
+        font-size: 22px;
+        font-weight: normal;
+    }
+}
+@media screen and (min-width: 768px) {
+    .title {
+        font-size: 18px;
+        font-weight: normal;
+    }
+    .navbar-default .navbar-nav>li>a {
+        font-size: 15px;
+    }
+    footer {
+        font-size: 25px;
+    }
 }
 
 .red {

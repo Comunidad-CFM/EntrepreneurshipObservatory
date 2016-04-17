@@ -29,6 +29,7 @@
 
 	<!-- Application Scripts -->
 	<script type="text/javascript" src="<?= asset('app/js/app.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/js/pagination.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Login/login.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Admin/admin.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Login/login.factory.js') ?>"></script>
