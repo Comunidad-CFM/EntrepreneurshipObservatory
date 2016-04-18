@@ -6,7 +6,7 @@
 		.controller('LoginController', LoginController);
 
 	function LoginController($scope, LoginFactory, Auth) {
-		$scope.email = 'fauri@gmail.com';
+		$scope.email = 'cristian@gmail.com';
 		$scope.contrasena = '12345';
 		$scope.error = false;
 		$scope.logIn = logIn;

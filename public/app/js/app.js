@@ -22,6 +22,8 @@
             
             if(user.tipo === 'A')
                $location.path('/admin');
+            else if(user.tipo === 'B')
+                $location.path('/empresario');
         }
 
         function logOut() {
@@ -30,7 +32,7 @@
         }
 
         function checkStatus() {
-            var rutasPrivadas = ['/','/admin'];
+            var rutasPrivadas = ['/','/admin','/empresario'];
             
             if(this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) == "undefined") {
                 $location.path("/");
@@ -38,6 +40,10 @@
             else if(this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) != "undefined") {
                 if($cookies.getObject('session').tipo === 'A')
 	               $location.path('/admin');
+            }
+            else if(this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) != "undefined") {
+                if($cookies.getObject('session').tipo === 'B')
+                    $location.path('/empresario');
             }
         }
 
@@ -85,6 +91,10 @@
             .when('/admin', {
                 templateUrl: './app/Admin/admin.view.html',
                 controller: 'AdminController'
+            })
+            .when('/empresario', {
+                templateUrl: './app/Empresario/empresario.view.html',
+                controller: 'EmpresarioController'
             })
             .otherwise('/');
 	}
