@@ -58,13 +58,11 @@
             }
             else if (this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) !== "undefined") {
                 if($cookies.getObject('session').tipo === 'A') {
-                    console.log('A');
                     if ($location.path() === '/admin' || $location.path() === '/') {
                         $location.path('admin');
                     }
                 }
                 else if($cookies.getObject('session').tipo === 'B') {
-                    console.log('B');
                     if ($location.path() === '/empresario' || $location.path() === '/') {
                         $location.path('empresario');
                     }

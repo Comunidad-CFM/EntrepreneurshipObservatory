@@ -75,8 +75,19 @@
                         <option value="E">Encuestador</option>
                     </select>
                 </p>
-            </div>
+            </div>        
         </div>
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <p>
+                    <label>Sectores</label>
+                    <div class="col-md-6" ng-repeat="sector in sectores">
+                        <md-checkbox class="md-primary" ng-true-value="'sector.id'" ng-false-value="''">{{sector.nombre}}</md-checkbox>
+                    </div>
+                </p>
+            </div>
+        </div>          
+
         <div class="col-md-12">
             <div class="col-md-12">
                 <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>
