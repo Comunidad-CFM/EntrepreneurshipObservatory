@@ -30,11 +30,13 @@
 	<script type="text/javascript" src="<?= asset('app/js/pagination.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Login/login.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Admin/admin.controller.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Empresario/empresario.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Login/login.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Personas/personas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Personas/personas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Encuestas/encuestas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Encuestas/encuestas.factory.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Encuestas/contestar-encuestas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Preguntas/preguntas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Preguntas/preguntas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Indicadores/indicadores.factory.js') ?>"></script>

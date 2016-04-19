@@ -23,6 +23,9 @@
             if (user.tipo === 'A') {
                 $location.path('admin');
             }
+            else if (user.tipo === 'B') {
+                $location.path('empresario');
+            }
         }
 
         function logOut() {
@@ -31,7 +34,7 @@
         }
 
         function checkStatus() {
-            var rutasPrivadas = ['/','/admin', '/admin/encuestas', '/admin/personas', '/admin/preguntas'];
+            var rutasPrivadas = ['/','/admin', '/admin/encuestas', '/admin/personas', '/admin/preguntas', '/empresario', '/empresario/contestar'];
             
             if (this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) === "undefined") {
                 $location.path('login');
@@ -40,6 +43,11 @@
                 if($cookies.getObject('session').tipo === 'A') {
                     if ($location.path() === '/admin' || $location.path() === '/') {
                         $location.path('admin');
+                    }
+                }
+                else if($cookies.getObject('session').tipo === 'B') {
+                    if ($location.path() === '/empresario' || $location.path() === '/') {
+                        $location.path('empresario');
                     }
                 }
             }
@@ -113,6 +121,16 @@
                 url: '/preguntas',
                 templateUrl: './app/Preguntas/preguntas.html',
                 controller: 'PreguntasController'
+            })
+            .state('empresario', {
+                url: '/empresario',
+                templateUrl: './app/Empresario/empresario.html',
+                controller: 'EmpresarioController'
+            })
+            .state('empresario.contestar', {
+                url: '/contestar',
+                templateUrl: './app/Encuestas/contestar-encuestas.html',
+                controller: 'ContestarEncuestasController'
             });
     }
 
