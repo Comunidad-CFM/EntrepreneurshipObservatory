@@ -39,7 +39,7 @@
             else if (this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) !== "undefined") {
                 if($cookies.getObject('session').tipo === 'A') {
                     if ($location.path() === '/admin' || $location.path() === '/') {
-                        $location.path('/admin');
+                        $location.path('admin');
                     }
                 }
             }
