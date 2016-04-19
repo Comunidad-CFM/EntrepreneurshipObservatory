@@ -6,7 +6,6 @@
         .controller('PreguntaController', PreguntaController);
 
     function PreguntaController($scope, $timeout, $http, PreguntasFactory, IndicadorFactory, $mdDialog) {
-
         $scope.store = store;
         var indicadores = '';
         $scope.indicadores = indicadores;
@@ -23,12 +22,11 @@
         function setData() {
             $scope.enunciado = '';
             $scope.tipo = 'false';
-            $scope.indicador_id = '1';
+            $scope.indicador_id = 1;
         }
         setData();
 
         function store() {
-
             var data = {
                 enunciado: $scope.enunciado,
                 tipo: $scope.tipo,
@@ -37,7 +35,6 @@
 
             PreguntasFactory.store(data)
                 .then(function(response) {
-
                     if(response === 'true') {
                         $scope.registro = true;
                         $scope.msgRegistro = 'La pregunta se ha agregado correctamente.';
@@ -61,10 +58,14 @@
         function editandoPregunta(pregunta) {
             $scope.id = pregunta.id;
             $scope.enunciado = pregunta.enunciado;
-            if (pregunta.tipo === 't')
+            $scope.editar = false;            
+            if (pregunta.tipo === 't') {
                 $scope.tipo = "true";
-            else
+            }
+            else {
                 $scope.tipo = "false";
+            }
+
             $scope.indicador_id = pregunta.indicador_id.toString();
         }
 
@@ -80,14 +81,13 @@
         function getIndicador(nombre){
             console.log(typeof(nombre));
             for (var i=0; i<$scope.indicadores.length; i++){
-                if ($scope.indicadores[i].nombre === nombre)
+                if ($scope.indicadores[i].nombre === nombre) {
                     return i;
+                }
             }
-
         }
 
         function modificar() {
-            
             var data = {
                 id: $scope.id,
                 enunciado: $scope.enunciado,
@@ -98,24 +98,21 @@
             PreguntasFactory.edit(data)
                 .then(function(response) {
                     if(response === 'true') {
-                        //getAll();
-                        $scope.editar = true;
                         $scope.msgEditar = 'La pregunta se ha modificado correctamente.';
                         $scope.styleEditar = 'success-box';
+                        getPreguntas();
                     }
                     else {
-                        $scope.editar = true;
                         $scope.msgEditar = 'Ha ocurrido un error al modificar la pregunta.';
                         $scope.styleEditar = 'error-box';
                     }
+
+                    $scope.editar = true;
                 });
         }
 
         //Elimina pregunta
         function eliminar(ev, id) {
-
-
-            //var isConfirmDelete = confirm();
             var confirm = $mdDialog.confirm('?')
                 .title('¿Esta seguro que desea eliminar esta pregunta?')
                 .textContent('La pregunta se eliminará de todo el sistema.')
@@ -131,21 +128,6 @@
                             getPreguntas();
                         });
                 }, function() {});
-            //
-            // if (isConfirmDelete) {
-            //     $http({
-            //         method: 'DELETE',
-            //         url: '/api/preguntas/' + id
-            //     }).
-            //     success(function(data) {
-            //         console.log(data);
-            //         alert('Se ha eliminado la pregunta');
-            //     }).
-            //     error(function(data) {
-            //         console.log(data);
-            //         alert('No se puede eliminar');
-            //     });
-            // }
         }
 
         function mostrarFormulario() {
@@ -179,15 +161,16 @@
 
         getPreguntas();
 
-        function setNombreIndicador()
-        {
+        function setNombreIndicador() {
             if ($scope.preguntas.length>0){
                 for (var i=0; i<$scope.preguntas.length; i++){
-                    $scope.preguntas[i].indicador_id = $scope.indicadores[$scope.preguntas[i].indicador_id].nombre;
-                    if ($scope.preguntas[i].tipo === 't')
+                    $scope.preguntas[i].indicador_id = $scope.indicadores[$scope.preguntas[i].indicador_id - 1].nombre;
+                    if ($scope.preguntas[i].tipo === 't') {
                         $scope.preguntas[i].tipo = "Abierta";
-                    else
+                    }
+                    else {
                         $scope.preguntas[i].tipo = "Cerrada";
+                    }
                 }
             }
         }
