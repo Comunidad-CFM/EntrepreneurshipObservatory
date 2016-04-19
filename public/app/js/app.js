@@ -33,15 +33,14 @@
         function checkStatus() {
             var rutasPrivadas = ['/','/admin', '/admin/encuestas', '/admin/personas', '/admin/preguntas'];
             
-            if (this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) == "undefined") {
+            if (this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) === "undefined") {
                 $location.path('login');
             }
-            else if (this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) != "undefined") {
-                if ($cookies.getObject('session').tipo === 'A' && ($location.path() === '/admin' || $location.path() === '/')) {
-                    $location.path('/admin');
-                }
-                else if ($cookies.getObject('session').tipo === 'A' && $location.path() === '/admin/personas') {
-                    $location.path('/admin/personas');
+            else if (this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) !== "undefined") {
+                if($cookies.getObject('session').tipo === 'A') {
+                    if ($location.path() === '/admin' || $location.path() === '/') {
+                        $location.path('/admin');
+                    }
                 }
             }
         }
@@ -116,6 +115,7 @@
                 controller: 'PreguntasController'
             });
     }
+
     function run($rootScope, Auth) {
         $rootScope.$on('$stateChangeSuccess', function() {
             Auth.checkStatus();
