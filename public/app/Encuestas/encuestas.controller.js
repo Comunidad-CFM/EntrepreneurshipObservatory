@@ -28,6 +28,7 @@
             $scope.formEncuesta.$setUntouched();
             $scope.formEditarEncuesta.$setUntouched();
         }
+        
         function mostrarFormulario() {
             cleanForm();
             $scope.nueva = !$scope.nueva;
