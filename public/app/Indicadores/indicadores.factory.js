@@ -3,9 +3,9 @@
 
     angular
         .module('observatoryApp')
-        .factory('IndicadorFactory', IndicadorFactory);
+        .factory('IndicadoresFactory', IndicadoresFactory);
 
-    function IndicadorFactory($http, $q) {
+    function IndicadoresFactory($http, $q) {
         var factory = {
             getAll: getAll
         };

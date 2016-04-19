@@ -3,9 +3,9 @@
 
     angular
         .module('observatoryApp')
-        .controller('PreguntaController', PreguntaController);
+        .controller('PreguntasController', PreguntasController);
 
-    function PreguntaController($scope, $timeout, $http, PreguntasFactory, IndicadorFactory, $mdDialog) {
+    function PreguntasController($scope, $timeout, $http, PreguntasFactory, IndicadoresFactory, $mdDialog) {
         $scope.store = store;
         var indicadores = '';
         $scope.indicadores = indicadores;
@@ -142,7 +142,7 @@
         }
 
         function getIndicadores() {
-            IndicadorFactory.getAll()
+            IndicadoresFactory.getAll()
                 .then(function(response) {
                     $scope.indicadores = response;
                     indicadores = response;

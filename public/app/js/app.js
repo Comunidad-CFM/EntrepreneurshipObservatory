@@ -9,7 +9,7 @@
 		.config(config)
         .run(run);
 
-    function Auth($cookies, $state) {
+    function Auth($cookies, $location) {
 	    return {
 	        logIn: logIn,
 	        logOut: logOut,
@@ -21,24 +21,27 @@
             $cookies.putObject('session', user);
             
             if (user.tipo === 'A') {
-                $state.go('admin');
+                $location.path('admin');
             }
         }
 
         function logOut() {
             $cookies.remove('session');
-            $state.go('login');
+            $location.path('login');
         }
 
         function checkStatus() {
-            var rutasPrivadas = ['login','admin'];
+            var rutasPrivadas = ['/','/admin', '/admin/encuestas', '/admin/personas', '/admin/preguntas'];
             
-            if (this.inArray($state.go(), rutasPrivadas) && typeof($cookies.get('session')) == "undefined") {
-                $state.go('login');
+            if (this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) == "undefined") {
+                $location.path('login');
             }
-            else if (this.inArray($state.go(), rutasPrivadas) && typeof($cookies.get('session')) != "undefined") {
-                if ($cookies.getObject('session').tipo === 'A') {
-                    $state.go('admin');
+            else if (this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) != "undefined") {
+                if ($cookies.getObject('session').tipo === 'A' && ($location.path() === '/admin' || $location.path() === '/')) {
+                    $location.path('/admin');
+                }
+                else if ($cookies.getObject('session').tipo === 'A' && $location.path() === '/admin/personas') {
+                    $location.path('/admin/personas');
                 }
             }
         }
@@ -87,19 +90,34 @@
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
-            .state('admin', {
-                url: '/admin',
-                templateUrl: './app/Admin/admin.view.html',
-                controller: 'AdminController'
-            })
             .state('login', {
                 url: '/',
-                templateUrl: './app/Login/login.view.html',
+                templateUrl: './app/Login/login.html',
                 controller: 'LoginController'
             })
+            .state('admin', {
+                url: '/admin',
+                templateUrl: './app/Admin/admin.html',
+                controller: 'AdminController'
+            })
+            .state('admin.encuestas', {
+                url: '/encuestas',
+                templateUrl: './app/Encuestas/encuestas.html',
+                controller: 'EncuestasController'
+            })
+            .state('admin.personas', {
+                url: '/personas',
+                templateUrl: './app/Personas/personas.html',
+                controller: 'PersonasController'
+            })
+            .state('admin.preguntas', {
+                url: '/preguntas',
+                templateUrl: './app/Preguntas/preguntas.html',
+                controller: 'PreguntasController'
+            });
     }
     function run($rootScope, Auth) {
-        $rootScope.$on('stateChangeSuccess', function() {
+        $rootScope.$on('$stateChangeSuccess', function() {
             Auth.checkStatus();
         });
     }
