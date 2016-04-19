@@ -1,6 +1,4 @@
 body {
-    /*font-family: 'Lato', sans-serif;*/
-    /*font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;*/
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
 	text-align: justify;
@@ -21,7 +19,7 @@ body {
 .navbar-default .navbar-brand:hover {
     color: #000;
 }
-.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+.navbar-default .navbar-nav>li>a {
     color: #FFF;
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
