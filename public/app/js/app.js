@@ -2,14 +2,14 @@
 	'use strict';
 
 	angular
-		.module('observatoryApp', ['ngCookies', 'ngMaterial', 'ngRoute', 'dndLists'])
+		.module('observatoryApp', ['ngCookies', 'ngMaterial', 'ui.router', 'dndLists'])
 		.factory('Auth', Auth)
         .filter('user', user)
         .filter('estado', estado)
 		.config(config)
         .run(run);
 
-    function Auth($cookies, $location) {
+    function Auth($cookies, $state) {
 	    return {
 	        logIn: logIn,
 	        logOut: logOut,
@@ -20,31 +20,33 @@
 	    function logIn(user) {
             $cookies.putObject('session', user);
             
-            if(user.tipo === 'A')
-               $location.path('/admin');
+            if (user.tipo === 'A') {
+                $state.go('admin');
+            }
         }
 
         function logOut() {
             $cookies.remove('session');
-			$location.path('/');
+            $state.go('login');
         }
 
         function checkStatus() {
-            var rutasPrivadas = ['/','/admin'];
+            var rutasPrivadas = ['login','admin'];
             
-            if(this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) == "undefined") {
-                $location.path("/");
+            if (this.inArray($state.go(), rutasPrivadas) && typeof($cookies.get('session')) == "undefined") {
+                $state.go('login');
             }
-            else if(this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) != "undefined") {
-                if($cookies.getObject('session').tipo === 'A')
-	               $location.path('/admin');
+            else if (this.inArray($state.go(), rutasPrivadas) && typeof($cookies.get('session')) != "undefined") {
+                if ($cookies.getObject('session').tipo === 'A') {
+                    $state.go('admin');
+                }
             }
         }
 
         function inArray(needle, haystack) {
             var key = '';
-            for(key in haystack) {
-                if(haystack[key] == needle) {
+            for (key in haystack) {
+                if (haystack[key] == needle) {
                     return true;
                 }
             }
@@ -54,12 +56,15 @@
 	
     function user() {
         var filter = function(usuario) {
-            if(usuario === 'A')
+            if (usuario === 'A') {
                 return 'Administrador';
-            else if(usuario === 'B')
+            }
+            else if (usuario === 'B') {
                 return 'Empresario';
-            else
+            }
+            else {
                 return 'Encuestador';
+            }
         }
 
         return filter;
@@ -67,30 +72,34 @@
 
     function estado() {
         var filter = function(estado) {
-            if(estado === 0)
+            if (estado === 0) {
                 return 'inactiva';
-            else
+            }
+            else {
                 return 'activa';
+            }
         }
 
         return filter;
     }
 
-	function config($routeProvider) {
-        $routeProvider
-            .when('/', {
-                templateUrl: './app/Login/login.view.html',
-                controller: 'LoginController'
-            })
-            .when('/admin', {
+    function config($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/');
+
+        $stateProvider
+            .state('admin', {
+                url: '/admin',
                 templateUrl: './app/Admin/admin.view.html',
                 controller: 'AdminController'
             })
-            .otherwise('/');
-	}
-
+            .state('login', {
+                url: '/',
+                templateUrl: './app/Login/login.view.html',
+                controller: 'LoginController'
+            })
+    }
     function run($rootScope, Auth) {
-        $rootScope.$on('$routeChangeStart', function() {
+        $rootScope.$on('stateChangeSuccess', function() {
             Auth.checkStatus();
         });
     }

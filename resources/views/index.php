@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href='<?= asset('app/css/kaushan.css') ?>'>
 </head>
 <body>
-	<div ng-view></div>
+	<div ui-view></div>
 
 	<!-- Application Dependencies -->
 	<script type="text/javascript" src="<?= asset('node_modules/angular/angular.min.js') ?>"></script>
@@ -20,7 +20,7 @@
 	<script type="text/javascript" src="<?= asset('node_modules/angular-aria/angular-aria.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/angular-messages/angular-messages.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/jquery/dist/jquery.min.js') ?>"></script>
-	<script type="text/javascript" src="<?= asset('node_modules/angular-route/angular-route.min.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('node_modules/angular-ui-router/release/angular-ui-router.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/angular-cookies/angular-cookies.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/angular-material/angular-material.min.js') ?>"></script>
