@@ -5,7 +5,7 @@
         .module('observatoryApp')
         .controller('PersonasController', PersonasController);
 
-    function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog) {
+    function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog, SectoresFactory) {
         $scope.nueva = false;
         $scope.texto = 'Mostrar formulario de agregar nueva persona';
         $scope.registro = false;
@@ -198,7 +198,31 @@
                 });
         }
 
-        getPersonas();
+        function getSectores() {
+            SectoresFactory.getAll()
+                .then(function(response) {
+                    $scope.sectores = response;                       
+                });               
+        }
+
+        /*function getRegiones() {
+            RegionesFactory.getAll()
+                .then(function(response) {
+                    $scope.regiones = response;                       
+                    console.log($scope.regiones);
+                });               
+        }
+
+        function getTerritorios() {
+            TerritoriosFactory.getAll()
+                .then(function(response) {
+                    $scope.territorios = response;                       
+                    console.log($scope.territorios);
+                });               
+        }*/
+
+        getSectores();
+        getPersonas();        
     }
 
 })();
