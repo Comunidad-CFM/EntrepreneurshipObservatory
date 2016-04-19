@@ -5,7 +5,7 @@
         .module('observatoryApp')
         .controller('PersonasController', PersonasController);
 
-    function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog) {
+    function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog, SectoresFactory) {
         $scope.nueva = false;
         $scope.texto = 'Mostrar formulario de agregar nueva persona';
         $scope.registro = false;
@@ -201,11 +201,14 @@
         function getSectores() {
             SectoresFactory.getAll()
                 .then(function(response) {
-                    $scope.sectores = response;
-                });
-                console.log($scope.sectores);
+                    $scope.sectores = response;                    
+                    return response
+                })
+                .then(function (response) {
+                    console.log($scope.sectores);     
+                });                
         }
-
+        getSectores();
         getPersonas();
     }
 

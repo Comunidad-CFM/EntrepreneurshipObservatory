@@ -32,6 +32,7 @@
 	<script type="text/javascript" src="<?= asset('app/Login/login.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Admin/admin.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Login/login.factory.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Sectores/sectores.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Personas/personas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Personas/personas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Encuestas/encuestas.controller.js') ?>"></script>
@@ -39,7 +40,7 @@
 	<script type="text/javascript" src="<?= asset('app/Preguntas/pregunta.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Preguntas/preguntas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Indicadores/indicador.factory.js') ?>"></script>
-	<script type="text/javascript" src="<?= asset('app/Aplicaciones/aplicaciones.factory.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Aplicaciones/aplicaciones.factory.js') ?>"></script>	
 	<script type="text/javascript" src="<?= asset('app/js/angular-drag-and-drop-lists.js') ?>"></script>
 </body>
 </html>
