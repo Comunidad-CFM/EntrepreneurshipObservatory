@@ -201,15 +201,28 @@
         function getSectores() {
             SectoresFactory.getAll()
                 .then(function(response) {
-                    $scope.sectores = response;                    
-                    return response
-                })
-                .then(function (response) {
-                    console.log($scope.sectores);     
-                });                
+                    $scope.sectores = response;                       
+                });               
         }
+
+        /*function getRegiones() {
+            RegionesFactory.getAll()
+                .then(function(response) {
+                    $scope.regiones = response;                       
+                    console.log($scope.regiones);
+                });               
+        }
+
+        function getTerritorios() {
+            TerritoriosFactory.getAll()
+                .then(function(response) {
+                    $scope.territorios = response;                       
+                    console.log($scope.territorios);
+                });               
+        }*/
+
         getSectores();
-        getPersonas();
+        getPersonas();        
     }
 
 })();

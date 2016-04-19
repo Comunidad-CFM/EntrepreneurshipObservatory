@@ -51,4 +51,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('/aplicaciones/getForSurvey', 'Aplicaciones@getForSurvey');
   //sectores
     Route::get('sectores/todos', 'Sectores@getAll');
+  //Regiones
+    Route::get('regiones/todas','Regiones@getAll');
+  //Territorios
+    Route::get('territorios/todos','Territorios@getAll');
 });
