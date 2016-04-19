@@ -4,20 +4,20 @@
 <div class="login-box">
     <label class="text-center kaushan">Observatorio Empresarial</label>
     <div class="card card-container">
-        <form name="formLogin" class="form-login form-horizontal" novalidate="">
-            <div>
+        <form name="formLogin" class="form-login form-horizontal">
+            <div ng-class="{ 'has-error' : formLogin.email.$invalid && formLogin.email.$touched, 'has-success' : !formLogin.email.$invalid && !formLogin.email.$touched }">
                 <div class="inner-addon right-addon">
                     <i class="fa fa-envelope-o"></i>
-                    <input type="text" id="inputEmail" class="form-control" name="inputEmail" placeholder="Email" ng-model="email" ng-required="true">
+                    <input type="text" id="inputEmail" class="form-control" name="email" placeholder="Email" ng-model="email" ng-required="true">
                 </div>
-                <span class="help-inline red" ng-show="formLogin.inputEmail.$invalid && formLogin.inputEmail.$touched">El email es requerido.</span>
+                <p class="help-inline red" ng-show="formLogin.email.$invalid && formLogin.email.$touched">El email es requerido.</p>
             </div>
-            <div>
+            <div ng-class="{ 'has-error' : formLogin.pass.$invalid && formLogin.pass.$touched, 'has-success' : !formLogin.pass.$invalid && !formLogin.pass.$touched }">
                 <div class="inner-addon right-addon">
                     <i class="fa fa-key"></i>
-                    <input type="password" id="inputContrasena" class="form-control" name="inputContrasena" placeholder="Contraseña" ng-model="contrasena" ng-required="true">
+                    <input type="password" id="inputContrasena" class="form-control" name="pass" placeholder="Contraseña" ng-model="contrasena" ng-required="true">
                 </div>
-                <span class="help-inline red" ng-show="formLogin.inputContrasena.$invalid && formLogin.inputContrasena.$touched">La contraseña es requerida.</span>
+                <p class="help-inline red" ng-show="formLogin.pass.$invalid && formLogin.pass.$touched">La contraseña es requerida.</p>
             </div>
             <div ng-show="error" class="error-box">El email o la contraseña son incorrectos.</div>
             <button class="btn btn-primary btn-login" ng-click="logIn();" ng-disabled="formLogin.$invalid"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Ingresar</button>

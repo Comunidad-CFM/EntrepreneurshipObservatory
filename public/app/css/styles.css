@@ -188,6 +188,24 @@ textarea {
 .red {
     color: #E74C3C;
 }
+.has-error .form-control {
+    border-color: #E74C3C;
+}
+.has-success .form-control {
+    border-color: #ccc;
+}
+.has-error .form-control:focus {
+    border-color: #E74C3C;
+    outline: 0 none;
+    -webkit-box-shadow: inset 0 1px 1px rgba231, 76, 60,.075), 0 0 8px rgba(231, 76, 60, .6);
+    box-shadow: 0 1px 1px rgba(231, 76, 60, 0.075) inset, 0 0 8px rgba(231, 76, 60, 0.6);
+}
+.has-success .form-control:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
 
 .navbar-nav li, select, .cover .icon, input[type="checkbox"], .btn {
     cursor: pointer;
@@ -497,6 +515,16 @@ footer {
     color: white;
     background-color: #00844A;
     border: 2px solid #00844A;
+}
+.btn-cancel {
+    border: 2px solid #C0C0C0;
+    background-color: transparent;
+    color: black;
+}
+.btn-cancel:hover {
+    color: #000;
+    background-color: #C0C0C0;
+    border: 2px solid #C0C0C0;
 }
 
 

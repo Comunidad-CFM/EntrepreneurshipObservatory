@@ -24,17 +24,12 @@
         var respaldoPreguntas,
             respaldoEmpresarios;
 
-        $scope.$watch('descripcion', validate);
-
-        function validate() {
-    		if ($scope.descripcion.length < 5) {
-                $scope.emptyData = true;
-            } else { // Habilita
-                $scope.emptyData = false;
-            }
+        function cleanForm() {
+            $scope.formEncuesta.$setUntouched();
+            $scope.formEditarEncuesta.$setUntouched();
         }
-
         function mostrarFormulario() {
+            cleanForm();
             $scope.nueva = !$scope.nueva;
             $scope.descripcion = '';
 
@@ -64,6 +59,7 @@
                     $scope.msgRegistro = 'La encuesta se ha agregado correctamente.';
                     $scope.styleRegistro = 'success-box';
                     $scope.descripcion = '';
+                    cleanForm();                   
 
                     $timeout(function() {
                         $scope.registro = false;
@@ -78,10 +74,11 @@
         }
 
         function modificar() {
-		    EncuestasFactory.edit($scope.id, $scope.descripcion, $filter('date')(new Date(), 'yyyy-MM-dd'))
+		    EncuestasFactory.edit($scope.id, $scope.descripcionEditar, $filter('date')(new Date(), 'yyyy-MM-dd'))
             .then(function(response) {
                 if(response === 'true') {
                     getAll();
+                    cleanForm();
                     $scope.editar = true;
                     $scope.msgEditar = 'La encuesta se ha modificado correctamente.';
                     $scope.styleEditar = 'success-box';
@@ -118,7 +115,7 @@
         }
         function editandoEncuesta(id, descripcion) {
             $scope.editar = false;
-            $scope.descripcion = descripcion;
+            $scope.descripcionEditar = descripcion;
             $scope.id = id;
         }
 
