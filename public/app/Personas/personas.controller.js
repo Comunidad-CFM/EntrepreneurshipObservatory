@@ -106,7 +106,7 @@
             $scope.coincidenciaCedula = false;
              if(isNaN($scope.persona.cedula)) {
                 $scope.coincidenciaCedula = true;
-                $scope.msgCedula = "El número de cédula tiene un formato incorrecto, debe ir sin guiones o espacios"
+                $scope.msgCedula = "El número de cédula tiene un formato incorrecto, debe ir sin guiones o espacios."
             }
             else if($scope.persona.cedula != currentCedula){
                 $scope.msgCedula = "";                                            
@@ -114,7 +114,7 @@
                     .then(function(response) {
                         if (response !== undefined) {
                             $scope.coincidenciaCedula = true;
-                            $scope.msgCedula = "El número de cédula ya está registrado";
+                            $scope.msgCedula = "El número de cédula ya está registrado.";
                         }
                         else{
                             $scope.coincidenciaCedula = false;
