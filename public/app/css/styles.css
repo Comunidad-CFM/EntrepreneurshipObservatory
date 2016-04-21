@@ -81,6 +81,9 @@ textarea {
 .margin-top {
     margin-top: 10px;
 }
+.margin-bottom {
+    margin-bottom: 10px;
+}
 
 .kaushan {
     font-family: 'Kaushan Script', cursive;
