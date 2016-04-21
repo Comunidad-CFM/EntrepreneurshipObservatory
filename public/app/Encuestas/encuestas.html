@@ -5,20 +5,19 @@
     <div>
         <label class="title-2">Agregar nueva encuesta</label>
     </div>
-    <form class="container margin">
+    <form name="formEncuesta" class="container margin">
         <div class="col-md-offset-2 col-md-8">
-            <div class="col-md-12">
-                <p>
-                    <label for="descripcion">Descripción</label>
-                    <textarea ng-model="descripcion" class="form-control" rows="7" autofocus placeholder="Descripción" title="La descripción debe tener al menos 5 caracteres."></textarea>
-                </p>
+            <div class="form-group" ng-class="{ 'has-error' : formEncuesta.descripcion.$invalid && formEncuesta.descripcion.$touched, 'has-success' : !formEncuesta.descripcion.$invalid && !formEncuesta.descripcion.$touched }">
+                <label for="descripcion">Descripción</label>
+                <textarea ng-model="descripcion" name="descripcion" class="form-control" rows="7" placeholder="Descripción" ng-required="true" title="La descripción debe tener al menos 5 caracteres."></textarea>
+                <p class="help-inline red" ng-show="formEncuesta.descripcion.$invalid && formEncuesta.descripcion.$touched">Ingrese una descripción.</p>
             </div>
-            <div class="col-md-12">
+            <div class="form-group">
                 <div>
                     <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>
                 </div>
                 <center>
-                    <button class="btn btn-success margin" ng-disabled="emptyData" ng-click="agregar();"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                    <button class="btn btn-success margin" ng-disabled="formEncuesta.$invalid" ng-click="agregar();"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
                 </center>
             </div>
         </div>
@@ -32,7 +31,7 @@
             <div class="col-md-6 col-sm-6 card-box" ng-repeat="encuesta in encuestas">
                 <div class="inner">
                     <div class="title-card">
-                        <label class="title-2">{{encuesta.descripcion}}</label>
+                        <label class="title-3">{{encuesta.descripcion}}</label>
                     </div>
                     <div class="body-card">
                         <p>Creada por {{encuesta.nombre}} {{encuesta.apellido1}} {{encuesta.apellido2}} el {{encuesta.fechaCreacion}} y modificada el {{encuesta.fechaModificacion}}.</p>
@@ -65,15 +64,22 @@
                 <label class="title">Modificar encuesta</label>
             </div>
             <div class="modal-body margin">
-                <div>
-                    <label for="descripcion">Descripción</label>
-                    <textarea ng-model="descripcion" class="form-control" rows="7" placeholder="Descripción" title="La descripción debe tener al menos 5 caracteres."></textarea>
-                </div>
-                <div ng-show="editar" class="margin" ng-class="styleEditar">{{msgEditar}}</div>
+                <form name="formEditarEncuesta">
+                    <div class="form-group" ng-class="{ 'has-error' : formEditarEncuesta.descripcion.$invalid && formEditarEncuesta.descripcion.$touched, 'has-success' : !formEditarEncuesta.descripcion.$invalid && !formEditarEncuesta.descripcion.$touched }">
+                        <label for="descripcion">Descripción</label>
+                        <textarea ng-model="descripcionEditar" name="descripcion" class="form-control" rows="7" placeholder="Descripción" ng-required="true" title="La descripción debe tener al menos 5 caracteres."></textarea>
+                        <p class="help-inline red" ng-show="formEditarEncuesta.descripcion.$invalid && formEditarEncuesta.descripcion.$touched">Ingrese una descripción.</p>
+                    </div>
+                    <div>
+                        <div>
+                            <div ng-show="editar" ng-class="styleEditar">{{msgEditar}}</div>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
-                <button class="btn btn-success" ng-disabled="emptyData" data-ng-click="modificar(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                <button class="btn btn-cancel" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
+                <button class="btn btn-success" ng-disabled="formEditarEncuesta.$invalid" data-ng-click="modificar(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
             </div>
         </div>
     </div>
@@ -117,7 +123,7 @@
                 </div>
             </div>
             <div class="modal-footer" style="border: none;">
-                <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
+                <button class="btn btn-cancel" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
                 <button class="btn btn-success" data-ng-click="armar(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
             </div>
         </div>
@@ -155,7 +161,8 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
+                <div ng-show="asignar" class="margin-bottom" ng-class="styleAsignar">{{msgAsignar}}</div>
+                <button class="btn btn-cancel" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
                 <button class="btn btn-success" data-ng-click="asignarUsuarios(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
             </div>
         </div>

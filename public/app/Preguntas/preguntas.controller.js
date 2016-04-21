@@ -19,6 +19,11 @@
         $scope.nueva = false;
         $scope.texto = 'Mostrar formulario de agregar nueva pregunta';
 
+        function cleanForm() {
+            $scope.formPregunta.$setUntouched();
+            $scope.formEditarPregunta.$setUntouched();
+        }
+
         function setData() {
             $scope.enunciado = '';
             $scope.tipo = 'false';
@@ -42,6 +47,7 @@
                         setData();
                         $scope.preguntas = "";
                         getPreguntas();
+                        cleanForm();
 
                         $timeout(function() {
                             $scope.registro = false;
@@ -101,6 +107,7 @@
                         $scope.msgEditar = 'La pregunta se ha modificado correctamente.';
                         $scope.styleEditar = 'success-box';
                         getPreguntas();
+                        cleanForm();
                     }
                     else {
                         $scope.msgEditar = 'Ha ocurrido un error al modificar la pregunta.';
@@ -131,6 +138,7 @@
         }
 
         function mostrarFormulario() {
+            cleanForm();
             $scope.nueva = !$scope.nueva;
 
             if($scope.nueva) {

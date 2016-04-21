@@ -123,12 +123,12 @@
             $scope.editar = false;
         }
 
-//validar cedula existente
+        //validar cedula existente
         function validateID() {  
             $scope.coincidenciaCedula = false;
              if(isNaN($scope.persona.cedula)) {
                 $scope.coincidenciaCedula = true;
-                $scope.msgCedula = "El número de cédula tiene un formato incorrecto, debe ir sin guiones o espacios"
+                $scope.msgCedula = "La cédula tiene un formato incorrecto, sólo debe contener números."
             }
             else if($scope.persona.cedula != currentCedula){
                 $scope.msgCedula = "";                                            
@@ -136,37 +136,40 @@
                     .then(function(response) {
                         if (response !== undefined) {
                             $scope.coincidenciaCedula = true;
-                            $scope.msgCedula = "El número de cédula ya está registrado";
+                            $scope.msgCedula = "El número de cédula ya está registrado.";
                         }
-                        else{
+                        else {
                             $scope.coincidenciaCedula = false;
                         }
-                    })
+                    });
             }
         }
 
         //validar email existente
         function validateEmail() {   
-            $scope.coincidenciaCorreo = false;
-            if($scope.persona.email != currentEmail){                     
-            PersonasFactory.ifExist($scope.persona.email,"email")
-                .then(function(response) {
-                    if (response !== undefined) {
-                        $scope.coincidenciaCorreo = true;
-                    }
-                    else{
-                        $scope.coincidenciaCorreo = false;
-                    }
-                })
+            $scope.errorCorreo = false;
+
+            if ($scope.persona.email !== currentEmail) {
+                if(!/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test($scope.persona.email)) {
+                    $scope.errorCorreo = true;
+                    $scope.msgCorreo = 'El email tiene un formato inválido.';
+                }
+                else {
+                    PersonasFactory.ifExist($scope.persona.email,"email")
+                        .then(function(response) {
+                            if (response !== undefined) {
+                                $scope.msgCorreo = 'Error, el correo ya existe.';
+                                $scope.errorCorreo = true;
+                            }
+                        });
+                }
             }
         }
-
-        
-        
 
         function mostrarFormulario() {            
             $scope.nueva = !$scope.nueva;
             setData();
+
             if ($scope.nueva) {
                 $scope.texto = 'Ocultar formulario de agregar nueva persona';
             } else {
@@ -194,7 +197,6 @@
         }
 
         function eliminar(ev, id) {
-
             var confirm = $mdDialog.confirm()
                 .title('¿Desea eliminar la persona?')
                 .textContent('Si la elimina, se eliminará de todo el sistema.')
@@ -223,7 +225,7 @@
         function getSectores() {
             SectoresFactory.getAll()
                 .then(function(response) {
-                    $scope.sectores = response;                       
+                    $scope.sectores = response;
                 });               
         }
 
@@ -234,7 +236,6 @@
                     console.log($scope.regiones);
                 });               
         }
-
         function getTerritorios() {
             TerritoriosFactory.getAll()
                 .then(function(response) {
