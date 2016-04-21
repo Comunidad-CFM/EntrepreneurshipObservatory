@@ -16,9 +16,11 @@
         $scope.getPersonas = getPersonas;
         $scope.editandoPersona = editandoPersona;
         $scope.validateEmail = validateEmail;
-        $scope.validateID = validateID;
+        $scope.validateID = validateID;        
+        $scope.selectSector = selectSector;
         var currentEmail = "";
-        var currentCedula = "";     
+        var currentCedula = ""; 
+        var selectedSectores = [];
 
         function setData() {
             $scope.persona = {
@@ -65,10 +67,26 @@
             }
         }
 
-        function store() {
+        function selectSector(id){                
+            if(!selectedSectores.length){
+                selectedSectores.push(id);
+            }
+            else{                
+                var index = selectedSectores.indexOf(id);
+                if(index > -1){
+                    selectedSectores.splice(index, 1);
+                }
+                else{
+                    selectedSectores.push(id);
+                }
+            }
+            console.log(selectedSectores);
+        }
+
+        function store() {            
             $scope.registro = false;
             validate();
-            if ($scope.emptyData !== true) {
+            if ($scope.emptyData !== true && selectedSectores.length > 0) {
                 PersonasFactory.store($scope.persona)
                     .then(function(response) {
                         console.log(response);
@@ -90,6 +108,10 @@
                             $scope.styleRegistro = 'error-box';
                         }
                     });
+            }else{
+                $scope.registro = true;
+                $scope.msgRegistro = 'Error, debe seleccionar al menos un sector';
+                $scope.styleRegistro = 'error-box';
             }
         }
     

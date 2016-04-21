@@ -33,7 +33,7 @@
             $location.path('login');
         }
 
-        function checkStatus() {
+        function checkStatus() {            
             var rutasPrivadas = ['/','/admin', '/admin/encuestas', '/admin/personas', '/admin/preguntas', '/empresario', '/empresario/contestar'];
             
             if (this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) === "undefined") {
