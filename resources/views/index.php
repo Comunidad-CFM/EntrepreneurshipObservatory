@@ -32,6 +32,9 @@
 	<script type="text/javascript" src="<?= asset('app/Admin/admin.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Empresario/empresario.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Login/login.factory.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Regiones/regiones.factory.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Territorios/territorios.factory.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Sectores/sectores.factory.js') ?>"></script>	
 	<script type="text/javascript" src="<?= asset('app/Personas/personas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Personas/personas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Encuestas/encuestas.controller.js') ?>"></script>
@@ -41,6 +44,8 @@
 	<script type="text/javascript" src="<?= asset('app/Preguntas/preguntas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Indicadores/indicadores.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Aplicaciones/aplicaciones.factory.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Autenticacion/autenticacion.controller.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Periodos/periodos.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/js/angular-drag-and-drop-lists.js') ?>"></script>
 </body>
 </html>

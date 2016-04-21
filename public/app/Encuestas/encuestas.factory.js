@@ -17,7 +17,8 @@
 			questionsChanged: questionsChanged,
 			addQuestionsToSurvey: addQuestionsToSurvey,
 			deleteQuestionsToSurvey: deleteQuestionsToSurvey,
-			removeEntrepreneur: removeEntrepreneur
+			isEntrepreneurAssigned: isEntrepreneurAssigned,
+			entrepreneursChanged: entrepreneursChanged
 		};
 
 		return factory;
@@ -256,17 +257,40 @@
 			return defered.promise;
 		}
 
-		function removeEntrepreneur(listEntrepreneur, listPersons) {
+		function isEntrepreneurAssigned(listEntrepreneur, listPersons) {
 			angular.forEach(listPersons, function(person) {
 				person.state = false;
 				angular.forEach(listEntrepreneur, function(entrepreneur) {
 			  		if(person.id === entrepreneur.idPersona) {
 			  			person.state = true;
+			  			person.idAplicacion = entrepreneur.idAplicacion;
 			  		}
 				});	  	
 			});
-
+			
 			return listPersons;
+		}
+
+		function entrepreneursChanged(oldList, currentList) {
+			var index = 0,
+				length = oldList.length,
+			    entrepreneurs = {
+					'agregar': [],
+					'eliminar': []
+				};
+
+			for ( ; index < length; index++) {
+				if (currentList[index].state !== oldList[index].state) {
+					if (currentList[index].state) {
+						entrepreneurs.agregar.push(currentList[index].id);
+					}
+					else {
+						entrepreneurs.eliminar.push(currentList[index].idAplicacion);
+					}
+				}
+			}
+
+			return entrepreneurs;
 		}
 	}
 })();

@@ -5,7 +5,7 @@
         .module('observatoryApp')
         .controller('PersonasController', PersonasController);
 
-    function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog) {
+    function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog, SectoresFactory) {
         $scope.nueva = false;
         $scope.texto = 'Mostrar formulario de agregar nueva persona';
         $scope.registro = false;
@@ -16,9 +16,11 @@
         $scope.getPersonas = getPersonas;
         $scope.editandoPersona = editandoPersona;
         $scope.validateEmail = validateEmail;
-        $scope.validateID = validateID;
+        $scope.validateID = validateID;        
+        $scope.selectSector = selectSector;
         var currentEmail = "";
-        var currentCedula = "";     
+        var currentCedula = ""; 
+        var selectedSectores = [];
 
         function setData() {
             $scope.persona = {
@@ -65,10 +67,26 @@
             }
         }
 
-        function store() {
+        function selectSector(id){                
+            if(!selectedSectores.length){
+                selectedSectores.push(id);
+            }
+            else{                
+                var index = selectedSectores.indexOf(id);
+                if(index > -1){
+                    selectedSectores.splice(index, 1);
+                }
+                else{
+                    selectedSectores.push(id);
+                }
+            }
+            console.log(selectedSectores);
+        }
+
+        function store() {            
             $scope.registro = false;
             validate();
-            if ($scope.emptyData !== true) {
+            if ($scope.emptyData !== true && selectedSectores.length > 0) {
                 PersonasFactory.store($scope.persona)
                     .then(function(response) {
                         console.log(response);
@@ -90,6 +108,10 @@
                             $scope.styleRegistro = 'error-box';
                         }
                     });
+            }else{
+                $scope.registro = true;
+                $scope.msgRegistro = 'Error, debe seleccionar al menos un sector';
+                $scope.styleRegistro = 'error-box';
             }
         }
     
@@ -101,12 +123,12 @@
             $scope.editar = false;
         }
 
-//validar cedula existente
+        //validar cedula existente
         function validateID() {  
             $scope.coincidenciaCedula = false;
              if(isNaN($scope.persona.cedula)) {
                 $scope.coincidenciaCedula = true;
-                $scope.msgCedula = "El número de cédula tiene un formato incorrecto, debe ir sin guiones o espacios"
+                $scope.msgCedula = "La cédula tiene un formato incorrecto, sólo debe contener números."
             }
             else if($scope.persona.cedula != currentCedula){
                 $scope.msgCedula = "";                                            
@@ -114,37 +136,40 @@
                     .then(function(response) {
                         if (response !== undefined) {
                             $scope.coincidenciaCedula = true;
-                            $scope.msgCedula = "El número de cédula ya está registrado";
+                            $scope.msgCedula = "El número de cédula ya está registrado.";
                         }
-                        else{
+                        else {
                             $scope.coincidenciaCedula = false;
                         }
-                    })
+                    });
             }
         }
 
         //validar email existente
         function validateEmail() {   
-            $scope.coincidenciaCorreo = false;
-            if($scope.persona.email != currentEmail){                     
-            PersonasFactory.ifExist($scope.persona.email,"email")
-                .then(function(response) {
-                    if (response !== undefined) {
-                        $scope.coincidenciaCorreo = true;
-                    }
-                    else{
-                        $scope.coincidenciaCorreo = false;
-                    }
-                })
+            $scope.errorCorreo = false;
+
+            if ($scope.persona.email !== currentEmail) {
+                if(!/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test($scope.persona.email)) {
+                    $scope.errorCorreo = true;
+                    $scope.msgCorreo = 'El email tiene un formato inválido.';
+                }
+                else {
+                    PersonasFactory.ifExist($scope.persona.email,"email")
+                        .then(function(response) {
+                            if (response !== undefined) {
+                                $scope.msgCorreo = 'Error, el correo ya existe.';
+                                $scope.errorCorreo = true;
+                            }
+                        });
+                }
             }
         }
-
-        
-        
 
         function mostrarFormulario() {            
             $scope.nueva = !$scope.nueva;
             setData();
+
             if ($scope.nueva) {
                 $scope.texto = 'Ocultar formulario de agregar nueva persona';
             } else {
@@ -172,7 +197,6 @@
         }
 
         function eliminar(ev, id) {
-
             var confirm = $mdDialog.confirm()
                 .title('¿Desea eliminar la persona?')
                 .textContent('Si la elimina, se eliminará de todo el sistema.')
@@ -198,7 +222,30 @@
                 });
         }
 
-        getPersonas();
+        function getSectores() {
+            SectoresFactory.getAll()
+                .then(function(response) {
+                    $scope.sectores = response;
+                });               
+        }
+
+        /*function getRegiones() {
+            RegionesFactory.getAll()
+                .then(function(response) {
+                    $scope.regiones = response;                       
+                    console.log($scope.regiones);
+                });               
+        }
+        function getTerritorios() {
+            TerritoriosFactory.getAll()
+                .then(function(response) {
+                    $scope.territorios = response;                       
+                    console.log($scope.territorios);
+                });               
+        }*/
+
+        getSectores();
+        getPersonas();        
     }
 
 })();

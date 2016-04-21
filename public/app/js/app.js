@@ -9,22 +9,35 @@
 		.config(config)
         .run(run);
 
-    function Auth($cookies, $location) {
+    function Auth($cookies, $location, $rootScope) {
+        var cont = 0;
 	    return {
 	        logIn: logIn,
 	        logOut: logOut,
 	        checkStatus: checkStatus,
 	        inArray: inArray
 	    }
+        function savePreviousUrl() {
+            if (cont === 0) {
+                $rootScope.url = $location.path();
+                cont++;
+            }
+        }
 
 	    function logIn(user) {
             $cookies.putObject('session', user);
-            
-            if (user.tipo === 'A') {
-                $location.path('admin');
+
+            if ($rootScope.url !== undefined) {
+                $location.path($rootScope.url);
+                cont = 0;
             }
-            else if (user.tipo === 'B') {
-                $location.path('empresario');
+            else {
+                if (user.tipo === 'A') {
+                    $location.path('admin');
+                }
+                else if (user.tipo === 'B') {
+                    $location.path('empresario');
+                }
             }
         }
 
@@ -33,10 +46,14 @@
             $location.path('login');
         }
 
-        function checkStatus() {
+        function checkStatus() {            
             var rutasPrivadas = ['/','/admin', '/admin/encuestas', '/admin/personas', '/admin/preguntas', '/empresario', '/empresario/contestar'];
             
-            if (this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) === "undefined") {
+            if ($location.path() !== '/' && typeof($cookies.get('session')) === "undefined") {
+                savePreviousUrl();
+                $location.path('autenticacion');
+            }
+            else if (this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) === "undefined") {
                 $location.path('login');
             }
             else if (this.inArray($location.path(), rutasPrivadas) && typeof($cookies.get('session')) !== "undefined") {
@@ -107,6 +124,11 @@
                 templateUrl: './app/Admin/admin.html',
                 controller: 'AdminController'
             })
+            .state('admin.perfil', {
+                url: '/perfil',
+                templateUrl: './app/Admin/perfil.html',
+                controller: 'AdminController'
+            })
             .state('admin.encuestas', {
                 url: '/encuestas',
                 templateUrl: './app/Encuestas/encuestas.html',
@@ -131,6 +153,11 @@
                 url: '/contestar',
                 templateUrl: './app/Encuestas/contestar-encuestas.html',
                 controller: 'ContestarEncuestasController'
+            })
+            .state('autenticacion', {
+                url: '/autenticacion',
+                templateUrl: './app/Autenticacion/autenticacion.html',
+                controller: 'AutenticacionController'
             });
     }
 

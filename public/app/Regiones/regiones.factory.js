@@ -3,9 +3,9 @@
 
 	angular
 		.module('observatoryApp')
-		.factory('SectoresFactory', SectoresFactory);
+		.factory('RegionesFactory', RegionesFactory);
 
-		function SectoresFactory($http, $q) {
+		function RegionesFactory($http, $q) {
 		var factory = {
 			getAll: getAll
 		};
@@ -16,7 +16,7 @@
 			var defered = $q.defer();
 			var promise = defered.promise;
 			
-			$http.get('/api/sectores/todos')
+			$http.get('/api/regiones/todas')
 			.success(function(response) {				
 				defered.resolve(response);
 			})
