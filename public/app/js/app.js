@@ -124,6 +124,11 @@
                 templateUrl: './app/Admin/admin.html',
                 controller: 'AdminController'
             })
+            .state('admin.perfil', {
+                url: '/perfil',
+                templateUrl: './app/Admin/perfil.html',
+                controller: 'AdminController'
+            })
             .state('admin.encuestas', {
                 url: '/encuestas',
                 templateUrl: './app/Encuestas/encuestas.html',

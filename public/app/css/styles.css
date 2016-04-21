@@ -210,7 +210,7 @@ textarea {
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
 
-.navbar-nav li, select, .cover .icon, input[type="checkbox"], .btn {
+.navbar-nav li, select, .cover .icon, input[type="checkbox"], .btn, ul li {
     cursor: pointer;
 }
 .panel-body ul li {
@@ -282,13 +282,6 @@ textarea {
     letter-spacing: 1px;
 }
 
-.userName {
-    cursor: default;
-}
-.active {
-    background-color: #2196F3 !important;
-}
-
 /* Footer */
 footer {
     height: 7vh;
@@ -355,6 +348,15 @@ footer {
 /* Box navs */
 .gestion-box {
     background-color: #FAFAFA;
+    border: 1px solid #E5E5E5;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 25px 0px 25px 0px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.perfil-box {
     border: 1px solid #E5E5E5;
     padding: 20px;
     border-radius: 5px;
@@ -599,3 +601,88 @@ footer {
     background-color: #dff0d8;
     color: #3c763d;
 }
+
+
+
+
+/* Portlet */
+.portlet {
+    background: #fff;
+    padding: 20px;
+}
+
+/* Portlet Title */
+.portlet-title {
+    padding: 0;
+    min-height: 40px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 18px;
+}
+
+.caption {
+    float: left;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 18px;
+}
+.caption-red .glyphicon {
+    font-size: 25px;
+}
+
+.caption.caption-green .caption-subject,
+.caption.caption-green i {
+    color: #4db3a2;
+    font-weight: 200;
+}
+
+.caption.caption-red .caption-subject,
+.caption.caption-red i {
+    color: #e26a6a;
+    font-weight: 200;
+}
+
+.caption.caption-purple .caption-subject,
+.caption.caption-purple i {
+    color: #8775a7;
+    font-weight: 400;
+}
+
+/* Tab */
+.portlet-title > .nav-tabs {
+    background: none;
+    margin: 0;
+    float: right;
+    display: inline-block;
+    border: 0;
+}
+
+.portlet-title > .nav-tabs > li {
+    background: none;
+    margin: 0;
+    border: 0;
+}
+
+.portlet-title > .nav-tabs > li > a {
+    background: none;
+    border: 0;
+    padding: 2px 10px 13px;
+    color: #444;
+}
+
+.portlet-title > .nav-tabs > li.active,
+.portlet-title > .nav-tabs > li.active:hover {
+    border-bottom: 4px solid #f3565d;
+    position: relative;
+  }
+
+.portlet-title > .nav-tabs > li:hover {
+    border-bottom: 4px solid #f29b9f;
+}
+
+.portlet-title > .nav-tabs > li.active > a,
+.portlet-title > .nav-tabs > li:hover > a {
+    color: #333;
+    background: #fff;
+    border: 0;
+}
+
