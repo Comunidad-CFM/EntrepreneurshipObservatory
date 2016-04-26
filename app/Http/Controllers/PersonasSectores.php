@@ -27,5 +27,15 @@ class PersonasSectores extends Controller
         }
         return 'true';
     }
+
+    /**
+     * get all sectors of a person by person id.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function getByPersonId(Request $request) {                
+        return PersonasSectore::where('persona_id',$request->input('personId'))->select('sector_id')->get();  
+    }
     
 }

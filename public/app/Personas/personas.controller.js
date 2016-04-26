@@ -80,7 +80,6 @@
                     selectedSectores.push(id);
                 }
             }      
-            console.log(selectedSectores);    
         }
 
         function store() {            
@@ -119,11 +118,22 @@
         }
     
         function editandoPersona(persona) {
-            $scope.persona = persona;
+            $scope.persona = persona;            
             $scope.nueva = false;
             currentEmail = $scope.persona.email;     
             currentCedula = $scope.persona.cedula;            
             $scope.editar = false;
+            // obtener los sectores de la persona
+            PersonasSectoresFactory.getByPersonId(persona.id).then(
+                function (sectoresDePersona) {
+                     return sectoresDePersona;                     
+            }).then(
+            function (sectoresDePersona) {
+                 // body...  
+            }
+                var sectoresPersona = sectoresPersona;
+            );
+
         }
 
         //validar cedula existente
@@ -137,7 +147,6 @@
                 $scope.msgCedula = "";                                            
                 PersonasFactory.ifExist($scope.persona.cedula,"cedula")
                     .then(function(response) {
-                        console.log(response);
                         if (response !== undefined) {
                             $scope.coincidenciaCedula = true;
                             $scope.msgCedula = "El número de cédula ya está registrado.";
@@ -185,7 +194,7 @@
             PersonasFactory.edit(persona)
                 .then(function(response) {
                     if (response === 'true') {
-                        setData();
+                        setData();                        
                         getPersonas();
                         $scope.editar = true;
                         $scope.msgEditar = 'La persona se ha modificado correctamente.';
@@ -249,7 +258,9 @@
         }*/
 
         getSectores();
-        getPersonas();                
+        getPersonas();
+
+        PersonasSectoresFactory.getByPersonId(7);
     }
 
 })();
