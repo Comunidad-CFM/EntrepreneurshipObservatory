@@ -14,10 +14,10 @@ class PersonasSectores extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request) {        
+    public function store(Request $request) {  
         $personaId = $request->input('personaId');
-        $sectoresId = $request->input('sectoresId');                
-
+        $sectoresId = $request->input('sectoresId');   
+        
         foreach ($sectoresId as $id) {
             $personaSector = new PersonasSectore;                     
             $personaSector->sector_id = $id;                    
@@ -25,9 +25,6 @@ class PersonasSectores extends Controller
 
             $personaSector->save();        
         }
-       
-        
-
         return 'true';
     }
     

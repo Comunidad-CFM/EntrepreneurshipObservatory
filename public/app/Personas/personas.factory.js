@@ -26,7 +26,7 @@
 				url: '/api/personas/registro',
 				data: persona
 			})
-			.success(function(response) {
+			.success(function(response) {				
 				defered.resolve(response);
 			})
 			.error(function(err) {

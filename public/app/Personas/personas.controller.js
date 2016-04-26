@@ -5,7 +5,7 @@
         .module('observatoryApp')
         .controller('PersonasController', PersonasController);
 
-    function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog, SectoresFactory) {
+    function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog, SectoresFactory, PersonasSectoresFactory) {
         $scope.nueva = false;
         $scope.texto = 'Mostrar formulario de agregar nueva persona';
         $scope.registro = false;
@@ -57,7 +57,7 @@
         function validate() {                        
             try {   
                 $scope.emptyData = false;                        
-                if (!$scope.persona.pass.length || !$scope.persona.nombre.length || !$scope.persona.apellido1.length || !$scope.persona.apellido2.length || !$scope.persona.cedula.length || !$scope.persona.email.length) {                    
+                if (!$scope.persona.pass.length || !$scope.persona.nombre.length || !$scope.persona.apellido1.length || !$scope.persona.apellido2.length || !$scope.persona.cedula.length || !$scope.persona.email.length ) {                    
                     $scope.emptyData = true;
                 } else {
                     $scope.emptyData = false;
@@ -79,8 +79,8 @@
                 else{
                     selectedSectores.push(id);
                 }
-            }
-            console.log(selectedSectores);
+            }      
+            console.log(selectedSectores);    
         }
 
         function store() {            
@@ -89,19 +89,22 @@
             if ($scope.emptyData !== true && selectedSectores.length > 0) {
                 PersonasFactory.store($scope.persona)
                     .then(function(response) {
-                        console.log(response);
                         if (response === 'true') {
-                            $scope.registro = true;
-                            $scope.msgRegistro = 'La persona se ha agregado correctamente.';
-                            $scope.styleRegistro = 'success-box';
-                            $scope.descripcion = '';
+                            PersonasFactory.ifExist($scope.persona.cedula,"cedula")
+                            .then(function (insertedPerson) {                                
+                                PersonasSectoresFactory.store(insertedPerson.id,selectedSectores);
+                                $scope.registro = true;
+                                $scope.msgRegistro = 'La persona se ha agregado correctamente.';
+                                $scope.styleRegistro = 'success-box';
+                                $scope.descripcion = '';
 
-                            $timeout(function() {
-                                $scope.registro = false;
-                            }, 5000);
-                            getPersonas();
-                            setData();
-
+                                $timeout(function() {
+                                    $scope.registro = false;
+                                }, 5000);
+                                getPersonas();
+                                setData();
+                                getSectores();
+                            });                            
                         } else {
                             $scope.registro = true;
                             $scope.msgRegistro = 'Error, el email ya se encuentra registrado.';
@@ -134,6 +137,7 @@
                 $scope.msgCedula = "";                                            
                 PersonasFactory.ifExist($scope.persona.cedula,"cedula")
                     .then(function(response) {
+                        console.log(response);
                         if (response !== undefined) {
                             $scope.coincidenciaCedula = true;
                             $scope.msgCedula = "El número de cédula ya está registrado.";
@@ -245,7 +249,7 @@
         }*/
 
         getSectores();
-        getPersonas();        
+        getPersonas();                
     }
 
 })();
