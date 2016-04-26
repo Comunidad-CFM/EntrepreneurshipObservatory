@@ -43,7 +43,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('preguntas/todas', 'Preguntas@getAll');
     Route::post('preguntas/editar', 'Preguntas@update');
     Route::post('preguntas/eliminar', 'Preguntas@destroy');
-    Route::post('preguntas/registro', 'Indicadores@store');
 
     // Encuestas.
     Route::post('encuestas/registro', 'Encuestas@store');

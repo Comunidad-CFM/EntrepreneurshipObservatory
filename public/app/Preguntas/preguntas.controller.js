@@ -13,11 +13,8 @@
         $scope.modificar = modificar;
         $scope.eliminar = eliminar;
         $scope.getPreguntas = getPreguntas;
-        $scope.mostrarFormulario = mostrarFormulario;
 
         $scope.registro = false;
-        $scope.nueva = false;
-        $scope.texto = 'Mostrar formulario de agregar nueva pregunta';
 
         function cleanForm() {
             $scope.formPregunta.$setUntouched();
@@ -135,18 +132,6 @@
                             getPreguntas();
                         });
                 }, function() {});
-        }
-
-        function mostrarFormulario() {
-            cleanForm();
-            $scope.nueva = !$scope.nueva;
-
-            if($scope.nueva) {
-                $scope.texto = 'Ocultar formulario de agregar nueva pregunta';
-            }
-            else {
-                $scope.texto = 'Mostrar formulario de agregar nueva pregunta';
-            }
         }
 
         function getIndicadores() {

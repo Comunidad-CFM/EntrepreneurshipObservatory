@@ -6,11 +6,8 @@
         .controller('PersonasController', PersonasController);
 
     function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog, SectoresFactory) {
-        $scope.nueva = false;
-        $scope.texto = 'Mostrar formulario de agregar nueva persona';
         $scope.registro = false;
         $scope.store = store;
-        $scope.mostrarFormulario = mostrarFormulario;
         $scope.modificar = modificar;
         $scope.eliminar = eliminar;
         $scope.getPersonas = getPersonas;
@@ -141,17 +138,6 @@
                             }
                         });
                 }
-            }
-        }
-
-        function mostrarFormulario() {            
-            $scope.nueva = !$scope.nueva;
-            setData();
-
-            if ($scope.nueva) {
-                $scope.texto = 'Ocultar formulario de agregar nueva persona';
-            } else {
-                $scope.texto = 'Mostrar formulario de agregar nueva persona';
             }
         }
 

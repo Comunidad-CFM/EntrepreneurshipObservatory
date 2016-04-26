@@ -1,192 +1,218 @@
 <div class="text-center margin">
     <label class="title-1 kaushan">Gestión de personas</label>
 </div>
-<div class="gestion-box" ng-show="nueva">
-    <div>
-        <label class="title-2">Agregar nueva persona</label>
-    </div>
-    <form class="container margin" autocomplete="off">
-        <div class="col-md-12">
-            <div class="col-md-6">
-                <p>
-                    <label for="cedula">Cédula</label>
-                    <input ng-model="persona.cedula" class="form-control" type="text" name="cedula" id="cedula" required autofocus ng-blur="validateID();">
-                    <span class="red" ng-show="coincidenciaCedula">{{msgCedula}}</span>
-                </p>
+<div class="col-md-12 perfil-box">
+    <div class="portlet">
+        <div class="portlet-title">
+            <div class="caption caption-red">
+                <i class="fa fa-users"></i>
             </div>
-            <div class="col-md-6">
-                <p>
-                    <label for="nombre">Nombre</label>
-                    <input ng-model="persona.nombre" class="form-control" type="text" name="nombre" id="name" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
-                </p>
-            </div>
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a data-target="#personas" data-toggle="tab">Personas</a>
+                </li>
+                <li>
+                    <a data-target="#nueva" data-toggle="tab">Nueva</a>
+                </li>
+            </ul>
         </div>
-        <input style="display:none">
-        <input type="password" style="display:none">
-        <div class="col-md-12">
-            <div class="col-md-6">
-                <p>
-                    <label for="email">Email</label>
-                    <input ng-model="persona.email" class="form-control" type="text" name="email" id="email" required title="Por favor ingrese un email valido." ng-blur="validateEmail();">
-                    <span class="red" ng-show="errorCorreo">{{msgCorreo}}</span>
-                </p>
-            </div>
-            <div class="col-md-6">
-                <p>
-                    <label for="apellido1">Primer Apellido</label>
-                    <input ng-model="persona.apellido1" class="form-control" type="text" name="apellido1" id="apellido1" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
-                </p>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="col-md-6">
-                <p>
-                    <label for="pass">Contraseña</label>
-                    <input ng-model="persona.pass" class="form-control" type="password" name="pass" id="pass" required pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos caracteres.">
-                </p>
-            </div>
-            <div class="col-md-6">
-                <p>
-                    <label for="apellido2">Segundo Apellido</label>
-                    <input ng-model="persona.apellido2" class="form-control" type="text" name="apellido2" id="apellido2" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
-                </p>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="col-md-6">
-                <p>
-                    <label for="name">Confirmar Contraseña</label>
-                    <input ng-model="persona.passConf" class="form-control" type="password" name="passConf" id="passConf" required pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos letras.">
-                     <span class="red" ng-show="errorPass">Las contraseñas no coinciden.</span>
-                </p>
-            </div>
-            <div class="col-md-6">
-                <p>
-                    <label for="name">Tipo de usuario</label>
-                    <select ng-model="persona.tipo" class="form-control">
-                        <option value="A">Administrador</option>
-                        <option value="B">Empresario</option>
-                        <option value="E">Encuestador</option>
-                    </select>
-                </p>
-            </div>        
-        </div>
-        <div class="col-md-12">
-            <div class="col-md-12">
-                <p>
-                    <label>Sectores</label>
-                    <div class="col-md-6" ng-repeat="sector in sectores">
-                        <md-checkbox class="md-primary" ng-true-value="'sector.id'" ng-false-value="''">{{sector.nombre}}</md-checkbox>
+        <div class="portlet-body">
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="personas">
+                    <div>
+                        <label class="title-2">Personas</label>
                     </div>
-                </p>
-            </div>
-        </div>          
+                    <div class="col-md-12">
+                        <div ng-show="personas.length > 0">
+                            <table class="table margin">
+                                <thead>
+                                    <tr>
+                                        <th>Cédula</th>
+                                        <th>Nombre</th>
+                                        <th>Email</th>
+                                        <th>Tipo</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="persona in personas">
+                                        <td>{{persona.cedula}}</td>
+                                        <td>{{persona.nombre}} {{persona.apellido1}} {{persona.apellido2}}</td>
+                                        <td>{{persona.email}}</td>
+                                        <td>{{persona.tipo | user}}</td>
+                                        <td>            
+                                            <span class="glyphicon glyphicon-pencil" ng-click="editandoPersona(persona);" data-toggle="modal" data-target="#editarPersona">
+                                            <md-tooltip md-direction="top">Editar</md-tooltip></span>
+                                            &nbsp;&nbsp;
+                                            <span class="glyphicon glyphicon-trash" ng-click="eliminar($event,persona.id);">
+                                            <md-tooltip md-direction="top">Eliminar</md-tooltip></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="info-box margin" ng-show="personas.length == 0">No hay personas registradas.</div>
+                    </div>
 
-        <div class="col-md-12">
-            <div class="col-md-12">
-                <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>
-            </div>
-            <center>
-                <button class="btn btn-success margin" ng-disabled="errorPass || emptyData || errorCorreo || coincidenciaCedula" ng-click="store();"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
-            </center>
-        </div>
-    </form>
-</div>
-<div class="gestion-box">
-    <div>
-        <label class="title-2">Personas</label>
-        <button class="btn btn-default margin float-right" ng-click="mostrarFormulario();" title="{{texto}}"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
-    </div>
-    <table class="table margin" ng-show="personas">
-        <thead>
-            <tr>
-                <th>Cédula</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Tipo</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="persona in personas">
-                <td>{{persona.cedula}}</td>
-                <td>{{persona.nombre}} {{persona.apellido1}} {{persona.apellido2}}</td>
-                <td>{{persona.email}}</td>
-                <td>{{persona.tipo | user}}</td>
-                <td>            
-                    <span class="glyphicon glyphicon-pencil" ng-click="editandoPersona(persona);" data-toggle="modal" data-target="#editarPersona" title="Modificar usuario"></span> &nbsp;
-                    <span class="glyphicon glyphicon-trash" ng-click="eliminar($event,persona.id);" title="Eliminar usuario"></span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="info-box margin" ng-show="!personas">No hay usuarios registrados.</div>
-</div>
-
-<!-- Formulario editar -->
-<div id="editarPersona" class="modal fade" data-keyboard="false" data-backdrop="static">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header montserrat">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <label class="title">Editar Persona</label>
-            </div>
-            <div class="modal-body">
-                <form class="margin">
-                    <div ng-show="editar" class="margin" ng-class="styleEditar">{{msgEditar}}</div>
-                    <div class="col-md-12">
-                        <div class="col-md-6">
-                            <p>
-                                <label for="cedula">Cédula</label>
-                                <input ng-model="persona.cedula" class="form-control" type="text" name="cedula" id="cedula" required autofocus title="Número de cédula con ceros, sin espacios ni guiones." ng-blur="validateID();">
-                                <span class="red" ng-show="coincidenciaCedula">{{msgCedula}}</span>
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <p>
-                                <label for="nombre">Nombre</label>
-                                <input ng-model="persona.nombre" class="form-control" type="text" name="nombre" id="name" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="col-md-6">
-                            <p>
-                                <label for="email">Email</label>
-                                <input ng-model="persona.email" class="form-control" type="text" name="email" id="email" required title="Por favor ingrese un email valido." ng-blur="validateEmail();">
-                                <span class="red" ng-show="errorCorreo">{{msgCorreo}}</span>
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <p>
-                                <label for="apellido1">Primer Apellido</label>
-                                <input ng-model="persona.apellido1" class="form-control" type="text" name="apellido1" id="apellido1" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
-                            </p>
+                    <!-- Formulario editar -->
+                    <div id="editarPersona" class="modal fade" data-keyboard="false" data-backdrop="static">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header montserrat">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <label class="title">Editar persona</label>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="margin">
+                                        <div ng-show="editar" class="margin" ng-class="styleEditar">{{msgEditar}}</div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <p>
+                                                    <label for="cedula">Cédula</label>
+                                                    <input ng-model="persona.cedula" class="form-control" type="text" name="cedula" id="cedula" required autofocus title="Número de cédula con ceros, sin espacios ni guiones." ng-blur="validateID();">
+                                                    <span class="red" ng-show="coincidenciaCedula">{{msgCedula}}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>
+                                                    <label for="nombre">Nombre</label>
+                                                    <input ng-model="persona.nombre" class="form-control" type="text" name="nombre" id="name" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <p>
+                                                    <label for="email">Email</label>
+                                                    <input ng-model="persona.email" class="form-control" type="text" name="email" id="email" required title="Por favor ingrese un email valido." ng-blur="validateEmail();">
+                                                    <span class="red" ng-show="errorCorreo">{{msgCorreo}}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>
+                                                    <label for="apellido1">Primer Apellido</label>
+                                                    <input ng-model="persona.apellido1" class="form-control" type="text" name="apellido1" id="apellido1" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <p>
+                                                    <label for="name">Tipo de usuario</label>
+                                                    <select ng-model="persona.tipo" class="form-control">
+                                                        <option value="A">Administrador</option>
+                                                        <option value="B">Empresario</option>
+                                                        <option value="E">Encuestador</option>
+                                                    </select>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>
+                                                    <label for="apellido2">Segundo Apellido</label>
+                                                    <input ng-model="persona.apellido2" class="form-control" type="text" name="apellido2" id="apellido2" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer" style="border: none;">
+                                    <button class="btn btn-cancel margin-top" data-dismiss="modal" ng-click="getPersonas();"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
+                                    <button class="btn btn-success margin-top" ng-disabled="emptyData || errorCorreo || coincidenciaCedula" data-ng-click="modificar(persona); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="col-md-6">
-                            <p>
-                                <label for="name">Tipo de usuario</label>
-                                <select ng-model="persona.tipo" class="form-control">
-                                    <option value="A">Administrador</option>
-                                    <option value="B">Empresario</option>
-                                    <option value="E">Encuestador</option>
-                                </select>
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <p>
-                                <label for="apellido2">Segundo Apellido</label>
-                                <input ng-model="persona.apellido2" class="form-control" type="text" name="apellido2" id="apellido2" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
-                            </p>
-                        </div>
+                </div>
+                <div class="tab-pane fade" id="nueva">
+                    <div>
+                        <label class="title-2">Agregar persona</label>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer" style="border: none;">
-                <button class="btn btn-cancel margin-top" data-dismiss="modal" ng-click="getPersonas();"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
-                <button class="btn btn-success margin-top" ng-disabled="emptyData || errorCorreo || coincidenciaCedula" data-ng-click="modificar(persona); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                    <form class="margin" autocomplete="off">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <p>
+                                    <label for="cedula">Cédula</label>
+                                    <input ng-model="persona.cedula" class="form-control" type="text" name="cedula" id="cedula" required autofocus ng-blur="validateID();">
+                                    <span class="red" ng-show="coincidenciaCedula">{{msgCedula}}</span>
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>
+                                    <label for="nombre">Nombre</label>
+                                    <input ng-model="persona.nombre" class="form-control" type="text" name="nombre" id="name" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                                </p>
+                            </div>
+                        </div>
+                        <input style="display:none">
+                        <input type="password" style="display:none">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <p>
+                                    <label for="email">Email</label>
+                                    <input ng-model="persona.email" class="form-control" type="text" name="email" id="email" required title="Por favor ingrese un email valido." ng-blur="validateEmail();">
+                                    <span class="red" ng-show="errorCorreo">{{msgCorreo}}</span>
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>
+                                    <label for="apellido1">Primer Apellido</label>
+                                    <input ng-model="persona.apellido1" class="form-control" type="text" name="apellido1" id="apellido1" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <p>
+                                    <label for="pass">Contraseña</label>
+                                    <input ng-model="persona.pass" class="form-control" type="password" name="pass" id="pass" required pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos caracteres.">
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>
+                                    <label for="apellido2">Segundo Apellido</label>
+                                    <input ng-model="persona.apellido2" class="form-control" type="text" name="apellido2" id="apellido2" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <p>
+                                    <label for="name">Confirmar Contraseña</label>
+                                    <input ng-model="persona.passConf" class="form-control" type="password" name="passConf" id="passConf" required pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos letras.">
+                                     <span class="red" ng-show="errorPass">Las contraseñas no coinciden.</span>
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>
+                                    <label for="name">Tipo de usuario</label>
+                                    <select ng-model="persona.tipo" class="form-control">
+                                        <option value="A">Administrador</option>
+                                        <option value="B">Empresario</option>
+                                        <option value="E">Encuestador</option>
+                                    </select>
+                                </p>
+                            </div>        
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <p>
+                                    <label>Sectores</label>
+                                    <div class="col-md-6" ng-repeat="sector in sectores">
+                                        <md-checkbox class="md-primary" ng-true-value="'sector.id'" ng-false-value="''">{{sector.nombre}}</md-checkbox>
+                                    </div>
+                                </p>
+                            </div>
+                        </div>          
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>
+                            </div>
+                            <center>
+                                <button class="btn btn-success margin" ng-disabled="errorPass || emptyData || errorCorreo || coincidenciaCedula" ng-click="store();"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                            </center>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

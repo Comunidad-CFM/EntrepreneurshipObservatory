@@ -9,8 +9,6 @@
 		$scope.descripcion = '';
 		$scope.nueva = false;
 		$scope.registro = false;
-        $scope.texto = 'Mostrar formulario de agregar nueva encuesta';
-        $scope.mostrarFormulario = mostrarFormulario;
         $scope.agregar = agregar;
         $scope.modificar = modificar;
         $scope.eliminar = eliminar;
@@ -27,19 +25,6 @@
         function cleanForm() {
             $scope.formEncuesta.$setUntouched();
             $scope.formEditarEncuesta.$setUntouched();
-        }
-        
-        function mostrarFormulario() {
-            cleanForm();
-            $scope.nueva = !$scope.nueva;
-            $scope.descripcion = '';
-
-            if($scope.nueva) {
-                $scope.texto = 'Ocultar formulario de agregar nueva encuesta';
-            }
-            else {
-                $scope.texto = 'Mostrar formulario de agregar nueva encuesta';
-            }
         }
 
         function agregar() {

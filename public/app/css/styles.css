@@ -295,54 +295,37 @@ footer {
 }
 
 /* alerts messages styles */
-.success-box {  
-    background-color: #DFF0D8;  
-    border: 1px solid #1CA450;  
-    color: #333333;  
-    padding: 7px;  
+.success-box, .grey-box, .info-box, .warning-box, .error-box {
+    border: 1px solid;
+    padding: 10px 7px 10px 7px;
     font-size: 15px;  
-    font-weight: bold;  
+    font-weight: 700;  
     border-radius: 5px;
     text-align: center;
+}
+.success-box {  
+    background-color: #5FA552;  
+    border-color: #1CA450;  
+    color: #FFF;  
 }  
 .grey-box {  
     background-color: #f7f7f7;  
-    border: 1px solid #cccccc;   
-    padding: 7px;  
-    font-size: 15px;  
-    font-weight: bold;  
-    border-radius: 5px;
-    text-align: center;
+    border-color: #cccccc;   
 }  
 .info-box {  
     background-color: #C6E2FF;
-    border: 1px solid #B2DAEE;  
+    border-color: #B2DAEE;  
     color: #333333;  
-    padding: 7px;  
-    font-size: 15px;  
-    font-weight: bold;  
-    border-radius: 5px;
-    text-align: center;
 }  
 .warning-box {  
     background-color: #fff9d7;
-    border: 1px solid #e2c822;  
+    border-color: #e2c822;  
     color: #333333;  
-    padding: 7px;  
-    font-size: 15px;  
-    font-weight: bold;  
-    border-radius: 5px;
-    text-align: center;
 }  
 .error-box {  
     background-color: #ffebe8;  
-    border: 1px solid #dd3c10;
+    border-color: #dd3c10;
     color: #333333;  
-    padding: 7px;  
-    font-size: 15px;  
-    font-weight: bold;  
-    border-radius: 5px;
-    text-align: center;
 }
 
 /* Box navs */
@@ -444,11 +427,11 @@ footer {
 .fa-toggle-on, .fa-toggle-off {
     font-size: 25px;
 }
-.gestion-box .fa-users {
+.glyphicon-list-alt {
     color: #00844A;
     font-size: 22px;
 }
-.glyphicon-trash:hover, .glyphicon-pencil:hover, .glyphicon-tasks:hover, .fa-toggle-on:hover, .fa-toggle-off:hover, .gestion-box .fa-users:hover {
+.glyphicon-trash:hover, .glyphicon-pencil:hover, .glyphicon-tasks:hover, .fa-toggle-on:hover, .fa-toggle-off:hover, .glyphicon-list-alt:hover {
     transform: scale(1.2);
 }
 
@@ -625,26 +608,14 @@ footer {
     font-size: 18px;
     line-height: 18px;
 }
-.caption-red .glyphicon {
+.caption-red .glyphicon, .caption-red .fa {
     font-size: 25px;
-}
-
-.caption.caption-green .caption-subject,
-.caption.caption-green i {
-    color: #4db3a2;
-    font-weight: 200;
 }
 
 .caption.caption-red .caption-subject,
 .caption.caption-red i {
     color: #e26a6a;
     font-weight: 200;
-}
-
-.caption.caption-purple .caption-subject,
-.caption.caption-purple i {
-    color: #8775a7;
-    font-weight: 400;
 }
 
 /* Tab */
