@@ -14,13 +14,13 @@ class CreatePersonasSectoresTable extends Migration
     {
         Schema::create('personas_sectores', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('persona_cedula')->unsigned();
+            $table->integer('persona_id')->unsigned();
             $table->integer('sector_id')->unsigned();
             $table->timestamps();
 
         });
         Schema::table('personas_sectores', function (Blueprint $table) {
-            $table->foreign('persona_cedula')->references('id')->on('personas')->onDelete('cascade');
+            $table->foreign('persona_id')->references('id')->on('personas')->onDelete('cascade');
             $table->foreign('sector_id')->references('id')->on('sectores')->onDelete('cascade');
 
         });

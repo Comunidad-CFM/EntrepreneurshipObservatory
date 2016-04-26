@@ -12,7 +12,7 @@
 		$scope.logIn = logIn;
 		$scope.goBottom = goBottom;
 
-		function logIn() {
+		function logIn() {		
 			$scope.error = false;
 
 			LoginFactory.logIn($scope.email, $scope.contrasena)

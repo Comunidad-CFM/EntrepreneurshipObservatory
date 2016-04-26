@@ -75,4 +75,7 @@ Route::group(['prefix' => 'api'], function () {
     
     // Periodos.
     Route::get('/periodos/getForAplicacion','Periodos@getForAplicacion');
+
+    //PersonasSectores
+    Route::post('personasSectores/registro','PersonasSectores@store');
 });

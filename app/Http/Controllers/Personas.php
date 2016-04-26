@@ -57,7 +57,7 @@ class Personas extends Controller
      * @return Response
      */
     public function ifExist(Request $request) {        
-        return Persona::where($request->input('fieldToValidate'), $request->input('field'))->select('email')->get();        
+        return Persona::where($request->input('fieldToValidate'), $request->input('field'))->select('email','id')->get();        
     }
     
     /**
