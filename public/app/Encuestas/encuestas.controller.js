@@ -11,7 +11,7 @@
 		$scope.registro = false;
         $scope.agregar = agregar;
         $scope.modificar = modificar;
-        $scope.eliminar = eliminar;
+        $scope.destroy = destroy;
         $scope.editandoEncuesta = editandoEncuesta;
         $scope.cambiarEstado = cambiarEstado;
         $scope.armandoEncuesta = armandoEncuesta;
@@ -77,7 +77,7 @@
             });
         }
 
-        function eliminar(ev, id) {
+        function destroy(ev, id) {
             var confirm = $mdDialog.confirm()
             .title('¿Desea eliminar la encuesta?')
             .textContent('Si la elimina, se eliminará de todo el sistema.')
@@ -88,8 +88,9 @@
             
             $mdDialog.show(confirm)
             .then(function() {
-                EncuestasFactory.remove(id)
+                EncuestasFactory.destroy(id)
                 .then(function(response) {
+                    console.log(response);
                     if(response === 'true') {
                         getAll();
                     }

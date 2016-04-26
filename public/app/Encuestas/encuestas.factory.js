@@ -10,7 +10,7 @@
 			store: store,
 			getAll: getAll,
 			edit: edit,
-			remove: remove,
+			destroy: destroy,
 			changeState: changeState,
 			getQuestions: getQuestions,
 			removeQuestions: removeQuestions,
@@ -76,16 +76,12 @@
 			return defered.promise;
 		}
 
-		function remove(id) {
+		function destroy(id) {
 			var defered = $q.defer();
-			var data = {
-				id: id
-			};
 
 			$http({
-				method: 'POST',
-				url: 'api/encuestas/remove',
-				data: data
+				method: 'DELETE',
+				url: 'api/encuestas/destroy/' + id,
 			})
 			.success(function(response) {
 				defered.resolve(response);
@@ -120,15 +116,11 @@
 		}
 
 		function getQuestions(id)  {
-			var defered = $q.defer(),
-				data = {
-					id: id
-				};
+			var defered = $q.defer();
 
 			$http({
-				method: 'POST',
-				url: 'api/encuestas/getQuestions',
-				data: data
+				method: 'GET',
+				url: 'api/encuestas/getQuestions/' + id
 			})
 			.success(function(response) {
 				defered.resolve(response);
