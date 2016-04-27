@@ -17,6 +17,7 @@
 	        checkStatus: checkStatus,
 	        inArray: inArray
 	    }
+
         function savePreviousUrl() {
             if (cont === 0) {
                 $rootScope.url = $location.path();

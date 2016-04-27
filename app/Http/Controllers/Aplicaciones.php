@@ -65,8 +65,8 @@ class Aplicaciones extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function remove(Request $request) {
-        $aplications = substr(json_encode($request->input('aplications')), 1, -1);
+    public function destroy($aplications) {
+        $aplications = substr(json_encode($aplications), 1, -1);
         $aplications = explode(',', $aplications);
 
         foreach ($aplications as $id) {

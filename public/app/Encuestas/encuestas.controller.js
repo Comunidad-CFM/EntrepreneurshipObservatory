@@ -9,11 +9,9 @@
 		$scope.descripcion = '';
 		$scope.nueva = false;
 		$scope.registro = false;
-        $scope.texto = 'Mostrar formulario de agregar nueva encuesta';
-        $scope.mostrarFormulario = mostrarFormulario;
         $scope.agregar = agregar;
         $scope.modificar = modificar;
-        $scope.eliminar = eliminar;
+        $scope.destroy = destroy;
         $scope.editandoEncuesta = editandoEncuesta;
         $scope.cambiarEstado = cambiarEstado;
         $scope.armandoEncuesta = armandoEncuesta;
@@ -27,19 +25,6 @@
         function cleanForm() {
             $scope.formEncuesta.$setUntouched();
             $scope.formEditarEncuesta.$setUntouched();
-        }
-        
-        function mostrarFormulario() {
-            cleanForm();
-            $scope.nueva = !$scope.nueva;
-            $scope.descripcion = '';
-
-            if($scope.nueva) {
-                $scope.texto = 'Ocultar formulario de agregar nueva encuesta';
-            }
-            else {
-                $scope.texto = 'Mostrar formulario de agregar nueva encuesta';
-            }
         }
 
         function agregar() {
@@ -92,7 +77,7 @@
             });
         }
 
-        function eliminar(ev, id) {
+        function destroy(ev, id) {
             var confirm = $mdDialog.confirm()
             .title('¿Desea eliminar la encuesta?')
             .textContent('Si la elimina, se eliminará de todo el sistema.')
@@ -103,8 +88,9 @@
             
             $mdDialog.show(confirm)
             .then(function() {
-                EncuestasFactory.remove(id)
+                EncuestasFactory.destroy(id)
                 .then(function(response) {
+                    console.log(response);
                     if(response === 'true') {
                         getAll();
                     }

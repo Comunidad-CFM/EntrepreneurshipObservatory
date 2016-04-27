@@ -58,8 +58,8 @@ class Encuestas extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function remove(Request $request) {
-        $encuesta = Encuesta::find($request->input('id'));
+    public function destroy($id) {
+        $encuesta = Encuesta::find($id);
 
         $encuesta->delete();
 
@@ -88,12 +88,12 @@ class Encuestas extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function getQuestions(Request $request) {
+    public function getQuestions($id) {
         return Encuesta::join('encuestas_preguntas', 'encuestas.id', '=', 'encuestas_preguntas.encuesta_id')
                 ->join('preguntas', 'encuestas_preguntas.pregunta_id', '=', 'preguntas.id')
                 ->select('encuestas_preguntas.id', 'encuestas_preguntas.pregunta_id', 'preguntas.enunciado')
                 ->orderBy('encuestas_preguntas.id', 'asc')
-                ->where('encuestas.id', '=', $request->input('id'))
+                ->where('encuestas.id', '=', $id)
                 ->get();
     }
 }

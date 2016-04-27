@@ -33,8 +33,8 @@ Route::group(['prefix' => 'api'], function () {
     // Personas.
     Route::post('personas/registro', 'Personas@store');
     Route::post('personas/ifExist', 'Personas@ifExist');
-    Route::post('personas/editarPers', 'Personas@update');
-    Route::post('personas/eliminarPers', 'Personas@remove');
+    Route::post('personas/update', 'Personas@update');
+    Route::delete('personas/destroy/{id}', 'Personas@destroy');
     Route::get('personas/todas', 'Personas@getAll');
     Route::get('personas/empresarios', 'Personas@getBusinessmen');
 
@@ -42,25 +42,24 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('preguntas/registro', 'Preguntas@store');
     Route::get('preguntas/todas', 'Preguntas@getAll');
     Route::post('preguntas/editar', 'Preguntas@update');
-    Route::post('preguntas/eliminar', 'Preguntas@destroy');
-    Route::post('preguntas/registro', 'Indicadores@store');
+    Route::delete('preguntas/destroy/{id}', 'Preguntas@destroy');
 
     // Encuestas.
     Route::post('encuestas/registro', 'Encuestas@store');
     Route::get('encuestas/todas', 'Encuestas@getAll');    
     Route::post('/encuestas/update', 'Encuestas@update');
-    Route::post('/encuestas/remove', 'Encuestas@remove');
+    Route::delete('/encuestas/destroy/{id}', 'Encuestas@destroy');
     Route::post('/encuestas/changeState', 'Encuestas@changeState');
-    Route::post('/encuestas/getQuestions', 'Encuestas@getQuestions');
+    Route::get('/encuestas/getQuestions/{id}', 'Encuestas@getQuestions');
 
     // EncuestasPreguntas.
     Route::post('/encuestasPreguntas/store', 'EncuestasPreguntas@store');
-    Route::post('/encuestasPreguntas/remove', 'EncuestasPreguntas@remove');
+    Route::delete('/encuestasPreguntas/destroy/{questions}', 'EncuestasPreguntas@destroy');
 
     // Aplicaciones.
     Route::post('/aplicaciones/getForSurvey', 'Aplicaciones@getForSurvey');
     Route::post('/aplicaciones/store', 'Aplicaciones@store');
-    Route::post('/aplicaciones/remove', 'Aplicaciones@remove');
+    Route::delete('/aplicaciones/destroy/{aplications}', 'Aplicaciones@destroy');
 
     // Indicadores.
     Route::get('indicadores/todos', 'Indicadores@getAll');

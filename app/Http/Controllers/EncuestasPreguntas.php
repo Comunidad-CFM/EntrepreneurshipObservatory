@@ -37,8 +37,8 @@ class EncuestasPreguntas extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function remove(Request $request) {
-        $questionsId = substr(json_encode($request->input('questions')), 1, -1);
+    public function destroy($questions) {
+        $questionsId = substr(json_encode($questions), 1, -1);
         $questionsId = explode(',', $questionsId);
 
         foreach ($questionsId as $id) {

@@ -42,9 +42,8 @@
 
             var defered = $q.defer();
             $http({
-                method: 'POST',
-                url: 'api/personas/eliminarPers',
-                data: data
+                method: 'DELETE',
+                url: 'api/personas/destroy/' + id,
             }).success(function(response){
                 defered.resolve(response);
             })
@@ -106,7 +105,7 @@
             var defered = $q.defer();            
             $http({
 				method: 'POST',
-				url: '/api/personas/editarPers',
+				url: '/api/personas/update',
 				data: persona
 			})
             .success(function(response){

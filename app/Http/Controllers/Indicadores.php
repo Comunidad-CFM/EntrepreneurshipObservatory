@@ -26,7 +26,7 @@ class Indicadores extends Controller
      * @return Response
      */
     public function store(Request $request) {
-        $indicador = new Indicador;
+        $indicador = new Indicadore;
 
         $indicador->nombre = $request->input('nombre');
         $indicador->descripcion = $request->input('descripcion');
