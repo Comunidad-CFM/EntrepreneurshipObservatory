@@ -6,8 +6,11 @@
         .controller('PersonasController', PersonasController);
 
     function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog, SectoresFactory, PersonasSectoresFactory) {
+        $scope.nueva = false;
+        $scope.texto = 'Mostrar formulario de agregar nueva persona';
         $scope.registro = false;
         $scope.store = store;
+        $scope.mostrarFormulario = mostrarFormulario;
         $scope.modificar = modificar;
         $scope.eliminar = eliminar;
         $scope.getPersonas = getPersonas;
@@ -120,16 +123,30 @@
             currentEmail = $scope.persona.email;     
             currentCedula = $scope.persona.cedula;            
             $scope.editar = false;
-            // obtener los sectores de la persona
-            PersonasSectoresFactory.getByPersonId(persona.id).then(
-                function (sectoresDePersona) {
-                     return sectoresDePersona;                     
-            }).then(
-            function (sectoresDePersona) {
-                 // body...  
-            }
-                var sectoresPersona = sectoresPersona;
-            );
+            // obtener los sectores de la persona, para mostrar los seleccionados
+            // en la vista
+            PersonasSectoresFactory.getByPersonId(persona.id)
+            .then(function (sectoresDePersona) {
+                return sectoresDePersona;                     
+            })
+            .then(function (sectoresDePersona) {    
+                var sectores = [];
+                $scope.sectores.forEach( function(sector) {
+                    sectores.push({id:sector.id, nombre: sector.nombre});
+                });
+            
+                
+                sectores.forEach( function(sector) {
+                   sector.state = false;
+                   sectoresDePersona.forEach( function(element) {
+                        if(element.sector_id === sector.id){
+                            sector.state = true;
+                        }
+                    });                   
+                });         
+
+                $scope.sectoresEditar = sectores;//lista de sectores para editar              
+            });
 
         }
 
@@ -173,6 +190,17 @@
                             }
                         });
                 }
+            }
+        }
+
+        function mostrarFormulario() {            
+            $scope.nueva = !$scope.nueva;
+            setData();
+
+            if ($scope.nueva) {
+                $scope.texto = 'Ocultar formulario de agregar nueva persona';
+            } else {
+                $scope.texto = 'Mostrar formulario de agregar nueva persona';
             }
         }
 
@@ -244,9 +272,7 @@
         }*/
 
         getSectores();
-        getPersonas();
-
-        PersonasSectoresFactory.getByPersonId(7);
+        getPersonas();        
     }
 
 })();
