@@ -229,15 +229,11 @@
 		}
 
 		function deleteQuestionsToSurvey(questions) {
-			var defered = $q.defer(),
-				data = {
-					questions: questions
-				};
+			var defered = $q.defer();
 
 			$http({
-				method: 'POST',
-				url: 'api/encuestasPreguntas/remove',
-				data: data
+				method: 'DELETE',
+				url: 'api/encuestasPreguntas/destroy/' + questions,
 			})
 			.success(function(response) {
 				defered.resolve(response);

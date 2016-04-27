@@ -127,7 +127,7 @@
 
             $mdDialog.show(confirm)
                 .then(function() {
-                    PreguntasFactory.remove(id)
+                    PreguntasFactory.destroy(id)
                         .then(function(response) {
                             getPreguntas();
                         });

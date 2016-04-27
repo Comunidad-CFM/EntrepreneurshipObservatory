@@ -79,8 +79,8 @@ class Personas extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function remove(Request $request) {          
-        $persona = Persona::find($request->input('id'));
+    public function destroy($id) {          
+        $persona = Persona::find($id);
 
         $persona->delete();
 

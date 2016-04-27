@@ -60,15 +60,11 @@
 		}
 
 		function remove(aplications) {
-			var defered = $q.defer(),
-				data = {
-					aplications: aplications
-				};
+			var defered = $q.defer();
 
 			$http({
-				method: 'POST',
-				url: 'api/aplicaciones/remove',
-				data: data
+				method: 'DELETE',
+				url: 'api/aplicaciones/destroy/' + aplications
 			})
 			.success(function(response) {
 				defered.resolve(response);
