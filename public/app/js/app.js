@@ -15,15 +15,27 @@
 		.config(config)
         .run(run);
 
+    /**
+    * Factory de auth.
+    * @param {Object} Proporciona acceso de lectura/escritura a las cookies de navegador.
+    * @param {Object} Servicio utilizado para la renderización de vistas.
+    * @param {Object} Servicio que permite la unión entre el HTML y el controlador a un nivel superior.
+    * @returns {Object} Objeto con los metodos del factory.
+    */
     function Auth($cookies, $location, $rootScope) {
-        var cont = 0;
-	    return {
-	        logIn: logIn,
-	        logOut: logOut,
-	        checkStatus: checkStatus,
-	        inArray: inArray
-	    }
+        var cont = 0,
+	        factory = {
+    	        logIn: logIn,
+    	        logOut: logOut,
+    	        checkStatus: checkStatus,
+    	        inArray: inArray
+	        }
 
+        return factory;
+
+        /**
+        * Guarda la url a la que un usuario intentó acceder.
+        */
         function savePreviousUrl() {
             if (cont === 0) {
                 $rootScope.url = $location.path();
@@ -31,6 +43,10 @@
             }
         }
 
+        /**
+        * Guarda los la información del usuario en las cookies y realiza la renderización a la vista respectiva.
+        * @param {Object} Objeto con la información del usuario.
+        */
 	    function logIn(user) {
             $cookies.putObject('session', user);
 
@@ -48,11 +64,17 @@
             }
         }
 
+        /**
+        * Remueve las cookies del usuario y renderiza a la vista de log in.
+        */
         function logOut() {
             $cookies.remove('session');
             $location.path('login');
         }
 
+        /**
+        * Chequea los permisos con los que cuenta el usuario, si está logueado y renderiza a la vista respectiva.
+        */
         function checkStatus() {            
             var rutasPrivadas = ['/','/admin', '/admin/encuestas', '/admin/personas', '/admin/preguntas', '/empresario', '/empresario/contestar'];
             
@@ -77,6 +99,12 @@
             }
         }
 
+        /**
+        * Busca una ruta en la lista de rutas del sistema.
+        * @param {string} Ruta a buscar.
+        * @param {Array} Lista con las rutas.
+        * @returns {bool} True si la encuentra, false si no la encuentra.
+        */
         function inArray(needle, haystack) {
             var key = '';
             for (key in haystack) {
@@ -88,6 +116,10 @@
         }
 	}
 	
+    /**
+    * Convierte una sigla a un string.
+    * @returns {Object} Objeto con el filtro.
+    */
     function user() {
         var filter = function(usuario) {
             if (usuario === 'A') {
@@ -104,6 +136,10 @@
         return filter;
     }
 
+    /**
+    * Convierte un numero a un string.
+    * @returns {Object} Objeto con el filtro.
+    */
     function estado() {
         var filter = function(estado) {
             if (estado === 0) {
@@ -117,6 +153,11 @@
         return filter;
     }
 
+    /**
+    * Configuración de los estados de la aplicación.
+    * @param {Object} Servicio utilizado para definir los estados o rutas (diferentes vistas) de la aplicación.
+    * @param {Object} Servicio utilizado para definir el estado por defecto.
+    */
     function config($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
 
@@ -168,6 +209,11 @@
             });
     }
 
+    /**
+    * Se ejecuta cada vez que se refrezca la página.
+    * @param {Object} Servicio que permite la unión entre el HTML y el controlador a un nivel superior.
+    * @param {Object} Servicio que proporciona autenticación y renderización de vistas.
+    */
     function run($rootScope, Auth) {
         $rootScope.$on('$stateChangeSuccess', function() {
             Auth.checkStatus();

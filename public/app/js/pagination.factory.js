@@ -11,15 +11,24 @@
 		.module('observatoryApp')
 		.factory('PaginationFactory', PaginationFactory);
 
+    /**
+    * Factory de paginación.
+    * @returns {Object} Objeto con los metodos del factory. 
+    */
 	function PaginationFactory() {
-        // service definition
         var factory = {
         	getPager: getPager
         };
 
         return factory;
 
-        // service implementation
+        /**
+        * Implementación del factory.
+        * @param {integer} Total de items que se require.
+        * @param {integer} Página actual de la paginación.
+        * @param {integer} Tamaño de la página.
+        * @returns {Object} Objeto con los metodos del factory. 
+        */
         function getPager(totalItems, currentPage, pageSize) {
             // default to first page
             currentPage = currentPage || 1;

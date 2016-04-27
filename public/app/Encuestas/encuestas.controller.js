@@ -145,6 +145,10 @@
             $scope.id = id;
         }
 
+        /**
+        * Prepara las preguntas que van a poder ser agregadas o eliminadas de una encuesta.
+        * @param {integer} Id de la encuesta.
+        */
         function armandoEncuesta(id) {
             $scope.armarOk = false;
             $scope.id = id;
@@ -185,9 +189,9 @@
         }
 
         /**
-        * Agrega las preguntas a la encuesta.
+        * Agrega preguntas a una encuesta.
         * @param {Array} Lista de preguntas.
-        * @returns {string} Resultado de agregar las encuestas.
+        * @returns {string} Resultado de agregar las preguntas.
         */
         function agregarPreguntas(questions) {
             if(questions.length) {
@@ -200,6 +204,11 @@
             return 'true';
         }
 
+        /**
+        * Elimina preguntas de una encuesta.
+        * @param {Array} Lista de preguntas.
+        * @returns {string} Resultado de eliminar las preguntas.
+        */
         function eliminarPreguntas(questions) {
             if(questions.length) {
                 EncuestasFactory.deleteQuestionsToSurvey(questions)
@@ -211,6 +220,9 @@
             return 'true';
         }
 
+        /**
+        * Es el encargado de mandar a agregar y eliminar preguntas de una encuesta.
+        */
         function armar() {
             var questionsList = EncuestasFactory.questionsChanged(respaldoPreguntas, $scope.preguntas.banco);
 
@@ -226,6 +238,9 @@
             $scope.armarOk = true;
         }
 
+        /**
+        * Obtiene todas las encuestas.
+        */
         function getAll() {
         	EncuestasFactory.getAll()
         	.then(function(response) {
@@ -235,6 +250,10 @@
 
         getAll();
 
+        /**
+        * Prepara la asignación de aplicaciones a una encuesta.
+        * @param {integer} Id de la encuestas.
+        */
         function asignandoUsuarios(id) {
             $scope.asignar = false;
             $scope.id = id;
@@ -258,6 +277,12 @@
             });
         }
 
+        /**
+        * Crea aplicaciones para los empresarios de una encuesta específica.
+        * @param {Array} Lista de empresarios.
+        * @param {integer} Id del periodo.
+        * @returns {string} Resultado de crear las aplicaciones.
+        */
         function asignarEmpresarios(entrepreneurs, idPeriodo) {
             if(entrepreneurs.length) {
                 PeriodosFactory.getPeriodoIdForAplicacion()
@@ -275,6 +300,11 @@
             return 'true';
         }
 
+        /**
+        * Elimina aplicaciones de una encuesta.
+        * @param {Array} Lista de empresarios.
+        * @returns {string} Resultado de eliminar las aplicaciones.
+        */
         function desasignarEmpresarios(entrepreneurs) {
             if(entrepreneurs.length) {
                 AplicacionesFactory.remove(entrepreneurs)
@@ -286,6 +316,9 @@
             return 'true';
         }
 
+        /**
+        * Encargado de manda a crear y eliminar aplicaciones de una encuesta.
+        */
         function asignarUsuarios() {
             var entrepreneursList = EncuestasFactory.entrepreneursChanged(respaldoEmpresarios, $scope.empresarios);
             
@@ -301,6 +334,9 @@
             $scope.asignar = true;
         }
 
+        /**
+        * Marca o desmarca todos los empresarios mostrados al momento de crear aplicaciones.
+        */
         function marcarTodos() {
             var state = document.getElementById('bussMaster').checked;
 

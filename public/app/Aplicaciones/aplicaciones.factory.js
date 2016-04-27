@@ -12,7 +12,7 @@
 		.factory('AplicacionesFactory', AplicacionesFactory);
 
 	/**
-	* Controlador de aplicaciones.
+	* Factory de aplicaciones.
 	* @param {Object} Servicio que realiza una solicitud al servidor y devuelve una respuesta.
 	* @param {Object} Servicio que ayuda a ejecutar funciones de forma asíncrona.
 	* @returns {Object} Objeto con los metodos del factory.
