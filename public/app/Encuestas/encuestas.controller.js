@@ -1,3 +1,9 @@
+/**
+* Entrepreneurship Observatory
+*
+* @authors Fauricio Rojas Hernández, Manfred Artavia Gómez y Carlos Jiménez González.
+* @version 1.0
+*/
 (function() {
 	'use strict';
 
@@ -5,6 +11,19 @@
 		.module('observatoryApp')
 		.controller('EncuestasController', EncuestasController);
 
+    /**
+    * Controlador del administrador.
+    * @param {Object} Servicio que permite la unión entre el HTML y el controlador.
+    * @param {Object} Promesa que resolverá cierto trozo de código cuando determinado tiempo ha pasado.
+    * @param {Object} Servicio que da formato a los datos que se muestran al usuario.
+    * @param {Object} Proporciona acceso de lectura/escritura a las cookies de navegador.
+    * @param {Object} Servicio utilizado para mostrar ventanas de confirmación.
+    * @param {Object} Servicio que brinda funciones de las encuestas que ayudan a la funcionalidad del controlador.
+    * @param {Object} Servicio que brinda funciones de las preguntas que ayudan a la funcionalidad del controlador.
+    * @param {Object} Servicio que brinda funciones de las personas que ayudan a la funcionalidad del controlador.
+    * @param {Object} Servicio que brinda funciones de las aplicaciones que ayudan a la funcionalidad del controlador.
+    * @param {Object} Servicio que brinda funciones de las periodos que ayudan a la funcionalidad del controlador.
+    */
 	function EncuestasController($scope, $timeout, $filter, $cookies, $mdDialog, EncuestasFactory, PreguntasFactory, PersonasFactory, AplicacionesFactory, PeriodosFactory) {
 		$scope.descripcion = '';
 		$scope.nueva = false;
@@ -22,14 +41,20 @@
         var respaldoPreguntas,
             respaldoEmpresarios;
 
+        /**
+        * Limpia el formulario del cambio de contraseña.
+        */
         function cleanForm() {
             $scope.formEncuesta.$setUntouched();
             $scope.formEditarEncuesta.$setUntouched();
         }
 
+        /**
+        * Agrega una encuesta.
+        */
         function agregar() {
-        	var fechaActual = $filter('date')(new Date(), 'yyyy-MM-dd');
-        	var encuesta = {
+        	var fechaActual = $filter('date')(new Date(), 'yyyy-MM-dd'),
+        	    encuesta = {
         		descripcion: $scope.descripcion,
         		estado: false,
         		fechaCreacion: fechaActual,
@@ -59,6 +84,9 @@
         	});
         }
 
+        /**
+        * Modifica una encuesta.
+        */
         function modificar() {
 		    EncuestasFactory.edit($scope.id, $scope.descripcionEditar, $filter('date')(new Date(), 'yyyy-MM-dd'))
             .then(function(response) {
@@ -77,6 +105,11 @@
             });
         }
 
+        /**
+        * Elimina una encuesta.
+        * @param {Object} Objeto utilizado por la ventana de confirmación.
+        * @param {integer} Id de la encuesta.
+        */
         function destroy(ev, id) {
             var confirm = $mdDialog.confirm()
             .title('¿Desea eliminar la encuesta?')
@@ -100,6 +133,12 @@
                 });
             }, function() {});
         }
+
+        /**
+        * Prepara la información de la encuesta que se va a editar.
+        * @param {integer} Id de la encuesta que se va a editar.
+        * @param {string} Descripción de la encuesta.
+        */
         function editandoEncuesta(id, descripcion) {
             $scope.editar = false;
             $scope.descripcionEditar = descripcion;
@@ -134,6 +173,10 @@
             });
         }
 
+        /**
+        * Cambia el estado de una encuesta.
+        * @param {Object} La encuesta.
+        */
         function cambiarEstado(encuesta) {
             EncuestasFactory.changeState(encuesta.id, 1 - encuesta.estado)
             .then(function(response) {
@@ -141,6 +184,11 @@
             });
         }
 
+        /**
+        * Agrega las preguntas a la encuesta.
+        * @param {Array} Lista de preguntas.
+        * @returns {string} Resultado de agregar las encuestas.
+        */
         function agregarPreguntas(questions) {
             if(questions.length) {
                 EncuestasFactory.addQuestionsToSurvey($scope.id, questions)

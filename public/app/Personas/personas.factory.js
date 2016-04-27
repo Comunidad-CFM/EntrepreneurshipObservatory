@@ -1,3 +1,9 @@
+/**
+* Entrepreneurship Observatory
+*
+* @authors Fauricio Rojas Hernández, Manfred Artavia Gómez y Carlos Jiménez González.
+* @version 1.0
+*/
 (function() {
 	'use strict';
 
@@ -12,7 +18,9 @@
 			getBusinessmen: getBusinessmen,
             ifExist: ifExist,
             edit: edit,
-            remove: remove
+            remove: remove,
+            isPass: isPass,
+            changePass: changePass
 		};
 
 		return factory;
@@ -116,6 +124,45 @@
             })
             return defered.promise;
         }
+
+        function isPass(id, currentPass) {
+        	var defered = $q.defer();
+
+        	$http({
+        		method: 'GET',
+        		url: '/api/personas/isPass/' + id + '/'+ currentPass
+        	})
+        	.success(function(response) {
+        		defered.resolve(response[0]);
+        	})
+        	.error(function(err) {
+        		defered.reject(err);
+        	});
+
+        	return defered.promise;
+        }
+
+        function changePass(id, pass) {
+        	var defered = $q.defer(),
+        		data = {
+        			id: id,
+        			pass: pass
+        		};
+
+        	$http({
+        		method: 'POST',
+        		url: '/api/personas/changePass',
+        		data: data
+        	})
+        	.success(function(response) {
+        		defered.resolve(response);
+        	})
+        	.error(function(err) {
+        		defered.reject(err);
+        	});
+
+        	return defered.promise;
+        } 
 	}
 
 })();
