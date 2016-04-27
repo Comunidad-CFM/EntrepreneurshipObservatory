@@ -12,8 +12,11 @@
         .controller('PersonasController', PersonasController);
 
     function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog, SectoresFactory, PersonasSectoresFactory) {
+        $scope.nueva = false;
+        $scope.texto = 'Mostrar formulario de agregar nueva persona';
         $scope.registro = false;
         $scope.store = store;
+        $scope.mostrarFormulario = mostrarFormulario;
         $scope.modificar = modificar;
         $scope.eliminar = eliminar;
         $scope.getPersonas = getPersonas;
@@ -83,7 +86,6 @@
                     selectedSectores.push(id);
                 }
             }      
-            console.log(selectedSectores);    
         }
 
         function store() {            
@@ -122,11 +124,36 @@
         }
     
         function editandoPersona(persona) {
-            $scope.persona = persona;
+            $scope.persona = persona;            
             $scope.nueva = false;
             currentEmail = $scope.persona.email;     
             currentCedula = $scope.persona.cedula;            
             $scope.editar = false;
+            // obtener los sectores de la persona, para mostrar los seleccionados
+            // en la vista
+            PersonasSectoresFactory.getByPersonId(persona.id)
+            .then(function (sectoresDePersona) {
+                return sectoresDePersona;                     
+            })
+            .then(function (sectoresDePersona) {    
+                var sectores = [];
+                $scope.sectores.forEach( function(sector) {
+                    sectores.push({id:sector.id, nombre: sector.nombre});
+                });
+            
+                
+                sectores.forEach( function(sector) {
+                   sector.state = false;
+                   sectoresDePersona.forEach( function(element) {
+                        if(element.sector_id === sector.id){
+                            sector.state = true;
+                        }
+                    });                   
+                });         
+
+                $scope.sectoresEditar = sectores;//lista de sectores para editar              
+            });
+
         }
 
         //validar cedula existente
@@ -140,7 +167,6 @@
                 $scope.msgCedula = "";                                            
                 PersonasFactory.ifExist($scope.persona.cedula,"cedula")
                     .then(function(response) {
-                        console.log(response);
                         if (response !== undefined) {
                             $scope.coincidenciaCedula = true;
                             $scope.msgCedula = "El número de cédula ya está registrado.";
@@ -173,11 +199,22 @@
             }
         }
 
+        function mostrarFormulario() {            
+            $scope.nueva = !$scope.nueva;
+            setData();
+
+            if ($scope.nueva) {
+                $scope.texto = 'Ocultar formulario de agregar nueva persona';
+            } else {
+                $scope.texto = 'Mostrar formulario de agregar nueva persona';
+            }
+        }
+
         function modificar(persona) {              
             PersonasFactory.edit(persona)
                 .then(function(response) {
                     if (response === 'true') {
-                        setData();
+                        setData();                        
                         getPersonas();
                         $scope.editar = true;
                         $scope.msgEditar = 'La persona se ha modificado correctamente.';
@@ -241,7 +278,7 @@
         }*/
 
         getSectores();
-        getPersonas();                
+        getPersonas();        
     }
 
 })();
