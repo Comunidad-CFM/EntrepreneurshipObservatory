@@ -18,9 +18,11 @@
         $scope.validateEmail = validateEmail;
         $scope.validateID = validateID;        
         $scope.selectSector = selectSector;
+        $scope.selectSectorEdit = selectSectorEdit;
         var currentEmail = "";
         var currentCedula = ""; 
         var selectedSectores = [];
+        var selectedSectoresEditar = [];//sectores que se editan
 
         function setData() {
             $scope.persona = {
@@ -67,7 +69,7 @@
             }
         }
 
-        function selectSector(id){                
+        function selectSector(id){                    
             if(!selectedSectores.length){
                 selectedSectores.push(id);
             }
@@ -79,7 +81,20 @@
                 else{
                     selectedSectores.push(id);
                 }
-            }      
+            }   
+            
+        }
+
+        function selectSectorEdit(sector){                         
+            var index = selectedSectoresEditar.indexOf(sector);            
+            if(index > -1){                                    
+                if( selectedSectoresEditar[index].state === true){
+                    selectedSectoresEditar[index].state = false;
+                }else{
+                    selectedSectoresEditar[index].state = true;   
+                }                
+
+            }                        
         }
 
         function store() {            
@@ -117,7 +132,7 @@
             }
         }
     
-        function editandoPersona(persona) {
+        function editandoPersona(persona) {        
             $scope.persona = persona;            
             $scope.nueva = false;
             currentEmail = $scope.persona.email;     
@@ -133,8 +148,7 @@
                 var sectores = [];
                 $scope.sectores.forEach( function(sector) {
                     sectores.push({id:sector.id, nombre: sector.nombre});
-                });
-            
+                });            
                 
                 sectores.forEach( function(sector) {
                    sector.state = false;
@@ -143,9 +157,10 @@
                             sector.state = true;
                         }
                     });                   
-                });         
-
-                $scope.sectoresEditar = sectores;//lista de sectores para editar              
+                });                                 
+                selectedSectoresEditar = sectores;
+                
+                $scope.sectoresEditar = selectedSectoresEditar;//lista de sectores para editar              
             });
 
         }
@@ -210,17 +225,33 @@
                     if (response === 'true') {
                         setData();                        
                         getPersonas();
-                        $scope.editar = true;
-                        $scope.msgEditar = 'La persona se ha modificado correctamente.';
-                        $scope.styleEditar = 'success-box';
                         
+                        var sectores = [] //lista de sectores a enviar para guarda
+                        selectedSectoresEditar.forEach( function(sector) {
+                            if(sector.state === true){
+                                sectores.push(sector.id);
+                            }
+                        });
+
+                        PersonasSectoresFactory.edit(persona.id, sectores)
+                            .then(function (response) {
+                                if(response === 'true'){
+                                    $scope.editar = true;
+                                    $scope.msgEditar = 'La persona se ha modificado correctamente.';
+                                    $scope.styleEditar = 'success-box';
+                                }
+                                else{
+                                    $scope.editar = true;
+                                    $scope.msgEditar = 'Ha ocurrido un error al modificar los sectores de la persona';
+                                    $scope.styleEditar = 'error-box';            
+                                }
+                            });                                                
                     } else {
                         $scope.editar = true;
                         $scope.msgEditar = 'Ha ocurrido un error al modificar la persona.';
                         $scope.styleEditar = 'error-box';
                     }
                 });
-
         }
 
         function eliminar(ev, id) {

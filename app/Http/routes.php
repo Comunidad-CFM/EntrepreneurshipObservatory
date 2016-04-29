@@ -79,4 +79,5 @@ Route::group(['prefix' => 'api'], function () {
     // PersonasSectores
     Route::post('personasSectores/registro','PersonasSectores@store');
     Route::post('personasSectores/getByPersonId','PersonasSectores@getByPersonId');
+    Route::post('personasSectores/update','PersonasSectores@update');
 });
