@@ -1,3 +1,9 @@
+/**
+* Entrepreneurship Observatory
+*
+* @authors Fauricio Rojas Hernández, Manfred Artavia Gómez y Carlos Jiménez González.
+* @version 1.0
+*/
 (function() {
 	'use strict';
 
@@ -5,6 +11,12 @@
 		.module('observatoryApp')
 		.factory('EncuestasFactory', EncuestasFactory);
 
+	/**
+	* Factory de encuestas.
+	* @param {Object} Servicio que realiza una solicitud al servidor y devuelve una respuesta.
+	* @param {Object} Servicio que ayuda a ejecutar funciones de forma asíncrona.
+	* @returns {Object} Objeto con los metodos del factory.
+	*/
 	function EncuestasFactory($http, $q) {
 		var factory = {
 			store: store,
@@ -23,6 +35,11 @@
 
 		return factory;
 
+		/**
+        * Almacena una nueva encuesta.
+        * @param {Object} Objeto con la información de la encuesta.
+        * @returns {string} Resultado de agregar la encuesta.
+        */
 		function store(encuesta) {
 			var defered = $q.defer();
 
@@ -40,6 +57,11 @@
 
 			return defered.promise;
 		}
+
+		/**
+        * Obtiene todas las encuestas.
+        * @returns {string} Todas las encuestas de la base de datos.
+        */
 		function getAll() {
 			var defered = $q.defer();
 
@@ -54,6 +76,13 @@
 			return defered.promise;
 		}
 
+		/**
+        * Edita una encuesta.
+        * @param {integer} Id de la encuesta.
+        * @param {string} Nueva descripción de la encuesta.
+        * @param {date} Fecha de modificación de la encuesta.
+        * @returns {string} Resultado de editar la encuesta.
+        */
 		function edit(id, descripcion, fecha) {
 			var defered = $q.defer();
 			var data = {
@@ -76,6 +105,11 @@
 			return defered.promise;
 		}
 
+		/**
+        * Elimina una encuesta.
+        * @param {integer} Id de la encuesta.
+        * @returns {string} Resultado de eliminar la encuesta.
+        */
 		function destroy(id) {
 			var defered = $q.defer();
 
@@ -93,6 +127,12 @@
 			return defered.promise;
 		}
 
+		/**
+        * Cambia el estado de una encuesta.
+        * @param {integer} Id de la encuesta.
+        * @param {integer} Nuevo estado de la encuesta.
+        * @returns {string} Resultado de cambiar el estado de la encuesta.
+        */
 		function changeState(id, state) {
 			var defered = $q.defer();
 			var data = {
@@ -115,6 +155,11 @@
 			return defered.promise;
 		}
 
+		/**
+        * Obtiene las preguntas de una encuesta.
+        * @param {integer} Id de la encuesta.
+        * @returns {Array} Array con las preguntas de la encuesta.
+        */
 		function getQuestions(id)  {
 			var defered = $q.defer();
 
@@ -132,6 +177,12 @@
 			return defered.promise;
 		}
 
+		/**
+        * Elimina un elemento de una lista.
+        * @param {Object} Objeto a eliminar.
+        * @param {Array} Lista de la que se va a eliminar el objeto.
+        * @returns {Array} Lista sin el objeto.
+        */
 		function removeItem(item, list) {
 			list = list.filter(function(question) {
 				return question !== item;
@@ -140,6 +191,11 @@
 			return list;
 		}
 
+		/**
+        * Elimina de todas las preguntas las preguntas de la encuesta.
+        * @param {Array} Lista que contiene 2 sublistas de preguntas, una con todas las preguntas y la otra con las preguntas de la encuesta.
+        * @returns {Array} Lista con las preguntas.
+        */
 		function removeQuestions(list) {
 			angular.forEach(list.banco, function(question) {
 				angular.forEach(list.preguntas, function(item) {
@@ -152,6 +208,12 @@
 			return list;
 		}
 
+		/**
+        * Verifica si las preguntas de una encuesta cambiaron.
+        * @param {Array} Lista con las preguntas viejas de la encuesta.
+        * @param {Array} Lista con las nuevas preguntas de la encuesta.
+        * @returns {Array} Lista con las preguntas que se van a agregar y a eliminar de la encuesta.
+        */
 		function questionsChanged(oldList, currentList) {
 			var question = false,
 				i = 0,
@@ -206,6 +268,12 @@
 			return preguntas;
 		}
 
+		/**
+        * Agrega pregunats a una encuesta.
+        * @param {integer} Id de la enccuesta.
+        * @param {Array} Lista con los ids de las preguntas que se van a agregar a la encuesta.
+        * @returns {string} Resultado de agregar las preguntas a la encuesta.
+        */
 		function addQuestionsToSurvey(encuestaId, questions) {
 			var defered = $q.defer(),
 				data = {
@@ -228,6 +296,11 @@
 			return defered.promise;
 		}
 
+		/**
+        * Elimina preguntas de una encuesta.
+        * @param {Array} Lista con los ids de las encuestas que se van a eliminar.
+        * @returns {string} Resultado de eliminar las encuestas.
+        */
 		function deleteQuestionsToSurvey(questions) {
 			var defered = $q.defer();
 
@@ -245,6 +318,12 @@
 			return defered.promise;
 		}
 
+		/**
+        * Procesa la lista de personas para ver si cuentan con una aplicación en una encuesta.
+        * @param {Array} Lista con los empresarios que cuentan con aplicación en una encuesta.
+        * @param {Array} Lista con todas las personas.
+        * @returns {Array} Lista con todas las personas, diferenciadas de cuales cuentan con aplicación.
+        */
 		function isEntrepreneurAssigned(listEntrepreneur, listPersons) {
 			angular.forEach(listPersons, function(person) {
 				person.state = false;
@@ -259,6 +338,12 @@
 			return listPersons;
 		}
 
+		/**
+        * Verifica si los empresarios que cuentan con una aplicación en una encuesta se han eliminado o se han agregado nuevos.
+        * @param {Array} Lista con los empresarios viejos que cuontaban con una aplicación en la encuesta.
+        * @param {Array} Lista con los nuevos empresarios.
+        * @returns {Array} Lista con los empresarios que hay que eliminarles la aplicación y a los que hay que crearle una.
+        */
 		function entrepreneursChanged(oldList, currentList) {
 			var index = 0,
 				length = oldList.length,

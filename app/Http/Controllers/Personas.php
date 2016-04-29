@@ -96,4 +96,29 @@ class Personas extends Controller
     public function getBusinessmen() {
         return Persona::where('tipo', 'B')->get();  
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function isPass($id, $currentPass) {
+        return Persona::where('id', $id)->where('contrasena', md5($currentPass))->select('id')->get();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function changePass(Request $request) {
+        $persona = Persona::find($request->input('id'));
+        $persona->contrasena = md5($request->input('pass'));
+        
+        $persona->save();
+
+        return 'true';
+    }
 }

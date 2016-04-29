@@ -1,3 +1,9 @@
+/**
+* Entrepreneurship Observatory
+*
+* @authors Fauricio Rojas Hernández, Manfred Artavia Gómez y Carlos Jiménez González.
+* @version 1.0
+*/
 (function() {
 	'use strict';
 
@@ -5,6 +11,12 @@
 		.module('observatoryApp')
 		.factory('AplicacionesFactory', AplicacionesFactory);
 
+	/**
+	* Factory de aplicaciones.
+	* @param {Object} Servicio que realiza una solicitud al servidor y devuelve una respuesta.
+	* @param {Object} Servicio que ayuda a ejecutar funciones de forma asíncrona.
+	* @returns {Object} Objeto con los metodos del factory.
+	*/
 	function AplicacionesFactory($http, $q) {
 		var factory = {
 			getForSurvey: getForSurvey,
@@ -14,6 +26,11 @@
 
 		return factory;
 
+		/**
+		* Obtiene las aplicaciones de una encuesta.
+		* @param {integer} Id de la encuesta.
+		* @returns {Array} Arreglo con las aplicaciones de la encuesta.
+		*/
 		function getForSurvey(idEncuesta) {
 			var defered = $q.defer(),
 				data = {
@@ -35,6 +52,14 @@
 			return defered.promise;
 		}
 
+		/**
+		* Almacena nuevas aplicaciones.
+		* @param {Array} Arreglo con los id de los empresarios a los que se les va a crear una aplicación.
+		* @param {integer} Id del periodo al que se va a asignar la encuesta.
+		* @param {date} Fecha actual.
+		* @param {integer} Id de la encuesta a la que se le va a crear aplicaciones.
+		* @returns {string} Resultado del almacenamiento.
+		*/
 		function store(entrepreneurs, idPeriodo, fecha, idEncuesta) {
 			var defered = $q.defer(),
 				data = {
@@ -59,6 +84,11 @@
 			return defered.promise;
 		}
 
+		/**
+		* Elimina aplicaciones.
+		* @param {Array} Arreglo con los id de las aplicaciones que se van a eliminar.
+		* @returns {string} Resultado de eliminar.
+		*/
 		function remove(aplications) {
 			var defered = $q.defer();
 

@@ -1,3 +1,9 @@
+/**
+* Entrepreneurship Observatory
+*
+* @authors Fauricio Rojas Hernández, Manfred Artavia Gómez y Carlos Jiménez González.
+* @version 1.0
+*/
 (function() {
 	'use strict';
 
@@ -5,6 +11,12 @@
 		.module('observatoryApp')
 		.factory('PeriodosFactory', PeriodosFactory);
 
+	/**
+	* Factory de periodos.
+	* @param {Object} Servicio que realiza una solicitud al servidor y devuelve una respuesta.
+	* @param {Object} Servicio que ayuda a ejecutar funciones de forma asíncrona.
+	* @returns {Object} Objeto con los metodos del factory.
+	*/
 	function PeriodosFactory($http, $q) {
 		var factory = {
 			getPeriodoIdForAplicacion: getPeriodoIdForAplicacion
@@ -12,6 +24,11 @@
 
 		return factory;
 
+		/**
+		* Obtiene el cuatrimestre a partir de un mes.
+		* @param {integer} Número del mes.
+		* @returns {integer} Cuatrimestre.
+		*/
 		function getQuarter(month) {
 			if (month >= 1 && month <= 4) {
 				return 1;
@@ -24,6 +41,10 @@
 			}
 		}
 
+		/**
+		* Obtiene el id de un periodo para una aplicación.
+		* @returns {integer} Id del periodo.
+		*/
 		function getPeriodoIdForAplicacion() {
 			var date = new Date(),
 			    defered = $q.defer();
