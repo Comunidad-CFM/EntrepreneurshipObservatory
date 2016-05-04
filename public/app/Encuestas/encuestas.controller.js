@@ -35,8 +35,8 @@
         $scope.cambiarEstado = cambiarEstado;
         $scope.armandoEncuesta = armandoEncuesta;
         $scope.armar = armar;
-        $scope.asignandoUsuarios = asignandoUsuarios;
-        $scope.asignarUsuarios = asignarUsuarios;
+        $scope.creandoAplicacion = creandoAplicacion;
+        $scope.crearAplicacion = crearAplicacion;
         $scope.marcarTodos = marcarTodos;
         var respaldoPreguntas,
             respaldoEmpresarios;
@@ -254,7 +254,7 @@
         * Prepara la asignación de aplicaciones a una encuesta.
         * @param {integer} Id de la encuestas.
         */
-        function asignandoUsuarios(id) {
+        function creandoAplicacion(id) {
             $scope.asignar = false;
             $scope.id = id;
 
@@ -264,7 +264,7 @@
                 return response;
             })
             .then(function(allEntrepreneurs) {
-                // Se obtienen los empresario que están asociados a la encuesta.
+                // Se obtienen los empresarios que están asociados a la encuesta.
                 AplicacionesFactory.getForSurvey($scope.id)
                 .then(function(entrepreneursSurvey) {
                     respaldoEmpresarios = [];
@@ -273,6 +273,17 @@
                     angular.forEach($scope.empresarios, function(entrepreneur) {
                         respaldoEmpresarios.push({id: entrepreneur.id, state: entrepreneur.state});
                     });
+                });
+            })
+            .then(function() {
+                // Se obtienen los periodos de la base de datos.
+                PeriodosFactory.getAll()
+                .then(function(response) {
+                    response.forEach(function(periodo) {
+                        periodo.label = 'Cuatrimestre ' + periodo.cuatrimestre +', ' + periodo.anio;
+                    });
+                    $scope.periodos = response;
+                    $scope.selectedPeriodo = $scope.periodos[0];
                 });
             });
         }
@@ -283,9 +294,9 @@
         * @param {integer} Id del periodo.
         * @returns {string} Resultado de crear las aplicaciones.
         */
-        function asignarEmpresarios(entrepreneurs, idPeriodo) {
+        function asignarEmpresarios(entrepreneurs) {
             if(entrepreneurs.length) {
-                PeriodosFactory.getPeriodoIdForAplicacion()
+                /*PeriodosFactory.getPeriodoIdForAplicacion()
                 .then(function(response) {
                     return response;
                 })
@@ -294,7 +305,12 @@
                     .then(function(response) {
                         return response;
                     });
-                })
+                })*/
+
+                AplicacionesFactory.store(entrepreneurs, $scope.selectedPeriodo.id, $filter('date')(new Date(), 'yyyy-MM-dd'), $scope.id)
+                .then(function(response) {
+                    return response;
+                });
             }
 
             return 'true';
@@ -319,7 +335,7 @@
         /**
         * Encargado de manda a crear y eliminar aplicaciones de una encuesta.
         */
-        function asignarUsuarios() {
+        function crearAplicacion() {
             var entrepreneursList = EncuestasFactory.entrepreneursChanged(respaldoEmpresarios, $scope.empresarios);
             
             if (asignarEmpresarios(entrepreneursList.agregar) && desasignarEmpresarios(entrepreneursList.eliminar)) {

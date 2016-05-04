@@ -19,7 +19,8 @@
 	*/
 	function PeriodosFactory($http, $q) {
 		var factory = {
-			getPeriodoIdForAplicacion: getPeriodoIdForAplicacion
+			getPeriodoIdForAplicacion: getPeriodoIdForAplicacion,
+			getAll: getAll
 		};
 
 		return factory;
@@ -52,6 +53,27 @@
 			$http.get('api/periodos/getForAplicacion?anio='+date.getFullYear()+'&cuatrimestre='+getQuarter(date.getMonth()+1))
 			.success(function(response) {
 				defered.resolve(response[0].id);
+			})
+			.error(function(err) {
+				defered.reject(err);
+			});
+
+			return defered.promise;
+		}
+
+		/**
+		* Obtiene todos los peridos de la base de datos.
+		* @returns {Array} Lista con los peridos.
+		*/
+		function getAll() {
+			var defered = $q.defer();
+
+			$http({
+				method: 'GET',
+				url: 'api/periodos/getAll'
+			})
+			.success(function(response) {
+				defered.resolve(response);
 			})
 			.error(function(err) {
 				defered.reject(err);

@@ -44,7 +44,7 @@
                                             <span ng-class="{'fa fa-toggle-on': encuesta.estado == 1, 'fa fa-toggle-off': encuesta.estado == 0}" ng-click="cambiarEstado(encuesta);">
                                             <md-tooltip md-direction="top">Activar/inactivar</md-tooltip></span>
                                             &nbsp;&nbsp;
-                                            <span class="glyphicon glyphicon-list-alt" data-toggle="modal" data-target="#asignarUsuarios" ng-click="asignandoUsuarios(encuesta.id);">
+                                            <span class="glyphicon glyphicon-list-alt" data-toggle="modal" data-target="#aplicacion" ng-click="creandoAplicacion(encuesta.id);">
                                             <md-tooltip md-direction="top">Crear aplicación</md-tooltip></span>
                                             &nbsp;&nbsp;
                                             <span class="glyphicon glyphicon-trash" ng-click="destroy($event, encuesta.id);">
@@ -133,39 +133,62 @@
                     </div>
 
                     <!-- Asignar usuarios a la encuesta -->
-                    <div id="asignarUsuarios" class="modal fade" data-keyboard="false" data-backdrop="static">
+                    <div id="aplicacion" class="modal fade" data-keyboard="false" data-backdrop="static">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header montserrat">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <label class="title">Asignar usuarios</label>
+                                    <label class="title">Crear aplicación</label>
                                 </div>
                                 <div class="modal-body">
-                                    <table class="table margin">
-                                        <thead>
-                                            <tr>
-                                                <th><input id="bussMaster" type="checkbox" ng-click="marcarTodos();"></th>
-                                                <th>Cédula</th>
-                                                <th>Nombre</th>
-                                                <th>Email</th>
-                                                <th>Tipo</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="empresario in empresarios">
-                                                <th><input type="checkbox" value="true" ng-model="empresario.state"></th>
-                                                <td>{{empresario.cedula}}</td>
-                                                <td>{{empresario.nombre}} {{empresario.apellido1}} {{empresario.apellido2}}</td>
-                                                <td>{{empresario.email}}</td>
-                                                <td>{{empresario.tipo | user}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="portlet">
+                                        <div class="portlet-title">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active">
+                                                    <a data-target="#empresarios" data-toggle="tab">Empresarios</a>
+                                                </li>
+                                                <li>
+                                                    <a data-target="#periodo" data-toggle="tab">Periodo</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="tab-content">
+                                                <div class="tab-pane fade in active" id="empresarios">
+                                                    <label class="title-2">Asigne empresarios</label>
+                                                    <table class="table margin">
+                                                        <thead>
+                                                            <tr>
+                                                                <th><input id="bussMaster" type="checkbox" ng-click="marcarTodos();"></th>
+                                                                <th>Cédula</th>
+                                                                <th>Nombre</th>
+                                                                <th>Email</th>
+                                                                <th>Tipo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="empresario in empresarios">
+                                                                <th><input type="checkbox" value="true" ng-model="empresario.state"></th>
+                                                                <td>{{empresario.cedula}}</td>
+                                                                <td>{{empresario.nombre}} {{empresario.apellido1}} {{empresario.apellido2}}</td>
+                                                                <td>{{empresario.email}}</td>
+                                                                <td>{{empresario.tipo | user}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="tab-pane fade" id="periodo">
+                                                    <label class="title-2">Seleccione el periodo</label>
+                                                    <select class="form-control margin" ng-options="periodo as periodo.label for periodo in periodos track by periodo.id" ng-model="selectedPeriodo"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <div ng-show="asignar" class="margin-bottom" ng-class="styleAsignar">{{msgAsignar}}</div>
                                     <button class="btn btn-cancel" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
-                                    <button class="btn btn-success" data-ng-click="asignarUsuarios(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                                    <button class="btn btn-success" data-ng-click="crearAplicacion(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
                                 </div>
                             </div>
                         </div>
