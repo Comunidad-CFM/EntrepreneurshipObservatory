@@ -18,6 +18,7 @@ class CreateAplicacionesTable extends Migration
             $table->integer('encuesta_id')->unsigned();
             $table->integer('persona_id')->unsigned();
             $table->integer('periodo_id')->unsigned();
+            $table->string('encuestador', 120);
             $table->timestamps();
 
         });
