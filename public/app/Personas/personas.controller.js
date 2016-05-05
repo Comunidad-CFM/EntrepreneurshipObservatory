@@ -25,6 +25,7 @@
         $scope.validateID = validateID;        
         $scope.selectSector = selectSector;
         $scope.selectSectorEdit = selectSectorEdit;
+        $scope.cancelEdit = cancelEdit;
         var currentEmail = "";
         var currentCedula = ""; 
         var selectedSectores = [];
@@ -40,7 +41,7 @@
                 contrasena: '',
                 contrasenaConf: '',
                 tipo: 'A'
-            }
+            }            
         }
         setData();
 
@@ -186,6 +187,10 @@
             });
 
         }
+        function cancelEdit(){
+            getPersonas();
+            setData();
+        }
 
         //validar cedula existente
         function validateID() {  
@@ -241,9 +246,8 @@
             }
         }
 
-        function modificar(persona) {                                     
+        function modificar(persona) {       
             validate();
-
             var sectores = [] //lista de sectores a enviar para guardar
             selectedSectoresEditar.forEach( function(sector) {
                 if(sector.state === true){
@@ -255,9 +259,6 @@
                 PersonasFactory.edit(persona)
                     .then(function(response) {
                         if (response === 'true') {
-                            setData();                        
-                            getPersonas();
-                                                        
                             PersonasSectoresFactory.edit(persona.id, sectores)
                                 .then(function (response) {
                                     if(response === 'true'){
@@ -268,6 +269,8 @@
                                         
                                         $scope.msgEditar = 'La persona se ha modificado correctamente.';
                                         $scope.styleEditar = 'success-box';                                        
+                                        setData();   
+                                        getPersonas();  
                                     }
                                     else{
                                         $scope.editar = true;
@@ -287,7 +290,7 @@
                 $scope.editar = true;
                 $scope.msgEditar = 'Error, debe seleccionar al menos un sector.';
                 $scope.styleEditar = 'error-box';
-            }
+            }                                        
         }
 
         function eliminar(ev, id) {
@@ -309,7 +312,7 @@
         }
 
 
-        function getPersonas() {
+        function getPersonas() {            
             PersonasFactory.getAll()
                 .then(function(response) {
                     $scope.personas = response;

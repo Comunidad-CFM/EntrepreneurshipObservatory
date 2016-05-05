@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CreateAplicacionesEncuestadoresTable' => $baseDir . '/database/migrations/2016_04_26_145438_create_aplicaciones_encuestadores_table.php',
+    'CreateAplicacionesEncuestadoresTable' => $baseDir . '/database/migrations/2016_05_04_230338_create_aplicaciones_encuestadores_table.php',
     'CreateAplicacionesRespuestasTable' => $baseDir . '/database/migrations/2016_03_17_052752_create_aplicaciones_respuestas_table.php',
     'CreateAplicacionesTable' => $baseDir . '/database/migrations/2016_03_17_052735_create_aplicaciones_table.php',
     'CreateEncuestasPreguntasTable' => $baseDir . '/database/migrations/2016_03_17_052715_create_encuestas_preguntas_table.php',
