@@ -68,12 +68,17 @@ Route::group(['prefix' => 'api'], function () {
 
     // Sectores.
     Route::get('sectores/todos', 'Sectores@getAll');
+    Route::post('sectores/registro', 'Sectores@store');
+    Route::delete('sectores/destroy/{id}', 'Sectores@destroy');
 
     // Regiones.
     Route::get('regiones/todas','Regiones@getAll');
 
     // Territorios.
     Route::get('territorios/todos','Territorios@getAll');
+
+    //TerritoriosSectores
+    Route::post('territoriosSectores/registro','TerritoriosSectores@store');
     
     // Periodos.
     Route::get('/periodos/getForAplicacion','Periodos@getForAplicacion');

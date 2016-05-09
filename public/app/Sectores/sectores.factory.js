@@ -13,7 +13,9 @@
 
 		function SectoresFactory($http, $q) {
 		var factory = {
-			getAll: getAll
+			getAll: getAll,
+			destroy: destroy,
+			store: store,
 		};
 
 		return factory;
@@ -29,6 +31,53 @@
 			.error(function(err) {
 				defered.reject(err);
 			});
+
+			return promise;
+		}
+
+		/**
+		* Almacenar un sector
+		* @param {Object} Sector: Objeto a almacenar	
+		* @returns {Object} El resultado del request de almacenar, si es correcto, da true
+		*/
+		function store(sector){
+			var defered = $q.defer();
+			var promise =  defered.promise;
+
+			$http({
+				method: 'POST',
+				url: 'api/sectores/registro',
+				data: sector
+			})
+				.success(function(response){
+					defered.resolve(response);
+				})
+				.error(function(err){
+					defered.reject(err);
+				});			
+
+			return promise;
+		}
+
+		/**
+		* Almacenar un sector
+		* @param {Object} Sector: Objeto a almacenar	
+		* @returns {Object} El resultado del request de almacenar, si es correcto, da true
+		*/
+		function destroy(id){
+			var defered = $q.defer();
+			var promise =  defered.promise;			
+
+			$http({
+				method: 'DELETE',
+				url: 'api/sectores/destroy/' + id,
+			})
+				.success(function(response){
+					defered.resolve(response);
+				})
+				.error(function(err){
+					defered.reject(err);
+				});			
 
 			return promise;
 		}
