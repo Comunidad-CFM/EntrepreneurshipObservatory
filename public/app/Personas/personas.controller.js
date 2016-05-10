@@ -66,7 +66,8 @@
         function validate() {         
             $scope.emptyData = false;            
             try {                                                        
-                if ($scope.persona.nombre === undefined || $scope.persona.contrasena === undefined || $scope.persona.apellido1 === undefined || $scope.persona.apellido2 === undefined || $scope.persona.cedula  === undefined || $scope.persona.email  === undefined) {                                        
+                if ($scope.persona.nombre === undefined || $scope.persona.contrasena === undefined || $scope.persona.apellido1 === undefined || $scope.persona.apellido2 === undefined || $scope.persona.cedula  === undefined || $scope.persona.email  === undefined
+                    || $scope.persona.nombre.length === 0 || $scope.persona.apellido1.length === 0 || $scope.persona.apellido2.length === 0 || $scope.persona.cedula.length === 0 || $scope.persona.email.length === 0) {                                        
                     $scope.emptyData = true;
                 } else {
                     $scope.emptyData = false;
@@ -79,7 +80,8 @@
         function validateEdit() {               
             $scope.emptyData = false;            
             try {                                                        
-                if ($scope.persona.nombre === undefined || $scope.persona.apellido1 === undefined || $scope.persona.apellido2 === undefined || $scope.persona.cedula  === undefined || $scope.persona.email  === undefined) {                                        
+                if ($scope.persona.nombre === undefined || $scope.persona.apellido1 === undefined || $scope.persona.apellido2 === undefined || $scope.persona.cedula  === undefined || $scope.persona.email  === undefined
+                    || $scope.persona.nombre.length === 0 || $scope.persona.apellido1.length === 0 || $scope.persona.apellido2.length === 0 || $scope.persona.cedula.length === 0 || $scope.persona.email.length === 0) {                                        
                     $scope.emptyData = true;
                 } else {
                     $scope.emptyData = false;

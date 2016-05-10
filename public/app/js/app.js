@@ -206,6 +206,11 @@
                 url: '/autenticacion',
                 templateUrl: './app/Autenticacion/autenticacion.html',
                 controller: 'AutenticacionController'
+            })
+            .state('admin.sectores',{
+                url: '/sectores',
+                templateUrl: './app/Sectores/sectores.html',
+                controller: 'SectoresController'
             });
     }
 
