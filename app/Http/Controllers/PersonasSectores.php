@@ -20,8 +20,8 @@ class PersonasSectores extends Controller
         
         foreach ($sectoresId as $id) {
             $personaSector = new PersonasSectore;                     
-            $personaSector->sector_id = $id;                    
-            $personaSector->persona_id = $personaId;        
+            $personaSector->territorios_id = $id;                    
+            $personaSector->sector_id = $personaId;        
 
             $personaSector->save();        
         }

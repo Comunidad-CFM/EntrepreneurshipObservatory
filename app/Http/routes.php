@@ -70,6 +70,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('sectores/todos', 'Sectores@getAll');
     Route::post('sectores/registro', 'Sectores@store');
     Route::delete('sectores/destroy/{id}', 'Sectores@destroy');
+    Route::post('sectores/editar/', 'Sectores@update');
 
     // Regiones.
     Route::get('regiones/todas','Regiones@getAll');
@@ -79,6 +80,9 @@ Route::group(['prefix' => 'api'], function () {
 
     //TerritoriosSectores
     Route::post('territoriosSectores/registro','TerritoriosSectores@store');
+    Route::post('territoriosSectores/editar/', 'TerritoriosSectores@update');
+    Route::get('territoriosSectores/ifExist/', 'TerritoriosSectores@ifExist');
+    Route::post('territoriosSectores/getBySectorId/', 'TerritoriosSectores@getBySectorId');
     
     // Periodos.
     Route::get('/periodos/getForAplicacion','Periodos@getForAplicacion');

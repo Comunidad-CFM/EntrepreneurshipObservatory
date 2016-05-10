@@ -41,4 +41,21 @@ class Sectores extends Controller
 
         return 'true';
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function update(Request $request) {
+        $sector = Sectore::find($request->input('id'));
+        $sector->nombre = $request->input('nombre');  
+        $sector->descripcion = $request->input('descripcion');        
+        
+        
+        $sector->save();
+
+        return 'true';
+    }
 }
