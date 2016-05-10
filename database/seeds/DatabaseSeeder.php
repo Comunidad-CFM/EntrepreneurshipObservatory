@@ -29,7 +29,9 @@ class DatabaseSeeder extends Seeder
                 ['cedula' => '207350236', 'nombre' => 'Manfred', 'apellido1' => 'Artavia', 'apellido2' => 'Gomez', 'tipo' => 'A', 'email' => 'manfred@gmail.com', 'contrasena' => md5('12345')],
                 ['cedula' => '114150859', 'nombre' => 'Carlos', 'apellido1' => 'Jimenez', 'apellido2' => 'Gonzalez', 'tipo' => 'A', 'email' => 'carlos@gmail.com', 'contrasena' => md5('12345')],
                 ['cedula' => '888888888', 'nombre' => 'Cristian', 'apellido1' => 'Salas', 'apellido2' => 'Salazar', 'tipo' => 'B', 'email' => 'cristian@gmail.com', 'contrasena' => md5('12345')],
-                ['cedula' => '999999999', 'nombre' => 'Kenneth', 'apellido1' => 'Perez', 'apellido2' => 'Alfaro', 'tipo' => 'B', 'email' => 'kenneth@gmail.com', 'contrasena' => md5('12345')]
+                ['cedula' => '999999999', 'nombre' => 'Kenneth', 'apellido1' => 'Perez', 'apellido2' => 'Alfaro', 'tipo' => 'B', 'email' => 'kenneth@gmail.com', 'contrasena' => md5('12345')],
+                ['cedula' => '777777777', 'nombre' => 'Mainor', 'apellido1' => 'Gamboa', 'apellido2' => 'Rodríguez', 'tipo' => 'E', 'email' => 'mainy@gmail.com', 'contrasena' => md5('12345')],
+                ['cedula' => '666666666', 'nombre' => 'Juan Miguel', 'apellido1' => 'Arce', 'apellido2' => 'Rodríguez', 'tipo' => 'E', 'email' => 'migue@gmail.com', 'contrasena' => md5('12345')]
         );
         
         DB::table('indicadores') -> delete();

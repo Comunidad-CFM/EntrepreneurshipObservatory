@@ -15,7 +15,7 @@
 		var factory = {
 			store: store,
 			getAll: getAll,
-			getBusinessmen: getBusinessmen,
+			getByType: getByType,
             ifExist: ifExist,
             edit: edit,
             remove: remove,
@@ -76,10 +76,10 @@
 			return promise;
 		}
 
-		function getBusinessmen() {
+		function getByType(type) {
 			var defered = $q.defer();
 
-			$http.get('/api/personas/empresarios')
+			$http.get('/api/personas/getByType/' + type)
 			.success(function(response) {
 				defered.resolve(response);
 			})
@@ -89,7 +89,6 @@
 
 			return defered.promise;
 		}
-        
 
         function ifExist(field,fieldToValidate){             
             var defered = $q.defer();            

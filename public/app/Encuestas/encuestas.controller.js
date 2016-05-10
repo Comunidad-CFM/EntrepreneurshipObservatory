@@ -22,7 +22,7 @@
     * @param {Object} Servicio que brinda funciones de las preguntas que ayudan a la funcionalidad del controlador.
     * @param {Object} Servicio que brinda funciones de las personas que ayudan a la funcionalidad del controlador.
     * @param {Object} Servicio que brinda funciones de las aplicaciones que ayudan a la funcionalidad del controlador.
-    * @param {Object} Servicio que brinda funciones de las periodos que ayudan a la funcionalidad del controlador.
+    * @param {Object} Servicio que brinda funciones de los periodos que ayudan a la funcionalidad del controlador.
     */
 	function EncuestasController($scope, $timeout, $filter, $cookies, $mdDialog, EncuestasFactory, PreguntasFactory, PersonasFactory, AplicacionesFactory, PeriodosFactory) {
 		$scope.descripcion = '';
@@ -39,7 +39,8 @@
         $scope.crearAplicacion = crearAplicacion;
         $scope.marcarTodos = marcarTodos;
         var respaldoPreguntas,
-            respaldoEmpresarios;
+            respaldoEmpresarios,
+            respaldoEncuestadores;
 
         /**
         * Limpia el formulario del cambio de contraseña.
@@ -259,7 +260,7 @@
             $scope.id = id;
 
             // Se obtienen todos los empresarios.
-            PersonasFactory.getBusinessmen()
+            PersonasFactory.getByType('B')
             .then(function(response) {
                 return response;
             })
@@ -268,7 +269,7 @@
                 AplicacionesFactory.getForSurvey($scope.id)
                 .then(function(entrepreneursSurvey) {
                     respaldoEmpresarios = [];
-                    $scope.empresarios = EncuestasFactory.isEntrepreneurAssigned(entrepreneursSurvey, allEntrepreneurs);
+                    $scope.empresarios = EncuestasFactory.isAssigned(entrepreneursSurvey, allEntrepreneurs);
 
                     angular.forEach($scope.empresarios, function(entrepreneur) {
                         respaldoEmpresarios.push({id: entrepreneur.id, state: entrepreneur.state});
@@ -291,23 +292,11 @@
         /**
         * Crea aplicaciones para los empresarios de una encuesta específica.
         * @param {Array} Lista de empresarios.
-        * @param {integer} Id del periodo.
         * @returns {string} Resultado de crear las aplicaciones.
         */
-        function asignarEmpresarios(entrepreneurs) {
-            if(entrepreneurs.length) {
-                /*PeriodosFactory.getPeriodoIdForAplicacion()
-                .then(function(response) {
-                    return response;
-                })
-                .then(function(idPeriodo) {
-                    AplicacionesFactory.store(entrepreneurs, idPeriodo, $filter('date')(new Date(), 'yyyy-MM-dd'), $scope.id)
-                    .then(function(response) {
-                        return response;
-                    });
-                })*/
-
-                AplicacionesFactory.store(entrepreneurs, $scope.selectedPeriodo.id, $filter('date')(new Date(), 'yyyy-MM-dd'), $scope.id)
+        function asignarEmpresarios(empresarios) {
+            if(empresarios.length) {
+                AplicacionesFactory.store(empresarios, $scope.selectedPeriodo.id, $filter('date')(new Date(), 'yyyy-MM-dd'), $scope.id)
                 .then(function(response) {
                     return response;
                 });
@@ -321,9 +310,9 @@
         * @param {Array} Lista de empresarios.
         * @returns {string} Resultado de eliminar las aplicaciones.
         */
-        function desasignarEmpresarios(entrepreneurs) {
-            if(entrepreneurs.length) {
-                AplicacionesFactory.remove(entrepreneurs)
+        function desasignarEmpresarios(empresarios) {
+            if(empresarios.length) {
+                AplicacionesFactory.remove(empresarios)
                 .then(function(response) {
                     return response;
                 });
@@ -336,9 +325,9 @@
         * Encargado de manda a crear y eliminar aplicaciones de una encuesta.
         */
         function crearAplicacion() {
-            var entrepreneursList = EncuestasFactory.entrepreneursChanged(respaldoEmpresarios, $scope.empresarios);
+            var listaEmpresarios = EncuestasFactory.personsChanged(respaldoEmpresarios, $scope.empresarios);
             
-            if (asignarEmpresarios(entrepreneursList.agregar) && desasignarEmpresarios(entrepreneursList.eliminar)) {
+            if (asignarEmpresarios(listaEmpresarios.agregar) === 'true' && desasignarEmpresarios(listaEmpresarios.eliminar)  === 'true') {
                 $scope.msgAsignar = 'La asignación se ha realizado correctamente.';
                 $scope.styleAsignar = 'success-box';
             }

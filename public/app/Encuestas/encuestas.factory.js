@@ -29,8 +29,8 @@
 			questionsChanged: questionsChanged,
 			addQuestionsToSurvey: addQuestionsToSurvey,
 			deleteQuestionsToSurvey: deleteQuestionsToSurvey,
-			isEntrepreneurAssigned: isEntrepreneurAssigned,
-			entrepreneursChanged: entrepreneursChanged
+			isAssigned: isAssigned,
+			personsChanged: personsChanged
 		};
 
 		return factory;
@@ -320,34 +320,35 @@
 
 		/**
         * Procesa la lista de personas para ver si cuentan con una aplicación en una encuesta.
-        * @param {Array} Lista con los empresarios que cuentan con aplicación en una encuesta.
+        * @param {Array} Lista con las personas que están ligadas a una aplicación.
         * @param {Array} Lista con todas las personas.
         * @returns {Array} Lista con todas las personas, diferenciadas de cuales cuentan con aplicación.
         */
-		function isEntrepreneurAssigned(listEntrepreneur, listPersons) {
-			angular.forEach(listPersons, function(person) {
+		function isAssigned(listPersons, allPersons) {
+			angular.forEach(allPersons, function(person) {
 				person.state = false;
-				angular.forEach(listEntrepreneur, function(entrepreneur) {
-			  		if(person.id === entrepreneur.idPersona) {
+				angular.forEach(listPersons, function(person2) {
+			  		if(person.id === person2.idPersona) {
 			  			person.state = true;
-			  			person.idAplicacion = entrepreneur.idAplicacion;
+			  			person.idAplicacion = person2.idAplicacion;
 			  		}
 				});	  	
 			});
 			
-			return listPersons;
+			return allPersons;
 		}
 
 		/**
         * Verifica si los empresarios que cuentan con una aplicación en una encuesta se han eliminado o se han agregado nuevos.
         * @param {Array} Lista con los empresarios viejos que cuontaban con una aplicación en la encuesta.
         * @param {Array} Lista con los nuevos empresarios.
+        * @param {bool} Indica si se verifica empresarios (true) o encuestadores (false).
         * @returns {Array} Lista con los empresarios que hay que eliminarles la aplicación y a los que hay que crearle una.
         */
-		function entrepreneursChanged(oldList, currentList) {
+		function personsChanged(oldList, currentList) {
 			var index = 0,
 				length = oldList.length,
-			    entrepreneurs = {
+			    persons = {
 					'agregar': [],
 					'eliminar': []
 				};
@@ -355,15 +356,15 @@
 			for ( ; index < length; index++) {
 				if (currentList[index].state !== oldList[index].state) {
 					if (currentList[index].state) {
-						entrepreneurs.agregar.push(currentList[index].id);
+						persons.agregar.push(currentList[index].id);
 					}
 					else {
-						entrepreneurs.eliminar.push(currentList[index].idAplicacion);
+						persons.eliminar.push(currentList[index].idAplicacion);
 					}
 				}
 			}
 
-			return entrepreneurs;
+			return persons;
 		}
 	}
 })();

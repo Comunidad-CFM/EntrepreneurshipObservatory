@@ -36,7 +36,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('personas/update', 'Personas@update');
     Route::delete('personas/destroy/{id}', 'Personas@destroy');
     Route::get('personas/todas', 'Personas@getAll');
-    Route::get('personas/empresarios', 'Personas@getBusinessmen');
+    Route::get('personas/getByType/{type}', 'Personas@getByType');
     Route::get('personas/isPass/{id}/{currentPass}', 'Personas@isPass');
     Route::post('personas/changePass', 'Personas@changePass');
 

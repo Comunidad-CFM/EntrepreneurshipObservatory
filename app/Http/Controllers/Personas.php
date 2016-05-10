@@ -93,8 +93,8 @@ class Personas extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function getBusinessmen() {
-        return Persona::where('tipo', 'B')->get();  
+    public function getByType($type) {
+        return Persona::where('tipo', $type)->get();  
     }
 
     /**
