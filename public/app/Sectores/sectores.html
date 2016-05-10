@@ -59,7 +59,7 @@
                                 <div class="modal-body">
                                     <form class="margin" autocomplete="off">	
 				                        <div class="col-md-offset-3 col-md-6">        
-				                       		<div ng-show="registro" class="margin" ng-class="styleRegistro">{{msgRegistro}}</div>
+				                       		<div ng-show="editar" class="margin" ng-class="styleEditar">{{msgEditar}}</div>
 				                       		
 					                            <div>
 					                                <p>
@@ -77,15 +77,19 @@
 					                            <div>
 					                            	<p>
 					                            		<label for="name">Region</label>		
-					                            		<select class="form-control margin text-center" ng-options="region as region.nombre for region in regiones track by region.id" ng-model="selectedRegion" ng-change="update()"></select>			
+					                            		<select class="form-control margin text-center" ng-options="region as region.nombre for region in regiones track by region.id" ng-model="selectedRegion" ng-change="updateEdit()"></select>			
 				                            			<label for="name">Territorio</label>							
 													    <div class="col-md-6" ng-repeat="territorio in territoriosEditar">
                                                             <md-checkbox class="md-primary" ng-checked = "territorio.state" ng-true-value="'sector.id'" ng-false-value="''" ng-click="selectTerritorioEdit(territorio);">{{territorio.nombre}}</md-checkbox>
                                                         </div>
 					                            	</p>
 					                            </div>
-					                            <button class="btn btn-cancel margin-top" data-dismiss="modal" ng-click="cancelEdit();"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
-                                  				<button class="btn btn-success margin-top" ng-disabled="emptyData || errorCorreo || coincidenciaCedula" data-ng-click="modificar(sector); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>  
+                                                <br>
+                                                <br>
+                                                <div>
+    					                            <button class="btn btn-cancel margin-top" data-dismiss="modal" ng-click="cancelEdit();"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
+                                      				<button class="btn btn-success margin-top" ng-disabled="emptyData || errorCorreo || coincidenciaCedula" data-ng-click="modificar(sector); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>  
+                                                </div>
 			                           </div>   
 			                       </form>
                                 </div>
@@ -127,7 +131,11 @@
                                         </div>
 	                            	</p>
 	                            </div>
-	                            <button class="btn btn-success" ng-disabled="emptyData" ng-click="store();"><span class="glyphicon glyphicon-floppy-disk" ></span>&nbsp;&nbsp;Guardar</button>
+                                <br>
+                                <br>
+                                <div>
+	                               <button class="btn btn-success" ng-disabled="emptyData" ng-click="store();"><span class="glyphicon glyphicon-floppy-disk" ></span>&nbsp;&nbsp;Guardar</button>
+                                </div>
                            </div>                                 
                        </form>
                     </div>

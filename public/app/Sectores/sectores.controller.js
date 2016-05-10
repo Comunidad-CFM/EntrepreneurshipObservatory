@@ -16,6 +16,8 @@
     	$scope.store = store;
     	$scope.eliminar = eliminar;
     	$scope.update = update;
+        $scope.updateEdit = updateEdit;
+        $scope.cancelEdit = cancelEdit;
     	$scope.editandoSector = editandoSector;
     	$scope.modificar = modificar;
         $scope.selectTerritorio = selectTerritorio;
@@ -61,31 +63,29 @@
                 else{
                     selectedTerritorios.push(id);
                 }
-            }   
-
-            console.log(selectedTerritorios);
-            
+            }  
         }
 
-        function selectTerritorioEdit(territorio){                                     
+        function selectTerritorioEdit(territorio){  
+            console.log('selectedTerritoriosEditar');                               
             var index = selectedTerritoriosEditar.indexOf(territorio);            
             if(index > -1){                                    
                 if( selectedTerritoriosEditar[index].state === true){
                     selectedTerritoriosEditar[index].state = false;
                 }else{
-                    selectedTerritoriosEditar[index].state = true;   
+                    selectedTerritoriosEditar[index].state = true;                       
                 }                
-
-            }                        
-            console.log(selectedTerritoriosEditar);
+            }                                   
+            $scope.selectedTerritoriosEditar = selectedTerritoriosEditar;
         }
     	
     	/**
-		* Filtrar los select de acuerdo a la región seleccionada
+		* Filtrar los select de acuerdo a la región seleccionada para la lista de territorios de 
+        * registro
 		*/
-    	function update () {						
+    	function update () {            
 			$scope.territorios = [];	
-            selectedTerritorios = [];
+            selectedTerritorios = [];            
 			todosTerritorios.forEach( function(territorio) {								
 				if(territorio.region_id === $scope.selectedRegion.id){					
 					$scope.territorios.push(territorio);
@@ -95,6 +95,33 @@
 				$scope.selectedTerritorio = $scope.territorios[0];
 			}
 		}
+
+        /**
+        * Filtrar los select de acuerdo a la región seleccionada para la lista de territorios de 
+        * registro
+        */
+        function updateEdit () {
+            
+            $scope.territorios = [];    
+            $scope.territoriosEditar = [];
+
+            selectedTerritorios = [];
+            selectedTerritoriosEditar = [];            
+            $scope.territoriosEditar = [];
+
+            
+            todosTerritorios.forEach( function(territorio) {                                                                        
+                if(territorio.region_id === $scope.selectedRegion.id){  
+                    //territorio.state = false;                
+                    $scope.territoriosEditar.push(territorio);
+                    selectedTerritoriosEditar.push(territorio);
+                }
+            });          
+            if($scope.territorios.length > 0){
+                $scope.territoriosEditar = $scope.territorios[0];
+                selectedTerritoriosEditar = $scope.territorios[0];
+            }
+        }
 
 		collectData();		
 
@@ -107,7 +134,14 @@
         }		
         setData();
 
-		/*
+
+        function cancelEdit(){
+            collectData();
+            setData();
+            getSectores();
+        }	
+
+        /*
 		* Obtiene la lista de sectores registrados
         */
         function getSectores() {
@@ -136,7 +170,7 @@
 		* Preparar los datos para la vista de editar
         */
         function editandoSector (sector) {
-        	$scope.sector = sector;    
+        	$scope.sector = sector;                
         	viejoTerritorio = $scope.selectedTerritorio.id;    	        	
         	                       
             // obtener los territorios del sector, para mostrar los seleccionados
@@ -147,8 +181,8 @@
             })
             .then(function (territoriosDeSector) {    
                 var territorios = [];
-                $scope.territorios.forEach( function(territorio) {
-                    territorios.push({id:territorio.id, nombre: territorio.nombre});
+                todosTerritorios.forEach( function(territorio) {                    
+                    territorios.push({id:territorio.id, nombre: territorio.nombre, descripcion: territorio.descripcion, region_id: territorio.region_id});
                 });            
                 
                 territorios.forEach( function(territorio) {
@@ -159,14 +193,41 @@
                         }
                     });                   
                 });                                 
-                selectedTerritoriosEditar = territorios;
-                console.log(territorios);
                 
-                $scope.territoriosEditar = selectedTerritoriosEditar;//lista de sectores para editar              
+                
+                // console.log(territoriosDeSector);
+                // console.log($scope.regiones);
+                console.log(territorios);
+
+                territorios.forEach( function(territorio, index) {
+
+                    $scope.regiones.forEach( function(region, index) {                        
+                        if(territorio.state === true && territorio.region_id === region.id){
+                            $scope.selectedRegion = region;
+                        }                        
+                    });
+                    
+                });
+
+                var territoriosAux = [];
+                territorios.forEach( function(element, index) {
+                    if(element.region_id === $scope.selectedRegion.id){
+                        territoriosAux.push(element);
+                    }
+                });
+
+
+                selectedTerritoriosEditar = territorios;           
+                $scope.territoriosEditar = territoriosAux;//lista de sectores para editar              
             });
 
         }
 
+        /*
+        * Modificar el sector y la relación en la base de datos,
+        * primero guarda los cambios del sector y luego su relación con los territorios
+        * utiliza un arreglo con los ids de los territorios seleccionados y los envía a insertar,
+        */
         function modificar(sector){    
             var territorios = [] //lista de sectores a enviar para guardar
             selectedTerritoriosEditar.forEach( function(territorio) {
@@ -182,20 +243,25 @@
                         if (response === 'true') {
                             TerritoriosSectoresFactory.update(sector.id, territorios)
                                 .then(function (response) {
-                                    if(response === 'true'){
-                                        $scope.editar = true;
-                                        selectedTerritoriosEditar.forEach( function(sector) {
-                                            sector.state = false;                                             
+                                    if(response === 'true'){                                        
+                                        selectedTerritoriosEditar.forEach( function(territorio) {
+                                            territorio.state = false;                                             
                                         });
-                                        
+                                        //notificar
+                                        $scope.editar = true;
                                         $scope.msgEditar = 'El sector se ha modificado correctamente.';
-                                        $scope.styleEditar = 'success-box';                                        
+                                        $scope.styleEditar = 'success-box'; 
+                                        $timeout(function() {
+                                            $scope.editar = false;
+                                        }, 5000);  
+
+                                        //refrescar                                     
                                         setData();   
-                                        getPersonas();  
+                                        getSectores();  
                                     }
                                     else{
                                         $scope.editar = true;
-                                        $scope.msgEditar = 'Ha ocurrido un error al modificar los sectores de la persona';
+                                        $scope.msgEditar = 'Ha ocurrido un error al modificar los territorios del sector';
                                         $scope.styleEditar = 'error-box';            
                                     }
                                 });
@@ -209,7 +275,7 @@
             }
             else{
                 $scope.editar = true;
-                $scope.msgEditar = 'Error, debe seleccionar al menos un sector.';
+                $scope.msgEditar = 'Error, debe seleccionar al menos un territorio.';
                 $scope.styleEditar = 'error-box';
             }
         }     
@@ -220,7 +286,6 @@
                 SectoresFactory.store($scope.sector)
                     .then(function(response) {                        
                         TerritoriosSectoresFactory.store(response,selectedTerritorios).then(function (response) {
-                             console.log(response);
                         });
                         $scope.registro = true;
                         $scope.msgRegistro = 'El sector se ha agregado correctamente.';
@@ -231,8 +296,10 @@
                             $scope.registro = false;
                         }, 5000);
 
-                        getSectores();
-                        setData();                                                            
+                        collectData();
+                        setData();
+                        getSectores();                        
+                        update(); 
                     });
             }else{
                 $scope.registro = true;
