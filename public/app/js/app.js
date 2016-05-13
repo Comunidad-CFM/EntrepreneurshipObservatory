@@ -211,6 +211,11 @@
                 url: '/sectores',
                 templateUrl: './app/Sectores/sectores.html',
                 controller: 'SectoresController'
+            })
+            .state('admin.regiones',{
+                url: '/regiones',
+                templateUrl: './app/Regiones/regiones.html',
+                controller: 'RegionesController'
             });
     }
 
