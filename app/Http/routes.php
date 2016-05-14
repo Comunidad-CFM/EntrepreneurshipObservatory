@@ -80,6 +80,10 @@ Route::group(['prefix' => 'api'], function () {
 
     // Territorios.
     Route::get('territorios/todos','Territorios@getAll');
+    Route::get('territorios/todos','Territorios@getAll');
+    Route::post('territorios/registro','Territorios@store');
+    Route::delete('territorios/destroy/{id}', 'Territorios@destroy');
+    Route::post('territorios/editar', 'Territorios@update');
 
     //TerritoriosSectores
     Route::post('territoriosSectores/registro','TerritoriosSectores@store');

@@ -1,5 +1,5 @@
 <div class="text-center margin">
-    <label class="title-1 kaushan">Gestión de Regiones</label>
+    <label class="title-1 kaushan">Gestión de Territorios</label>
 </div>
 <div class="col-md-12 perfil-box">
 	<div class="portlet">
@@ -9,50 +9,50 @@
             </div>
             <ul class="nav nav-tabs">
                 <li class="active">
-                    <a data-target="#regiones" data-toggle="tab">Regiones</a>
+                    <a data-target="#Territorios" data-toggle="tab">Territorios</a>
                 </li>
                 <li>
-                    <a data-target="#nuevaRegion" data-toggle="tab">Nueva</a>
+                    <a data-target="#nuevoTerritorio" data-toggle="tab">Nuevo</a>
                 </li>
             </ul>
         </div>
         <div class="portlet-body">
             <div class="tab-content">
-                <div class="tab-pane fade in active" id="regiones">
+                <div class="tab-pane fade in active" id="Territorios">
                     <div>
-                        <label class="title-2">Regiones</label>                        
+                        <label class="title-2">Territorios</label>                        
                     </div>
                     <div class="col-md-offset-3 col-md-6">                   
-                        <div ng-show="regiones.length > 0">
+                        <div ng-show="Territorios.length > 0">
                             <table class="table margin">
                                 <thead>
                                     <tr>
-                                        <th>Región</th>                                        
+                                        <th>Territorio</th>                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="region in regiones">
-                                        <td>{{region.nombre}}</td>                                        
+                                    <tr ng-repeat="territorio in Territorios">
+                                        <td>{{territorio.nombre}}</td>                                        
                                         <td>            
-                                            <span class="glyphicon glyphicon-pencil" ng-click="editandoRegion(region)" data-toggle="modal" data-target="#editarRegion" >
+                                            <span class="glyphicon glyphicon-pencil" ng-click="editandoterritorio(territorio)" data-toggle="modal" data-target="#editarterritorio" >
                                             <md-tooltip md-direction="top">Editar</md-tooltip></span>
                                             &nbsp;&nbsp;
-                                            <span class="glyphicon glyphicon-trash" ng-click="eliminar($event,region.id);">
+                                            <span class="glyphicon glyphicon-trash" ng-click="eliminar($event,territorio.id);">
                                             <md-tooltip md-direction="top">Eliminar</md-tooltip></span>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="info-box margin" ng-show="regiones.length == 0">No hay regiones registradas.</div>
+                        <div class="info-box margin" ng-show="Territorios.length == 0">No hay Territorios registrados.</div>
                     </div>                   
                 </div>
-                <div id="editarRegion" class="modal fade" data-keyboard="false" data-backdrop="static">
+                <div id="editarterritorio" class="modal fade" data-keyboard="false" data-backdrop="static">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header montserrat">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancelEdit()">&times;</button>
-                                    <label class="title">Editar Region</label>
+                                    <label class="title">Editar territorio</label>
                                 </div>
                                 <div class="modal-body">
                                     <form class="margin" autocomplete="off">	
@@ -62,20 +62,26 @@
 					                            <div>
 					                                <p>
 					                                    <label for="nombre">Nombre</label>
-					                                    <input ng-model="region.nombre" class="form-control" type="text" name="nombre" id="nombre" required autofocus ng-blur="">
+					                                    <input ng-model="territorio.nombre" class="form-control" type="text" name="nombre" id="nombre" required autofocus ng-blur="">
 				                                    </p>
 					                            </div>
 				                            
 					                            <div>
 					                                <p>
 					                                    <label for="descripcion">Descripción</label>
-					                                    <textarea ng-model="region.descripcion" class="form-control" rows="5" name="descripcion" id="descripcion" required autofocus ng-blur=""></textarea> 	
+					                                    <textarea ng-model="territorio.descripcion" class="form-control" rows="5" name="descripcion" id="descripcion" required autofocus ng-blur=""></textarea> 	
 					                                </p>	                                
-					                            </div>                           				
+					                            </div>                            				
+                                                <div>
+                                                    <p>
+                                                        <label for="Region">Región</label>
+                                                        <select class="form-control margin text-center" ng-options = "region as region.nombre for region in regiones track by region.id" ng-model="selectedRegion" name="Region"></select>     
+                                                    </p>                                    
+                                                </div>                                          
 					                            <br>                                               
                                                 <div>
     					                            <button class="btn btn-cancel margin-top" data-dismiss="modal" ng-click="cancelEdit();"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
-                                      				<button class="btn btn-success margin-top" ng-disabled="emptyData" data-ng-click="modificar(region); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>  
+                                      				<button class="btn btn-success margin-top" ng-disabled="emptyData" data-ng-click="modificar(territorio); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>  
                                                 </div>
 			                           </div>   
 			                       </form>
@@ -86,9 +92,9 @@
                             </div>
                         </div>
                     </div>
-                <div class="tab-pane fade" id="nuevaRegion">
+                <div class="tab-pane fade" id="nuevoTerritorio">
                     <div>
-                        <label class="title-2">Agregar Regiones</label>
+                        <label class="title-2">Agregar Territorios</label>
                     </div>  
                     <div class="container">
                     <form class="margin" autocomplete="off">	
@@ -98,16 +104,22 @@
 	                            <div>
 	                                <p>
 	                                    <label for="nombre">Nombre</label>
-	                                    <input ng-model="region.nombre" class="form-control" type="text" name="nombre" id="nombre" required autofocus ng-blur="">
+	                                    <input ng-model="territorio.nombre" class="form-control" type="text" name="nombre" id="nombre" required autofocus ng-blur="">
                                     </p>
 	                            </div>
                             
 	                            <div>
 	                                <p>
 	                                    <label for="descripcion">Descripción</label>
-	                                    <textarea ng-model="region.descripcion" class="form-control" rows="5" name="descripcion" id="descripcion" required autofocus ng-blur=""></textarea> 	
+	                                    <textarea ng-model="territorio.descripcion" class="form-control" rows="5" name="descripcion" id="descripcion" required autofocus ng-blur=""></textarea> 	
 	                                </p>	                                
-	                            </div>                           		                            
+	                            </div>  
+                                <div>
+                                    <p>
+                                        <label for="Region">Región</label>
+                                        <select class="form-control margin text-center" ng-options = "region as region.nombre for region in regiones track by region.id" ng-model="selectedRegion" name="Region"></select>     
+                                    </p>                                    
+                                </div>                          		                            
                                 <br>
                                 <div>
 	                               <button class="btn btn-success" ng-disabled="emptyData" ng-click="store();"><span class="glyphicon glyphicon-floppy-disk" ></span>&nbsp;&nbsp;Guardar</button>
