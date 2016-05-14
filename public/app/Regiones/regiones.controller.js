@@ -25,7 +25,7 @@
 	  * Limpiar los datos de la region del scope
   	*/
   	function setData (argument) {
-  		 $scope.region = {'nombre' : '', 'region' : ''}
+  		 $scope.region = {'nombre' : '', 'descripcion' : ''}
   	}
     setData();
   	

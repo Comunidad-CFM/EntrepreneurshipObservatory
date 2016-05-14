@@ -9,7 +9,7 @@
             </div>
             <ul class="nav nav-tabs">
                 <li class="active">
-                    <a data-target="#Territorios" data-toggle="tab">Territorios</a>
+                    <a data-target="#territorios" data-toggle="tab">Territorios</a>
                 </li>
                 <li>
                     <a data-target="#nuevoTerritorio" data-toggle="tab">Nuevo</a>
@@ -18,12 +18,12 @@
         </div>
         <div class="portlet-body">
             <div class="tab-content">
-                <div class="tab-pane fade in active" id="Territorios">
+                <div class="tab-pane fade in active" id="territorios">
                     <div>
                         <label class="title-2">Territorios</label>                        
                     </div>
                     <div class="col-md-offset-3 col-md-6">                   
-                        <div ng-show="Territorios.length > 0">
+                        <div ng-show="territorios.length > 0">
                             <table class="table margin">
                                 <thead>
                                     <tr>
@@ -31,10 +31,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="territorio in Territorios">
+                                    <tr ng-repeat="territorio in territorios">
                                         <td>{{territorio.nombre}}</td>                                        
                                         <td>            
-                                            <span class="glyphicon glyphicon-pencil" ng-click="editandoterritorio(territorio)" data-toggle="modal" data-target="#editarterritorio" >
+                                            <span class="glyphicon glyphicon-pencil" ng-click="editandoTerritorio(territorio)" data-toggle="modal" data-target="#editarterritorio" >
                                             <md-tooltip md-direction="top">Editar</md-tooltip></span>
                                             &nbsp;&nbsp;
                                             <span class="glyphicon glyphicon-trash" ng-click="eliminar($event,territorio.id);">
@@ -44,7 +44,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="info-box margin" ng-show="Territorios.length == 0">No hay Territorios registrados.</div>
+                        <div class="info-box margin" ng-show="territorios.length == 0">No hay Territorios registrados.</div>
                     </div>                   
                 </div>
                 <div id="editarterritorio" class="modal fade" data-keyboard="false" data-backdrop="static">

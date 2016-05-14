@@ -13,7 +13,10 @@
 
 		function TerritoriosFactory($http, $q) {
 		var factory = {
-			getAll: getAll
+			getAll: getAll,
+			store: store,
+			update: update,
+			destroy: destroy,
 		};
 
 		return factory;
@@ -33,20 +36,21 @@
 			return promise;
 		}
 
-		
+
 		/**
 		* Almacenar una region
 		* @param {Object} Sector: Objeto a almacenar	
 		* @returns {Object} El resultado del request de almacenar, si es correcto, da true
 		*/
-		function store (region) {			
+		function store (territorio) {			
 			 var defered = $q.defer();
 			 var promise = defered.promise;
 			 
+			 console.log(territorio);
  			 $http({
 			 	'method': 'POST',
-			 	'url' : 'api/regiones/registro',
-			 	'data' : region
+			 	'url' : 'api/territorios/registro',
+			 	'data' : territorio
 			 })
 			 	.success(function (response) {			 	
 				 	defered.resolve(response);
@@ -69,7 +73,7 @@
 			 var promise = defered.promise;			 
  			 $http({
 			 	'method': 'DELETE',
-			 	'url' : 'api/regiones/destroy/'+id
+			 	'url' : 'api/territorios/destroy/'+id
 			 })
 			 	.success(function (response) {			 	
 				 	defered.resolve(response);
@@ -92,7 +96,7 @@
 			var promise =  defered.promise;			
 			$http({
 				method: 'POST',
-				url: 'api/regiones/editar/',
+				url: 'api/territorios/editar/',
 				data: region
 			})
 				.success(function(response){					

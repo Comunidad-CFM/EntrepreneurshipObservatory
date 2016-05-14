@@ -25,7 +25,7 @@
 	  * Limpiar los datos de la territorio del scope
   	*/
   	function setData (argument) {
-  		 $scope.territorio = {'nombre' : '', 'territorio' : ''}
+  		 $scope.territorio = {'nombre' : '', 'descripcion' : '', 'region': ''}
   	}
     setData();
   	
@@ -63,7 +63,7 @@
       */
       function validate () {
         $scope.emptyData = false;                
-        if ($scope.territorio.nombre === undefined || $scope.territorio.descripcion === undefined || $scope.territorio.nombre.length === 0 || $scope.territorio.descripcion.length === 0 ) {                                                                
+        if ($scope.selectedRegion === undefined || $scope.territorio.nombre === undefined || $scope.territorio.descripcion === undefined || $scope.territorio.nombre.length === 0 || $scope.territorio.descripcion.length === 0 ) {                                                                
               $scope.emptyData = true;              
           }
           else{
@@ -77,8 +77,9 @@
       function store () {
         $scope.registro = false;
         //si los campos no están vacíos
+        $scope.territorio.region_id =  $scope.selectedRegion.id;       
         if($scope.emptyData === false){         
-           	 territoriosFactory.store($scope.territorio)
+           	 TerritoriosFactory.store($scope.territorio)
            	 	.then(function (response) {       	 		 
        	 		 	   //registro guardado exitosamente
                 if(response === 'true'){ 
@@ -101,7 +102,7 @@
           }       
           //refrescar información
           setData();            
-          getterritorios();
+          getTerritorios();
        }
 
       function eliminar (ev,id) {
@@ -114,9 +115,9 @@
               .cancel('No');
           $mdDialog.show(confirm)          
               .then(function() {
-                  territoriosFactory.destroy(id)
+                  TerritoriosFactory.destroy(id)
                       .then(function(response) {
-                          getterritorios();
+                          getTerritorios();
                       });
               }, function() {});
        }
@@ -126,7 +127,8 @@
         */
       function modificar (territorio) {
           $scope.editar = false;
-          territoriosFactory.update(territorio)
+          territorio.region_id =  $scope.selectedRegion.id;   
+          TerritoriosFactory.update(territorio)
             .then(function (response) {
                 //registro guardado exitosamente
                 if(response === 'true'){ 
@@ -147,21 +149,32 @@
 
                 //refrescar información
                 setData();
-                getterritorios();
+                getTerritorios();
             })
       }
 
          /*
       *Preparar los datos a mostrar cuando se edita la territorio
       */
-      function editandoTerritorio (territorio) {        
-         $scope.territorio =  territorio;
+      function editandoTerritorio (territorio) {    
+        console.log(territorio);        
+        $scope.territorio =  territorio;
+        $scope.regiones.forEach( function(region) {
+          // console.log(region);
+          // console.log(territorio.id_region);
+          if(region.id === territorio.region_id){
+            $scope.selectedRegion = region;
+          }
+        });
       }
 
       /*Refrescar datos si se cancela la función de editar de una región*/
       function cancelEdit () {
-         setData();
-         getterritorios();
+        if($scope.regiones.length > 0){
+          $scope.selectedRegion = $scope.regiones[0];
+        }
+        setData();
+        getTerritorios();
       }
 
     }  	

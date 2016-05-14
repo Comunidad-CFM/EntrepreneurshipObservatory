@@ -22,7 +22,7 @@ class Territorios extends Controller
         $territorio = new Territorio;        
         $territorio->nombre = $request->input('nombre');
         $territorio->descripcion = $request->input('descripcion');
-        $territorio->region_id = $request->input('id_region');
+        $territorio->region_id = $request->input('region_id');
 
         $territorio->save();
 
@@ -52,7 +52,7 @@ class Territorios extends Controller
         $territorio = Territorio::find($request->input('id'));
         $territorio->nombre = $request->input('nombre');  
         $territorio->descripcion = $request->input('descripcion');                
-        $territorio->region_id = $request->input('id_region');
+        $territorio->region_id = $request->input('region_id');
         
         $territorio->save();
 
