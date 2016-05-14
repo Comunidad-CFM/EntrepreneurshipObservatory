@@ -44,9 +44,7 @@
 		*/
 		function store (territorio) {			
 			 var defered = $q.defer();
-			 var promise = defered.promise;
-			 
-			 console.log(territorio);
+			 var promise = defered.promise;			 			
  			 $http({
 			 	'method': 'POST',
 			 	'url' : 'api/territorios/registro',

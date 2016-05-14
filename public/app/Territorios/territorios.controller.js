@@ -35,8 +35,7 @@
   	*/
     function getTerritorios () {
      	TerritoriosFactory.getAll()
-     	  .then(function (response) {     
-          console.log(response);  	 		             	 	
+     	  .then(function (response) {                		             	 
   	 	   	$scope.territorios = response;
   	    });       	 	
     }    
@@ -156,12 +155,9 @@
          /*
       *Preparar los datos a mostrar cuando se edita la territorio
       */
-      function editandoTerritorio (territorio) {    
-        console.log(territorio);        
+      function editandoTerritorio (territorio) {           
         $scope.territorio =  territorio;
         $scope.regiones.forEach( function(region) {
-          // console.log(region);
-          // console.log(territorio.id_region);
           if(region.id === territorio.region_id){
             $scope.selectedRegion = region;
           }

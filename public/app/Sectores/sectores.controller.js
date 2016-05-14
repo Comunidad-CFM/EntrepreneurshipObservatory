@@ -66,8 +66,7 @@
             }  
         }
 
-        function selectTerritorioEdit(territorio){  
-            console.log('selectedTerritoriosEditar');                               
+        function selectTerritorioEdit(territorio){                                          
             var index = selectedTerritoriosEditar.indexOf(territorio);            
             if(index > -1){                                    
                 if( selectedTerritoriosEditar[index].state === true){

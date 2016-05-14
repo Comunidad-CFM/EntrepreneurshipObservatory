@@ -442,6 +442,10 @@ footer {
     color: #F28705;
     font-size: 20px;
 }
+.glyphicon-search {
+    color: teal;
+    font-size: 20px;
+}
 .glyphicon-tasks {
     color: #0455BF;
     font-size: 20px;
@@ -682,3 +686,6 @@ footer {
     border: 0;
 }
 
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+       background-color: white;    
+}
