@@ -46,7 +46,7 @@
     			});
     			TerritoriosFactory.getAll()
 	    			.then(function (response) {    				
-	    					todosTerritorios = response;	    						    					
+	    					todosTerritorios = response;	    						    					                            
 	    					update();
 					})
     	}
@@ -98,7 +98,7 @@
 
         /**
         * Filtrar los select de acuerdo a la región seleccionada para la lista de territorios de 
-        * registro
+        * registro cuando se va a editar
         */
         function updateEdit () {
             
@@ -148,6 +148,7 @@
             SectoresFactory.getAll()
                 .then(function(response) {                	
                     $scope.sectores = response;
+                    
                 });               
         }
         getSectores();
@@ -176,50 +177,48 @@
             // obtener los territorios del sector, para mostrar los seleccionados
             // en la vista
             TerritoriosSectoresFactory.getBySectorId(sector.id)
-            .then(function (territoriosDeSector) {
-                return territoriosDeSector;                     
-            })
-            .then(function (territoriosDeSector) {    
-                var territorios = [];
-                todosTerritorios.forEach( function(territorio) {                    
-                    territorios.push({id:territorio.id, nombre: territorio.nombre, descripcion: territorio.descripcion, region_id: territorio.region_id});
-                });            
-                
-                territorios.forEach( function(territorio) {
-                   territorio.state = false;                   
-                   territoriosDeSector.forEach( function(element) {                        
-                        if(element.territorio_id === territorio.id){
-                            territorio.state = true;
-                        }
-                    });                   
-                });                                 
-                
-                
-                // console.log(territoriosDeSector);
-                // console.log($scope.regiones);
-                console.log(territorios);
+                .then(function (territoriosDeSector) {
+                    return territoriosDeSector;                     
+                })
+                    .then(function (territoriosDeSector) {    
+                        var territorios = [];
+                        //todos los territorios en la base de datos
+                        // crea un arreglo con los objetos, para poder mostrar la información como la vista lo requiere
+                        todosTerritorios.forEach( function(territorio) {                    
+                            territorios.push({id:territorio.id, nombre: territorio.nombre, descripcion: territorio.descripcion, region_id: territorio.region_id});
+                        });            
+                        //verifica a que territorio(os) pertenece el sector y lo marca, para mostrarlo en la interfaz
+                        territorios.forEach( function(territorio) {
+                           territorio.state = false;                   
+                           territoriosDeSector.forEach( function(element) {                        
+                                if(element.territorio_id === territorio.id){
+                                    territorio.state = true;
+                                }
+                            });                   
+                        });                                 
+                                                    
+                        //segun el territorio marcar también la región a la que pertenece el mismo
+                        territorios.forEach( function(territorio, index) {
+                            $scope.regiones.forEach( function(region, index) {                        
+                                if(territorio.state === true && territorio.region_id === region.id){
+                                    $scope.selectedRegion = region;
+                                }                        
+                            });
+                            
+                        });
 
-                territorios.forEach( function(territorio, index) {
+                        // filtrar unicamente los territorios que pertenecen a la región seleccionad. Esto para la primera vez que se muestran 
+                        var territoriosAux = [];
+                        territorios.forEach( function(element, index) {
+                            if(element.region_id === $scope.selectedRegion.id){
+                                territoriosAux.push(element);
+                            }
+                        });
 
-                    $scope.regiones.forEach( function(region, index) {                        
-                        if(territorio.state === true && territorio.region_id === region.id){
-                            $scope.selectedRegion = region;
-                        }                        
+
+                        selectedTerritoriosEditar = territorios;           
+                        $scope.territoriosEditar = territoriosAux;//lista de territorios para editar              
                     });
-                    
-                });
-
-                var territoriosAux = [];
-                territorios.forEach( function(element, index) {
-                    if(element.region_id === $scope.selectedRegion.id){
-                        territoriosAux.push(element);
-                    }
-                });
-
-
-                selectedTerritoriosEditar = territorios;           
-                $scope.territoriosEditar = territoriosAux;//lista de sectores para editar              
-            });
 
         }
 

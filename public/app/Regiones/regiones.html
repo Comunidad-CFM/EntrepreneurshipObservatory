@@ -34,10 +34,10 @@
                                     <tr ng-repeat="region in regiones">
                                         <td>{{region.nombre}}</td>                                        
                                         <td>            
-                                            <span class="glyphicon glyphicon-pencil" ng-click="" data-toggle="modal" data-target="" >
+                                            <span class="glyphicon glyphicon-pencil" ng-click="editandoRegion(region)" data-toggle="modal" data-target="#editarRegion" >
                                             <md-tooltip md-direction="top">Editar</md-tooltip></span>
                                             &nbsp;&nbsp;
-                                            <span class="glyphicon glyphicon-trash" ng-click="eliminar($event,sector.id);">
+                                            <span class="glyphicon glyphicon-trash" ng-click="eliminar($event,region.id);">
                                             <md-tooltip md-direction="top">Eliminar</md-tooltip></span>
                                         </td>
                                     </tr>
@@ -62,20 +62,20 @@
 					                            <div>
 					                                <p>
 					                                    <label for="nombre">Nombre</label>
-					                                    <input ng-model="sector.nombre" class="form-control" type="text" name="nombre" id="nombre" required autofocus ng-blur="">
+					                                    <input ng-model="region.nombre" class="form-control" type="text" name="nombre" id="nombre" required autofocus ng-blur="">
 				                                    </p>
 					                            </div>
 				                            
 					                            <div>
 					                                <p>
 					                                    <label for="descripcion">Descripción</label>
-					                                    <textarea ng-model="sector.descripcion" class="form-control" rows="5" name="descripcion" id="descripcion" required autofocus ng-blur=""></textarea> 	
+					                                    <textarea ng-model="region.descripcion" class="form-control" rows="5" name="descripcion" id="descripcion" required autofocus ng-blur=""></textarea> 	
 					                                </p>	                                
 					                            </div>                           				
 					                            <br>                                               
                                                 <div>
     					                            <button class="btn btn-cancel margin-top" data-dismiss="modal" ng-click="cancelEdit();"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
-                                      				<button class="btn btn-success margin-top" ng-disabled="emptyData || errorCorreo || coincidenciaCedula" data-ng-click="modificar(sector); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>  
+                                      				<button class="btn btn-success margin-top" ng-disabled="emptyData" data-ng-click="modificar(region); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>  
                                                 </div>
 			                           </div>   
 			                       </form>
@@ -98,14 +98,14 @@
 	                            <div>
 	                                <p>
 	                                    <label for="nombre">Nombre</label>
-	                                    <input ng-model="sector.nombre" class="form-control" type="text" name="nombre" id="nombre" required autofocus ng-blur="">
+	                                    <input ng-model="region.nombre" class="form-control" type="text" name="nombre" id="nombre" required autofocus ng-blur="">
                                     </p>
 	                            </div>
                             
 	                            <div>
 	                                <p>
 	                                    <label for="descripcion">Descripción</label>
-	                                    <textarea ng-model="sector.descripcion" class="form-control" rows="5" name="descripcion" id="descripcion" required autofocus ng-blur=""></textarea> 	
+	                                    <textarea ng-model="region.descripcion" class="form-control" rows="5" name="descripcion" id="descripcion" required autofocus ng-blur=""></textarea> 	
 	                                </p>	                                
 	                            </div>                           		                            
                                 <br>

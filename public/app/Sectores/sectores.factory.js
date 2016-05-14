@@ -44,8 +44,7 @@
 		function store(sector){
 			var defered = $q.defer();
 			var promise =  defered.promise;
-
-			console.log(sector);
+			
 			$http({
 				method: 'POST',
 				url: 'api/sectores/registro',
@@ -88,9 +87,9 @@
 		}	
 
 		/**
-		* Almacenar un sector
-		* @param {Object} Sector: Objeto a almacenar	
-		* @returns {Object} El resultado del request de almacenar, si es correcto, da true
+		* Eliminar un sector
+		* @param {Object} id: id del sector a eliminar
+		* @returns {Object}  si se eliminar correctarmente retorna true
 		*/
 		function destroy(id){
 			var defered = $q.defer();
