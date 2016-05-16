@@ -38,7 +38,7 @@
             var data = {
                 enunciado: $scope.enunciado,
                 tipo: $scope.tipo,
-                indicador_id: $scope.indicador_id
+                indicador_id: $scope.selectedIndicador.id
             };
 
             PreguntasFactory.store(data)
@@ -67,7 +67,8 @@
         function editandoPregunta(pregunta) {
             $scope.id = pregunta.id;
             $scope.enunciado = pregunta.enunciado;
-            $scope.editar = false;            
+            $scope.editar = false;     
+            $scope.tipo = pregunta.tipo;       
             if (pregunta.tipo === 't') {
                 $scope.tipo = "true";
             }
@@ -75,7 +76,13 @@
                 $scope.tipo = "false";
             }
 
-            $scope.indicador_id = pregunta.indicador_id.toString();
+            $scope.indicadores.forEach((indicador) => {
+                if (indicador.nombre === pregunta.indicador_id) {
+                    $scope.selectedIndicador = indicador;
+                }
+            });
+
+            console.log(pregunta);
         }
 
         function getTipo(tipo){
@@ -87,21 +94,12 @@
                 return tipo;
         }
 
-        function getIndicador(nombre){
-            console.log(typeof(nombre));
-            for (var i=0; i<$scope.indicadores.length; i++){
-                if ($scope.indicadores[i].nombre === nombre) {
-                    return i;
-                }
-            }
-        }
-
         function modificar() {
             var data = {
                 id: $scope.id,
                 enunciado: $scope.enunciado,
                 tipo: getTipo($scope.tipo),
-                indicador_id: parseInt($scope.indicador_id)
+                indicador_id: $scope.selectedIndicador.id
             };
 
             PreguntasFactory.edit(data)
@@ -145,8 +143,8 @@
                 .then(function(response) {
                     $scope.indicadores = response;
                     indicadores = response;
+                    $scope.selectedIndicador = $scope.indicadores[0];
                 });
-
         }
         getIndicadores();
 
