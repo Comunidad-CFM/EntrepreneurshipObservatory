@@ -94,6 +94,9 @@ Route::group(['prefix' => 'api'], function () {
     // Periodos.
     Route::get('/periodos/getForAplicacion','Periodos@getForAplicacion');
     Route::get('/periodos/getAll','Periodos@getAll');
+    Route::post('/periodos/store','Periodos@store');
+    Route::delete('/periodos/destroy/{id}','Periodos@destroy');
+    Route::post('/periodos/update','Periodos@update');
 
     // PersonasSectores
     Route::post('personasSectores/registro','PersonasSectores@store');

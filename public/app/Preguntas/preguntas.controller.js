@@ -11,7 +11,7 @@
         .module('observatoryApp')
         .controller('PreguntasController', PreguntasController);
 
-    function PreguntasController($scope, $timeout, $http, PreguntasFactory, IndicadoresFactory, $mdDialog) {
+    function PreguntasController($scope, $timeout, PreguntasFactory, IndicadoresFactory, $mdDialog) {
         $scope.store = store;
         var indicadores = '';
         $scope.indicadores = indicadores;

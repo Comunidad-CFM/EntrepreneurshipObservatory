@@ -221,6 +221,11 @@
                 url: '/territorios',
                 templateUrl: './app/Territorios/territorios.html',
                 controller: 'TerritoriosController'
+            })
+            .state('admin.periodos',{
+                url: '/periodos',
+                templateUrl: './app/Periodos/periodos.html',
+                controller: 'PeriodosController'
             });
     }
 
