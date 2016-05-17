@@ -226,6 +226,11 @@
                 url: '/periodos',
                 templateUrl: './app/Periodos/periodos.html',
                 controller: 'PeriodosController'
+            })
+            .state('admin.indicadores',{
+                url: '/indicadores',
+                templateUrl: './app/Indicadores/indicadores.html',
+                controller: 'IndicadoresController'
             });
     }
 

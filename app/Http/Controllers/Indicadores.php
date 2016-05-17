@@ -28,22 +28,12 @@ class Indicadores extends Controller
     public function store(Request $request) {
         $indicador = new Indicadore;
 
-        $indicador->nombre = $request->input('nombre');
-        $indicador->descripcion = $request->input('descripcion');
+        $indicador->nombre = $request->input('name');
+        $indicador->descripcion = $request->input('description');
 
         $indicador->save();
 
-        return 'Indicador record successfully created with id ' . $indicador->id;
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id) {
-        return Indicador::find($id);
+        return 'true';
     }
 
     /**
@@ -53,14 +43,14 @@ class Indicadores extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id) {
-        $indicador = Indicador::find($id);
+    public function update(Request $request) {
+        $indicador = Indicadore::find($request->input('id'));
 
-        $indicador->nombre = $request->input('nombre');
-        $indicador->descripcion = $request->input('descripcion');
+        $indicador->nombre = $request->input('name');
+        $indicador->descripcion = $request->input('description');
         $indicador->save();
 
-        return "Sucess updating user #" . $indicador->id;
+        return 'true';
     }
 
     /**
@@ -69,12 +59,12 @@ class Indicadores extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy(Request $request) {
-        $indicador = Indicador::find($request->input('id'));
+    public function destroy($id) {
+        $indicador = Indicadore::find($id);
 
         $indicador->delete();
 
-        return "Indicador record successfully deleted #" . $request->input('id');
+        return 'true';
     }
 }
 

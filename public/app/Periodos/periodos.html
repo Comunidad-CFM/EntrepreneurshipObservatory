@@ -12,7 +12,7 @@
 	                <a data-target="#periodos" data-toggle="tab">Periodos</a>
 	            </li>
 	            <li>
-	                <a data-target="#nuevo" data-toggle="tab">Nuevo</a>
+	                <a data-target="#nuevo" data-toggle="tab" ng-click="setData();">Nuevo</a>
 	            </li>
 	        </ul>
 	    </div>
@@ -59,7 +59,7 @@
                                     <label class="title">Editar periodo</label>
                                 </div>
                                 <div class="modal-body margin">
-                                    <form name="formPeriodo">	
+                                    <form name="formPeriodo" autocomplete="off">	
 			                            <div class="form-group">
 			                                <label>Año</label>
 			                                <select class="form-control margin" ng-options="year as year.year for year in years track by year.id" ng-model="selectedYear"></select>
@@ -90,7 +90,7 @@
 	            	<div>
                         <label class="title-2">Agregar periodo</label>
                     </div>
-                    <form name="formPeriodo" class="margin row">
+                    <form name="formPeriodo" class="margin row" autocomplete="off">
                         <div class="col-md-offset-2 col-md-8">            
                             <div class="form-group">
                                 <label>Año</label>

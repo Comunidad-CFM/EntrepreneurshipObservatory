@@ -64,7 +64,10 @@ Route::group(['prefix' => 'api'], function () {
     Route::delete('/aplicaciones/destroy/{aplications}', 'Aplicaciones@destroy');
 
     // Indicadores.
-    Route::get('indicadores/todos', 'Indicadores@getAll');
+    Route::get('/indicadores/todos', 'Indicadores@getAll');
+    Route::post('/indicadores/store', 'Indicadores@store');
+    Route::delete('/indicadores/destroy/{id}','Indicadores@destroy');
+    Route::post('/indicadores/update','Indicadores@update');
 
     // Sectores.
     Route::get('sectores/todos', 'Sectores@getAll');
