@@ -221,6 +221,11 @@
                 url: '/territorios',
                 templateUrl: './app/Territorios/territorios.html',
                 controller: 'TerritoriosController'
+            })
+            .state('admin.analisis',{
+                url: '/analisis',
+                templateUrl: './app/Analisis/analisis.html',
+                controller: 'AnalisisController'
             });
     }
 

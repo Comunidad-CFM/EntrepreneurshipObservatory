@@ -21,6 +21,7 @@ class CreatePersonasTable extends Migration
             $table->string('email', 50)->unique();
             $table->string('contrasena', 50);
             $table->char('tipo', 1);
+            $table->integer('territorio_id')->unsigned();            
             $table->timestamps();
         });
     }

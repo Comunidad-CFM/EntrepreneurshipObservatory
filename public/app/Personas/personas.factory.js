@@ -26,6 +26,7 @@
 		return factory;
 
 		function store(persona) {
+            console.log(persona);
 			var defered = $q.defer();
 			var promise = defered.promise;
 
