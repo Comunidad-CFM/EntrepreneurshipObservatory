@@ -22,33 +22,26 @@
 	            	<div>
                         <label class="title-2">Indicadores</label>                        
                     </div>
-                    <div class="col-md-offset-3 col-md-6">
-                        <div ng-show="indicadores.length > 0">
-		            		<table class="table margin">
-		            			<thead>
-		            				<tr>
-		            					<th>Nombre</th>
-		            					<th>Descripción</th>
-		            					<th>Acciones</th>
-		            				</tr>
-		            			</thead>
-		            			<tbody>
-		            				<tr ng-repeat="indicador in indicadores">
-		            					<td ng-bind="indicador.nombre"></td>
-		            					<td ng-bind="indicador.descripcion"></td>
-		            					<td>
-		            						<span class="glyphicon glyphicon-pencil" ng-click="editandoIndicador(indicador)" data-toggle="modal" data-target="#editarIndicador" >
-		                                    <md-tooltip md-direction="top">Editar</md-tooltip></span>
-		                                    &nbsp;&nbsp;
-		                                    <span class="glyphicon glyphicon-trash" ng-click="remove($event, indicador.id);">
-		                                    <md-tooltip md-direction="top">Eliminar</md-tooltip></span>
-		            					</td>
-		            				</tr>
-		            			</tbody>
-		            		</table>
-	            		</div>
-	            		<div class="info-box margin" ng-show="indicadores.length == 0">No hay indicadores registrados.</div>
-                    </div>
+                    <div class="col-md-12 col-sm-12 margin" ng-show="indicadores.length > 0">
+                    	<div class="col-md-4 col-sm-4 card-box" ng-repeat="indicador in indicadores">
+                            <div class="inner">
+                                <div class="title-card">
+                                    <label class="title-3">{{indicador.nombre}}</label>
+                                </div>
+                                <div class="body-card">
+                                    <p>{{indicador.descripcion}}.</p>
+                                </div>
+                                <div class="footer-card-box">
+                                    <span class="glyphicon glyphicon-pencil" ng-click="editandoIndicador(indicador)" data-toggle="modal" data-target="#editarIndicador" >
+                                    <md-tooltip md-direction="top">Editar</md-tooltip></span>
+                                    &nbsp;&nbsp;
+                                    <span class="glyphicon glyphicon-trash" ng-click="remove($event, indicador.id);">
+                                    <md-tooltip md-direction="top">Eliminar</md-tooltip></span>
+                                </div>
+                            </div>
+                        </div>
+            		</div>
+            		<div class="info-box margin" ng-show="indicadores.length == 0">No hay indicadores registrados.</div>
 
                     <!-- Formulario editar -->
                     <div id="editarIndicador" class="modal fade" data-keyboard="false" data-backdrop="static">
