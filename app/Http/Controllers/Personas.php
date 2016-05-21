@@ -24,7 +24,7 @@ class Personas extends Controller
         $persona->email = $request->input('email');
         $persona->contrasena = md5($request->input('contrasena'));
         $persona->tipo = $request->input('tipo');        
-        
+        $persona->territorio_id = $request->input('territorio_id');
         $persona->save();
 
         return 'true';
@@ -44,6 +44,7 @@ class Personas extends Controller
         $persona->email = $request->input('email');          
         $persona->cedula = $request->input('cedula'); 
         $persona->tipo = $request->input('tipo');  
+        $persona->territorio_id = $request->input('territorio_id');
         
         $persona->save();
 
@@ -85,6 +86,16 @@ class Personas extends Controller
         $persona->delete();
 
         return 'true';
+    }
+
+    /**
+     * Get rows related to an specific territory
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function getByTerritory($territorio) {          
+        return Persona::where('territorio_id',$territorio)->get();
     }
 
     /**

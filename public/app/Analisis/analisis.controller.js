@@ -10,8 +10,9 @@
 	* @param {Object} Servicio que proporciona autenticación y renderización de vistas.
 	* @param {Object} Servicio que brinda funciones del log in al controlador.
 	*/
-	function AnalisisController ($scope, TerritoriosFactory, PersonasSectoresFactory, PersonasFactory) {
+	function AnalisisController ($scope, TerritoriosFactory, SectoresFactory, PersonasSectoresFactory, PersonasFactory, AplicacionesFactory) {
 		var personasSectores = [],
+			personasTerritorio = [],
 			personas = [],
 			sectores = [];
 		// obtener todos los enpresarios dado un territorio.
@@ -30,7 +31,7 @@
 					personasSectores = response;
 				});
 		}
-		getPersonasSectores();
+		//getPersonasSectores();
 
 		function getSectores () {
 			SectoresFactory.getAll()
@@ -40,10 +41,38 @@
 		}
 		getSectores();
 
+		
+		/*
+		* Calcular el porcentaje de personas que contestaron la encuesta en determinado 		
+		*/
 		function calcularPorcentaje () {
-			personasSectores.forEach( function(personaSector) {
-				
-			});
+			var totalEmpresarios,
+				porcentajeTerritorios,
+				muestra = 0;
+			PersonasFactory.getByTerritory(2)
+				.then(function (response) {
+					totalEmpresarios = response;				
+
+					AplicacionesFactory.getForSurvey(1)
+						.then(function (response) {																				
+
+							totalEmpresarios.forEach( function(empresario) {
+								response.forEach( function(element) {
+									if(element.idPersona === empresario.id){
+										muestra += 1;
+									}
+								});
+							});
+
+							console.log(muestra);
+							console.log(totalEmpresarios.length);
+							porcentajeTerritorios = ( muestra * 100)/totalEmpresarios.length;
+							console.log('El porcentaje de empresarios del territorio que participaron es de '+porcentajeTerritorios+'%');
+
+						})
+				});
 		}
+
+		calcularPorcentaje();
 	}
 })();

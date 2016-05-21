@@ -30,11 +30,11 @@
         //vars
         $scope.territorios = [];        
 
-        var currentEmail = "";
-        var currentCedula = ""; 
-        var selectedSectores = [];
-        var selectedSectoresEditar = [];//sectores que se editan
-        var todosTerritorios = [];
+        var currentEmail = "",
+        currentCedula = "",
+        selectedSectores = [],
+        selectedSectoresEditar = [],//sectores que se editan
+        todosTerritorios = [];        
 
         /**
         * Recolectar los arreglos de territorios y regiones para mostrar en la interfaz     
@@ -164,6 +164,7 @@
         function store() {            
             $scope.registro = false;
             validateEdit();
+            $scope.persona.territorio_id = $scope.selectedTerritorio.id;
             if ($scope.emptyData !== true && selectedSectores.length > 0) {
                 PersonasFactory.store($scope.persona)
                     .then(function(response) {
@@ -298,6 +299,7 @@
             });
 
             if ($scope.emptyData !== true && sectores.length > 0) {   
+                persona.territorio_id = $scope.selectedTerritorio.id;
                 PersonasFactory.edit(persona)
                     .then(function(response) {
                         if (response === 'true') {
