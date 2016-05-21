@@ -53,6 +53,7 @@
 	<script type="text/javascript" src="<?= asset('app/Autenticacion/autenticacion.controller.js') ?>"></script>	
 	<script type="text/javascript" src="<?= asset('app/Periodos/periodos.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Periodos/periodos.factory.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/SectoresIndicadores/sectoresIndicadores.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/js/angular-drag-and-drop-lists.js') ?>"></script>
 </body>
 </html>
