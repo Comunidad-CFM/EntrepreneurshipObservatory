@@ -40,6 +40,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('personas/isPass/{id}/{currentPass}', 'Personas@isPass');
     Route::post('personas/changePass', 'Personas@changePass');
     Route::get('personas/getByTerritory/{territory}', 'Personas@getByTerritory');
+    Route::get('personas/getBySector/{sector}', 'Personas@getBySector');
 
     // Preguntas.
     Route::post('preguntas/registro', 'Preguntas@store');

@@ -95,7 +95,22 @@ class Personas extends Controller
      * @return Response
      */
     public function getByTerritory($territorio) {          
-        return Persona::where('territorio_id',$territorio)->get();
+        return Persona::where('territorio_id',$territorio)->where('tipo', 'B')->get();
+    }
+
+    /**
+     * Get rows related to an specific sector
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function getBySector($sector) {          
+
+        return Persona::join('personas_sectores', 'persona_id', '=', 'personas.id')        
+                ->where('personas_sectores.sector_id', '=', $sector)
+                ->where('tipo','B')
+                ->select('personas_sectores.id as idSector', 'personas.id as idPersona', 'personas.nombre', 'personas.apellido1', 'personas.apellido2', 'personas.email', 'personas.tipo')                
+                ->get();
     }
 
     /**

@@ -21,7 +21,8 @@
             remove: remove,
             isPass: isPass,
             changePass: changePass,
-            getByTerritory: getByTerritory
+            getByTerritory: getByTerritory,
+            getBySector : getBySector 
 		};
 
 		return factory;
@@ -97,6 +98,21 @@
             var defered = $q.defer();
 
             $http.get('/api/personas/getByTerritory/' + territory)
+            .success(function(response) {
+                defered.resolve(response);
+            })
+            .error(function(err) {
+                defered.reject(err);
+            });
+
+            return defered.promise;
+        }
+
+        //obtener los registros de personas que coinciden con un determinado territorio
+        function getBySector(sector) {
+            var defered = $q.defer();
+
+            $http.get('/api/personas/getBySector/' + sector)
             .success(function(response) {
                 defered.resolve(response);
             })

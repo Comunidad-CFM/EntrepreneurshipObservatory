@@ -226,6 +226,7 @@
                 url: '/analisis',
                 templateUrl: './app/Analisis/analisis.html',
                 controller: 'AnalisisController'
+            })
             .state('admin.periodos',{
                 url: '/periodos',
                 templateUrl: './app/Periodos/periodos.html',
@@ -235,10 +236,8 @@
                 url: '/indicadores',
                 templateUrl: './app/Indicadores/indicadores.html',
                 controller: 'IndicadoresController'
-
             });
-    }
-
+        }
     /**
     * Se ejecuta cada vez que se refrezca la página.
     * @param {Object} Servicio que permite la unión entre el HTML y el controlador a un nivel superior.

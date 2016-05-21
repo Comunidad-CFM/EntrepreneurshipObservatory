@@ -54,11 +54,10 @@
 					totalEmpresarios = response;				
 
 					AplicacionesFactory.getForSurvey(1)
-						.then(function (response) {																				
-
+						.then(function (response) {																											
 							totalEmpresarios.forEach( function(empresario) {
 								response.forEach( function(element) {
-									if(element.idPersona === empresario.id){
+									if(element.idPersona === empresario.id && element.encuestador.length > 0){
 										muestra += 1;
 									}
 								});
@@ -72,7 +71,39 @@
 						})
 				});
 		}
+		//calcularPorcentaje();
 
-		calcularPorcentaje();
+		/*
+		* Calcular el porcentaje de personas que contestaron la encuesta en determinado sector		
+		*/
+		function calcularPorcentajeSector () {
+			var totalEmpresarios,
+				porcentajeTerritorios,
+				muestra = 0;
+			PersonasFactory.getBySector(2)
+				.then(function (response) {
+					totalEmpresarios = response;		
+					console.log(totalEmpresarios);							
+					AplicacionesFactory.getForSurvey(1)
+						.then(function (response) {																											
+							console.log(response);
+							totalEmpresarios.forEach( function(empresario) {
+								response.forEach( function(element) {
+									if(element.idPersona === empresario.idPersona){
+										muestra += 1;
+									}
+								});
+							});
+
+							console.log(muestra);
+							console.log(totalEmpresarios.length);
+							porcentajeTerritorios = ( muestra * 100)/totalEmpresarios.length;
+							console.log('El porcentaje de empresarios del Sector que participaron es de '+porcentajeTerritorios+'%');
+
+						})
+				});
+		}
+		calcularPorcentajeSector();
+		
 	}
 })();
