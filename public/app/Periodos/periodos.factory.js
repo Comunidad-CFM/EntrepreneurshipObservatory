@@ -19,44 +19,79 @@
 	*/
 	function PeriodosFactory($http, $q) {
 		var factory = {
-			getPeriodoIdForAplicacion: getPeriodoIdForAplicacion,
-			getAll: getAll
+			store: store,
+			remove: remove,
+			update: update,
+			getAll: getAll,
+			generateyYears: generateyYears
 		};
 
 		return factory;
 
 		/**
-		* Obtiene el cuatrimestre a partir de un mes.
-		* @param {integer} Número del mes.
-		* @returns {integer} Cuatrimestre.
-		*/
-		function getQuarter(month) {
-			if (month >= 1 && month <= 4) {
-				return 1;
-			}
-			else if (month >= 5 && month <= 8) {
-				return 2;
-			}
-			else {
-				return 3;
-			}
-		}
+		 * Almacena un periodo en la base de datos.
+		 * @param  {Object} Contiene la información del perido a almacenar.
+		 * @return {String} Respuesta de almacenar el periodo.
+		 */
+		function store(periodo) {
+			var defered = $q.defer();
 
-		/**
-		* Obtiene el id de un periodo para una aplicación.
-		* @returns {integer} Id del periodo.
-		*/
-		function getPeriodoIdForAplicacion() {
-			var date = new Date(),
-			    defered = $q.defer();
-
-			$http.get('api/periodos/getForAplicacion?anio='+date.getFullYear()+'&cuatrimestre='+getQuarter(date.getMonth()+1))
+			$http({
+				method: 'POST',
+				url: 'api/periodos/store',
+				data: periodo
+			})
 			.success(function(response) {
-				defered.resolve(response[0].id);
+				defered.resolve(response);
 			})
 			.error(function(err) {
 				defered.reject(err);
-			});
+			})
+
+			return defered.promise;
+		}
+
+		/**
+		 * Eliminar un periodo de la base de datos.
+		 * @param  {int} Id del periodo a eliminar.
+		 * @return {String} Resultado de eliminar el periodo.
+		 */
+		function remove(id) {
+			var defered = $q.defer();
+
+			$http({
+				method: 'DELETE',
+				url: 'api/periodos/destroy/' + id
+			})
+			.success(function(response) {
+				defered.resolve(response);
+			})
+			.error(function(err) {
+				defered.reject(err);
+			})
+
+			return defered.promise;
+		}
+
+		/**
+		 * Modfica un periodo en la base de datos.
+		 * @param  {Object} Información del periodo a editar.
+		 * @return {String} Resultado de editar el periodo.
+		 */
+		function update(periodo) {
+			var defered = $q.defer();
+
+			$http({
+				method: 'POST',
+				url: 'api/periodos/update',
+				data: periodo
+			})
+			.success(function(response) {
+				defered.resolve(response);
+			})
+			.error(function(err) {
+				defered.reject(er);
+			})
 
 			return defered.promise;
 		}
@@ -80,6 +115,25 @@
 			});
 
 			return defered.promise;
+		}
+
+		/**
+		 * Genera los años para mostrar en la vista de agregar periodo.
+		 * @return {Array} Lista con los años generados.
+		 */
+		function generateyYears() {
+			var id = 1,
+			    date = new Date(),
+			    year = 2016,
+				yearFinish = date.getFullYear() + 5,
+				years = [];
+
+			for ( ; year < yearFinish; year++) {
+				years.push({id: id, year: year});
+				id++;
+			}
+
+			return years;
 		}
 	}
 })();

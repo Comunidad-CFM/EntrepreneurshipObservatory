@@ -226,6 +226,16 @@
                 url: '/analisis',
                 templateUrl: './app/Analisis/analisis.html',
                 controller: 'AnalisisController'
+            .state('admin.periodos',{
+                url: '/periodos',
+                templateUrl: './app/Periodos/periodos.html',
+                controller: 'PeriodosController'
+            })
+            .state('admin.indicadores',{
+                url: '/indicadores',
+                templateUrl: './app/Indicadores/indicadores.html',
+                controller: 'IndicadoresController'
+
             });
     }
 

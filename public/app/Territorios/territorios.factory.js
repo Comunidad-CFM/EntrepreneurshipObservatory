@@ -11,7 +11,7 @@
 		.module('observatoryApp')
 		.factory('TerritoriosFactory', TerritoriosFactory);
 
-		function TerritoriosFactory($http, $q) {
+	function TerritoriosFactory($http, $q) {
 		var factory = {
 			getAll: getAll,
 			store: store,

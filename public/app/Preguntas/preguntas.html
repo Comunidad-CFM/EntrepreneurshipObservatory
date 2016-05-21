@@ -77,9 +77,7 @@
                                         </div class="form-group">
                                         <div>
                                             <label class="">Indicador</label>
-                                            <select ng-model="indicador_id" class="form-control">
-                                                <option ng-repeat="indicador in indicadores" value="{{indicador.id}}">{{indicador.nombre}}</option>
-                                            </select>
+                                            <select class="form-control margin" ng-options="indicador as indicador.nombre for indicador in indicadores track by indicador.id" ng-model="selectedIndicador"></select>
                                         </div>
                                     </form>
                                 </div>
@@ -111,9 +109,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Indicador</label>
-                                <select ng-model="indicador_id" class="form-control">
-                                    <option ng-repeat="indicador in indicadores" value="{{indicador.id}}">{{indicador.nombre}}</option>
-                                </select>
+                                <select class="form-control margin" ng-options="indicador as indicador.nombre for indicador in indicadores track by indicador.id" ng-model="selectedIndicador"></select>
                             </div>
                             <div class="form-group">
                                 <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>

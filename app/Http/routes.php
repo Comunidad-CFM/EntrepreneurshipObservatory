@@ -65,7 +65,10 @@ Route::group(['prefix' => 'api'], function () {
     Route::delete('/aplicaciones/destroy/{aplications}', 'Aplicaciones@destroy');
 
     // Indicadores.
-    Route::get('indicadores/todos', 'Indicadores@getAll');
+    Route::get('/indicadores/todos', 'Indicadores@getAll');
+    Route::post('/indicadores/store', 'Indicadores@store');
+    Route::delete('/indicadores/destroy/{id}','Indicadores@destroy');
+    Route::post('/indicadores/update','Indicadores@update');
 
     // Sectores.
     Route::get('sectores/todos', 'Sectores@getAll');
@@ -95,6 +98,9 @@ Route::group(['prefix' => 'api'], function () {
     // Periodos.
     Route::get('/periodos/getForAplicacion','Periodos@getForAplicacion');
     Route::get('/periodos/getAll','Periodos@getAll');
+    Route::post('/periodos/store','Periodos@store');
+    Route::delete('/periodos/destroy/{id}','Periodos@destroy');
+    Route::post('/periodos/update','Periodos@update');
 
     // PersonasSectores
     Route::post('personasSectores/registro','PersonasSectores@store');
