@@ -81,12 +81,20 @@ textarea {
 .margin {
     margin: 10px 0px 10px 0px;
 }
-
 .margin-top {
     margin-top: 10px;
 }
 .margin-bottom {
     margin-bottom: 10px;
+}
+.margin-left {
+    margin-left : 10px;
+}
+.margin-right {
+    margin-right: 10px;
+}
+.margin-around {
+    width: 40%;
 }
 
 .kaushan {

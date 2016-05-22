@@ -1,0 +1,35 @@
+<div id="vistaEncuestador">
+    <div class="text-center margin" style="visibility:hidden">
+        <label class="title kaushan">Encuestas</label>
+    </div>
+
+    <div class="gestion-box">
+        <div>
+            <label class="subtitle baskerville">Encuestas</label>
+            <button style="visibility:hidden;text-align:center" class="btn btn-default margin float-right"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
+            <div class="col-md-12 col-sm-12 margin" ng-show="encuestas">
+                <div class="col-md-4 col-sm-4 card-box" ng-repeat="encuesta in encuestas" ng-if="encuesta.estado">
+                    <div class="inner">
+                        <div class="title-card">
+                            <label class="subtitle">
+                                <span class="label label-default"><md-tooltip md-direction="top">Total de preguntas</md-tooltip>3</span>
+                                &nbsp;Encuesta {{encuesta.id}}
+                            </label>
+                        </div>
+                        <div  class="body-card">
+                            <p>{{encuesta.descripcion}}</p>
+                        </div>
+                        <div class="footer-card-box">
+                            <a ui-sref="encuestador.contestar" ng-click="contestarEncuesta(encuesta.id,encuesta.descripcion)">
+                            <md-tooltip md-direction="right">Comenzar la encuesta</md-tooltip>Contestar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-box margin" ng-show="!encuestas">No hay encuestas registradas.</div>
+    </div>
+    <div class="container">
+        <div ui-view></div>
+    </div>
+</div>

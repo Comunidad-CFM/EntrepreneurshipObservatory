@@ -45,14 +45,16 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('preguntas/todas', 'Preguntas@getAll');
     Route::post('preguntas/editar', 'Preguntas@update');
     Route::delete('preguntas/destroy/{id}', 'Preguntas@destroy');
+    Route::post('preguntas/encuesta', 'Preguntas@getpreguntasEncuestas');
 
     // Encuestas.
     Route::post('encuestas/registro', 'Encuestas@store');
-    Route::get('encuestas/todas', 'Encuestas@getAll');    
+    Route::get('encuestas/todas', 'Encuestas@getAll');
     Route::post('/encuestas/update', 'Encuestas@update');
     Route::delete('/encuestas/destroy/{id}', 'Encuestas@destroy');
     Route::post('/encuestas/changeState', 'Encuestas@changeState');
     Route::get('/encuestas/getQuestions/{id}', 'Encuestas@getQuestions');
+    Route::post('/encuestas/getEncuestas', 'Encuestas@getEncuestas');
 
     // EncuestasPreguntas.
     Route::post('/encuestasPreguntas/store', 'EncuestasPreguntas@store');
@@ -62,6 +64,12 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('/aplicaciones/getForSurvey', 'Aplicaciones@getForSurvey');
     Route::post('/aplicaciones/store', 'Aplicaciones@store');
     Route::delete('/aplicaciones/destroy/{aplications}', 'Aplicaciones@destroy');
+    Route::post('/aplicaciones/getAplicacionesByPersona', 'Aplicaciones@getAplicacionesByPersona');
+    
+    // AplicacionesRespuestas.
+    Route::get('/aplicaciones-respuestas/todas', 'AplicacionesRespuestas@getAll');
+    Route::post('/aplicaciones-respuestas/store', 'AplicacionesRespuestas@store');
+    Route::post('/aplicaciones-respuestas/remove', 'AplicacionesRespuestas@remove');
 
     // Indicadores.
     Route::get('/indicadores/todos', 'Indicadores@getAll');
@@ -93,7 +101,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('territoriosSectores/editar/', 'TerritoriosSectores@update');
     Route::get('territoriosSectores/ifExist/', 'TerritoriosSectores@ifExist');
     Route::post('territoriosSectores/getBySectorId/', 'TerritoriosSectores@getBySectorId');
-    
+
     // Periodos.
     Route::get('/periodos/getForAplicacion','Periodos@getForAplicacion');
     Route::get('/periodos/getAll','Periodos@getAll');

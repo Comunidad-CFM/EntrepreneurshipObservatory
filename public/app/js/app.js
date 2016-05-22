@@ -12,6 +12,7 @@
 		.factory('Auth', Auth)
         .filter('user', user)
         .filter('estado', estado)
+				.filter('type', type)
 		.config(config)
         .run(run);
 
@@ -58,8 +59,11 @@
                 if (user.tipo === 'A') {
                     $location.path('admin');
                 }
-                else if (user.tipo === 'B') {
-                    $location.path('empresario');
+								else if (user.tipo === 'B') {
+                    $location.path('encuestador');
+                }
+								else {
+                    $location.path('encuestador');
                 }
             }
         }
@@ -75,9 +79,9 @@
         /**
         * Chequea los permisos con los que cuenta el usuario, si está logueado y renderiza a la vista respectiva.
         */
-        function checkStatus() {            
-            var rutasPrivadas = ['/','/admin', '/admin/encuestas', '/admin/personas', '/admin/preguntas', '/empresario', '/empresario/contestar'];
-            
+        function checkStatus() {
+            var rutasPrivadas = ['/','/admin', '/admin/encuestas', '/admin/personas', '/admin/preguntas', '/encuestador', '/encuestador/contestar'];
+
             if ($location.path() !== '/' && typeof($cookies.get('session')) === "undefined") {
                 savePreviousUrl();
                 $location.path('autenticacion');
@@ -91,9 +95,14 @@
                         $location.path('admin');
                     }
                 }
-                else if($cookies.getObject('session').tipo === 'B') {
-                    if ($location.path() === '/empresario' || $location.path() === '/') {
-                        $location.path('empresario');
+                // else if($cookies.getObject('session').tipo === 'B') {
+                //     if ($location.path() === '/empresario' || $location.path() === '/') {
+                //         $location.path('empresario');
+                //     }
+                // }
+								else {
+                    if ($location.path() === '/encuestador' || $location.path() === '/') {
+                        $location.path('encuestador');
                     }
                 }
             }
@@ -115,7 +124,7 @@
             return false;
         }
 	}
-	
+
     /**
     * Convierte una sigla a un string.
     * @returns {Object} Objeto con el filtro.
@@ -125,8 +134,14 @@
             if (usuario === 'A') {
                 return 'Administrador';
             }
+            // else if (usuario === 'B') {
+            //     return 'Empresario';
+            // }
+            // else {
+            //     return 'Encuestador';
+            // }
             else if (usuario === 'B') {
-                return 'Empresario';
+                return 'Encuestador';
             }
             else {
                 return 'Encuestador';
@@ -147,6 +162,19 @@
             }
             else {
                 return 'activa';
+            }
+        }
+
+        return filter;
+    }
+
+		function type() {
+        var filter = function(estado) {
+            if (estado === 't') {
+                return 'Abierta';
+            }
+            else {
+                return 'Cerrada';
             }
         }
 
@@ -192,16 +220,16 @@
                 templateUrl: './app/Preguntas/preguntas.html',
                 controller: 'PreguntasController'
             })
-            .state('empresario', {
-                url: '/empresario',
-                templateUrl: './app/Empresario/empresario.html',
-                controller: 'EmpresarioController'
-            })
-            .state('empresario.contestar', {
-                url: '/contestar',
-                templateUrl: './app/Encuestas/contestar-encuestas.html',
-                controller: 'ContestarEncuestasController'
-            })
+            // .state('empresario', {
+            //     url: '/empresario',
+            //     templateUrl: './app/Empresario/empresario.html',
+            //     controller: 'EmpresarioController'
+            // })
+            // .state('empresario.contestar', {
+            //     url: '/contestar',
+            //     templateUrl: './app/Encuestas/contestar-encuestas.html',
+            //     controller: 'ContestarEncuestasController'
+            // })
             .state('autenticacion', {
                 url: '/autenticacion',
                 templateUrl: './app/Autenticacion/autenticacion.html',
@@ -231,6 +259,21 @@
                 url: '/indicadores',
                 templateUrl: './app/Indicadores/indicadores.html',
                 controller: 'IndicadoresController'
+            })
+            .state('encuestador', {
+                url: '/encuestador',
+                templateUrl: './app/Encuestador/encuestador.html',
+                controller: 'EncuestadorController'
+            })
+            .state('encuestador.encuestas', {
+                url: '/encuestas',
+                templateUrl: './app/Encuestas/panel-encuestas.html',
+                controller: 'PanelEncuestasController'
+            })
+            .state('encuestador.contestar', {
+                url: '/contestar',
+                templateUrl: './app/Encuestas/contestar-encuestas.html',
+                controller: 'ContestarEncuestasController'
             });
     }
 

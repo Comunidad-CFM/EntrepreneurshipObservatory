@@ -21,7 +21,8 @@
 		var factory = {
 			getForSurvey: getForSurvey,
 			store: store,
-			remove: remove
+			remove: remove,
+			getAplicacionesByPersona : getAplicacionesByPersona
 		};
 
 		return factory;
@@ -36,7 +37,7 @@
 				data = {
 					idEncuesta: idEncuesta
 				};
-			
+
 			$http({
 				method: 'POST',
 				url: 'api/aplicaciones/getForSurvey',
@@ -102,7 +103,33 @@
 			.error(function(err) {
 				defered.reject(err);
 			});
-			
+
+			return defered.promise;
+		}
+
+		/**
+		* Obtiene aplicaciones de encuestas de una persona dada
+		* @param {Integer} Id de la persona que se quiere obtener las aplicaciones
+		* @returns {Array} Objetos de las aplicaciones
+		*/
+		function getAplicacionesByPersona(idPersona) {
+			var defered = $q.defer(),
+				data = {
+					persona_id: idPersona
+				};
+
+			$http({
+				method: 'POST',
+				url: 'api/aplicaciones/getAplicacionesByPersona',
+				data: data
+			})
+			.success(function(response) {
+				defered.resolve(response);
+			})
+			.error(function(err) {
+				defered.reject(err);
+			});
+
 			return defered.promise;
 		}
 	}

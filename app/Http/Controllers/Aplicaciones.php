@@ -76,4 +76,19 @@ class Aplicaciones extends Controller
 
         return 'true';
     }
+
+    /**
+     * Retorna las aplicaciones(Encuestas) que corresponden a la persona dada.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function getAplicacionesByPersona(Request $request) {
+      $idPersona = $request->input('persona_id');
+
+      $aplicacion = Aplicacione::select('aplicaciones.id', 'aplicaciones.fechaAplicacion', 'aplicaciones.encuesta_id', 'aplicaciones.persona_id', 'aplicaciones.periodo_id')
+          ->where('persona_id', $idPersona)
+          ->get();
+      return $aplicacion;
+    }
 }
