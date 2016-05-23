@@ -33,7 +33,7 @@ class Indicadores extends Controller
 
         $indicador->save();
 
-        return 'true';
+        return $indicador->id;
     }
 
     /**

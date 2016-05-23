@@ -94,7 +94,6 @@
 									}
 								});
 							});
-
 							console.log(muestra);
 							console.log(totalEmpresarios.length);
 							porcentajeTerritorios = ( muestra * 100)/totalEmpresarios.length;

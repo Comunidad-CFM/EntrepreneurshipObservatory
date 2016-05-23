@@ -17,13 +17,47 @@
     * @param {Object} Promesa que resolverá cierto trozo de código cuando determinado tiempo ha pasado.
     * @param {Object} Servicio utilizado para mostrar ventanas de confirmación.
     * @param {Object} Servicio que brinda funciones de los indicadores que ayudan a la funcionalidad del controlador.
+    * @param {Object} Servicio que brinda funciones de los sectores que ayudan a la funcionalidad del controlador.
+    * @param {Object} Servicio que brinda funciones de los sectores indicadores que ayudan a la funcionalidad del controlador.
     */
-	function IndicadoresController($scope, $timeout, $mdDialog, IndicadoresFactory) {
+	function IndicadoresController($scope, $timeout, $mdDialog, IndicadoresFactory, SectoresFactory, SectoresIndicadoresFactory) {
+		$scope.selectedSectores = [];
 		$scope.store = store;
 		$scope.editandoIndicador = editandoIndicador;
 		$scope.update = update;
 		$scope.remove = remove;
 		$scope.setData = setData;
+
+		$scope.$watch('selectedSectores', validate);
+
+		/**
+		 * Valida que se haya seleccionado al menos un sector para el indicador.
+		 */
+		function validate() {
+			if (!$scope.selectedSectores.length) {
+				$scope.sectoresState = false;
+			}
+			else {
+				$scope.sectoresState = true;
+			}
+		}
+
+		/**
+		 * Manda a almacenar los sectores a los que pertenece el indicador recién agregado.
+		 * @param  {int} indicadorId Id del indicador recién agregado.
+		 */
+		function storeSectoresIndicadores(indicadorId) {
+			var sectoresId = [];
+
+			$scope.selectedSectores.forEach((indicador) => {
+				sectoresId.push(indicador.id);
+			});
+
+			$scope.selectedSectores = [];
+
+			SectoresIndicadoresFactory.store(indicadorId, sectoresId)
+			.then(function(response) { });
+		}
 
 		/**
 		 * Almacena un nuevo indicador en la base de datos.
@@ -32,14 +66,15 @@
 		function store() {
 			IndicadoresFactory.store($scope.indicador)
 			.then(function(response) {
-				if (response === 'true') {
+				try {
+					response = parseInt(response);
+
 					$scope.indicadorMsg = 'El indicador se ha agregado correctamente.';
 					$scope.indicadorClass = 'alert success-box';
 					cleanForm();
 					setData();
 					getAll();
-				}
-				else {
+				} catch (e) {
 					$scope.indicadorMsg = 'Ha ocurrido un error al agregar el indicador.';
 					$scope.indicadorClass = 'alert error-box';
 				}
@@ -47,6 +82,13 @@
 				$timeout(function() {
 					$scope.indicadorMsg = '';
 				}, 5000);
+
+				return(response);
+			})
+			.then(function(indicadorId) {
+				if (typeof(indicadorId) === 'number') { 
+					storeSectoresIndicadores(indicadorId);
+				}
 			});
 		}
 
@@ -131,6 +173,16 @@
 		}
 
 		/**
+		 * Obtiene todos los sectores.
+		 */
+		function getSectores() {
+			SectoresFactory.getAll()
+			.then(function(response) {
+				$scope.sectores = response;
+			});
+		}
+
+		/**
 		* Limpia el formulario del cambio de contraseña.
 		*/
 		function cleanForm() {
@@ -138,6 +190,7 @@
         }
 
 		getAll();
+		getSectores();
 	}
 
 })();
