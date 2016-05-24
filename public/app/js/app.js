@@ -219,6 +219,11 @@
                 templateUrl: './app/Empresario/empresario.html',
                 controller: 'EmpresarioController'
             })
+            .state('empresario.encuestas', {
+                url: '/encuestas',
+                templateUrl: './app/Encuestas/empresario-panel-encuestas.html',
+                controller: 'EmpresarioPanelEncuestasController'
+            })
             .state('autenticacion', {
                 url: '/autenticacion',
                 templateUrl: './app/Autenticacion/autenticacion.html',

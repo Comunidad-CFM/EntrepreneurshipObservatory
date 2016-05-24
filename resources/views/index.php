@@ -55,6 +55,7 @@
 	<script type="text/javascript" src="<?= asset('app/Encuestas/encuestas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Encuestas/contestar-encuestas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Encuestas/panel-encuestas.controller.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Encuestas/empresario-panel-encuestas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Preguntas/preguntas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Preguntas/preguntas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Indicadores/indicadores.controller.js') ?>"></script>
