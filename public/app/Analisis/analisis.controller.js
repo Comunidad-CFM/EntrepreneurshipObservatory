@@ -10,7 +10,7 @@
 	* @param {Object} Servicio que proporciona autenticación y renderización de vistas.
 	* @param {Object} Servicio que brinda funciones del log in al controlador.
 	*/
-	function AnalisisController ($scope, TerritoriosFactory, SectoresFactory, PersonasSectoresFactory, PersonasFactory, AplicacionesFactory) {
+	function AnalisisController ($scope, TerritoriosFactory, SectoresFactory, PersonasSectoresFactory, PersonasFactory, AplicacionesFactory) {		
 		var personasSectores = [],
 			personasTerritorio = [],
 			personas = [],
@@ -43,17 +43,21 @@
 
 		
 		/*
-		* Calcular el porcentaje de personas que contestaron la encuesta en determinado 		
+		* Calcular el porcentaje de personas que contestaron la encuesta en determinado territorio		
+		* obtiene la lista de empresarios relacionados a un territorio y la lista de encuestados que
+		* respondieron una determinada encuesta.
+		* @param {int} id del territorio que se desea analizar
+		* @param {int} id de la encuesta a la que pertenece el resultado
 		*/
-		function calcularPorcentaje () {
+		function calcularPorcentaje (territorio, encuesta) {
 			var totalEmpresarios,
 				porcentajeTerritorios,
 				muestra = 0;
-			PersonasFactory.getByTerritory(2)
+			PersonasFactory.getByTerritory(territorio)
 				.then(function (response) {
 					totalEmpresarios = response;				
 
-					AplicacionesFactory.getForSurvey(1)
+					AplicacionesFactory.getForSurvey(encuesta)
 						.then(function (response) {																											
 							totalEmpresarios.forEach( function(empresario) {
 								response.forEach( function(element) {
@@ -71,20 +75,24 @@
 						})
 				});
 		}
-		//calcularPorcentaje();
+		//calcularPorcentaje(2,1);
 
 		/*
 		* Calcular el porcentaje de personas que contestaron la encuesta en determinado sector		
+		* obtiene la lista de empresarios relacionados a un sector y la lista de encuestados que
+		* respondieron una determinada encuesta.
+		* @param {int} id del sector que se desea analizar
+		* @param {int} id de la encuesta a la que pertenece el resultado
 		*/
-		function calcularPorcentajeSector () {
+		function calcularPorcentajeSector (sector, encuesta) {
 			var totalEmpresarios,
 				porcentajeTerritorios,
 				muestra = 0;
-			PersonasFactory.getBySector(2)
+			PersonasFactory.getBySector(sector)
 				.then(function (response) {
 					totalEmpresarios = response;		
 					console.log(totalEmpresarios);							
-					AplicacionesFactory.getForSurvey(1)
+					AplicacionesFactory.getForSurvey(encuesta)
 						.then(function (response) {																											
 							console.log(response);
 							totalEmpresarios.forEach( function(empresario) {
@@ -102,7 +110,7 @@
 						})
 				});
 		}
-		calcularPorcentajeSector();
+		calcularPorcentajeSector(2,1);
 		
 	}
 })();
