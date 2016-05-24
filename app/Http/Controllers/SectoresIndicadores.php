@@ -37,8 +37,8 @@ class SectoresIndicadores extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function destroy($sectoresIndicadores) {
-        $sectoresIndicadoresId = substr(json_encode($sectoresIndicadores), 1, -1);
+    public function destroy($ids) {
+        $sectoresIndicadoresId = substr(json_encode($ids), 1, -1);
         $sectoresIndicadoresId = explode(',', $sectoresIndicadoresId);
 
         foreach ($sectoresIndicadoresId as $id) {
@@ -50,6 +50,6 @@ class SectoresIndicadores extends Controller
     }
 
     public function getForIndicador($id) {
-        return SectoresIndicadore::where('indicador_id', $id)->select('sector_id')->get();  
+        return SectoresIndicadore::where('indicador_id', $id)->select('id', 'sector_id')->get();  
     }
 }

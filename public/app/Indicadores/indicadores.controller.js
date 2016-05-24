@@ -28,6 +28,17 @@
 		$scope.remove = remove;
 		$scope.setData = setData;
 		$scope.validate = validate;
+		var respaldoSectores = [];
+
+		/**
+		 * Muestra un mensaje.
+		 * @param  {String} Mensaje a mostrar.
+		 * @param  {String} Clase del mensaje.
+		 */
+		function showMessage(message, clase) {
+			$scope.indicadorMsg = message;
+			$scope.indicadorClass = clase;
+		}
 
 		/**
 		 * Valida que se haya seleccionado al menos un sector para el indicador.
@@ -51,12 +62,14 @@
 		 */
 		function storeSectoresIndicadores(indicadorId) {
 			var sectoresId = [];
-
+			
 			$scope.sectores.forEach((sector) => {
-				sectoresId.push(sector.id);
-				sector.state = false;
+				if (sector.state) {
+					sectoresId.push(sector.id);
+					sector.state = false;
+				}
 			});
-
+			
 			SectoresIndicadoresFactory.store(indicadorId, sectoresId)
 			.then(function(response) { });
 		}
@@ -71,14 +84,11 @@
 				try {
 					response = parseInt(response);
 
-					$scope.indicadorMsg = 'El indicador se ha agregado correctamente.';
-					$scope.indicadorClass = 'alert success-box';
+					showMessage('El indicador se ha agregado correctamente.', 'alert success-box');
 					cleanForm();
-					setData();
 					getAll();
 				} catch (e) {
-					$scope.indicadorMsg = 'Ha ocurrido un error al agregar el indicador.';
-					$scope.indicadorClass = 'alert error-box';
+					showMessage('Ha ocurrido un error al agregar el indicador.', 'alert error-box');
 				}
 
 				$timeout(function() {
@@ -90,6 +100,7 @@
 			.then(function(indicadorId) {
 				if (typeof(indicadorId) === 'number') { 
 					storeSectoresIndicadores(indicadorId);
+					setData();
 				}
 			});
 		}
@@ -106,19 +117,56 @@
 				description: indicador.descripcion
 			};
 
-			SectoresIndicadoresFactory.gerForIndicador($scope.id)
+			SectoresIndicadoresFactory.getForIndicador($scope.id)
 			.then(function(response) {
 				$scope.sectores.forEach((sector) => {
 					response.forEach((sectorIndicador) => {
-						if (sector.id == sectorIndicador.sector_id) {
+						if (sector.id === sectorIndicador.sector_id) {
 							sector.state = true;
+							sector.idSI = sectorIndicador.id;
 						}
 					});
+				});
+
+				$scope.sectores.forEach((sector) => {
+					respaldoSectores.push({sector_id: sector.id, state: sector.state});
 				});
 			})
 			.catch(function(err) {
 				console.log(err);
 			});
+		}
+
+		/**
+		 * Agregar sectores a un indicador.
+		 * @param  {Array} Arreglo con los ids de los sectores.
+		 * @return {String} Resultado de agregar los sectores.
+		 */
+		function agregarSectoresIndicador(sectores) {
+			if(sectores.length) {
+                SectoresIndicadoresFactory.store($scope.id, sectores)
+                .then(function(response) {
+                    return response;
+                });
+            }
+
+            return 'true';
+		}
+
+		/**
+		 * Elimina sectores de un indicador.
+		 * @param  {Array} Arreglo con los ids de los SectoresIndicadores.
+		 * @return {String} Resultado de aliminar los SectoresIndicadores.
+		 */
+		function eliminarSectoresIndicador(sectores) {
+			if(sectores.length) {
+                SectoresIndicadoresFactory.remove(sectores)
+                .then(function(response) {
+                    return response;
+                });
+            }
+
+            return 'true';
 		}
 
 		/**
@@ -128,18 +176,25 @@
 		function update() {
 			$scope.indicador.id = $scope.id;
 
+			var sectores = SectoresIndicadoresFactory.sectoresChanged(respaldoSectores, $scope.sectores);
+
 			IndicadoresFactory.update($scope.indicador)
 			.then(function(response) {
-				if (response === 'true') {
-					$scope.indicadorMsg = 'El indicador se ha editado correctamente.';
-					$scope.indicadorClass = 'alert success-box';
-					cleanForm();
-					setData();
-					getAll();
+				return response;
+			})
+			.then(function(state) {
+				if (state === 'true') {
+					if(agregarSectoresIndicador(sectores.agregar) === 'true' && eliminarSectoresIndicador(sectores.eliminar) === 'true') {
+						showMessage('El indicador se ha editado correctamente.', 'alert success-box');
+						cleanForm();
+						getAll();
+		            }
+		            else {
+		                showMessage('Ha ocurrido un error al editar el indicador.', 'alert error-box');   
+		            }
 				}
 				else {
-					$scope.indicadorMsg = 'Ha ocurrido un error al editar el indicador.';
-					$scope.indicadorClass = 'alert error-box';
+					showMessage('Ha ocurrido un error al editar el indicador.', 'alert error-box');
 				}
 
 				$timeout(function() {
@@ -179,6 +234,12 @@
 			$scope.sectores.forEach((sector) => {
 				sector.state = false;
 			});
+			$scope.id = '';
+			$scope.indicador = {
+				name: '',
+				description: ''
+			};
+			respaldoSectores = [];
 		}
 
 		/**
