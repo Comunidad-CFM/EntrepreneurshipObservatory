@@ -5,7 +5,7 @@
 	<div class="portlet">
 	    <div class="portlet-title">
 	        <div class="caption caption-red">
-	            <i class="fa fa-certificate"></i>
+	            <i class="glyphicon glyphicon-oil"></i>
 	        </div>
 	        <ul class="nav nav-tabs">
 	            <li class="active">
@@ -22,33 +22,26 @@
 	            	<div>
                         <label class="title-2">Indicadores</label>                        
                     </div>
-                    <div class="col-md-offset-3 col-md-6">
-                        <div ng-show="indicadores.length > 0">
-		            		<table class="table margin">
-		            			<thead>
-		            				<tr>
-		            					<th>Nombre</th>
-		            					<th>Descripción</th>
-		            					<th>Acciones</th>
-		            				</tr>
-		            			</thead>
-		            			<tbody>
-		            				<tr ng-repeat="indicador in indicadores">
-		            					<td ng-bind="indicador.nombre"></td>
-		            					<td ng-bind="indicador.descripcion"></td>
-		            					<td>
-		            						<span class="glyphicon glyphicon-pencil" ng-click="editandoIndicador(indicador)" data-toggle="modal" data-target="#editarIndicador" >
-		                                    <md-tooltip md-direction="top">Editar</md-tooltip></span>
-		                                    &nbsp;&nbsp;
-		                                    <span class="glyphicon glyphicon-trash" ng-click="remove($event, indicador.id);">
-		                                    <md-tooltip md-direction="top">Eliminar</md-tooltip></span>
-		            					</td>
-		            				</tr>
-		            			</tbody>
-		            		</table>
-	            		</div>
-	            		<div class="info-box margin" ng-show="indicadores.length == 0">No hay indicadores registrados.</div>
-                    </div>
+                    <div class="col-md-12 col-sm-12 margin" ng-show="indicadores.length > 0">
+                    	<div class="col-md-4 col-sm-4 card-box" ng-repeat="indicador in indicadores">
+                            <div class="inner">
+                                <div class="title-card">
+                                    <label class="title-3">{{indicador.nombre}}</label>
+                                </div>
+                                <div class="body-card">
+                                    <p>{{indicador.descripcion}}.</p>
+                                </div>
+                                <div class="footer-card-box">
+                                    <span class="glyphicon glyphicon-pencil" ng-click="editandoIndicador(indicador)" data-toggle="modal" data-target="#editarIndicador" >
+                                    <md-tooltip md-direction="top">Editar</md-tooltip></span>
+                                    &nbsp;&nbsp;
+                                    <span class="glyphicon glyphicon-trash" ng-click="remove($event, indicador.id);">
+                                    <md-tooltip md-direction="top">Eliminar</md-tooltip></span>
+                                </div>
+                            </div>
+                        </div>
+            		</div>
+            		<div class="info-box margin" ng-show="indicadores.length == 0">No hay indicadores registrados.</div>
 
                     <!-- Formulario editar -->
                     <div id="editarIndicador" class="modal fade" data-keyboard="false" data-backdrop="static">
@@ -73,7 +66,17 @@
 							                    <input ng-model="indicador.description" class="form-control" type="text" name="description" id="description" required>
 							                    <span class="help-inline red" ng-show="formIndicador.description.$error.required && formIndicador.description.$dirty">La descripción es requerida.</span>
 							                </p>
-							            </div>        
+							            </div>
+							            <div class="col-md-12">
+							                <p>
+							                    <label>Sectores</label>
+									        	<md-select ng-model="selectedSectores" aria-label="Sectores" data-md-container-class="selectdemoSelectHeader" multiple>
+									          		<md-optgroup label="Sectores">
+									            		<md-option ng-value="sector" ng-repeat="sector in sectores">{{sector.nombre}}</md-option>
+									          		</md-optgroup>
+									        	</md-select>
+							                </p>
+							            </div>       
 									</form>
 				                    <div ng-show="indicadorMsg" ng-class="indicadorClass">
 										<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -82,7 +85,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-cancel" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancelar</button>
-                                    <button class="btn btn-success" ng-disabled="!formIndicador.$valid" data-ng-click="update(); $event.stopPropagation()"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+                                    <button class="btn btn-success" ng-disabled="!formIndicador.$valid" data-ng-click="update(); $event.stopPropagation() || !sectoresState"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
                                 </div>
                             </div>
                         </div>
@@ -108,9 +111,18 @@
 			                </p>
 			            </div>
 			            <div class="col-md-12">
-			            	<div ng-show="passState" ng-class="passClass">{{passMsg}}</div>
+			                <p>
+			                    <label>Sectores</label>
+					        	<md-select ng-model="selectedSectores" aria-label="Sectores" data-md-container-class="selectdemoSelectHeader" multiple>
+					          		<md-optgroup label="Sectores">
+					            		<md-option ng-value="sector" ng-repeat="sector in sectores">{{sector.nombre}}</md-option>
+					          		</md-optgroup>
+					        	</md-select>
+			                </p>
+			            </div>
+			            <div class="col-md-12">
 				            <center>
-				                <button class="btn btn-success margin" ng-click="store();" ng-disabled="!formIndicador.$valid"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+				                <button class="btn btn-success margin" ng-click="store();" ng-disabled="!formIndicador.$valid || !sectoresState"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
 				            </center>
 				        </div>        
 					</form>

@@ -24,7 +24,7 @@ class Personas extends Controller
         $persona->email = $request->input('email');
         $persona->contrasena = md5($request->input('contrasena'));
         $persona->tipo = $request->input('tipo');        
-        
+        $persona->territorio_id = $request->input('territorio_id');
         $persona->save();
 
         return 'true';
@@ -44,6 +44,7 @@ class Personas extends Controller
         $persona->email = $request->input('email');          
         $persona->cedula = $request->input('cedula'); 
         $persona->tipo = $request->input('tipo');  
+        $persona->territorio_id = $request->input('territorio_id');
         
         $persona->save();
 
@@ -85,6 +86,31 @@ class Personas extends Controller
         $persona->delete();
 
         return 'true';
+    }
+
+    /**
+     * Get rows related to an specific territory
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function getByTerritory($territorio) {          
+        return Persona::where('territorio_id',$territorio)->where('tipo', 'B')->get();
+    }
+
+    /**
+     * Get rows related to an specific sector
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function getBySector($sector) {          
+
+        return Persona::join('personas_sectores', 'persona_id', '=', 'personas.id')        
+                ->where('personas_sectores.sector_id', '=', $sector)
+                ->where('tipo','B')
+                ->select('personas_sectores.id as idSector', 'personas.id as idPersona', 'personas.nombre', 'personas.apellido1', 'personas.apellido2', 'personas.email', 'personas.tipo')                
+                ->get();
     }
 
     /**

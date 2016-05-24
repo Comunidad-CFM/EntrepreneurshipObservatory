@@ -22,33 +22,26 @@
 	            	<div>
                         <label class="title-2">Periodos</label>                        
                     </div>
-                    <div class="col-md-offset-3 col-md-6">
-                        <div ng-show="periodos.length > 0">
-		            		<table class="table margin">
-		            			<thead>
-		            				<tr>
-		            					<th>Año</th>
-		            					<th>Cuatrimestre</th>
-		            					<th>Acciones</th>
-		            				</tr>
-		            			</thead>
-		            			<tbody>
-		            				<tr ng-repeat="periodo in periodos">
-		            					<td ng-bind="periodo.anio"></td>
-		            					<td ng-bind="periodo.cuatrimestre"></td>
-		            					<td>
-		            						<span class="glyphicon glyphicon-pencil" ng-click="editandoPeriodo(periodo)" data-toggle="modal" data-target="#editarPeriodo" >
-		                                    <md-tooltip md-direction="top">Editar</md-tooltip></span>
-		                                    &nbsp;&nbsp;
-		                                    <span class="glyphicon glyphicon-trash" ng-click="remove($event, periodo.id);">
-		                                    <md-tooltip md-direction="top">Eliminar</md-tooltip></span>
-		            					</td>
-		            				</tr>
-		            			</tbody>
-		            		</table>
-	            		</div>
-	            		<div class="info-box margin" ng-show="periodos.length == 0">No hay periodos registrados.</div>
-                    </div>
+                    <div class="col-md-12 col-sm-12 margin" ng-show="periodos.length > 0">
+                    	<div class="col-md-3 col-sm-3 card-box" ng-repeat="periodo in periodos">
+                            <div class="inner">
+                                <div class="title-card">
+                                    <label class="title-3">Año: {{periodo.anio}}</label>
+                                </div>
+                                <div class="body-card">
+                                    <p>Cuatrimestre: {{periodo.cuatrimestre}}</p>
+                                </div>
+                                <div class="footer-card-box">
+                                    <span class="glyphicon glyphicon-pencil" ng-click="editandoPeriodo(periodo)" data-toggle="modal" data-target="#editarPeriodo" >
+                                    <md-tooltip md-direction="top">Editar</md-tooltip></span>
+                                    &nbsp;&nbsp;
+                                    <span class="glyphicon glyphicon-trash" ng-click="remove($event, periodo.id);">
+                                    <md-tooltip md-direction="top">Eliminar</md-tooltip></span>
+                                </div>
+                            </div>
+                        </div>
+            		</div>
+            		<div class="info-box margin" ng-show="periodos.length == 0">No hay periodos registrados.</div>
 
                     <!-- Formulario editar -->
                     <div id="editarPeriodo" class="modal fade" data-keyboard="false" data-backdrop="static">

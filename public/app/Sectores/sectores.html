@@ -5,7 +5,7 @@
 	<div class="portlet">
         <div class="portlet-title">
             <div class="caption caption-red">
-                <i class=""></i>
+                <i class="fa fa-industry"></i>
             </div>
             <ul class="nav nav-tabs">
                 <li class="active">
@@ -22,34 +22,29 @@
                     <div>
                         <label class="title-2">Sectores</label>
                     </div>
-                    <div class="col-md-offset-3 col-md-6">
-                        <div ng-show="sectores.length > 0">
-                            <table class="table margin">
-                                <thead>
-                                    <tr>
-                                        <th>Sector</th>         
-                                        <th>Acciones</th>  
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="sector in sectores">
-                                        <td>{{sector.nombre}}</td>
-                                        <td>           
-                                            <span class="glyphicon glyphicon-search" ng-click="editandoSector(sector)" data-toggle="modal" data-target="#verSector" >
-                                            <md-tooltip md-direction="top">Detalle</md-tooltip></span>
-                                            &nbsp;&nbsp;
-                                            <span class="glyphicon glyphicon-pencil" ng-click="editandoSector(sector)" data-toggle="modal" data-target="#editarSector" >
-                                            <md-tooltip md-direction="top">Editar</md-tooltip></span>
-                                            &nbsp;&nbsp;
-                                            <span class="glyphicon glyphicon-trash" ng-click="eliminar($event,sector.id);">
-                                            <md-tooltip md-direction="top">Eliminar</md-tooltip></span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="col-md-12 col-sm-12 margin" ng-show="sectores.length > 0">
+                        <div class="col-md-4 col-sm-4 card-box" ng-repeat="sector in sectores">
+                            <div class="inner">
+                                <div class="title-card">
+                                    <label class="title-3">{{sector.nombre}}</label>
+                                </div>
+                                <div class="body-card">
+                                    <p>{{sector.descripcion}}</p>
+                                </div>
+                                <div class="footer-card-box">
+                                    <span class="glyphicon glyphicon-search" ng-click="editandoSector(sector)" data-toggle="modal" data-target="#verSector" >
+                                    <md-tooltip md-direction="top">Detalle</md-tooltip></span>
+                                    &nbsp;&nbsp;
+                                    <span class="glyphicon glyphicon-pencil" ng-click="editandoSector(sector)" data-toggle="modal" data-target="#editarSector" >
+                                    <md-tooltip md-direction="top">Editar</md-tooltip></span>
+                                    &nbsp;&nbsp;
+                                    <span class="glyphicon glyphicon-trash" ng-click="eliminar($event,sector.id);">
+                                    <md-tooltip md-direction="top">Eliminar</md-tooltip></span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="info-box margin" ng-show="sectores.length == 0">No hay sectores registrados.</div>
-                    </div>                   
+                    </div>
+                    <div class="info-box margin" ng-show="sectores.length == 0">No hay sectores registrados.</div>                  
                 </div>
                 <div id="verSector" class="modal fade" data-keyboard="false" data-backdrop="static">
                         <div class="modal-dialog modal-lg">
@@ -67,7 +62,6 @@
                                                     <input disabled="true" ng-model="sector.nombre" class="form-control" type="text" name="nombre" id="nombre" required autofocus ng-blur="">
                                                 </p>
                                             </div>
-                                        
                                             <div>
                                                 <p>
                                                     <label for="descripcion">Descripción</label>

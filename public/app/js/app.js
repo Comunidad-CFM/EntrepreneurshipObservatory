@@ -244,6 +244,11 @@
                 templateUrl: './app/Territorios/territorios.html',
                 controller: 'TerritoriosController'
             })
+            .state('admin.analisis',{
+                url: '/analisis',
+                templateUrl: './app/Analisis/analisis.html',
+                controller: 'AnalisisController'
+            })
             .state('admin.periodos',{
                 url: '/periodos',
                 templateUrl: './app/Periodos/periodos.html',
@@ -269,8 +274,7 @@
                 templateUrl: './app/Encuestas/contestar-encuestas.html',
                 controller: 'ContestarEncuestasController'
             });
-    }
-
+        }
     /**
     * Se ejecuta cada vez que se refrezca la página.
     * @param {Object} Servicio que permite la unión entre el HTML y el controlador a un nivel superior.

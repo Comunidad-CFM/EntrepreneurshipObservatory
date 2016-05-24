@@ -20,12 +20,15 @@
             edit: edit,
             remove: remove,
             isPass: isPass,
-            changePass: changePass
+            changePass: changePass,
+            getByTerritory: getByTerritory,
+            getBySector : getBySector 
 		};
 
 		return factory;
 
 		function store(persona) {
+            console.log(persona);
 			var defered = $q.defer();
 			var promise = defered.promise;
 
@@ -90,6 +93,36 @@
 			return defered.promise;
 		}
 
+        //obtener los registros de personas que coinciden con un determinado territorio
+        function getByTerritory(territory) {
+            var defered = $q.defer();
+
+            $http.get('/api/personas/getByTerritory/' + territory)
+            .success(function(response) {
+                defered.resolve(response);
+            })
+            .error(function(err) {
+                defered.reject(err);
+            });
+
+            return defered.promise;
+        }
+
+        //obtener los registros de personas que coinciden con un determinado territorio
+        function getBySector(sector) {
+            var defered = $q.defer();
+
+            $http.get('/api/personas/getBySector/' + sector)
+            .success(function(response) {
+                defered.resolve(response);
+            })
+            .error(function(err) {
+                defered.reject(err);
+            });
+
+            return defered.promise;
+        }
+
         function ifExist(field,fieldToValidate){             
             var defered = $q.defer();            
             $http({
@@ -109,7 +142,8 @@
         }
         
         function edit(persona){
-            var defered = $q.defer();            
+            var defered = $q.defer();
+            console.log(persona);
             $http({
 				method: 'POST',
 				url: '/api/personas/update',

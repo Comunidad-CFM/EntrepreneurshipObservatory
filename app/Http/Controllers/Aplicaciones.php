@@ -27,7 +27,7 @@ class Aplicaciones extends Controller
 
         return Aplicacione::join('personas', 'aplicaciones.persona_id', '=', 'personas.id')
         		->where('aplicaciones.encuesta_id', '=', $idEncuesta)
-                ->select('aplicaciones.id as idAplicacion', 'personas.id as idPersona', 'personas.nombre', 'personas.apellido1', 'personas.apellido2', 'personas.email', 'personas.tipo')
+                ->select('aplicaciones.id as idAplicacion', 'personas.id as idPersona', 'personas.nombre', 'personas.apellido1', 'personas.apellido2', 'personas.email', 'personas.tipo','encuestador')
                 ->orderBy('aplicaciones.id', 'asc')
                 ->get();
     }

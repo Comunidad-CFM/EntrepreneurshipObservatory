@@ -39,6 +39,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('personas/getByType/{type}', 'Personas@getByType');
     Route::get('personas/isPass/{id}/{currentPass}', 'Personas@isPass');
     Route::post('personas/changePass', 'Personas@changePass');
+    Route::get('personas/getByTerritory/{territory}', 'Personas@getByTerritory');
+    Route::get('personas/getBySector/{sector}', 'Personas@getBySector');
 
     // Preguntas.
     Route::post('preguntas/registro', 'Preguntas@store');
@@ -113,4 +115,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('personasSectores/registro','PersonasSectores@store');
     Route::post('personasSectores/getByPersonId','PersonasSectores@getByPersonId');
     Route::post('personasSectores/update','PersonasSectores@update');
+
+    // SectoresIndicadores
+    Route::post('/sectoresIndicadores/store','SectoresIndicadores@store');
+    Route::delete('/sectoresIndicadores/destroy','SectoresIndicadores@destroy');
 });

@@ -11,7 +11,7 @@
         .module('observatoryApp')
         .controller('PersonasController', PersonasController);
 
-    function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog, SectoresFactory, PersonasSectoresFactory) {
+    function PersonasController($scope, $http, $timeout, PersonasFactory, $mdDialog, SectoresFactory, PersonasSectoresFactory, RegionesFactory, TerritoriosFactory) {
         $scope.nueva = false;
         $scope.texto = 'Mostrar formulario de agregar nueva persona';
         $scope.registro = false;
@@ -26,10 +26,50 @@
         $scope.selectSector = selectSector;
         $scope.selectSectorEdit = selectSectorEdit;
         $scope.cancelEdit = cancelEdit;
-        var currentEmail = "";
-        var currentCedula = ""; 
-        var selectedSectores = [];
-        var selectedSectoresEditar = [];//sectores que se editan
+        $scope.update = update;
+        //vars
+        $scope.territorios = [];        
+
+        var currentEmail = "",
+        currentCedula = "",
+        selectedSectores = [],
+        selectedSectoresEditar = [],//sectores que se editan
+        todosTerritorios = [];        
+
+        /**
+        * Recolectar los arreglos de territorios y regiones para mostrar en la interfaz     
+        */
+        function collectData(){
+            RegionesFactory.getAll()
+                .then( function (response) {
+                    if(response.length > 0){
+                        $scope.regiones = response;
+                        $scope.selectedRegion = response[0];                        
+                    }
+                });
+                TerritoriosFactory.getAll()
+                    .then(function (response) {                 
+                            todosTerritorios = response;                                                                                    
+                            update();
+                    })
+        }
+        collectData();
+
+        /**
+        * Filtrar los select de acuerdo a la región seleccionada para la lista de territorios de 
+        * registro
+        */
+        function update () {            
+            $scope.territorios = [];                    
+            todosTerritorios.forEach( function(territorio) {                                
+                if(territorio.region_id === $scope.selectedRegion.id){                  
+                    $scope.territorios.push(territorio);
+                }
+            });          
+            if($scope.territorios.length > 0){
+                $scope.selectedTerritorio = $scope.territorios[0];
+            }
+        }
 
         function setData() {
             $scope.persona = {
@@ -124,6 +164,7 @@
         function store() {            
             $scope.registro = false;
             validateEdit();
+            $scope.persona.territorio_id = $scope.selectedTerritorio.id;
             if ($scope.emptyData !== true && selectedSectores.length > 0) {
                 PersonasFactory.store($scope.persona)
                     .then(function(response) {
@@ -258,6 +299,7 @@
             });
 
             if ($scope.emptyData !== true && sectores.length > 0) {   
+                persona.territorio_id = $scope.selectedTerritorio.id;
                 PersonasFactory.edit(persona)
                     .then(function(response) {
                         if (response === 'true') {
