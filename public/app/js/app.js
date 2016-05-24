@@ -59,11 +59,11 @@
                 if (user.tipo === 'A') {
                     $location.path('admin');
                 }
-								else if (user.tipo === 'B') {
+                else if (user.tipo === 'B') {
                     $location.path('encuestador');
                 }
-								else {
-                    $location.path('encuestador');
+                else if (user.tipo === 'C') {
+                    $location.path('empresario');
                 }
             }
         }
@@ -80,7 +80,7 @@
         * Chequea los permisos con los que cuenta el usuario, si está logueado y renderiza a la vista respectiva.
         */
         function checkStatus() {
-            var rutasPrivadas = ['/','/admin', '/admin/encuestas', '/admin/personas', '/admin/preguntas', '/encuestador', '/encuestador/contestar'];
+            var rutasPrivadas = ['/','/admin', '/admin/encuestas', '/admin/personas', '/admin/preguntas', '/encuestador', '/encuestador/contestar', '/empresario'];
 
             if ($location.path() !== '/' && typeof($cookies.get('session')) === "undefined") {
                 savePreviousUrl();
@@ -95,14 +95,14 @@
                         $location.path('admin');
                     }
                 }
-                // else if($cookies.getObject('session').tipo === 'B') {
-                //     if ($location.path() === '/empresario' || $location.path() === '/') {
-                //         $location.path('empresario');
-                //     }
-                // }
-								else {
+                else if($cookies.getObject('session').tipo === 'B') {
                     if ($location.path() === '/encuestador' || $location.path() === '/') {
                         $location.path('encuestador');
+                    }
+                }
+                else if($cookies.getObject('session').tipo === 'C') {
+                    if ($location.path() === '/empresario' || $location.path() === '/') {
+                        $location.path('empresario');
                     }
                 }
             }
@@ -134,19 +134,13 @@
             if (usuario === 'A') {
                 return 'Administrador';
             }
-            // else if (usuario === 'B') {
-            //     return 'Empresario';
-            // }
-            // else {
-            //     return 'Encuestador';
-            // }
             else if (usuario === 'B') {
                 return 'Encuestador';
             }
-            else {
-                return 'Encuestador';
+            else if (usuario === 'C') {
+                return 'Empresario';
             }
-        }
+        };
 
         return filter;
     }
@@ -163,7 +157,7 @@
             else {
                 return 'activa';
             }
-        }
+        };
 
         return filter;
     }
@@ -176,7 +170,7 @@
             else {
                 return 'Cerrada';
             }
-        }
+        };
 
         return filter;
     }
@@ -220,11 +214,11 @@
                 templateUrl: './app/Preguntas/preguntas.html',
                 controller: 'PreguntasController'
             })
-            // .state('empresario', {
-            //     url: '/empresario',
-            //     templateUrl: './app/Empresario/empresario.html',
-            //     controller: 'EmpresarioController'
-            // })
+            .state('empresario', {
+                url: '/empresario',
+                templateUrl: './app/Empresario/empresario.html',
+                controller: 'EmpresarioController'
+            })
             // .state('empresario.contestar', {
             //     url: '/contestar',
             //     templateUrl: './app/Encuestas/contestar-encuestas.html',
