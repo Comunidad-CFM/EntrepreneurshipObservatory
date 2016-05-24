@@ -14,7 +14,8 @@
 	function SectoresIndicadoresFactory($http, $q) {
 		var factory = {
 			store: store,
-			remove: remove
+			remove: remove,
+			gerForIndicador: gerForIndicador
 		};
 
 		return factory;
@@ -43,6 +44,23 @@
 
 		function remove(sectoresIndicadoresId) {
 
+		}
+
+		function gerForIndicador(id) {
+			var defered = $q.defer();
+
+			$http({
+				method: 'GET',
+				url: '/api/sectoresIndicadores/getForIndicador/' + id
+			})
+			.success(function(response) {
+				defered.resolve(response);
+			})
+			.error(function(err) {
+				defered.reject(err);
+			});
+
+			return defered.promise;
 		}
 	}
 })();

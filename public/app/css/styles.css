@@ -38,6 +38,12 @@ body {
     padding-top: 70px;
 }
 
+
+.checkbox {
+    display: inline;
+    margin-right: 10px;
+}
+
 .cover{
     position: relative;
     background: url(../imagenes/portada2.jpg);

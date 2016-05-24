@@ -48,4 +48,8 @@ class SectoresIndicadores extends Controller
 
         return 'true';
     }
+
+    public function getForIndicador($id) {
+        return SectoresIndicadore::where('indicador_id', $id)->select('sector_id')->get();  
+    }
 }

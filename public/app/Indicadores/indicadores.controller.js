@@ -27,19 +27,22 @@
 		$scope.update = update;
 		$scope.remove = remove;
 		$scope.setData = setData;
-
-		$scope.$watch('selectedSectores', validate);
+		$scope.validate = validate;
 
 		/**
 		 * Valida que se haya seleccionado al menos un sector para el indicador.
 		 */
 		function validate() {
-			if (!$scope.selectedSectores.length) {
-				$scope.sectoresState = false;
-			}
-			else {
-				$scope.sectoresState = true;
-			}
+			$scope.sectoresState = false;
+			var i = 0;
+				length = $scope.sectores.length;
+
+			for ( ; i < length; i++) {
+				if ($scope.sectores[i].state) {
+					$scope.sectoresState = true;
+					break;
+				}
+			};
 		}
 
 		/**
@@ -49,11 +52,10 @@
 		function storeSectoresIndicadores(indicadorId) {
 			var sectoresId = [];
 
-			$scope.selectedSectores.forEach((indicador) => {
-				sectoresId.push(indicador.id);
+			$scope.sectores.forEach((sector) => {
+				sectoresId.push(sector.id);
+				sector.state = false;
 			});
-
-			$scope.selectedSectores = [];
 
 			SectoresIndicadoresFactory.store(indicadorId, sectoresId)
 			.then(function(response) { });
@@ -97,11 +99,26 @@
 		 * @param  {Object} Información del indicador a editar.
 		 */
 		function editandoIndicador(indicador) {
+			setData();
 			$scope.id = indicador.id;
 			$scope.indicador = {
 				name: indicador.nombre,
 				description: indicador.descripcion
 			};
+
+			SectoresIndicadoresFactory.gerForIndicador($scope.id)
+			.then(function(response) {
+				$scope.sectores.forEach((sector) => {
+					response.forEach((sectorIndicador) => {
+						if (sector.id == sectorIndicador.sector_id) {
+							sector.state = true;
+						}
+					});
+				});
+			})
+			.catch(function(err) {
+				console.log(err);
+			});
 		}
 
 		/**
@@ -159,7 +176,9 @@
 		 * Limpia las variables.
 		 */
 		function setData() {
-			$scope.indicador = {};
+			$scope.sectores.forEach((sector) => {
+				sector.state = false;
+			});
 		}
 
 		/**
@@ -179,6 +198,10 @@
 			SectoresFactory.getAll()
 			.then(function(response) {
 				$scope.sectores = response;
+
+				$scope.sectores.forEach((sector) => {
+					sector.state = false;
+				})
 			});
 		}
 
