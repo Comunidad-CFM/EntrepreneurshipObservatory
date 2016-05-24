@@ -7,7 +7,7 @@
 
 	function PanelEncuestasController($scope, EncuestasFactory, $cookies, AplicacionesFactory) {
 
-		$scope.encuestador =  $cookies.getObject('session').id;
+		$scope.encuestador = $cookies.getObject('session').id;
 
 		$scope.idAplicacion = 0;			//Aplicacion
 		$scope.aplicaciones =  null;	//Aplicaciones
@@ -34,6 +34,7 @@
 				.then(function(response) {
 					$scope.aplicaciones = response;
 					getEncuestas();
+					console.log($scope.aplicaciones);
 				})
         }
 

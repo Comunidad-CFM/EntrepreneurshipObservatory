@@ -60,10 +60,10 @@
                     $location.path('admin');
                 }
                 else if (user.tipo === 'B') {
-                    $location.path('encuestador');
-                }
-                else if (user.tipo === 'C') {
                     $location.path('empresario');
+                }
+                else if (user.tipo === 'E') {
+                    $location.path('encuestador');
                 }
             }
         }
@@ -96,13 +96,13 @@
                     }
                 }
                 else if($cookies.getObject('session').tipo === 'B') {
-                    if ($location.path() === '/encuestador' || $location.path() === '/') {
-                        $location.path('encuestador');
-                    }
-                }
-                else if($cookies.getObject('session').tipo === 'C') {
                     if ($location.path() === '/empresario' || $location.path() === '/') {
                         $location.path('empresario');
+                    }
+                }
+                else if($cookies.getObject('session').tipo === 'E') {
+                    if ($location.path() === '/encuestador' || $location.path() === '/') {
+                        $location.path('encuestador');
                     }
                 }
             }
@@ -134,10 +134,10 @@
             if (usuario === 'A') {
                 return 'Administrador';
             }
-            else if (usuario === 'B') {
+            else if (usuario === 'E') {
                 return 'Encuestador';
             }
-            else if (usuario === 'C') {
+            else if (usuario === 'B') {
                 return 'Empresario';
             }
         };
@@ -219,11 +219,6 @@
                 templateUrl: './app/Empresario/empresario.html',
                 controller: 'EmpresarioController'
             })
-            // .state('empresario.contestar', {
-            //     url: '/contestar',
-            //     templateUrl: './app/Encuestas/contestar-encuestas.html',
-            //     controller: 'ContestarEncuestasController'
-            // })
             .state('autenticacion', {
                 url: '/autenticacion',
                 templateUrl: './app/Autenticacion/autenticacion.html',
