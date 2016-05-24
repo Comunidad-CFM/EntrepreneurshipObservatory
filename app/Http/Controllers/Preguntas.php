@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Encuesta;
 use Illuminate\Http\Request;
 use App\Pregunta;
 use App\Http\Requests;
@@ -80,6 +81,20 @@ class Preguntas extends Controller
 
         return 'true';
     }
+
+    /**
+     * Get a listing of the resource find by id.
+     *
+     * @return Response
+     */
+    public function getpreguntasEncuestas(Request $request) {
+        $response = Encuesta::join('encuestas_preguntas', 'encuestas.id', '=', 'encuestas_preguntas.encuesta_id')
+            ->join('preguntas', 'encuestas_preguntas.pregunta_id', '=', 'preguntas.id')
+            ->select('encuestas_preguntas.id', 'encuestas_preguntas.pregunta_id', 'preguntas.id', 'preguntas.enunciado', 'preguntas.tipo', 'preguntas.indicador_id')
+            ->orderBy('encuestas_preguntas.id', 'asc')
+            ->where('encuestas.id', '=', $request->input('id'))
+            ->get();
+
+        return $response;
+    }
 }
-
-

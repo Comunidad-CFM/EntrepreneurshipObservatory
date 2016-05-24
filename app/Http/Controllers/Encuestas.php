@@ -14,7 +14,7 @@ class Encuestas extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request) {       
+    public function store(Request $request) {
         $encuesta = new Encuesta;
 
         $encuesta->descripcion = $request->input('descripcion');
@@ -22,7 +22,7 @@ class Encuestas extends Controller
         $encuesta->fechaCreacion = $request->input('fechaCreacion');
         $encuesta->fechaModificacion = $request->input('fechaModificacion');
         $encuesta->persona_id = $request->input('persona_id');
-        
+
         $encuesta->save();
 
         return 'true';
@@ -95,5 +95,18 @@ class Encuestas extends Controller
                 ->orderBy('encuestas_preguntas.id', 'asc')
                 ->where('encuestas.id', '=', $id)
                 ->get();
+    }
+
+    /**
+     * Obtiene las encuestas buscadas por id
+     *
+     * @param  Request $request
+     * @return Response
+     */
+    public function getEncuestas(Request $request) {
+        return Encuesta::select('encuestas.id', 'encuestas.descripcion', 'encuestas.estado', 'encuestas.persona_id')
+                        //->where('encuestas.id', '=', $request->input('id'))
+                        ->whereIn('encuestas.id', $request->input('id'))
+                        ->get();
     }
 }

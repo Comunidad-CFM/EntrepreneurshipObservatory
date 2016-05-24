@@ -1,69 +1,55 @@
-    <div class="text-center margin" style="visibility:hidden">
-        <label class="title kaushan">Encuestas</label>
-    </div>
+<section id="main-slider" class="" data-interval="false" style="margin-top: 7%;">
+    <div class="carousel slide wet-asphalt">
+        <ol class="carousel-indicators list-group">
+            <li class="{{pregunta.clase}}" ng-repeat="pregunta in preguntasEncuesta" data-target="#main-slider" data-slide-to="{{pregunta.vistaId}}"></li>
+            <li data-target="#main-slider" data-slide-to="{{preguntasEncuesta.length}}"></li>
+        </ol>
 
-    <div class="gestion-box">
-        <div>
-            <label class="subtitle baskerville">Encuestas</label>
-            <button style="visibility:hidden;text-align:center" class="btn btn-default margin float-right" ng-click="mostrarFormulario();" title="{{texto}}"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
-            <div class="col-md-12 col-sm-12 margin" ng-show="encuestas">
-                <div class="col-md-4 col-sm-4 card-box" ng-repeat="encuesta in encuestas">
-                    <div ng-show="encuesta.estado" class="inner">
-                        <div class="title-card">
-                            <label class="subtitle">Encuesta {{encuesta.id}}</label>
-                        </div>
-                        <div  class="body-card">
-                            <p>{{encuesta.descripcion}}</p>
-                        </div>
-                        <div class="footer-card-box">
-                            <span class="btn btn-primary" ng-click="editandoEncuesta(encuesta.id, encuesta.descripcion);" title="Contestar encuesta">Contestar encuesta</span>
+        <div class="carousel-inner">
 
-                            <span title="Preguntas respondidas">8</span>
-                            /
-                            <span title="Preguntas totales">10</span>
-
+            <div class="item {{pregunta.clase}}"  ng-repeat="pregunta in preguntasEncuesta" style="background-color:#AF3030;">
+                <div class="container">
+                    <div class="row">
+                        <div style="text-align: center;vertical-align: middle;margin-top: 20%;">
+                            <div class="carousel-content center centered">
+                                <h2 class="animation animated-item-1">{{pregunta.enunciado}}</h2>
+                                <div class="btn-group animation animated-item-2">
+                                    <button data-ng-click="guardarRespuesta(pregunta, opciones, comentario);" ng-repeat="opciones in opcionesRespuesta" type="button" class="btn btn-primary">{{opciones.alternativa}}</button>
+                                </div>
+                                <center>
+                                    <div>
+                                        <textarea ng-model="comentario" ng-show="pregunta.tipo" class="animation animated-item-3 margin-top form-control margin-around" name="enunciado" ng-required="true" placeholder="Comentarios" title="Comentarios" rows="3"></textarea>
+                                    </div>
+                                </center>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="info-box margin" ng-show="!encuestas">No hay encuestas registradas.</div>
-    </div>
+            </div><!--/.item-->
+            <div class="item" style="background-color:#AF3030;">
+              <div class="container">
+                  <div class="row">
+                      <div style="text-align: center;vertical-align: middle;margin-top: 20%;">
+                          <div class="carousel-content center centered">
+                              <h2 class="animation animated-item-1">Guardar y enviar encuesta</h2>
+                              <div class="btn-group animation animated-item-2">
+                                  <button data-ng-click="guardarEncuesta();" type="button" class="btn btn-primary">Enviar</button>
+                              </div>
+                              <center>
+                                <div ng-show="mensaje" class="animation animated-item-3 margin-top margin-around" ng-class="styleEnviarEncuesta">{{msgEnviarEncuesta}}</div>
+                              </center>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div><!--/.item-->
+        </div><!--/.carousel-inner-->
+    </div><!--/.carousel-->
 
-<!--<div class="text-center margin">-->
-    <!--<label class="title kaushan">Encuestas</label>-->
-<!--</div>-->
-<!--<div class="gestion-encuestas-box">-->
-    <!--<div>-->
-        <!--<button style="visibility:hidden;text-align:center" class="btn btn-default margin float-right" ng-click="mostrarFormulario();" title="{{texto}}"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>-->
-        <!--<div class="col-md-12 col-sm-12 margin" ng-show="encuestas">-->
-            <!--<div class="col-md-4 col-sm-4 card-box" ng-repeat="encuesta in encuestas">-->
-                <!--<div ng-show="encuesta.estado" class="inner">-->
-                    <!--<div class="title-card">-->
-                        <!--<label class="subtitle">Encuesta {{encuesta.id}}</label>-->
-                    <!--</div>-->
-                    <!--<div  class="body-card">-->
-                        <!--<p>{{encuesta.descripcion}}</p>-->
-                    <!--</div>-->
-                    <!--<div class="footer-card-box">-->
-                        <!--<span ng-show="!tipoUsuario" title="Preguntas respondidas">8</span>-->
-                        <!--/-->
-                        <!--<span ng-show="!tipoUsuario" title="Preguntas totales">10</span>-->
-                        <!--<span ng-show="tipoUsuario" class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editarEncuesta" ng-click="editandoEncuesta(encuesta.id, encuesta.descripcion);" title="Modificar encuesta"></span>-->
-                        <!--&nbsp;&nbsp;&nbsp;-->
-                        <!--<span ng-show="tipoUsuario" class="glyphicon glyphicon-tasks" data-toggle="modal" data-target="#armarEncuesta"  ng-click="armandoEncuesta(encuesta.id);" title="Armar encuesta"></span>-->
-                        <!--&nbsp;&nbsp;&nbsp;-->
-                        <!--<span ng-show="tipoUsuario" ng-class="{'fa fa-toggle-on': encuesta.estado == 1, 'fa fa-toggle-off': encuesta.estado == 0}" ng-click="cambiarEstado(encuesta);" title="Activar/inactivar encuesta"></span>-->
-                        <!--&nbsp;&nbsp;&nbsp;-->
-                        <!--<span ng-show="tipoUsuario" class="fa fa-users" data-toggle="modal" data-target="#asignarUsuarios" ng-click="asignandoUsuarios(encuesta.id);" title="Asignar usuarios a la encuesta"></span>-->
-                        <!--&nbsp;&nbsp;&nbsp;-->
-                        <!--<span ng-show="tipoUsuario" class="glyphicon glyphicon-trash" ng-click="eliminar($event, encuesta.id);" title="Eliminar encuesta"></span>-->
-                        <!--&nbsp;&nbsp;&nbsp;-->
-
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="info-box margin" ng-show="!encuestas">No hay encuestas registradas.</div>-->
-<!--</div>-->
+    <a class="prev hidden-xs" style="cursor: pointer" data-target="#main-slider" data-slide="prev">
+        <i class="icon-angle-left"></i>
+    </a>
+    <a class="next hidden-xs" style="cursor: pointer" data-target="#main-slider" data-slide="next">
+        <i class="icon-angle-right"></i>
+    </a>
+</section><!--/#main-slider-->

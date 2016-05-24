@@ -30,10 +30,43 @@
 			addQuestionsToSurvey: addQuestionsToSurvey,
 			deleteQuestionsToSurvey: deleteQuestionsToSurvey,
 			isAssigned: isAssigned,
-			personsChanged: personsChanged
+			personsChanged: personsChanged,
+			getpreguntasEncuestas: getpreguntasEncuestas,
+			getEncuestas: getEncuestas,
+			getId: getId,
+			setId: setId,
+			getDescripcion: getDescripcion,
+			setDescripcion: setDescripcion,
+			getIdAplicacion: getIdAplicacion,
+			setIdAplicacion: setIdAplicacion
+		};
+
+		var data = {
+			idEncuesta: 0,
+			descripcion: "",
+			idAplicacion: 0
 		};
 
 		return factory;
+
+		function getId () {
+        	return data.idEncuesta;
+    	}
+		function setId (id) {
+			data.idEncuesta = id;
+		}
+		function getDescripcion () {
+        	return data.descripcion;
+    	}
+		function setDescripcion (descripcion) {
+			data.descripcion = descripcion;
+		}
+		function getIdAplicacion () {
+			return data.idAplicacion;
+		}
+		function setIdAplicacion (idAplicacion) {
+			data.idAplicacion = idAplicacion;
+		}
 
 		/**
         * Almacena una nueva encuesta.
@@ -139,7 +172,7 @@
 				id: id,
 				state: state
 			};
-			
+
 			$http({
 				method: 'POST',
 				url: 'api/encuestas/changeState',
@@ -202,7 +235,7 @@
 			  		if(question.pregunta_id === item.id) {
 			  			list.preguntas = removeItem(item, list.preguntas);
 			  		}
-				});	  	
+				});
 			});
 
 			return list;
@@ -231,7 +264,7 @@
 						break;
 			  		}
 			  		else {
-			  			question = true;	
+			  			question = true;
 			  		}
 				}
 
@@ -254,7 +287,7 @@
 						break;
 			  		}
 			  		else {
-			  			question = currentList[i];	
+			  			question = currentList[i];
 			  		}
 				}
 
@@ -332,9 +365,9 @@
 			  			person.state = true;
 			  			person.idAplicacion = person2.idAplicacion;
 			  		}
-				});	  	
+				});
 			});
-			
+
 			return allPersons;
 		}
 
@@ -365,6 +398,48 @@
 			}
 
 			return persons;
+		}
+
+		function getpreguntasEncuestas(id)  {
+			var defered = $q.defer(),
+				data = {
+					id: id
+				};
+
+			$http({
+				method: 'POST',
+				url: 'api/preguntas/encuesta',
+				data: data
+			})
+			.success(function(response) {
+				defered.resolve(response);
+			})
+			.error(function(err) {
+				defered.reject(err);
+			});
+
+			return defered.promise;
+		}
+
+		function getEncuestas(id)  {
+			var defered = $q.defer(),
+				data = {
+					id: id
+				};
+
+			$http({
+				method: 'POST',
+				url: 'api/encuestas/getEncuestas',
+				data: data
+			})
+				.success(function(response) {
+					defered.resolve(response);
+				})
+				.error(function(err) {
+					defered.reject(err);
+				});
+
+			return defered.promise;
 		}
 	}
 })();
