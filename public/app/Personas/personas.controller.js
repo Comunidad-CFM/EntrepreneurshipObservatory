@@ -202,7 +202,15 @@
             
             $scope.nueva = false;
             currentEmail = $scope.persona.email;     
-            currentCedula = $scope.persona.cedula;            
+            currentCedula = $scope.persona.cedula;
+
+            //seleccionar el territorio de la persona
+            todosTerritorios.forEach(function (territorio) {
+                if(territorio.id === persona.territorio_id){
+                    $scope.selectedTerritorio = territorio;
+                }
+            });
+
             $scope.editar = false;
             // obtener los sectores de la persona, para mostrar los seleccionados
             // en la vista

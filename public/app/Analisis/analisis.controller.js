@@ -58,7 +58,8 @@
 					totalEmpresarios = response;				
 
 					AplicacionesFactory.getForSurvey(encuesta)
-						.then(function (response) {																											
+						.then(function (response) {
+
 							totalEmpresarios.forEach( function(empresario) {
 								response.forEach( function(element) {
 									if(element.idPersona === empresario.id && element.encuestador.length > 0){
@@ -66,8 +67,7 @@
 									}
 								});
 							});
-
-							console.log(muestra);
+							console.log("Muestra: "+muestra);
 							console.log(totalEmpresarios.length);
 							porcentajeTerritorios = ( muestra * 100)/totalEmpresarios.length;
 							console.log('El porcentaje de empresarios del territorio que participaron es de '+porcentajeTerritorios+'%');
@@ -110,7 +110,8 @@
 						})
 				});
 		}
-		calcularPorcentajeSector(2,1);
+		//calcularPorcentaje(3,1);
+		 calcularPorcentajeSector(2,1);
 		
 	}
 })();
