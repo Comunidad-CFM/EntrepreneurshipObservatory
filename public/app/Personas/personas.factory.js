@@ -22,7 +22,9 @@
             isPass: isPass,
             changePass: changePass,
             getByTerritory: getByTerritory,
-            getBySector : getBySector 
+            getBySector : getBySector,
+			getPersona: getPersona,
+			getPersonas: getPersonas
 		};
 
 		return factory;
@@ -47,20 +49,16 @@
 			return promise;
 		}
         function remove(id){
-            var data = {
-				id: id
-			};
-
             var defered = $q.defer();
             $http({
                 method: 'DELETE',
-                url: 'api/personas/destroy/' + id,
+                url: 'api/personas/destroy/' + id
             }).success(function(response){
                 defered.resolve(response);
             })
             .error(function(err){
                 defered.reject(err);
-            })
+            });
             return defered.promise;
         }
 
@@ -123,6 +121,24 @@
             return defered.promise;
         }
 
+		function getPersona(idPersona) {
+			var defered = $q.defer();
+
+			$http({
+				method: 'POST',
+				url: '/api/personas/getPersona/',
+				data: {id:idPersona}
+			})
+			.success(function(response) {
+				defered.resolve(response);
+			})
+			.error(function(err) {
+				defered.reject(err);
+			});
+
+			return defered.promise;
+		}
+
         function ifExist(field,fieldToValidate){             
             var defered = $q.defer();            
             $http({
@@ -137,7 +153,7 @@
             })
             .error(function(err){
                 defered.reject(err);
-            })
+            });
             return defered.promise;
         }
         
@@ -154,7 +170,7 @@
             })
             .error(function(err){
                 defered.reject(err);
-            })
+            });
             return defered.promise;
         }
 
@@ -195,7 +211,47 @@
         	});
 
         	return defered.promise;
-        } 
+        }
+
+		// function getPersonas(aplicaciones) {
+		// 	var defered = $q.defer();
+        //
+		// 	var persona, personas = [];
+		// 	aplicaciones.forEach(function(aplicacion) {
+        //
+		// 		getPersona(aplicacion.persona_id)
+		// 		.then(function(response) {
+		// 			persona = response;
+		// 			console.log("persona",persona);
+		// 			persona.encuestas = [];
+		// 			personas.push(persona);
+		// 			defered.resolve(personas);
+        //
+		// 		})
+		// 	});
+		// 	console.log("factory",personas);
+        //
+		// 	return defered.promise;
+		// }
+
+		function getPersonas(aplicaciones) {
+			var deferred = $q.defer();
+			var persona, personas = [];
+
+			aplicaciones.forEach(function(aplicacion) {
+
+				getPersona(aplicacion.persona_id)
+				.then(function(response) {
+					persona = response;
+					persona.encuestas = [];
+					personas.push(persona);
+
+					if (aplicaciones.indexOf(aplicacion) === aplicaciones.length-1)
+						deferred.resolve(personas);
+				})
+			});
+			return deferred.promise;
+		}
 	}
 
 })();

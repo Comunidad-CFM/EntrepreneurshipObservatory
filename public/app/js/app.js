@@ -266,8 +266,8 @@
             })
             .state('encuestador.encuestas', {
                 url: '/encuestas',
-                templateUrl: './app/Encuestas/panel-encuestas.html',
-                controller: 'PanelEncuestasController'
+                templateUrl: './app/Encuestas/encuestador-panel-encuestas.html',
+                controller: 'EncuestadorPanelEncuestasController'
             })
             .state('encuestador.contestar', {
                 url: '/contestar',
