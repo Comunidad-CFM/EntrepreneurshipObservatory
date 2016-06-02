@@ -41,6 +41,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('personas/changePass', 'Personas@changePass');
     Route::get('personas/getByTerritory/{territory}', 'Personas@getByTerritory');
     Route::get('personas/getBySector/{sector}', 'Personas@getBySector');
+    Route::post('personas/getPersona', 'Personas@getPersona');
 
     // Preguntas.
     Route::post('preguntas/registro', 'Preguntas@store');
@@ -63,6 +64,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::delete('/encuestasPreguntas/destroy/{questions}', 'EncuestasPreguntas@destroy');
 
     // Aplicaciones.
+    Route::get('/aplicaciones/todas', 'Aplicaciones@getAll');
     Route::post('/aplicaciones/getForSurvey', 'Aplicaciones@getForSurvey');
     Route::post('/aplicaciones/store', 'Aplicaciones@store');
     Route::delete('/aplicaciones/destroy/{aplications}', 'Aplicaciones@destroy');

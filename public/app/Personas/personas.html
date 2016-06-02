@@ -104,11 +104,6 @@
                                                         <option value="B">Empresario</option>
                                                         <option value="E">Encuestador</option>
                                                     </select>
-                                                    <label for="name">Region</label>        
-                                                    <select class="form-control margin text-center" ng-options="region as region.nombre for region in regiones track by region.id" ng-model="selectedRegion" ng-change="update()"></select> 
-
-                                                    <label for="name">Territorio</label>        
-                                                    <select class="form-control margin text-center" ng-options="territorio as territorio.nombre for territorio in territorios track by territorio.id" ng-model="selectedTerritorio"></select> 
                                                 </p>
                                             </div>
                                             <div class="col-md-6">
@@ -118,6 +113,18 @@
                                                 </p>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                <label for="name">Region</label>
+                                                <select class="form-control margin text-center" ng-options="region as region.nombre for region in regiones track by region.id" ng-model="selectedRegion" ng-change="update()"></select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="name">Territorio</label>
+                                                <select class="form-control margin text-center" ng-options="territorio as territorio.nombre for territorio in territorios track by territorio.id" ng-model="selectedTerritorio"></select>
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-12">
                                             <div class="col-md-12">
                                                 <p>
@@ -205,15 +212,19 @@
                                         <option value="B">Empresario</option>
                                         <option value="E">Encuestador</option>
                                     </select>
-                                    
-                                    <label for="name">Region</label>        
-                                    <select class="form-control margin text-center" ng-options="region as region.nombre for region in regiones track by region.id" ng-model="selectedRegion" ng-change="update()"></select> 
-
-                                    <label for="name">Territorio</label>        
-                                    <select class="form-control margin text-center" ng-options="territorio as territorio.nombre for territorio in territorios track by territorio.id" ng-model="selectedTerritorio"></select> 
                                 </p>
                             </div>
                                      
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <label for="name">Region</label>
+                                <select class="form-control margin text-center" ng-options="region as region.nombre for region in regiones track by region.id" ng-model="selectedRegion" ng-change="update()"></select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="name">Territorio</label>
+                                <select class="form-control margin text-center" ng-options="territorio as territorio.nombre for territorio in territorios track by territorio.id" ng-model="selectedTerritorio"></select>
+                            </div>
                         </div>
                         <div class="col-md-12">
                             <div class="col-md-12">
@@ -224,7 +235,8 @@
                                     </div>
                                 </p>
                             </div>
-                        </div>          
+                        </div>
+
                         <div class="col-md-12">
                             <div class="col-md-12">
                                 <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>

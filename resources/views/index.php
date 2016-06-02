@@ -25,6 +25,7 @@
 	<script type="text/javascript" src="<?= asset('node_modules/angular-messages/angular-messages.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/carousel/js/jquery.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/jquery/dist/jquery.min.js') ?>"></script>
+<!--	<script type="text/javascript" src="--><?//= asset('node_modules/angular-bootstrap-npm/dist/angular-bootstrap-tpls.min.js') ?><!--"></script>-->
 	<script type="text/javascript" src="<?= asset('node_modules/carousel/js/bootstrap.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/carousel/js/jquery.prettyPhoto.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/carousel/js/main.js') ?>"></script>
@@ -54,7 +55,8 @@
 	<script type="text/javascript" src="<?= asset('app/Encuestas/encuestas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Encuestas/encuestas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Encuestas/contestar-encuestas.controller.js') ?>"></script>
-	<script type="text/javascript" src="<?= asset('app/Encuestas/panel-encuestas.controller.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Encuestas/encuestador-panel-encuestas.controller.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Encuestas/empresario-encuestador-panel-encuestas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Preguntas/preguntas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Preguntas/preguntas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Indicadores/indicadores.controller.js') ?>"></script>
@@ -67,5 +69,6 @@
 	<script type="text/javascript" src="<?= asset('app/Analisis/analisis.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/SectoresIndicadores/sectoresIndicadores.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/js/angular-drag-and-drop-lists.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Analisis/analisis.controller.js') ?>"></script>
 </body>
 </html>

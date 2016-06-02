@@ -19,6 +19,7 @@
 	*/
 	function AplicacionesFactory($http, $q) {
 		var factory = {
+			getAll: getAll,
 			getForSurvey: getForSurvey,
 			store: store,
 			remove: remove,
@@ -26,6 +27,24 @@
 		};
 
 		return factory;
+
+		/**
+		 * Obtiene todas las aplicaciones.
+		 * @returns {string} Todas las aplicaciones de la base de datos.
+		 */
+		function getAll() {
+			var defered = $q.defer();
+
+			$http.get('api/aplicaciones/todas')
+				.success(function(response) {
+					defered.resolve(response);
+				})
+				.error(function(err) {
+					defered.reject(err);
+				});
+
+			return defered.promise;
+		}
 
 		/**
 		* Obtiene las aplicaciones de una encuesta.

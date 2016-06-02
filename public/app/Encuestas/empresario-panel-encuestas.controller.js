@@ -3,13 +3,13 @@
 
 	angular
 		.module('observatoryApp')
-		.controller('PanelEncuestasController', PanelEncuestasController);
+		.controller('EmpresarioPanelEncuestasController', EmpresarioPanelEncuestasController);
 
-	function PanelEncuestasController($scope, EncuestasFactory, $cookies, AplicacionesFactory) {
+	function EmpresarioPanelEncuestasController($scope, EncuestasFactory, $cookies, AplicacionesFactory) {
 
-		$scope.encuestador = $cookies.getObject('session').id;
+		$scope.empresario = $cookies.getObject('session').id;
 
-		$scope.idAplicacion = 0;			//Aplicacion
+		$scope.idAplicacion = 0;		//Aplicacion
 		$scope.aplicaciones =  null;	//Aplicaciones
         //Encuesta
         $scope.encuestaId = 0;
@@ -30,7 +30,7 @@
 
 
 		function getAplicacionesByPersona() {
-            AplicacionesFactory.getAplicacionesByPersona($scope.encuestador)
+            AplicacionesFactory.getAplicacionesByPersona($scope.empresario)
 				.then(function(response) {
 					$scope.aplicaciones = response;
 					getEncuestas();

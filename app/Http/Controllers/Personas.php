@@ -57,8 +57,18 @@ class Personas extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function ifExist(Request $request) {        
-        return Persona::where($request->input('fieldToValidate'), $request->input('field'))->select('email','id')->get();        
+    public function ifExist(Request $request) {
+        return Persona::where($request->input('fieldToValidate'), $request->input('field'))->select('email','id')->get();
+    }
+
+    /**
+     * Obtiene la persona buscada por id
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function getPersona(Request $request) {
+        return Persona::find($request->input('id'));
     }
     
     /**
@@ -70,6 +80,11 @@ class Personas extends Controller
         return Persona::where('email', $request->input('email'))->where('contrasena', md5($request->input('contrasena')))->select('id', 'cedula', 'nombre', 'apellido1', 'apellido2', 'email', 'tipo')->get();
     }
 
+    /**
+     * Return all records
+     *
+     * @return Response
+     */
     public function getAll() {
         return Persona::all();
     }

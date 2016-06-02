@@ -10,7 +10,7 @@
 	* @param {Object} Servicio que proporciona autenticación y renderización de vistas.
 	* @param {Object} Servicio que brinda funciones del log in al controlador.
 	*/
-	function AnalisisController ($scope, TerritoriosFactory, SectoresFactory, PersonasSectoresFactory, PersonasFactory, AplicacionesFactory) {
+	function AnalisisController ($scope, TerritoriosFactory, SectoresFactory, PersonasSectoresFactory, PersonasFactory, AplicacionesFactory) {		
 		
 	}
 })();

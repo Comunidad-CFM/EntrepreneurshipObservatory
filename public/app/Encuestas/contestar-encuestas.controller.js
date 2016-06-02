@@ -160,7 +160,8 @@
         }
 
 		function enviarEncuesta(pregunta, respuesta, aplicacion_id) {
-			var agregado = false;
+			console.log(respuesta+", "+aplicacion_id);
+			var agregado = false,
             	data = {
 					pregunta: pregunta,
 					respuesta: respuesta,
