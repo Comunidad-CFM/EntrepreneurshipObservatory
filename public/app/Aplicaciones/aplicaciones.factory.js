@@ -23,7 +23,8 @@
 			getForSurvey: getForSurvey,
 			store: store,
 			remove: remove,
-			getAplicacionesByPersona : getAplicacionesByPersona
+			getAplicacionesByPersona : getAplicacionesByPersona,
+			getAplicacionesPersonasEncuestas: getAplicacionesPersonasEncuestas
 		};
 
 		return factory;
@@ -150,6 +151,21 @@
 			});
 
 			return defered.promise;
+		}
+
+		function getAplicacionesPersonasEncuestas() {
+			var defered = $q.defer();
+
+			$http.get('api/aplicaciones/personasEncuestas')
+				.success(function(response) {
+					defered.resolve(response);
+				})
+				.error(function(err) {
+					defered.reject(err);
+				});
+
+			return defered.promise;
+
 		}
 	}
 

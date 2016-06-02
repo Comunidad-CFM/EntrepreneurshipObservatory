@@ -91,4 +91,13 @@ class Aplicaciones extends Controller
           ->get();
       return $aplicacion;
     }
+
+
+    public function getAplicacionesPersonasEncuestas() {
+        return Aplicacione::join('encuestas', 'encuestas.id', '=', 'aplicaciones.encuesta_id')
+            ->join('personas', 'personas.id', '=', 'aplicaciones.persona_id')
+            ->select('aplicaciones.id as idAplicacion', 'aplicaciones.fechaAplicacion', 'aplicaciones.encuesta_id', 'aplicaciones.persona_id as aplicacionPersona_id', 'aplicaciones.periodo_id', 'aplicaciones.encuestador', 'encuestas.id as idEncuesta', 'encuestas.descripcion', 'encuestas.estado', 'encuestas.fechaCreacion', 'encuestas.fechaModificacion', 'encuestas.persona_id', 'personas.id as personasId', 'personas.nombre', 'personas.apellido1', 'personas.apellido2', 'personas.tipo')
+
+            ->get();
+    }
 }

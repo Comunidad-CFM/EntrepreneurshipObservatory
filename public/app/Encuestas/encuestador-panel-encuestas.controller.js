@@ -9,7 +9,7 @@
 
 		$scope.encuestador = $cookies.getObject('session').id;
 
-		$scope.idAplicacion = 0;		//Aplicacion
+		$scope.idsAplicaciones =  [];	//Ids Aplicaciones
 		$scope.aplicaciones =  null;	//Aplicaciones
         //Encuesta
         $scope.encuestaId = 0;
@@ -21,10 +21,10 @@
 		$scope.contestarEncuesta = contestarEncuesta;
 
         function contestarEncuesta(idAplicacion, id, descripcion){
-        	console.log(idAplicacion);
             $scope.encuestaId = id;
             $scope.encuestaDescripcion = descripcion;
-			$scope.idAplicacion = getIdAplicacion(id);
+			$scope.idAplicacion = idAplicacion;
+			// $scope.idAplicacion = getIdAplicacion(id);
 
 			EncuestasFactory.setId(id);
 			EncuestasFactory.setDescripcion(descripcion);
@@ -47,20 +47,24 @@
 		}
 
 			function getAplicaciones() {
-			AplicacionesFactory.getAll()
+			AplicacionesFactory.getAplicacionesPersonasEncuestas()
 				.then(function(response) {
-					console.log(response)
 					$scope.aplicaciones = response;
-					$scope.personas = [];
-
-					PersonasFactory.getPersonas($scope.aplicaciones)
-						.then(function(personas) {
-							$scope.personas = personas;
-
-							$scope.personas = borrarPersonasRepetidas($scope.personas);
-							getEncuestas();
-						});
-				})
+					console.log($scope.aplicaciones);
+				});
+			// AplicacionesFactory.getAll()
+			// 	.then(function(response) {
+			// 		$scope.aplicaciones = response;
+			// 		$scope.personas = [];
+            //
+			// 		PersonasFactory.getPersonas($scope.aplicaciones)
+			// 			.then(function(personas) {
+			// 				$scope.personas = personas;
+            //
+			// 				$scope.personas = borrarPersonasRepetidas($scope.personas);
+			// 				getEncuestas();
+			// 			});
+			// 	})
 		}
 
 		getAplicaciones();
@@ -77,58 +81,60 @@
 				.then(function(response) {
 					$scope.encuestas = response;
 					matchPersonasEncustas();
-				})
-				.then(function() {
-					var personas = $scope.personas.slice();
-					console.log("aplicaciones",$scope.aplicaciones)
-        			console.log("inicio",personas)
-
-        			personas.forEach(function(persona) {
-						persona.encuestas.forEach(function(encuesta) {
-							var id = getIdAplicacionByPersonaEncuesta(persona.id, encuesta.id);
-							console.log(id);
-							encuesta.idAplicacion = id;
-						});
-					});
-        			console.log("fin",personas)
+					console.log("personas",$scope.personas);
+					console.log("aplicaciones",$scope.aplicaciones);
 				});
+				// .then(function() {
+				// 	var personas = $scope.personas.slice();
+                //
+        			// personas.forEach(function(persona) {
+				// 		persona.encuestas.forEach(function(encuesta) {
+				// 			var id = getIdAplicacionByPersonaEncuesta(persona.id, encuesta.id);
+				// 			encuesta.idAplicacion = id;
+				// 		});
+				// 	});
+				// });
 		}
 
-		function getIdAplicacionByPersonaEncuesta(idPersona, idEncuesta) {
-			var i = 0,
-				length = $scope.aplicaciones.length;
-
-			for ( ; i < length; i++) {
-				console.log($scope.aplicaciones[i].encuesta_id, idEncuesta, ' - ', $scope.aplicaciones[i].persona_id, idPersona)
-				if($scope.aplicaciones[i].encuesta_id === idEncuesta && $scope.aplicaciones[i].persona_id === idPersona) {
-					return $scope.aplicaciones[i].id;
-				}
-			};
-
-			return null;
-		}
-
-		function getIdAplicacion(idEncuesta) {
-			var idAplicacion = 0;
-			$scope.aplicaciones.forEach(function(aplicacion) {
-				if(aplicacion.encuesta_id === idEncuesta)
-					idAplicacion = aplicacion.id;
-			});
-			return idAplicacion;
-		}
+		// function getIdAplicacion(idEncuesta) {
+		// 	var idAplicacion = 0;
+		// 	$scope.aplicaciones.forEach(function(aplicacion) {
+		// 		if(aplicacion.encuesta_id === idEncuesta)
+		// 			idAplicacion = aplicacion.id;
+		// 	});
+		// 	return idAplicacion;
+		// }
 
 		//Agrega a la persona sus correspondientes encuestas
 		function matchPersonasEncustas() {
 			$scope.aplicaciones.forEach(function(aplicacion) {
 				findPersona(aplicacion.persona_id, aplicacion.encuesta_id);
 			});
+			$scope.personas.forEach(function(persona) {
+				persona.encuestas.forEach(function(encuesta) {
+					encuesta.idAplicacion = getIdAplicacion(persona.id,encuesta.id);
+				});
+				console.log("persona aplicacion", persona);
+
+			});
+
 		}
 
-		function getEncuesta(idEncuesta) {
+		function getIdAplicacion(idPersona, idEncuesta) {
+			var id = null;
+			$scope.idsAplicaciones.forEach(function(idApl) {
+				if (idApl[0] === idPersona && idApl[1] === idEncuesta){
+					id = idApl[2];
+				}
+			});
+			return id;
+		}
+		function getEncuesta(idPersona, idEncuesta) {
 			var encuestaAux = null;
 			$scope.encuestas.forEach(function(encuesta) {
 
 				if (encuesta.id === idEncuesta){
+					findAplicacion(idPersona, idEncuesta);
 					encuestaAux = encuesta;
 				}
 			});
@@ -138,7 +144,15 @@
 		function findPersona(idPersona, idEncuesta) {
 			$scope.personas.forEach(function(persona) {
 				if (persona.id === idPersona){
-					persona.encuestas.push(getEncuesta(idEncuesta));
+					persona.encuestas.push(getEncuesta(idPersona, idEncuesta));
+				}
+			});
+		}
+
+		function findAplicacion(idPersona, idEncuesta) {
+			$scope.aplicaciones.forEach(function(aplicacion) {
+				if (aplicacion.persona_id === idPersona && aplicacion.encuesta_id === idEncuesta){
+					$scope.idsAplicaciones.push([aplicacion.persona_id,aplicacion.encuesta_id,aplicacion.id]);
 				}
 			});
 		}
