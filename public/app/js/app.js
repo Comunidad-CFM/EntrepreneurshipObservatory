@@ -12,7 +12,7 @@
 		.factory('Auth', Auth)
         .filter('user', user)
         .filter('estado', estado)
-				.filter('type', type)
+		.filter('type', type)
 		.config(config)
         .run(run);
 
