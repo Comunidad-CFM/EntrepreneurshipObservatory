@@ -30,7 +30,22 @@
 			EncuestasFactory.setIdAplicacion($scope.idAplicacion);
         }
 
-		function getAplicaciones() {
+		function isInArray(value, array) {
+			return array.indexOf(value) > -1;
+		}
+
+		function borrarPersonasRepetidas(personas) {
+			var idsPersonas = [];
+			personas.forEach(function(persona) {
+				if (isInArray(persona.id, idsPersonas))
+					personas.splice(personas.indexOf(persona), 1);
+				else
+					idsPersonas.push(persona.id);
+			});
+			return personas;
+		}
+
+			function getAplicaciones() {
 			AplicacionesFactory.getAll()
 				.then(function(response) {
 					$scope.aplicaciones = response;
@@ -39,6 +54,8 @@
 					PersonasFactory.getPersonas($scope.aplicaciones)
 						.then(function(personas) {
 							$scope.personas = personas;
+
+							$scope.personas = borrarPersonasRepetidas($scope.personas);
 							getEncuestas();
 						});
 				})
@@ -75,7 +92,7 @@
 			$scope.aplicaciones.forEach(function(aplicacion) {
 				findPersona(aplicacion.persona_id, aplicacion.encuesta_id);
 			});
-			console.log($scope.personas);
+			//console.log($scope.personas);
 		}
 
 		function getEncuesta(idEncuesta) {
