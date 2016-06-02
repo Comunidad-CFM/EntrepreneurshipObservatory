@@ -14,7 +14,7 @@ class CreateAplicacionesRespuestasTable extends Migration
     {
         Schema::create('aplicaciones_respuestas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('pregunta', 50);
+            $table->string('pregunta', 200);
             $table->string('respuesta', 50);
             $table->integer('aplicacion_id')->unsigned();
             $table->timestamps();

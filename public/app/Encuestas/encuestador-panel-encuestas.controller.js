@@ -20,19 +20,21 @@
 		$scope.getAplicaciones = getAplicaciones;
 		$scope.contestarEncuesta = contestarEncuesta;
 
-        function contestarEncuesta(id, descripcion){
+        function contestarEncuesta(idAplicacion, id, descripcion){
+        	console.log(idAplicacion);
             $scope.encuestaId = id;
             $scope.encuestaDescripcion = descripcion;
 			$scope.idAplicacion = getIdAplicacion(id);
 
 			EncuestasFactory.setId(id);
 			EncuestasFactory.setDescripcion(descripcion);
-			EncuestasFactory.setIdAplicacion($scope.idAplicacion);
+			EncuestasFactory.setIdAplicacion(idAplicacion);
         }
 
 		function getAplicaciones() {
 			AplicacionesFactory.getAll()
 				.then(function(response) {
+					console.log(response)
 					$scope.aplicaciones = response;
 					$scope.personas = [];
 
@@ -58,7 +60,35 @@
 				.then(function(response) {
 					$scope.encuestas = response;
 					matchPersonasEncustas();
+				})
+				.then(function() {
+					var personas = $scope.personas.slice();
+					console.log("aplicaciones",$scope.aplicaciones)
+        			console.log("inicio",personas)
+
+        			personas.forEach(function(persona) {
+						persona.encuestas.forEach(function(encuesta) {
+							var id = getIdAplicacionByPersonaEncuesta(persona.id, encuesta.id);
+							console.log(id);
+							encuesta.idAplicacion = id;
+						});
+					});
+        			console.log("fin",personas)
 				});
+		}
+
+		function getIdAplicacionByPersonaEncuesta(idPersona, idEncuesta) {
+			var i = 0,
+				length = $scope.aplicaciones.length;
+
+			for ( ; i < length; i++) {
+				console.log($scope.aplicaciones[i].encuesta_id, idEncuesta, ' - ', $scope.aplicaciones[i].persona_id, idPersona)
+				if($scope.aplicaciones[i].encuesta_id === idEncuesta && $scope.aplicaciones[i].persona_id === idPersona) {
+					return $scope.aplicaciones[i].id;
+				}
+			};
+
+			return null;
 		}
 
 		function getIdAplicacion(idEncuesta) {
@@ -75,7 +105,6 @@
 			$scope.aplicaciones.forEach(function(aplicacion) {
 				findPersona(aplicacion.persona_id, aplicacion.encuesta_id);
 			});
-			console.log($scope.personas);
 		}
 
 		function getEncuesta(idEncuesta) {
