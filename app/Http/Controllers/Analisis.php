@@ -11,7 +11,8 @@ class Analisis extends Controller
     function get($idPeriodo) {
     	return Aplicacione::join('aplicaciones_respuestas', 'aplicaciones.id', '=', 'aplicaciones_respuestas.aplicacion_id')
     			->join('preguntas', 'preguntas.enunciado', '=', 'aplicaciones_respuestas.pregunta')
-    			->select('aplicaciones.id', 'aplicaciones_respuestas.respuesta', 'preguntas.indicador_id')
+    			->join('indicadores', 'indicadores.id', '=', 'preguntas.indicador_id')
+    			->select('aplicaciones.id', 'aplicaciones_respuestas.respuesta', 'indicadores.nombre')
     			->where('aplicaciones.periodo_id', '=', $idPeriodo)
     			->get();
     }

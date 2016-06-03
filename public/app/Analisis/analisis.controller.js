@@ -13,7 +13,7 @@
 		$scope.get = get;
 
 		function get() {
-			AnalisisFactory.get(3)
+			AnalisisFactory.get(1)
 			.then(function(response) {
 				console.log(response);
 			});
