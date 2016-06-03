@@ -123,4 +123,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('/sectoresIndicadores/store','SectoresIndicadores@store');
     Route::delete('/sectoresIndicadores/destroy/{ids}','SectoresIndicadores@destroy');
     Route::get('/sectoresIndicadores/getForIndicador/{id}','SectoresIndicadores@getForIndicador');
+
+    // Aplicaciones
+    Route::get('/analisis/get/{idPeriodo}','Analisis@get');
 });

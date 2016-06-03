@@ -7,10 +7,18 @@
 	 /**
 	* Controlador del análisis.
 	* @param {Object} Servicio que permite la unión entre el HTML y el controlador.
-	* @param {Object} Servicio que proporciona autenticación y renderización de vistas.
-	* @param {Object} Servicio que brinda funciones del log in al controlador.
+	* @param {Object} Servicio que brinda funciones del analisis al controlador.
 	*/
-	function AnalisisController ($scope, TerritoriosFactory, SectoresFactory, PersonasSectoresFactory, PersonasFactory, AplicacionesFactory) {		
-		
+	function AnalisisController ($scope, AnalisisFactory) {		
+		$scope.get = get;
+
+		function get() {
+			AnalisisFactory.get(3)
+			.then(function(response) {
+				console.log(response);
+			});
+		}
+
+		get();
 	}
 })();

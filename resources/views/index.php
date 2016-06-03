@@ -70,5 +70,6 @@
 	<script type="text/javascript" src="<?= asset('app/SectoresIndicadores/sectoresIndicadores.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/js/angular-drag-and-drop-lists.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Analisis/analisis.controller.js') ?>"></script>
+	<script type="text/javascript" src="<?= asset('app/Analisis/analisis.factory.js') ?>"></script>
 </body>
 </html>

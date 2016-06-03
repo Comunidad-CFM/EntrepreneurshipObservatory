@@ -45,12 +45,51 @@
 			});
 			return personas;
 		}
+		function destroyAplicacion(aplicaciones, aplicacion) {
+			aplicaciones = aplicaciones.filter(function(item) {
+				return aplicacion !== item;
+			});
 
-			function getAplicaciones() {
+			return aplicaciones;
+		}
+
+		function groupByPerson(aplicaciones) {
+			var i = 0,
+				j = 0,
+				index = 0,
+				personas = [];
+
+			for ( ; i < aplicaciones.length; i++) {
+				personas.push({
+					id: aplicaciones[i].idEmpresario,
+					nombre: aplicaciones[i].nombre + ' ' + aplicaciones[i].apellido1 + ' ' + aplicaciones[i].apellido2,
+					encuestas: []
+				});
+				
+				for ( ; j < aplicaciones.length; j++) {
+					if (personas[index].id === aplicaciones[j].idEmpresario) {
+						personas[index].encuestas.push({
+							id: aplicaciones[j].idEncuesta,
+							descripcion: aplicaciones[j].descripcion,
+							estado: aplicaciones[j].estado,
+							idAplicacion: aplicaciones[j].idAplicacion
+						});
+						aplicaciones = destroyAplicacion(aplicaciones, aplicaciones[j]);
+						j--;
+					}
+				}
+				i = -1;
+				j = 0;
+				index++;
+			}
+
+			return personas;
+		}
+
+		function getAplicaciones() {
 			AplicacionesFactory.getAplicacionesPersonasEncuestas()
 				.then(function(response) {
-					$scope.aplicaciones = response;
-					console.log($scope.aplicaciones);
+					$scope.personas = groupByPerson(response);
 				});
 			// AplicacionesFactory.getAll()
 			// 	.then(function(response) {
