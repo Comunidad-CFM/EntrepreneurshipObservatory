@@ -14,17 +14,17 @@ class PersonasSectores extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request) {  
+    public function store(Request $request) {
         $personaId = $request->input('personaId');
-        $sectoresId = $request->input('sectoresId');   
+        $sectorId = $request->input('sectorId');
         
-        foreach ($sectoresId as $id) {
-            $personaSector = new PersonasSectore;                     
-            $personaSector->territorios_id = $id;                    
-            $personaSector->sector_id = $personaId;        
 
-            $personaSector->save();        
-        }
+        $personaSector = new PersonasSectore;
+        $personaSector->sector_id = $sectorId;
+        $personaSector->persona_id = $personaId;
+
+        $personaSector->save();
+
         return 'true';
     }
 
@@ -46,23 +46,17 @@ class PersonasSectores extends Controller
      */
     public function update(Request $request) {        
         $personaId = $request->input('personaId');
-        $sectoresId = $request->input('sectoresId');      
+        $sectorId = $request->input('sectorId');
 
-        $personaSectores = PersonasSectore::where('persona_id', $personaId)->select('id')->get();        
+        // $persona = Persona::find($request->input('id'));
 
+        $idPersonaSector = PersonasSectore::where('persona_id', $personaId)->select('id')->get();
         
-        foreach ($personaSectores as $personaSector) {
-            $toDelete = PersonasSectore::find($personaSector['id']);
-            $toDelete->delete();            
-        }
+        $personaSector = PersonasSectore::find($idPersonaSector[0]->id);        
+        $personaSector->sector_id = $sectorId;
 
-        foreach ($sectoresId as $id) {
-            $personaSector = new PersonasSectore;                     
-            $personaSector->sector_id = $id;                    
-            $personaSector->persona_id = $personaId;        
+        $personaSector->save();
 
-            $personaSector->save();        
-        }
 
         return 'true';
     }

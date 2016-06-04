@@ -22,8 +22,8 @@
         $scope.getPersonas = getPersonas;
         $scope.editandoPersona = editandoPersona;
         $scope.validateEmail = validateEmail;
-        $scope.validateID = validateID;        
-        $scope.selectSector = selectSector;
+        $scope.validateID = validateID;
+
         $scope.selectSectorEdit = selectSectorEdit;
         $scope.cancelEdit = cancelEdit;
         $scope.update = update;
@@ -133,21 +133,7 @@
 
 
 
-        function selectSector(id){                    
-            if(!selectedSectores.length){
-                selectedSectores.push(id);
-            }
-            else{                
-                var index = selectedSectores.indexOf(id);
-                if(index > -1){
-                    selectedSectores.splice(index, 1);
-                }
-                else{
-                    selectedSectores.push(id);
-                }
-            }   
-            
-        }
+      
 
         function selectSectorEdit(sector){                         
             var index = selectedSectoresEditar.indexOf(sector);            
@@ -165,13 +151,14 @@
             $scope.registro = false;
             validateEdit();
             $scope.persona.territorio_id = $scope.selectedTerritorio.id;
-            if ($scope.emptyData !== true && selectedSectores.length > 0) {
+            if ($scope.emptyData !== true) {
                 PersonasFactory.store($scope.persona)
                     .then(function(response) {
                         if (response === 'true') {
                             PersonasFactory.ifExist($scope.persona.cedula,"cedula")
-                            .then(function (insertedPerson) {                                
-                                PersonasSectoresFactory.store(insertedPerson.id,selectedSectores);
+                            .then(function (insertedPerson) {
+                                console.log(insertedPerson);
+                                PersonasSectoresFactory.store(insertedPerson.id,$scope.selectedSector.id);
                                 $scope.registro = true;
                                 $scope.msgRegistro = 'La persona se ha agregado correctamente.';
                                 $scope.styleRegistro = 'success-box';
@@ -306,19 +293,16 @@
                 }
             });
 
-            if ($scope.emptyData !== true && sectores.length > 0) {   
+            if ($scope.emptyData !== true) {
                 persona.territorio_id = $scope.selectedTerritorio.id;
                 PersonasFactory.edit(persona)
                     .then(function(response) {
                         if (response === 'true') {
-                            PersonasSectoresFactory.edit(persona.id, sectores)
+                            PersonasSectoresFactory.edit(persona.id, $scope.selectedSector.id)
                                 .then(function (response) {
+                                    console.log(response);
                                     if(response === 'true'){
                                         $scope.editar = true;
-                                        selectedSectoresEditar.forEach( function(sector) {
-                                            sector.state = false;                                             
-                                        });
-                                        
                                         $scope.msgEditar = 'La persona se ha modificado correctamente.';
                                         $scope.styleEditar = 'success-box';                                        
                                         setData();   
@@ -375,6 +359,7 @@
             SectoresFactory.getAll()
                 .then(function(response) {
                     $scope.sectores = response;
+                    $scope.selectedSector = $scope.sectores[0];
                 });               
         }
 

@@ -20,19 +20,20 @@
 
 		return factory;
 
-		function store(personaId, sectoresId) {
+		function store(personaId, sectorId) {
 					
 			var defered = $q.defer(),
 				data = {
 					personaId : personaId,
-					sectoresId : sectoresId
+					sectorId : sectorId
 				};							
 			$http({				
 				method: 'POST',
 				url: '/api/personasSectores/registro',
 				data: data
 			})
-			.success(function(response) {				
+			.success(function(response) {
+				console.log(response);
 				defered.resolve(response);
 			})
 			.error(function(err) {
@@ -69,11 +70,12 @@
 		@Param: id de la persona
 		@return: True si la respuesta fue correcta
 		*/
-		function edit(personaId, sectoresId){
+		function edit(personaId, sectorId){
+			
             var defered = $q.defer(),
 	            data = {
 					personaId : personaId,
-					sectoresId : sectoresId
+					sectorId : sectorId
 				};
             $http({
 				method: 'POST',

@@ -129,9 +129,7 @@
                                             <div class="col-md-12">
                                                 <p>
                                                     <label>Sectores</label>
-                                                    <div class="col-md-6" ng-repeat="sector in sectoresEditar">
-                                                        <md-checkbox class="md-primary" ng-checked = "sector.state" ng-true-value="'sector.id'" ng-false-value="''" ng-click="selectSectorEdit(sector);">{{sector.nombre}}</md-checkbox>
-                                                    </div>
+                                                    <select class="form-control margin" ng-options="sector as sector.nombre for sector in sectores track by sector.id" ng-model="selectedSector"></select>
                                                 </p>
                                             </div>
                                         </div>
@@ -230,9 +228,7 @@
                             <div class="col-md-12">
                                 <p>
                                     <label>Sectores</label>
-                                    <div class="col-md-6" ng-repeat="sector in sectores">
-                                        <md-checkbox class="md-primary" ng-true-value="'sector.id'" ng-false-value="''" ng-click="selectSector(sector.id);">{{sector.nombre}}</md-checkbox>
-                                    </div>
+                                    <select class="form-control margin" ng-options="sector as sector.nombre for sector in sectores track by sector.id" ng-model="selectedSector"></select>
                                 </p>
                             </div>
                         </div>
