@@ -48,12 +48,16 @@
 			$scope.sectores.forEach(function(sector){
 				$scope.sectoresScores.push(AnalisisFactory.calculateICEBySector(sector.nombre,$scope.answers));
 			});
+
 			 var ns = AnalisisFactory.calculateNs($scope.sectoresScores),
-                 ps = AnalisisFactory.calculatePs(ns);
+				 n = AnalisisFactory.calculateN(ns),
+                 ps = AnalisisFactory.calculatePs(ns,n);
 
             console.log($scope.sectoresScores);
             console.log("------------------------------");
             console.log(ns);
+		 	console.log("------------------------------");
+		 	console.log(n)
             console.log("------------------------------");
             console.log(ps);
 		}

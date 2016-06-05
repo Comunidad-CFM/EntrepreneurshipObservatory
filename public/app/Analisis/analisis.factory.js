@@ -11,7 +11,8 @@
 			calculateICEBySector: calculateICEBySector,
 			groupByEntrepreneur: groupByEntrepreneur,
             calculateNs: calculateNs,
-            calculatePs: calculatePs
+            calculatePs: calculatePs,
+            calculateN: calculateN
 		};
 
 		return factory;
@@ -182,16 +183,20 @@
         * Calcular el Ps, que corresponde al ponderado de aplicaciones por sector (peso en la medicion)
         * @param{Object} Ns con los valores que indican el numero de encuestas por sector
         * */
-        function calculatePs(ns){
-            var total = ns.agricola + ns.manufactura + ns.comercio + ns.turismo + ns.servicios,
-                ps = {
+        function calculatePs(ns, total){
+
+            return {
                     agricola: ns.agricola / total,
                     manufactura: ns.manufactura / total,
                     comercio: ns.comercio / total,
                     turismo: ns.turismo / total,
                     servicios: ns.servicios / total
                 };
-            return ps;
+
+        }
+
+        function calculateN(ns){
+            return ns.agricola + ns.manufactura + ns.comercio + ns.turismo + ns.servicios;
         }
 
 	}
