@@ -9,7 +9,8 @@
 		var factory = {
 			get: get,
 			calculateICEBySector: calculateICEBySector,
-			groupByEntrepreneur: groupByEntrepreneur
+			groupByEntrepreneur: groupByEntrepreneur,
+            calculateNs: calculateNs
 		};
 
 		return factory;
@@ -134,6 +135,47 @@
 				index++;
 			}
 			return entrepreneurs;
+
 		}
+
+        /*
+        * Calcular el Ns de las encuestas
+        *
+        * */
+        function calculateNs(entrepreneurs){
+            var nsResults = {
+                agricola: 0,
+                manufactura: 0,
+                comercio: 0,
+                turismo: 0,
+                servicios: 0
+            };
+
+            entrepreneurs.forEach(function(entrepreneur){
+                entrepreneur.scores.forEach(function (score) {
+                    if(score.costesTotales !== 0 || score.empleo !== 0 || score.inversiones !== 0
+                        || score.precios !== 0 || score.resultadoNegocios !== 0){
+                        switch(entrepreneur.sector){
+                            case 'Agricultura y pesca':
+                                nsResults.agricola ++;
+                                break;
+                            case 'Industria manufacturera':
+                                nsResults.manufactura ++;
+                                break;
+                            case 'Comercio y reparación':
+                                nsResults.comercio ++;
+                                break;
+                            case 'Turismo':
+                                nsResults.turismo ++;
+                                break;
+                            case 'Otros servicios':
+                                nsResults.servicios ++;
+                                break;
+                        }
+                    }
+                })
+            });
+            return nsResults;
+        }
 	}
 })();

@@ -50,6 +50,8 @@
 			});
 
 			console.log($scope.sectoresScores);
+            console.log("------------------------------");
+            console.log(AnalisisFactory.calculateNs($scope.sectoresScores));
 		}
 
 
