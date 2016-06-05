@@ -14,7 +14,8 @@
             calculatePs: calculatePs,
             calculateN: calculateN,
             calculateNir: calculateNir,
-            calculatePir: calculatePir
+            calculatePir: calculatePir,
+            calculateXir: calculateXir
 		};
 
 		return factory;
@@ -333,6 +334,64 @@
         	});
         	
         	return pir;
+        }
+
+        function getPercent(value) {
+        	var percent = 0;
+        	switch(value) {
+        		case 1:
+        			percent = 1;
+        			break;
+        		case 2:
+        			percent = 0.75;
+        			break;
+        		case 3:
+        			percent = 0.5;
+        			break;
+        		case 4:
+        			percent = 0.25;
+        			break;
+        	}
+
+        	return percent;
+        }
+
+        function calculateXir(pir) {
+        	var i = 0,
+        		j = 0,
+        		xir = [
+    			{
+    				indicador: 'Resultado de negocio',
+    				scores: [0, 0, 0, 0, 0]
+    			},
+    			{
+    				indicador: 'Empleo',
+    				scores: [0, 0, 0, 0, 0]
+    			},
+    			{
+    				indicador: 'Inversiones',
+    				scores: [0, 0, 0, 0, 0]
+    			},
+    			{
+    				indicador: 'Precios',
+    				scores: [0, 0, 0, 0, 0]
+    			},
+    			{
+    				indicador: 'Costes totales',
+    				scores: [0, 0, 0, 0, 0]
+    			}
+    		];
+
+        	pir.forEach(function(indicador) {
+        		indicador.scores.forEach(function(score) {
+        			xir[i].scores[j] = pir[i].scores[j] * getPercent(j + 1);
+        			j++;
+        		});
+        		i++;
+        		j = 0;
+        	});
+        	
+        	return xir;
         }
 	}
 })();

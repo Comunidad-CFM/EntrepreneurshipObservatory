@@ -52,7 +52,8 @@
 				n = AnalisisFactory.calculateN(ns),
                 ps = AnalisisFactory.calculatePs(ns,n),
                 nir,
-                pir;
+                pir,
+                xir;
 
             console.log('ICEBySector ->',$scope.ICEBySector);
             console.log("------------------------------");
@@ -65,6 +66,9 @@
 		 	console.log("------------------------------");
 		 	pir = AnalisisFactory.calculatePir(nir, n);
 		 	console.log('pir ->', pir);
+		 	console.log("------------------------------");
+		 	xir = AnalisisFactory.calculateXir(pir);
+		 	console.log('xir ->', xir);
 		}
 
  		getSectores();
