@@ -12,7 +12,9 @@
 			groupByEntrepreneur: groupByEntrepreneur,
             calculateNs: calculateNs,
             calculatePs: calculatePs,
-            calculateN: calculateN
+            calculateN: calculateN,
+            calculateNir: calculateNir,
+            calculatePir: calculatePir
 		};
 
 		return factory;
@@ -75,23 +77,23 @@
 
                 if(entrepreneur.sector === sector) {
                     entrepreneur.answers.forEach(function(answer){
-                       switch (answer.indicador){
-                           case 'Monto de negocio':
+                       	switch (answer.indicador){
+                           	case 'Resultado de negocio':
                                ICEbySector.scores[index].resultadoNegocios += calculateValue(answer.answer);
                                break;
-                           case 'Empleo':
+                           	case 'Empleo':
                                ICEbySector.scores[index].empleo += calculateValue(answer.answer);
                                break;
-                           case 'Inversion':
+                           	case 'Inversiones':
                                ICEbySector.scores[index].inversiones += calculateValue(answer.answer);
                                break;
-                           case 'Precio':
+                           	case 'Precios':
                                ICEbySector.scores[index].precios += calculateValue(answer.answer);
                                break;
-                           case 'Coste total':
+                           	case 'Costes totales':
                                ICEbySector.scores[index].costesTotales += calculateValue(answer.answer);
                                break;
-                       }
+                      	}
                     });
                     index ++;
                 }
@@ -132,12 +134,13 @@
 						j--;
 					}
 				}
+
 				i = -1;
 				j = 0;
 				index++;
 			}
-			return entrepreneurs;
 
+			return entrepreneurs;
 		}
 
         /*
@@ -179,6 +182,7 @@
             });
             return nsResults;
         }
+
         /*
         * Calcular el Ps, que corresponde al ponderado de aplicaciones por sector (peso en la medicion)
         * @param{Object} Ns con los valores que indican el numero de encuestas por sector
@@ -186,12 +190,12 @@
         function calculatePs(ns, total){
 
             return {
-                    agricola: ns.agricola / total,
-                    manufactura: ns.manufactura / total,
-                    comercio: ns.comercio / total,
-                    turismo: ns.turismo / total,
-                    servicios: ns.servicios / total
-                };
+                agricola: ns.agricola / total,
+            	manufactura: ns.manufactura / total,
+                comercio: ns.comercio / total,
+                turismo: ns.turismo / total,
+                servicios: ns.servicios / total
+            };
 
         }
 
@@ -199,5 +203,136 @@
             return ns.agricola + ns.manufactura + ns.comercio + ns.turismo + ns.servicios;
         }
 
+        function getPosition(value) {
+        	var i = -1;
+        	switch(value) {
+        		case 1:
+        			i = 0;
+        			break;
+        		case 2:
+        			i = 1;
+        			break;
+        		case 3:
+        			i = 2;
+        			break;
+        		case 4:
+        			i = 3;
+        			break;
+        		case 5:
+        			i = 4;
+        			break;
+        	}
+
+        	return i;
+        }
+        function getScoreForSector(score, indicadores, nir) {
+        	var i;
+        	indicadores.forEach(function(indicador) {
+        		switch(indicador.nombre) {
+	        		case 'Resultado de negocio':
+	        			i = getPosition(score.resultadoNegocios);
+	        			if (i >= 0) {
+	        				nir[0].scores[i] += 1;
+	        			}
+	                   	break;
+	               	case 'Empleo':
+	               		i = getPosition(score.empleo);
+	        			if (i >= 0) {
+	        				nir[1].scores[i] += 1;
+	        			}
+	                   	break;
+	               	case 'Inversiones':
+	               		i = getPosition(score.inversiones);
+	        			if (i >= 0) {
+	        				nir[2].scores[i] += 1;
+	        			}
+	                   	break;
+	               	case 'Precios':
+	               		i = getPosition(score.precios);
+	        			if (i >= 0) {
+	        				nir[3].scores[i] += 1;
+	        			}
+	                   	break;
+	               	case 'Costes totales':
+	               		i = getPosition(score.costesTotales);
+	        			if (i >= 0) {
+	        				nir[4].scores[i] += 1;
+	        			}
+	                   	break;
+	        	}
+        	});
+			return nir;
+        }
+
+        function calculateNir(ICEBySector, indicadores) {
+        	var nir = [
+    			{
+    				indicador: 'Resultado de negocio',
+    				scores: [0, 0, 0, 0, 0]
+    			},
+    			{
+    				indicador: 'Empleo',
+    				scores: [0, 0, 0, 0, 0]
+    			},
+    			{
+    				indicador: 'Inversiones',
+    				scores: [0, 0, 0, 0, 0]
+    			},
+    			{
+    				indicador: 'Precios',
+    				scores: [0, 0, 0, 0, 0]
+    			},
+    			{
+    				indicador: 'Costes totales',
+    				scores: [0, 0, 0, 0, 0]
+    			}
+    		];
+
+    		ICEBySector.forEach(function(ICE) {
+        		ICE.scores.forEach(function(score) {
+        			nir = getScoreForSector(score, indicadores, nir)
+        		});
+        	});
+
+        	return nir;
+        }
+
+        function calculatePir(nir, n) {
+        	var i = 0,
+        		j = 0,
+        		pir = [
+    			{
+    				indicador: 'Resultado de negocio',
+    				scores: [0, 0, 0, 0, 0]
+    			},
+    			{
+    				indicador: 'Empleo',
+    				scores: [0, 0, 0, 0, 0]
+    			},
+    			{
+    				indicador: 'Inversiones',
+    				scores: [0, 0, 0, 0, 0]
+    			},
+    			{
+    				indicador: 'Precios',
+    				scores: [0, 0, 0, 0, 0]
+    			},
+    			{
+    				indicador: 'Costes totales',
+    				scores: [0, 0, 0, 0, 0]
+    			}
+    		];
+
+        	nir.forEach(function(indicador) {
+        		indicador.scores.forEach(function(score) {
+        			pir[i].scores[j] = (nir[i].scores[j] * 100) / n;
+        			j++;
+        		});
+        		i++;
+        		j = 0;
+        	});
+        	
+        	return pir;
+        }
 	}
 })();

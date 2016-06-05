@@ -43,26 +43,29 @@
 		  */
 	 	function groupByEntrepreneur(answers){
 			$scope.answers = AnalisisFactory.groupByEntrepreneur(answers);
-			console.log($scope.answers);
-			$scope.sectoresScores = [];
+			$scope.ICEBySector = [];
 			$scope.sectores.forEach(function(sector){
-				$scope.sectoresScores.push(AnalisisFactory.calculateICEBySector(sector.nombre,$scope.answers));
+				$scope.ICEBySector.push(AnalisisFactory.calculateICEBySector(sector.nombre,$scope.answers));
 			});
 
-			 var ns = AnalisisFactory.calculateNs($scope.sectoresScores),
-				 n = AnalisisFactory.calculateN(ns),
-                 ps = AnalisisFactory.calculatePs(ns,n);
+			var ns = AnalisisFactory.calculateNs($scope.ICEBySector),
+				n = AnalisisFactory.calculateN(ns),
+                ps = AnalisisFactory.calculatePs(ns,n),
+                nir,
+                pir;
 
-            console.log($scope.sectoresScores);
+            console.log('ICEBySector ->',$scope.ICEBySector);
             console.log("------------------------------");
-            console.log(ns);
+            console.log('ns ->',ns);
+		 	console.log('n ->',n);
+            console.log('ps ->',ps);
 		 	console.log("------------------------------");
-		 	console.log(n)
-            console.log("------------------------------");
-            console.log(ps);
+		 	nir = AnalisisFactory.calculateNir($scope.ICEBySector, $scope.indicadores);
+		 	console.log('nir ->',nir);
+		 	console.log("------------------------------");
+		 	pir = AnalisisFactory.calculatePir(nir, n);
+		 	console.log('pir ->', pir);
 		}
-
-
 
  		getSectores();
 	 	getIndicadores();
