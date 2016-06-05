@@ -10,7 +10,8 @@
 			get: get,
 			calculateICEBySector: calculateICEBySector,
 			groupByEntrepreneur: groupByEntrepreneur,
-            calculateNs: calculateNs
+            calculateNs: calculateNs,
+            calculatePs: calculatePs
 		};
 
 		return factory;
@@ -124,7 +125,7 @@
 					if (entrepreneurs[index].id === answers[j].id) {
 						entrepreneurs[index].answers.push({
 							indicador: answers[j].nombre,
-							answer: answers[j].respuesta,
+							answer: answers[j].respuesta
 						});
 						answers = destroyAnswer(answers, answers[j]);
 						j--;
@@ -140,7 +141,7 @@
 
         /*
         * Calcular el Ns de las encuestas
-        *
+        * @param{Array} encuestas aplicadas, utilizadas para determinar a que sector pertenece cada aplicacion
         * */
         function calculateNs(entrepreneurs){
             var nsResults = {
@@ -177,5 +178,21 @@
             });
             return nsResults;
         }
+        /*
+        * Calcular el Ps, que corresponde al ponderado de aplicaciones por sector (peso en la medicion)
+        * @param{Object} Ns con los valores que indican el numero de encuestas por sector
+        * */
+        function calculatePs(ns){
+            var total = ns.agricola + ns.manufactura + ns.comercio + ns.turismo + ns.servicios,
+                ps = {
+                    agricola: ns.agricola / total,
+                    manufactura: ns.manufactura / total,
+                    comercio: ns.comercio / total,
+                    turismo: ns.turismo / total,
+                    servicios: ns.servicios / total
+                };
+            return ps;
+        }
+
 	}
 })();
