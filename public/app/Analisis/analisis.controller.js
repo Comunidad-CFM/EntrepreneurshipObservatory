@@ -39,12 +39,16 @@
 	 	function groupByEntrepreneur(answers){
 			$scope.answers = AnalisisFactory.groupByEntrepreneur(answers);
 			console.log($scope.answers);
+			$scope.sectoresScores = [];
+			$scope.sectores.forEach(function(sector){
+				$scope.sectoresScores.push(AnalisisFactory.calculateICEBySector(sector.nombre,$scope.answers));
+			});
+
+			console.log($scope.sectoresScores);
 		}
 
-	 	get();
-		getSectores();
+ 		getSectores();
 	 	getIndicadores();
-
-
+	 	get();
 	}
 })();

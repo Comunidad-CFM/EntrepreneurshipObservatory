@@ -49,7 +49,6 @@
 			aplicaciones = aplicaciones.filter(function(item) {
 				return aplicacion !== item;
 			});
-
 			return aplicaciones;
 		}
 
