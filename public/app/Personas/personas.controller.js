@@ -23,8 +23,6 @@
         $scope.editandoPersona = editandoPersona;
         $scope.validateEmail = validateEmail;
         $scope.validateID = validateID;
-
-        $scope.selectSectorEdit = selectSectorEdit;
         $scope.cancelEdit = cancelEdit;
         $scope.update = update;
         //vars
@@ -32,8 +30,6 @@
 
         var currentEmail = "",
         currentCedula = "",
-        selectedSectores = [],
-        selectedSectoresEditar = [],//sectores que se editan
         todosTerritorios = [];        
 
         /**
@@ -71,6 +67,9 @@
             }
         }
 
+        /**
+         * Inicializar los valores del objeto persona
+         */
         function setData() {
             $scope.persona = {
                 cedula: '',
@@ -94,6 +93,9 @@
         $scope.$watch('persona.email', validate);
         $scope.$watch('persona.cedula', validate);
 
+        /**
+         * Verificar la coincidencia de contraseña y confimación de contraseña
+         */
         function validatecontrasena() {
             $scope.errorcontrasena = false;
             if ($scope.persona.contrasena !== $scope.persona.contrasenaConf) {
@@ -103,6 +105,9 @@
             }
         }
 
+        /**
+         *Valida que los campos no sean vacios
+         */
         function validate() {         
             $scope.emptyData = false;            
             try {                                                        
@@ -130,23 +135,10 @@
 
             }            
         }
-
-
-
-      
-
-        function selectSectorEdit(sector){                         
-            var index = selectedSectoresEditar.indexOf(sector);            
-            if(index > -1){                                    
-                if( selectedSectoresEditar[index].state === true){
-                    selectedSectoresEditar[index].state = false;
-                }else{
-                    selectedSectoresEditar[index].state = true;   
-                }                
-
-            }                        
-        }
-
+        /**
+         * Almacenar un objeto persona en la base de datos, verifica si la persona existe por su cedula
+         * si no existe entonces la almacena
+         */
         function store() {            
             $scope.registro = false;
             validateEdit();
@@ -183,45 +175,42 @@
                 $scope.styleRegistro = 'error-box';
             }
         }
-    
+
+        /**
+         * obtener los sectores de la persona, para mostrar los seleccionados en la vista
+         * @param{int} id de la persona que se debe buscar para editar
+         */
         function editandoPersona(persona) {        
             $scope.persona = persona;     
-            
+
             $scope.nueva = false;
             currentEmail = $scope.persona.email;     
             currentCedula = $scope.persona.cedula;
 
             //seleccionar el territorio de la persona
-            todosTerritorios.forEach(function (territorio) {
+            $scope.territorios.forEach(function (territorio) {
                 if(territorio.id === persona.territorio_id){
                     $scope.selectedTerritorio = territorio;
                 }
             });
 
             $scope.editar = false;
-            // obtener los sectores de la persona, para mostrar los seleccionados
-            // en la vista
             PersonasSectoresFactory.getByPersonId(persona.id)
             .then(function (sectoresDePersona) {
                 return sectoresDePersona;                     
             })
-            .then(function (sectoresDePersona) {    
+            .then(function (sectoresDePersona) {
                 var sectores = [];
+                // $scope.sectores.forEach( function(sector) {
+                //     sectores.push({id:sector.id, nombre: sector.nombre});
+                // });
+                
                 $scope.sectores.forEach( function(sector) {
-                    sectores.push({id:sector.id, nombre: sector.nombre});
-                });            
-                
-                sectores.forEach( function(sector) {
-                   sector.state = false;
-                   sectoresDePersona.forEach( function(element) {
-                        if(element.sector_id === sector.id){
-                            sector.state = true;
-                        }
-                    });                   
-                });                                 
-                selectedSectoresEditar = sectores;
-                
-                $scope.sectoresEditar = selectedSectoresEditar;//lista de sectores para editar              
+
+                    if(sectoresDePersona[0].sector_id === sector.id){
+                        $scope.selectedSector = sector;
+                    }
+                });
             });
 
         }
@@ -284,17 +273,17 @@
             }
         }
 
+        /**
+         * Modificar los datos de la persona
+         * @param{Object} Objeto persona con los nuevos datos
+         */
         function modificar(persona) {       
             validate();
             var sectores = [] //lista de sectores a enviar para guardar
-            selectedSectoresEditar.forEach( function(sector) {
-                if(sector.state === true){
-                    sectores.push(sector.id);
-                }
-            });
+
 
             if ($scope.emptyData !== true) {
-                persona.territorio_id = $scope.selectedTerritorio.id;
+                persona.territorio_id = $scope.selectedTerritorio.id;   
                 PersonasFactory.edit(persona)
                     .then(function(response) {
                         if (response === 'true') {
@@ -329,6 +318,10 @@
             }                                        
         }
 
+        /**
+         * Elimina la persona dado el id
+         * @param{int} id de la persona a eliminar
+         */
         function eliminar(ev, id) {
             var confirm = $mdDialog.confirm()
                 .title('¿Desea eliminar la persona?')
@@ -363,20 +356,19 @@
                 });               
         }
 
-        /*function getRegiones() {
+        function getRegiones() {
             RegionesFactory.getAll()
                 .then(function(response) {
-                    $scope.regiones = response;                       
-                    console.log($scope.regiones);
+                    $scope.regiones = response;
                 });               
         }
         function getTerritorios() {
             TerritoriosFactory.getAll()
                 .then(function(response) {
                     $scope.territorios = response;                       
-                    console.log($scope.territorios);
+
                 });               
-        }*/
+        }
 
         getSectores();
         getPersonas();        

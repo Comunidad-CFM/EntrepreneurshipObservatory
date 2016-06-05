@@ -471,7 +471,7 @@ footer {
     color: #00844A;
     font-size: 22px;
 }
-.glyphicon-trash:hover, .glyphicon-pencil:hover, .glyphicon-tasks:hover, .fa-toggle-on:hover, .fa-toggle-off:hover, .glyphicon-list-alt:hover {
+.glyphicon-trash:hover, .glyphicon-search:hover, .glyphicon-pencil:hover, .glyphicon-tasks:hover, .fa-toggle-on:hover, .fa-toggle-off:hover, .glyphicon-list-alt:hover {
     transform: scale(1.2);
 }
 

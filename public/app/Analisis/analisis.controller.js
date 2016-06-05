@@ -36,6 +36,11 @@
 				});
 		}
 
+		 /**
+		  * Agrupa las respuestas de las encuestas por sector
+		  * @param{Array} lista de respuestas de la encuesta del presente periodo
+		  * @return {Array} lista con los resultados para cada sector
+		  */
 	 	function groupByEntrepreneur(answers){
 			$scope.answers = AnalisisFactory.groupByEntrepreneur(answers);
 			console.log($scope.answers);
@@ -46,6 +51,8 @@
 
 			console.log($scope.sectoresScores);
 		}
+
+
 
  		getSectores();
 	 	getIndicadores();

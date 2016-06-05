@@ -82,7 +82,8 @@
 				url: '/api/personasSectores/update',
 				data: data
 			})
-            .success(function(response){            	
+            .success(function(response){
+				console.log(response);
                 defered.resolve(response);
             })
             .error(function(err){            	

@@ -51,7 +51,6 @@ class PersonasSectores extends Controller
         // $persona = Persona::find($request->input('id'));
 
         $idPersonaSector = PersonasSectore::where('persona_id', $personaId)->select('id')->get();
-        
         $personaSector = PersonasSectore::find($idPersonaSector[0]->id);        
         $personaSector->sector_id = $sectorId;
 
