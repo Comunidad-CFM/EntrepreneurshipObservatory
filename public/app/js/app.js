@@ -162,7 +162,7 @@
         return filter;
     }
 
-		function type() {
+	function type() {
         var filter = function(estado) {
             if (estado === 't') {
                 return 'Abierta';
