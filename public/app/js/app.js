@@ -196,8 +196,8 @@
             })
             .state('admin.perfil', {
                 url: '/perfil',
-                templateUrl: './app/Admin/perfil.html',
-                controller: 'AdminController'
+                templateUrl: './app/Perfil/perfil.html',
+                controller: 'PerfilController'
             })
             .state('admin.encuestas', {
                 url: '/encuestas',
@@ -218,6 +218,11 @@
                 url: '/empresario',
                 templateUrl: './app/Empresario/empresario.html',
                 controller: 'EmpresarioController'
+            })
+            .state('empresario.perfil', {
+                url: '/perfil',
+                templateUrl: './app/Perfil/perfil.html',
+                controller: 'PerfilController'
             })
             .state('empresario.encuestas', {
                 url: '/encuestas',
@@ -249,6 +254,11 @@
                 templateUrl: './app/Analisis/analisis.html',
                 controller: 'AnalisisController'
             })
+            .state('empresario.analisis',{
+                url: '/analisis',
+                templateUrl: './app/Analisis/analisis.html',
+                controller: 'AnalisisController'
+            })
             .state('admin.periodos',{
                 url: '/periodos',
                 templateUrl: './app/Periodos/periodos.html',
@@ -263,6 +273,11 @@
                 url: '/encuestador',
                 templateUrl: './app/Encuestador/encuestador.html',
                 controller: 'EncuestadorController'
+            })
+            .state('encuestador.perfil', {
+                url: '/perfil',
+                templateUrl: './app/Perfil/perfil.html',
+                controller: 'PerfilController'
             })
             .state('encuestador.encuestas', {
                 url: '/encuestas',
