@@ -90,7 +90,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <p>
-                                                    <label for="apellido1">Primer Apellido</label>
+                                                    <label for="apellido1">Primer apellido</label>
                                                     <input ng-model="persona.apellido1" class="form-control" type="text" name="apellido1" id="apellido1" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
                                                 </p>
                                             </div>
@@ -108,7 +108,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <p>
-                                                    <label for="apellido2">Segundo Apellido</label>
+                                                    <label for="apellido2">Segundo apellido</label>
                                                     <input ng-model="persona.apellido2" class="form-control" type="text" name="apellido2" id="apellido2" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
                                                 </p>
                                             </div>
@@ -117,20 +117,18 @@
                                         <div class="col-md-12">
                                             <div class="col-md-6">
                                                 <label for="name">Region</label>
-                                                <select class="form-control margin text-center" ng-options="region as region.nombre for region in regiones track by region.id" ng-model="selectedRegion" ng-change="update()"></select>
+                                                <select class="form-control text-center" ng-options="region as region.nombre for region in regiones track by region.id" ng-model="selectedRegion" ng-change="update()"></select>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="name">Territorio</label>
-                                                <select class="form-control margin text-center" ng-options="territorio as territorio.nombre for territorio in territorios track by territorio.id" ng-model="selectedTerritorio"></select>
+                                                <select class="form-control text-center" ng-options="territorio as territorio.nombre for territorio in territorios track by territorio.id" ng-model="selectedTerritorio"></select>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
+                                        <div class="col-md-12 margin">
                                             <div class="col-md-12">
-                                                <p>
-                                                    <label>Sectores</label>
-                                                    <select class="form-control margin" ng-options="sector as sector.nombre for sector in sectores track by sector.id" ng-model="selectedSector"></select>
-                                                </p>
+                                                <label for="name">Sectores</label>
+                                                <select class="form-control" ng-options="sector as sector.nombre for sector in sectores track by sector.id" ng-model="selectedSector"></select>
                                             </div>
                                         </div>
                                     </form>
@@ -175,7 +173,7 @@
                             </div>
                             <div class="col-md-6">
                                 <p>
-                                    <label for="apellido1">Primer Apellido</label>
+                                    <label for="apellido1">Primer apellido</label>
                                     <input ng-model="persona.apellido1" class="form-control" type="text" name="apellido1" id="apellido1" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
                                 </p>
                             </div>
@@ -189,7 +187,7 @@
                             </div>
                             <div class="col-md-6">
                                 <p>
-                                    <label for="apellido2">Segundo Apellido</label>
+                                    <label for="apellido2">Segundo apellido</label>
                                     <input ng-model="persona.apellido2" class="form-control" type="text" name="apellido2" id="apellido2" required pattern="[a-zA-Z]{3,}" title="Por favor ingrese más de dos letras.">
                                 </p>
                             </div>
@@ -197,7 +195,7 @@
                         <div class="col-md-12">
                             <div class="col-md-6">
                                 <p>
-                                    <label for="name">Confirmar Contraseña</label>
+                                    <label for="name">Confirmar contraseña</label>
                                     <input ng-model="persona.contrasenaConf" class="form-control" type="password" name="contrasenaConf" id="contrasenaConf" required pattern="[a-zA-Z0-9._%+-]{3,}" title="Por favor ingrese más de dos letras.">
                                      <span class="red" ng-show="errorcontrasena">Las contraseñas no coinciden.</span>
                                 </p>
@@ -216,23 +214,22 @@
                         </div>
                         <div class="col-md-12">
                             <div class="col-md-6">
-                                <label for="name">Region</label>
-                                <select class="form-control margin text-center" ng-options="region as region.nombre for region in regiones track by region.id" ng-model="selectedRegion" ng-change="update()"></select>
+                                <label for="name">Región</label>
+                                <select class="form-control text-center" ng-options="region as region.nombre for region in regiones track by region.id" ng-model="selectedRegion" ng-change="update()"></select>
                             </div>
                             <div class="col-md-6">
                                 <label for="name">Territorio</label>
-                                <select class="form-control margin text-center" ng-options="territorio as territorio.nombre for territorio in territorios track by territorio.id" ng-model="selectedTerritorio"></select>
+                                <select class="form-control text-center" ng-options="territorio as territorio.nombre for territorio in territorios track by territorio.id" ng-model="selectedTerritorio"></select>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 margin">
                             <div class="col-md-12">
                                 <p>
                                     <label>Sectores</label>
-                                    <select class="form-control margin" ng-options="sector as sector.nombre for sector in sectores track by sector.id" ng-model="selectedSector"></select>
+                                    <select class="form-control" ng-options="sector as sector.nombre for sector in sectores track by sector.id" ng-model="selectedSector"></select>
                                 </p>
                             </div>
                         </div>
-
                         <div class="col-md-12">
                             <div class="col-md-12">
                                 <div ng-show="registro" ng-class="styleRegistro">{{msgRegistro}}</div>
