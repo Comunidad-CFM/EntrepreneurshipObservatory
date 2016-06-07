@@ -54,9 +54,7 @@
 	<script type="text/javascript" src="<?= asset('app/Personas/personas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Encuestas/encuestas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Encuestas/encuestas.factory.js') ?>"></script>
-	<script type="text/javascript" src="<?= asset('app/Encuestas/contestar-encuestas.controller.js') ?>"></script>
-	<script type="text/javascript" src="<?= asset('app/Encuestas/encuestador-panel-encuestas.controller.js') ?>"></script>
-	<!-- <script type="text/javascript" src="<?= asset('app/Encuestas/empresario-encuestador-panel-encuestas.controller.js') ?>"></script> -->
+	<script type="text/javascript" src="<?= asset('app/Encuestador/contestar-encuestas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Preguntas/preguntas.controller.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Preguntas/preguntas.factory.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('app/Indicadores/indicadores.controller.js') ?>"></script>

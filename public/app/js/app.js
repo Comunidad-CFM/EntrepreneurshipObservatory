@@ -221,8 +221,8 @@
             })
             .state('empresario.encuestas', {
                 url: '/encuestas',
-                templateUrl: './app/Encuestas/empresario-panel-encuestas.html',
-                controller: 'EmpresarioPanelEncuestasController'
+                templateUrl: './app/Empresario/panel-encuestas.html',
+                controller: 'EmpresarioController'
             })
             .state('autenticacion', {
                 url: '/autenticacion',
@@ -266,12 +266,12 @@
             })
             .state('encuestador.encuestas', {
                 url: '/encuestas',
-                templateUrl: './app/Encuestas/encuestador-panel-encuestas.html',
-                controller: 'EncuestadorPanelEncuestasController'
+                templateUrl: './app/Encuestador/panel-encuestas.html',
+                controller: 'EncuestadorController'
             })
             .state('encuestador.contestar', {
                 url: '/contestar',
-                templateUrl: './app/Encuestas/contestar-encuestas.html',
+                templateUrl: './app/Encuestador/contestar-encuestas.html',
                 controller: 'ContestarEncuestasController'
             });
         }

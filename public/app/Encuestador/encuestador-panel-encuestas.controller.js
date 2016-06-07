@@ -19,6 +19,11 @@
 		// Funciones
 		$scope.getAplicaciones = getAplicaciones;
 		$scope.contestarEncuesta = contestarEncuesta;
+		$scope.logOut = logOut;
+
+		function logOut() {
+			Auth.logOut();
+		}
 
         function contestarEncuesta(idAplicacion, id, descripcion){
             $scope.encuestaId = id;
