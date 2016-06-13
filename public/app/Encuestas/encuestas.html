@@ -55,6 +55,9 @@
                             </div>
                         </div>
                         <div class="info-box margin" ng-show="encuestas.length == 0">No hay encuestas registradas.</div>
+                        <div class="text-center margin" ng-hide="encuestas">
+                            <label>Cargando encuestas...</label>
+                        </div>
                     </div>
 
                     <!-- Formulario editar -->
@@ -219,4 +222,8 @@
             </div>
         </div>
     </div>
+</div>
+<div ng-show="errorConn" id="info-message" class="alert alert-danger fade in">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;
+    Ha ocurrido un error inesperado al cargar las encuestas, inténtelo de nuevo
 </div>

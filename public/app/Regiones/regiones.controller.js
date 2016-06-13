@@ -34,10 +34,16 @@
   	* scope.
   	*/
     function getRegiones () {
+      $scope.regiones = false;
+      
      	RegionesFactory.getAll()
      	  .then(function (response) {       	 		             	 	
   	 	   	$scope.regiones = response;
-  	    });       	 	
+  	    })
+        .catch(function(err) {
+            $scope.regiones = true;
+            $scope.errorConn = true;
+        });       	 	
     }
     getRegiones();
 

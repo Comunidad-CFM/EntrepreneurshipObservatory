@@ -149,10 +149,16 @@
         getIndicadores();
 
         function getPreguntas() {
+            $scope.preguntas = false;
+
             PreguntasFactory.getAll()
                 .then(function(response) {
                     $scope.preguntas = response;
                     setNombreIndicador();
+                })
+                .catch(function(err) {
+                    $scope.preguntas = true;
+                    $scope.errorConn = true;
                 });
         }
 

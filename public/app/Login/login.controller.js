@@ -29,6 +29,7 @@
 		*/
 		function logIn() {		
 			$scope.error = false;
+			$scope.errorConn = false;
 
 			LoginFactory.logIn($scope.email, $scope.contrasena)
 			.then(function(response) {
@@ -38,6 +39,10 @@
 				else {
 					$scope.error = true;
 				}
+			})
+			.catch(function(err) {
+				$scope.errorConn = true;
+				console.log(err);
 			});
 		}
 

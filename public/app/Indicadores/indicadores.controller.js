@@ -246,10 +246,16 @@
 		 * Obtiene todos los indicadores de la base de datos.
 		 */
 		function getAll() {
+			$scope.indicadores = false;
+
 			IndicadoresFactory.getAll()
 			.then(function(response) {
 				$scope.indicadores = response;
-			});
+			})
+	        .catch(function(err) {
+	            $scope.indicadores = true;
+	            $scope.errorConn = true;
+	        });
 		}
 
 		/**

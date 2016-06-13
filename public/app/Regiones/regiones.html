@@ -39,6 +39,9 @@
                         </div>
                     </div>
                     <div class="info-box margin" ng-show="regiones.length == 0">No hay regiones registradas.</div>
+                    <div class="text-center margin" ng-hide="regiones">
+                        <label>Cargando regiones...</label>
+                    </div>
                 </div>
                 <div id="editarRegion" class="modal fade" data-keyboard="false" data-backdrop="static">
                         <div class="modal-dialog modal-md">
@@ -104,4 +107,8 @@
             </div>
         </div>
     </div>
+</div>
+<div ng-show="errorConn" id="info-message" class="alert alert-danger fade in">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;
+    Ha ocurrido un error inesperado al cargar las regiones, inténtelo de nuevo
 </div>

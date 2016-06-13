@@ -52,6 +52,7 @@
 		getAplicacionesByPersona();
 
 		function getEncuestas() {
+			$scope.encuestas = false;
 			var ids = [];
 			$scope.aplicaciones.forEach(function(aplicacion) {
 				ids.push(aplicacion.encuesta_id);
@@ -60,8 +61,12 @@
 			EncuestasFactory.getEncuestas(ids)
 				.then(function(response) {
 					$scope.encuestas = response;
-				});
-		}
+				})
+	            .catch(function(err) {
+	                $scope.encuestas = true;
+	                $scope.errorConn = true;
+	            });
+			}
 
 		function getIdAplicacion(idEncuesta) {
 			var idAplicacion = 0;

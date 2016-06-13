@@ -38,7 +38,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="info-box margin" ng-show="territorios.length == 0">No hay territorios registrados.</div>              
+                    <div class="info-box margin" ng-show="territorios.length == 0">No hay territorios registrados.</div> 
+                    <div class="text-center margin" ng-hide="territorios">
+                        <label>Cargando territorios...</label>
+                    </div>             
                 </div>
                 <div id="editarterritorio" class="modal fade" data-keyboard="false" data-backdrop="static">
                     <div class="modal-dialog modal-md">
@@ -118,4 +121,8 @@
             </div>
         </div>
     </div>
+</div>
+<div ng-show="errorConn" id="info-message" class="alert alert-danger fade in">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;
+    Ha ocurrido un error inesperado al cargar los territorios, inténtelo de nuevo
 </div>

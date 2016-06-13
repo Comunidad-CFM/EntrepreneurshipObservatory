@@ -6,7 +6,6 @@
 		.controller('EncuestadorPanelEncuestasController', EncuestadorPanelEncuestasController);
 
 	function EncuestadorPanelEncuestasController($scope, EncuestasFactory, $cookies, AplicacionesFactory, PersonasFactory) {
-
 		$scope.encuestador = $cookies.getObject('session').id;
 
 		$scope.idsAplicaciones =  [];	//Ids Aplicaciones
@@ -29,7 +28,6 @@
             $scope.encuestaId = id;
             $scope.encuestaDescripcion = descripcion;
 			$scope.idAplicacion = idAplicacion;
-			// $scope.idAplicacion = getIdAplicacion(id);
 
 			EncuestasFactory.setId(id);
 			EncuestasFactory.setDescripcion(descripcion);
@@ -95,19 +93,6 @@
 				.then(function(response) {
 					$scope.personas = groupByPerson(response);
 				});
-			// AplicacionesFactory.getAll()
-			// 	.then(function(response) {
-			// 		$scope.aplicaciones = response;
-			// 		$scope.personas = [];
-            //
-			// 		PersonasFactory.getPersonas($scope.aplicaciones)
-			// 			.then(function(personas) {
-			// 				$scope.personas = personas;
-            //
-			// 				$scope.personas = borrarPersonasRepetidas($scope.personas);
-			// 				getEncuestas();
-			// 			});
-			// 	})
 		}
 
 		getAplicaciones();
@@ -124,29 +109,8 @@
 				.then(function(response) {
 					$scope.encuestas = response;
 					matchPersonasEncustas();
-					console.log("personas",$scope.personas);
-					console.log("aplicaciones",$scope.aplicaciones);
 				});
-				// .then(function() {
-				// 	var personas = $scope.personas.slice();
-                //
-        			// personas.forEach(function(persona) {
-				// 		persona.encuestas.forEach(function(encuesta) {
-				// 			var id = getIdAplicacionByPersonaEncuesta(persona.id, encuesta.id);
-				// 			encuesta.idAplicacion = id;
-				// 		});
-				// 	});
-				// });
 		}
-
-		// function getIdAplicacion(idEncuesta) {
-		// 	var idAplicacion = 0;
-		// 	$scope.aplicaciones.forEach(function(aplicacion) {
-		// 		if(aplicacion.encuesta_id === idEncuesta)
-		// 			idAplicacion = aplicacion.id;
-		// 	});
-		// 	return idAplicacion;
-		// }
 
 		//Agrega a la persona sus correspondientes encuestas
 		function matchPersonasEncustas() {
@@ -172,6 +136,7 @@
 			});
 			return id;
 		}
+
 		function getEncuesta(idPersona, idEncuesta) {
 			var encuestaAux = null;
 			$scope.encuestas.forEach(function(encuesta) {
@@ -199,6 +164,5 @@
 				}
 			});
 		}
-
 	}
 })();

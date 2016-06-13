@@ -6,8 +6,6 @@
     <div ng-repeat="persona in personas">
         <div>
             <label class="subtitle baskerville">{{persona.nombre}}</label>
-            <button style="visibility:hidden;text-align:center" class="btn btn-default margin float-right"><span ng-class="{'glyphicon glyphicon-plus':!nueva, 'glyphicon glyphicon-minus':nueva}"></span></button>
-
             <div class="col-md-12 col-sm-12 margin" ng-show="persona.encuestas">
                 <div class="col-md-4 col-sm-4 card-box" ng-repeat="encuesta in persona.encuestas" ng-if="encuesta.estado">
                     <div class="inner">
@@ -28,8 +26,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="info-box margin" ng-show="person.encuestas">No hay encuestas registradas.</div>
+        <div class="info-box margin" ng-show="encuestas.length == 0">No hay encuestas registradas.</div>
     </div>
     <div class="container">
         <div ui-view></div>

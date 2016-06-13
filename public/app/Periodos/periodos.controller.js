@@ -142,10 +142,16 @@
 		 * Obtiene todos los indicadores de la base de datos.
 		 */
 		function getAll() {
+			$scope.periodos = false;
+
 			PeriodosFactory.getAll()
 			.then(function(response) {
 				$scope.periodos = response;
-			});
+			})
+	        .catch(function(err) {
+	            $scope.periodos = true;
+	            $scope.errorConn = true;
+	        });
 		}
 
 		getAll();

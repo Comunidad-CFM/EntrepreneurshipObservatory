@@ -100,7 +100,6 @@
         * registro cuando se va a editar
         */
         function updateEdit () {
-            
             $scope.territorios = [];    
             $scope.territoriosEditar = [];
 
@@ -144,10 +143,15 @@
 		* Obtiene la lista de sectores registrados
         */
         function getSectores() {
+            $scope.sectores = false;
+
             SectoresFactory.getAll()
                 .then(function(response) {                	
                     $scope.sectores = response;
-                    
+                })
+                .catch(function(err) {
+                    $scope.sectores = true;
+                    $scope.errorConn = true;
                 });               
         }
         getSectores();

@@ -30,20 +30,24 @@
     setData();
   	
     /*
-  	* Obtener la lista de territorios almacenados en la base de datos y asignarla a la lista d eterritorios del
-  	* scope.
+  	* Obtener la lista de territorios almacenados en la base de datos y asignarla a la lista d eterritorios del scope.
   	*/
     function getTerritorios () {
+      $scope.territorios = false;
+
      	TerritoriosFactory.getAll()
      	  .then(function (response) {                		             	 
   	 	   	$scope.territorios = response;
-  	    });       	 	
+  	    })
+        .catch(function(err) {
+            $scope.territorios = true;
+            $scope.errorConn = true;
+        });       	 	
     }    
     getTerritorios();
 
     /*
-    * Obtener la lista de regiones almacenadas en la base de datos y asignarla a la lista d eterritorios del
-    * scope.
+    * Obtener la lista de regiones almacenadas en la base de datos y asignarla a la lista de eterritorios del scope.
     */
     function getRegiones () {
       RegionesFactory.getAll()

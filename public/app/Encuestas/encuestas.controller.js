@@ -243,10 +243,16 @@
         * Obtiene todas las encuestas.
         */
         function getAll() {
+            $scope.errorConn = false;
+
         	EncuestasFactory.getAll()
         	.then(function(response) {
         		$scope.encuestas = response;
-        	});
+        	})
+            .catch(function(err) {
+                $scope.encuestas = true;
+                $scope.errorConn = true;
+            });
         }
 
         getAll();

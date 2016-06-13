@@ -52,6 +52,9 @@
                             </table>
                         </div>
                         <div class="info-box margin" ng-show="personas.length == 0">No hay personas registradas.</div>
+                        <div class="text-center margin" ng-hide="personas">
+                            <label>Cargando personas...</label>
+                        </div>
                     </div>
 
                     <!-- Formulario editar -->
@@ -243,4 +246,8 @@
             </div>
         </div>
     </div>
+</div>
+<div ng-show="errorConn" id="info-message" class="alert alert-danger fade in">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;
+    Ha ocurrido un error inesperado al cargar las personas, inténtelo de nuevo
 </div>

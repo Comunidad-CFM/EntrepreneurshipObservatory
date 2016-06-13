@@ -50,6 +50,9 @@
                             </table>
                         </div>
                         <div class="info-box margin" ng-show="preguntas.length == 0">No hay preguntas registradas.</div>
+                        <div class="text-center margin" ng-hide="preguntas">
+                            <label>Cargando preguntas...</label>
+                        </div>
                     </div>
 
                     <!-- Formulario editar pregunta-->
@@ -123,4 +126,8 @@
             </div>
         </div>
     </div>
+</div>
+<div ng-show="errorConn" id="info-message" class="alert alert-danger fade in">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;
+    Ha ocurrido un error inesperado al cargar las preguntas, inténtelo de nuevo
 </div>

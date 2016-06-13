@@ -1,7 +1,8 @@
-body {
+body, html {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
 	text-align: justify;
+    background-color: #F7F7F7;
 }
 .navbar-default {
     background-color: #f8f8f8;
@@ -43,10 +44,9 @@ body {
     display: inline;
     margin-right: 10px;
 }
-
 .cover{
     position: relative;
-    background: url(../imagenes/portada2.jpg);
+    background: url(../imagenes/portada.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -139,6 +139,12 @@ textarea {
         padding-right: 0;
         padding-left: 0;
     }
+    #info-message {
+        position: fixed;
+        bottom: 35px;
+        right: 10px;
+        width: 95%;
+    }
 }
 @media screen and (min-width: 360px) {
     .title {
@@ -156,6 +162,12 @@ textarea {
         padding-right: 0;
         padding-left: 0;
     }
+    #info-message {
+        position: fixed;
+        bottom: 35px;
+        right: 10px;
+        width: 95%;
+    }
 }
 @media screen and (min-width: 480px) {
     .title {
@@ -166,6 +178,12 @@ textarea {
         overflow-x: auto;
         display: block;
     }
+    #info-message {
+        position: fixed;
+        bottom: 35px;
+        right: 10px;
+        width: 60%;
+    }
 }
 @media screen and (min-width: 640px) {
     .title {
@@ -175,6 +193,12 @@ textarea {
     table {
         overflow-x: auto;
         display: table;
+    }
+    #info-message {
+        position: fixed;
+        bottom: 35px;
+        right: 10px;
+        width: 60%;
     }
 }
 @media screen and (min-width: 768px) {
@@ -192,6 +216,12 @@ textarea {
         overflow-x: auto;
         display: table;
     }
+    #info-message {
+        position: fixed;
+        bottom: 35px;
+        right: 10px;
+        width: 60%;
+    }
 }
 @media screen and (min-width: 1024px) {
     .title {
@@ -208,6 +238,12 @@ textarea {
     #encuestas > .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
         padding-right: 15px;
         padding-left: 15px;
+    }
+    #info-message {
+        position: fixed;
+        bottom: 35px;
+        right: 10px;
+        width: 40%;
     }
 }
 @media only screen and (min-width:1440px){
@@ -366,23 +402,20 @@ footer {
 
 /* Box navs */
 .gestion-box {
-    background-color: #FAFAFA;
-    border: 1px solid #E5E5E5;
+    border: 1px solid;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 3px;
     margin: 25px 0px 25px 0px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    background-color: #FFF;
 }
 .perfil-box {
-    border: 1px solid #E5E5E5;
+    border: 1px solid;
     padding: 20px;
-    border-radius: 5px;
     margin: 25px 0px 25px 0px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    background-color: #FFF;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
 }
 .gestion-box .container {
     width: auto;
@@ -426,7 +459,7 @@ footer {
     padding: 0 7px 0 7px;
 }
 .card-box .inner {
-    background-color: #FAFAFA;
+    background-color: #FFF;
     border: 1px solid #E5E5E5;
     padding: 15px;
     border-radius: 5px;

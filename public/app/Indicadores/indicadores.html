@@ -42,6 +42,9 @@
                         </div>
             		</div>
             		<div class="info-box margin" ng-show="indicadores.length == 0">No hay indicadores registrados.</div>
+            		<div class="text-center margin" ng-hide="indicadores">
+                        <label>Cargando indicadores...</label>
+                    </div>
 
                     <!-- Formulario editar -->
                     <div id="editarIndicador" class="modal fade" data-keyboard="false" data-backdrop="static">
@@ -124,4 +127,8 @@
 	        </div>
 	    </div>
 	</div>
+</div>
+<div ng-show="errorConn" id="info-message" class="alert alert-danger fade in">
+	<span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp;
+    Ha ocurrido un error inesperado al cargar los indicadores, inténtelo de nuevo
 </div>

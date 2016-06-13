@@ -341,10 +341,16 @@
         }
 
 
-        function getPersonas() {            
+        function getPersonas() {       
+            $scope.errorConn = false;
+
             PersonasFactory.getAll()
                 .then(function(response) {
                     $scope.personas = response;
+                })
+                .catch(function(err) {
+                    $scope.personas = true;
+                    $scope.errorConn = true;
                 });
         }
 
