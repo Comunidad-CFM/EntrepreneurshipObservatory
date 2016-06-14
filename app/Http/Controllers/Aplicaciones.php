@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Aplicacione;
+use Carbon\Carbon;
 
 class Aplicaciones extends Controller
 {
@@ -84,23 +85,40 @@ class Aplicaciones extends Controller
      * @return Response
      */
     public function getAplicacionesByPersona(Request $request) {
-      $idPersona = $request->input('persona_id');
+        $idPersona = $request->input('persona_id');
+        
+        $date = $this->getFechaActual();
+        $month = $date->month;
+        $year = $date->year;
+        $periodo = $this->getPeriodoActual($month);
 
-      $aplicacion = Aplicacione::select('aplicaciones.id', 'aplicaciones.fechaAplicacion', 'aplicaciones.encuesta_id', 'aplicaciones.persona_id', 'aplicaciones.periodo_id')
+      $aplicacion = Aplicacione::join('periodos', 'periodos.id', '=', 'aplicaciones.periodo_id')
+          ->select('aplicaciones.id', 'aplicaciones.fechaAplicacion', 'aplicaciones.encuesta_id', 'aplicaciones.persona_id', 'aplicaciones.periodo_id')
           ->where('persona_id', $idPersona)
+          ->where('periodos.anio',(int)$year)
+          ->where('periodos.cuatrimestre',(int)$periodo)
           ->get();
       return $aplicacion;
     }
 
 
     public function getAplicacionesPersonasEncuestas() {
+
+        $date = $this->getFechaActual();
+        $month = $date->month;
+        $year = $date->year;
+        $periodo = $this->getPeriodoActual($month);
+
         return Aplicacione::join('encuestas', 'encuestas.id', '=', 'aplicaciones.encuesta_id')
             ->join('personas', 'personas.id', '=', 'aplicaciones.persona_id')
+
             ->select('aplicaciones.id as idAplicacion', 'aplicaciones.fechaAplicacion', 'aplicaciones.encuesta_id',
                 'aplicaciones.persona_id as idEmpresario', 'aplicaciones.periodo_id', 
                 'encuestas.id as idEncuesta', 'encuestas.descripcion', 'encuestas.estado', 'encuestas.fechaCreacion', 
                 'encuestas.fechaModificacion', 'personas.nombre', 
                 'personas.apellido1', 'personas.apellido2', 'personas.tipo')
+            ->where('periodos.anio',(int)$year)
+            ->where('periodos.cuatrimestre',(int)$periodo)
             ->get();
     }
 
@@ -120,5 +138,21 @@ class Aplicaciones extends Controller
         $aplicacion->save();
 
         return 'true';
+    }
+
+    public function getFechaActual(){
+
+        $date = Carbon::now();
+
+        return $date;
+    }
+    public function getPeriodoActual($month){
+
+        if ($month>=1 and $month<=4)
+            return 1;
+        else if ($month>=5 and $month<=8)
+            return 2;
+        else
+            return 3;
     }
 }
