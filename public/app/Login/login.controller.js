@@ -42,7 +42,6 @@
 			})
 			.catch(function(err) {
 				$scope.errorConn = true;
-				console.log(err);
 			});
 		}
 

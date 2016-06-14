@@ -1,1 +1,0 @@
-encuestador.factory.js

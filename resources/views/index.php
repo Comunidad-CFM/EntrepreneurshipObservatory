@@ -25,13 +25,11 @@
 	<script type="text/javascript" src="<?= asset('node_modules/angular-messages/angular-messages.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/carousel/js/jquery.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/jquery/dist/jquery.min.js') ?>"></script>
-<!--	<script type="text/javascript" src="--><?//= asset('node_modules/angular-bootstrap-npm/dist/angular-bootstrap-tpls.min.js') ?><!--"></script>-->
 	<script type="text/javascript" src="<?= asset('node_modules/carousel/js/bootstrap.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/carousel/js/jquery.prettyPhoto.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/carousel/js/main.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/angular-ui-router/release/angular-ui-router.min.js') ?>"></script>
 	<script type="text/javascript" src="<?= asset('node_modules/angular-cookies/angular-cookies.min.js') ?>"></script>
-	<!-- <script type="text/javascript" src="<= asset('node_modules/bootstrap/dist/js/bootstrap.min.js') ?>"></script> -->
 	<script type="text/javascript" src="<?= asset('node_modules/angular-material/angular-material.min.js') ?>"></script>
 
 	<!-- Application Scripts -->

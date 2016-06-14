@@ -145,6 +145,10 @@ textarea {
         right: 10px;
         width: 95%;
     }
+    .error-auth {
+        width: 99%;
+        margin-top: 15px;
+    }
 }
 @media screen and (min-width: 360px) {
     .title {
@@ -168,6 +172,10 @@ textarea {
         right: 10px;
         width: 95%;
     }
+    .error-auth {
+        width: 90%;
+        margin-top: 15px;
+    }
 }
 @media screen and (min-width: 480px) {
     .title {
@@ -184,6 +192,10 @@ textarea {
         right: 10px;
         width: 60%;
     }
+    .error-auth {
+        width: 70%;
+        margin-top: 15px;
+    }
 }
 @media screen and (min-width: 640px) {
     .title {
@@ -199,6 +211,10 @@ textarea {
         bottom: 35px;
         right: 10px;
         width: 60%;
+    }
+    .error-auth {
+        width: 60%;
+        margin-top: 15px;
     }
 }
 @media screen and (min-width: 768px) {
@@ -221,6 +237,10 @@ textarea {
         bottom: 35px;
         right: 10px;
         width: 60%;
+    }
+    .error-auth {
+        width: 50%;
+        margin-top: 15px;
     }
 }
 @media screen and (min-width: 1024px) {
@@ -245,6 +265,10 @@ textarea {
         right: 10px;
         width: 40%;
     }
+    .error-auth {
+        width: 60%;
+        margin-top: 15px;
+    }
 }
 @media only screen and (min-width:1440px){
     .login-box {
@@ -254,6 +278,16 @@ textarea {
 
     footer {
         height: 7vh;
+    }
+    #info-message {
+        position: fixed;
+        bottom: 60px;
+        right: 10px;
+        width: 30%;
+    }
+    .error-auth {
+        width: 35%;
+        margin-top: 15px;
     }
 }
 @media only screen and (min-width:2000px){
@@ -359,7 +393,7 @@ footer {
     height: 7vh;
     width: 100%;
     clear: both;
-    color: #666;
+    color: #FFF;
     background: #141419;
     line-height: 20px;
     overflow: hidden;

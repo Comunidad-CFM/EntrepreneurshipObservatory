@@ -78,15 +78,6 @@
                 });
         }
 
-        // function getAllOpcionesRespuesta() {
-        //     EncuestasFactory.getAll()
-        //         .then(function(response) {
-        //             $scope.encuestas = response;
-        //         });
-        // }
-
-        //getAllOpcionesRespuesta();
-
         function guardarRespuesta(pregunta, respuesta, comentario) {
 			if (comentario == null)
 				comentario = "";

@@ -232,7 +232,7 @@
             .state('autenticacion', {
                 url: '/autenticacion',
                 templateUrl: './app/Autenticacion/autenticacion.html',
-                controller: 'AutenticacionController'
+                controller: 'LoginController'
             })
             .state('admin.sectores',{
                 url: '/sectores',
