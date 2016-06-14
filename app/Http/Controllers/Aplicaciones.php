@@ -103,4 +103,22 @@ class Aplicaciones extends Controller
                 'personas.apellido1', 'personas.apellido2', 'personas.tipo')
             ->get();
     }
+
+    /**
+     * Update the resource in storage.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function update(Request $request) {
+        $idAplicacion = $request->input('id');
+        $nombreEncuestador = $request->input('encuestador');
+
+        $aplicacion = Aplicacione::find((int)$idAplicacion);
+        $aplicacion->encuestador = $nombreEncuestador;
+
+        $aplicacion->save();
+
+        return 'true';
+    }
 }

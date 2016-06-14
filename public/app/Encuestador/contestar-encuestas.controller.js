@@ -12,7 +12,8 @@
 		.controller('ContestarEncuestasController', ContestarEncuestasController);
 
 	function ContestarEncuestasController($scope, EncuestasFactory, $cookies, AplicacionesFactory, AplicacionesRespuestasFactory, $timeout) {
-		$scope.encuestador =  $cookies.getObject('session').id;
+		$scope.encuestador =  $cookies.getObject('session');
+
 
 		$scope.idAplicacion = 0;
         //Encuesta
@@ -154,6 +155,10 @@
 				$scope.preguntasRespondidas.forEach(function(pregunta) {
 					console.log("Pregunta", pregunta);
 					enviarEncuesta(pregunta.enunciado, pregunta.alternativa, $scope.idAplicacion);
+					AplicacionesFactory.update($scope.idAplicacion, $scope.encuestador.nombre + " " + $scope.encuestador.apellido1 + " " + $scope.encuestador.apellido2)
+						.then(function(response) {
+							console.log("Se ha guardado el nombre del encuestador");
+						});
 				});
 			}
 			ocultarMensaje();

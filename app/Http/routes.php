@@ -68,6 +68,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('/aplicaciones/getForSurvey', 'Aplicaciones@getForSurvey');
     Route::post('/aplicaciones/store', 'Aplicaciones@store');
     Route::delete('/aplicaciones/destroy/{aplications}', 'Aplicaciones@destroy');
+    Route::post('/aplicaciones/update', 'Aplicaciones@update');
     Route::post('/aplicaciones/getAplicacionesByPersona', 'Aplicaciones@getAplicacionesByPersona');
     Route::get('/aplicaciones/personasEncuestas', 'Aplicaciones@getAplicacionesPersonasEncuestas');
 
