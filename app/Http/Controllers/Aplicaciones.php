@@ -111,7 +111,7 @@ class Aplicaciones extends Controller
 
         return Aplicacione::join('encuestas', 'encuestas.id', '=', 'aplicaciones.encuesta_id')
             ->join('personas', 'personas.id', '=', 'aplicaciones.persona_id')
-
+            ->join('periodos', 'periodos.id', '=', 'aplicaciones.periodo_id')
             ->select('aplicaciones.id as idAplicacion', 'aplicaciones.fechaAplicacion', 'aplicaciones.encuesta_id',
                 'aplicaciones.persona_id as idEmpresario', 'aplicaciones.periodo_id', 
                 'encuestas.id as idEncuesta', 'encuestas.descripcion', 'encuestas.estado', 'encuestas.fechaCreacion', 
