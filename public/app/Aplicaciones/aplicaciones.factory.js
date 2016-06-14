@@ -23,6 +23,7 @@
 			getForSurvey: getForSurvey,
 			store: store,
 			remove: remove,
+			update: update,
 			getAplicacionesByPersona : getAplicacionesByPersona,
 			getAplicacionesPersonasEncuestas: getAplicacionesPersonasEncuestas
 		};
@@ -166,6 +167,28 @@
 
 			return defered.promise;
 
+		}
+
+		function update(idAplicacion, encuestador) {
+			var defered = $q.defer(),
+				data = {
+					id: idAplicacion,
+					encuestador: encuestador
+				};
+
+			$http({
+				method: 'POST',
+				url: 'api/aplicaciones/update',
+				data: data
+			})
+				.success(function(response) {
+					defered.resolve(response);
+				})
+				.error(function(err) {
+					defered.reject(err);
+				});
+
+			return defered.promise;
 		}
 	}
 

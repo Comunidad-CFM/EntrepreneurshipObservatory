@@ -38,7 +38,8 @@
 			getDescripcion: getDescripcion,
 			setDescripcion: setDescripcion,
 			getIdAplicacion: getIdAplicacion,
-			setIdAplicacion: setIdAplicacion
+			setIdAplicacion: setIdAplicacion,
+			removeItem: removeItem
 		};
 
 		var data = {
