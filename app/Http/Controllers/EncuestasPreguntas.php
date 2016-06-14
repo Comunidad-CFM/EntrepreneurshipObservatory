@@ -48,4 +48,8 @@ class EncuestasPreguntas extends Controller
 
         return 'true';
     }
+
+    public function getNumberOfQuestions($idEncuesta) {
+        return EncuestasPregunta::where('encuestas_preguntas.encuesta_id', '=', $idEncuesta)->count();
+    }
 }

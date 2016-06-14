@@ -62,6 +62,7 @@ Route::group(['prefix' => 'api'], function () {
     // EncuestasPreguntas.
     Route::post('/encuestasPreguntas/store', 'EncuestasPreguntas@store');
     Route::delete('/encuestasPreguntas/destroy/{questions}', 'EncuestasPreguntas@destroy');
+    Route::get('/encuestasPreguntas/getNumberOfQuestions/{idEncuesta}', 'EncuestasPreguntas@getNumberOfQuestions');
 
     // Aplicaciones.
     Route::get('/aplicaciones/todas', 'Aplicaciones@getAll');

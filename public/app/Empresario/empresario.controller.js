@@ -79,6 +79,15 @@
 			EncuestasFactory.getEncuestas(ids)
 				.then(function(response) {
 					$scope.encuestas = response;
+					$scope.encuestas.forEach(function(encuesta) {
+						EncuestasFactory.getNumberOfQuestions(encuesta.id)
+							.then(function (response) {
+								if (encuesta.estado === 0)
+									$scope.encuestas = EncuestasFactory.removeItem(encuesta, $scope.encuestas);
+								else
+									encuesta.numeroPreguntas = parseInt(response);
+							})
+					});
 				})
 	            .catch(function(err) {
 	                $scope.encuestas = true;

@@ -39,7 +39,8 @@
 			setDescripcion: setDescripcion,
 			getIdAplicacion: getIdAplicacion,
 			setIdAplicacion: setIdAplicacion,
-			removeItem: removeItem
+			removeItem: removeItem,
+			getNumberOfQuestions: getNumberOfQuestions
 		};
 
 		var data = {
@@ -432,6 +433,23 @@
 				method: 'POST',
 				url: 'api/encuestas/getEncuestas',
 				data: data
+			})
+				.success(function(response) {
+					defered.resolve(response);
+				})
+				.error(function(err) {
+					defered.reject(err);
+				});
+
+			return defered.promise;
+		}
+
+		function getNumberOfQuestions(idEncuesta){
+			var defered = $q.defer();
+
+			$http({
+				method: 'GET',
+				url: 'api/encuestasPreguntas/getNumberOfQuestions/' + idEncuesta,
 			})
 				.success(function(response) {
 					defered.resolve(response);
