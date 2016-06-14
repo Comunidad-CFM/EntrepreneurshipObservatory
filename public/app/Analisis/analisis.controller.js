@@ -16,8 +16,6 @@
 	* @param {Object} Servicio que brinda funciones del analisis al controlador.
 	*/
 	function AnalisisController ($scope, AnalisisFactory, IndicadoresFactory, SectoresFactory) {		
-		// $scope.get = get;
-
 		function get() {
 			AnalisisFactory.get(1)
 			.then(function(response) {
@@ -59,9 +57,11 @@
                 ps = AnalisisFactory.calculatePs(ns,n),
                 nir,
                 pir,
-                xir;
+                xir,
+                nsir = [],
+                psir;
 
-            console.log('ICEBySector ->',$scope.ICEBySector);
+            console.log('ICEBySector ->', $scope.ICEBySector);
             console.log("------------------------------");
             console.log('ns ->',ns);
 		 	console.log('n ->',n);
@@ -75,6 +75,14 @@
 		 	console.log("------------------------------");
 		 	xir = AnalisisFactory.calculateXir(pir);
 		 	console.log('xir ->', xir);
+		 	console.log("------------------------------");
+		 	$scope.sectores.forEach(function(sector) {
+		 		nsir.push(AnalisisFactory.calculateNsir($scope.ICEBySector, $scope.indicadores, sector));
+		 	});
+		 	console.log('nsir ->', nsir);
+		 	console.log("------------------------------");
+		 	psir = AnalisisFactory.calculatePsir(nsir, ns);
+		 	console.log('psir ->', psir);
 		}
 
  		getSectores();
