@@ -11,6 +11,15 @@
 		.module('observatoryApp')
 		.controller('ContestarEncuestasController', ContestarEncuestasController);
 
+	/**
+	 * Controlador del administrador.
+	 * @param {Object} $scope. Servicio que permite la unión entre el HTML y el controlador.
+	 * @param {Object} EncuestasFactory. Servicio que brinda funciones de las encuestas que ayudan a la funcionalidad del controlador.
+	 * @param {Object} $cookies. Proporciona acceso de lectura/escritura a las cookies de navegador.
+	 * @param {Object} AplicacionesFactory. Servicio que brinda funciones de las aplicaciones que ayudan a la funcionalidad del controlador.
+	 * @param {Object} AplicacionesRespuestasFactory. Servicio que brinda funciones de las aplicaciones-espuestas que ayudan a la funcionalidad del controlador.
+	 * @param {Object} $timeout. Promesa que resolverá cierto trozo de código cuando determinado tiempo ha pasado.
+	 */
 	function ContestarEncuestasController($scope, EncuestasFactory, $cookies, AplicacionesFactory, AplicacionesRespuestasFactory, $timeout) {
 		$scope.encuestador =  $cookies.getObject('session');
 
@@ -47,6 +56,9 @@
         $scope.guardarRespuesta = guardarRespuesta;
 		$scope.guardarEncuesta = guardarEncuesta;
 
+		/**
+		 * Obtiene datos del factory
+		 */
         function getEncuesta(){
             $scope.encuestaId = EncuestasFactory.getId();
             $scope.encuestaDescripcion = EncuestasFactory.getDescripcion();
@@ -56,6 +68,9 @@
 
 		getEncuesta();
 
+		/**
+		 * Obtiene las preguntas de la encuesta seleccionada
+		 */
         function getpreguntasByEncuesta(id) {
             EncuestasFactory.getpreguntasEncuestas(id)
                 .then(function(response) {
@@ -78,6 +93,9 @@
                 });
         }
 
+		/**
+		 * Guarda las respuestas
+		 */
         function guardarRespuesta(pregunta, respuesta, comentario) {
 			if (comentario == null)
 				comentario = "";
@@ -98,6 +116,9 @@
 				$scope.preguntasRespondidas.push(data);
         }
 
+		/**
+		 * Verifica si existe una pregunta con el mismo id
+		 */
 		function existePregunta (preguntas, idPregunta) {
 			var existe = false;
 			preguntas.forEach(function(pregunta) {
@@ -107,6 +128,9 @@
 			return existe;
 		}
 
+		/**
+		 * Modifica los datos(respuestas) de las preguntas
+		 */
 		function modificarPregunta (preguntas, idPregunta, respuesta, comentario) {
 			preguntas.forEach(function(pregunta) {
 				if (pregunta.pregunta_id == idPregunta){
@@ -116,6 +140,9 @@
 			});
 		}
 
+		/**
+		 * Obtiene las encustas de las aplicaciones
+		 */
 		function getEncuestas() {
 			var ids = [];
 			$scope.aplicaciones.forEach(function(aplicacion) {
@@ -128,41 +155,35 @@
 			});
 		}
 
+		/**
+		 * Guarda las respuestas de la encuesta
+		 */
 		function guardarEncuesta() {
 			if ($scope.preguntasRespondidas === null){
-				console.log("No se ha respondido ni una pregunta");
 				$scope.mensaje = true;
 				$scope.msgEnviarEncuesta = 'No se ha respondido ni una pregunta';
 				$scope.styleEnviarEncuesta = 'error-box';
 			}
 			else if ($scope.preguntasRespondidas.length < $scope.preguntasEncuesta.length){
-				console.log("Faltan pregunta por responder");
 				$scope.mensaje = true;
 				$scope.msgEnviarEncuesta = 'Faltan preguntas por responder';
 				$scope.styleEnviarEncuesta = 'error-box';
 			}
 			else{
-				console.log("Se puede guardar");
 				$scope.preguntasRespondidas.forEach(function(pregunta) {
-					console.log("Pregunta", pregunta);
 					enviarEncuesta(pregunta.enunciado, pregunta.alternativa, $scope.idAplicacion);
-					AplicacionesFactory.update($scope.idAplicacion, $scope.encuestador.nombre + " " + $scope.encuestador.apellido1 + " " + $scope.encuestador.apellido2)
-						.then(function(response) {
-							console.log("Se ha guardado el nombre del encuestador");
-						});
+					AplicacionesFactory.update($scope.idAplicacion, $scope.encuestador.nombre + " " + $scope.encuestador.apellido1 + " " + $scope.encuestador.apellido2);
 				});
 			}
 			ocultarMensaje();
         }
 
+		/**
+		 * Guardas datos en el factory
+		 */
 		function enviarEncuesta(pregunta, respuesta, aplicacion_id) {
-			console.log(respuesta+", "+aplicacion_id);
-			var agregado = false,
-            	data = {
-					pregunta: pregunta,
-					respuesta: respuesta,
-					aplicacion_id: aplicacion_id
-	            };
+
+			var data = {pregunta: pregunta, respuesta: respuesta, aplicacion_id: aplicacion_id};
 
             AplicacionesRespuestasFactory.store(data)
 				.then(function(response) {
@@ -170,21 +191,19 @@
 						$scope.mensaje = true;
 		                $scope.msgEnviarEncuesta = 'La encuesta ha sido guardada y enviada';
 		                $scope.styleEnviarEncuesta = 'success-box';
-							ocultarMensaje();
-							console.log("agrego");
-
-						}
-						else {
-							$scope.mensaje = true;
-			                $scope.msgEnviarEncuesta = 'Error al guardar la encuesta';
-			                $scope.styleEnviarEncuesta = 'error-box';
-							ocultarMensaje();
-							console.log("error");
-              			}
+						ocultarMensaje();
+					} else {
+						$scope.mensaje = true;
+						$scope.msgEnviarEncuesta = 'Error al guardar la encuesta';
+						$scope.styleEnviarEncuesta = 'error-box';
+						ocultarMensaje();
+					}
 				});
-
         }
 
+		/**
+		 * Oculta el mensaje de la vista
+		 */
 		function ocultarMensaje() {
 			$timeout(function() {
 				$scope.mensaje = false;
