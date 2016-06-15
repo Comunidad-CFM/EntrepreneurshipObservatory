@@ -124,12 +124,11 @@
             .then(function() {
                 EncuestasFactory.destroy(id)
                 .then(function(response) {
-                    console.log(response);
                     if(response === 'true') {
                         getAll();
                     }
                     else {
-                        console.log('error');
+                        
                     }
                 });
             }, function() {});
@@ -280,17 +279,23 @@
                     angular.forEach($scope.empresarios, function(entrepreneur) {
                         respaldoEmpresarios.push({id: entrepreneur.id, state: entrepreneur.state});
                     });
-                });
-            })
-            .then(function() {
-                // Se obtienen los periodos de la base de datos.
-                PeriodosFactory.getAll()
-                .then(function(response) {
-                    response.forEach(function(periodo) {
-                        periodo.label = 'Cuatrimestre ' + periodo.cuatrimestre +', ' + periodo.anio;
+
+                    return entrepreneursSurvey[0];
+                })
+                .then(function(aplicacion) {
+                    // Se obtienen los periodos de la base de datos.
+                    PeriodosFactory.getAll()
+                    .then(function(response) {
+                        response.forEach(function(periodo) {
+                            periodo.label = 'Cuatrimestre ' + periodo.cuatrimestre +', ' + periodo.anio;
+                        });
+                        response.forEach(function(periodo) {
+                            if (periodo.id === aplicacion.periodo_id) {
+                                $scope.selectedPeriodo = periodo;
+                            }
+                        });
+                        $scope.periodos = response;
                     });
-                    $scope.periodos = response;
-                    $scope.selectedPeriodo = $scope.periodos[0];
                 });
             });
         }

@@ -27,7 +27,7 @@
                             <div>
                                 <div class="col-md-6">
                                     <label>Selecciones el territorio</label>
-                                    <select class="form-control margin" ng-options="periodo as periodo.label for periodo in periodos track by periodo.id" ng-model="selectedPeriodo"></select>
+                                    <select class="form-control margin" ng-options="territorio as territorio.nombre for territorio in territorios track by territorio.id" ng-model="selectedTerritorio"></select>
                                 </div>
                                 <div class="col-md-6">
                                     <label>Selecciones el periodo</label>

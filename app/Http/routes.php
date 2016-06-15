@@ -126,6 +126,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::delete('/sectoresIndicadores/destroy/{ids}','SectoresIndicadores@destroy');
     Route::get('/sectoresIndicadores/getForIndicador/{id}','SectoresIndicadores@getForIndicador');
 
-    // Aplicaciones
-    Route::get('/analisis/get/{idPeriodo}','Analisis@get');
+    // Analisis
+    Route::get('/analisis/get/{idPeriodo}/{idTerritorio}','Analisis@get');
 });

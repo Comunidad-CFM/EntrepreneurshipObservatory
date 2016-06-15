@@ -34,12 +34,12 @@
 
 		return factory;
 
-		function get(idPeriodo) {
+		function get(idPeriodo, idTerritorio) {
 			var defered = $q.defer();
 
 			$http({
 				method: 'GET',
-				url: 'api/analisis/get/' + idPeriodo
+				url: 'api/analisis/get/' + idPeriodo + '/' + idTerritorio
 			})
 			.success(function(response) {
 				defered.resolve(response);

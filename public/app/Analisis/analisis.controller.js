@@ -15,7 +15,7 @@
 	* @param {Object} Servicio que permite la unión entre el HTML y el controlador.
 	* @param {Object} Servicio que brinda funciones del analisis al controlador.
 	*/
-	function AnalisisController ($scope, AnalisisFactory, IndicadoresFactory, SectoresFactory, PeriodosFactory) {
+	function AnalisisController ($scope, AnalisisFactory, IndicadoresFactory, SectoresFactory, PeriodosFactory, TerritoriosFactory) {
 		$scope.info;
 		$scope.getInfo = getInfo;
 
@@ -27,12 +27,23 @@
                 });
                 $scope.periodos = response;
                 $scope.selectedPeriodo = $scope.periodos[0];
-            });
+            })
+            .catch(function(err) { });
 		}
 
+		function getTerritorios () {
+	     	TerritoriosFactory.getAll()
+     	  	.then(function (response) {                		             	 
+	  	 	   	$scope.territorios = response;
+	  	 	   	$scope.selectedTerritorio = $scope.territorios[0];
+  	    	})
+	        .catch(function(err) { });       	 	
+    	}    
+
 		function getAplicaciones() {
-			AnalisisFactory.get($scope.selectedPeriodo.id)
+			AnalisisFactory.get($scope.selectedPeriodo.id, $scope.selectedTerritorio.id)
 			.then(function(response) {
+				console.log(response)
 				return response;
 			})
 			.then(function (response) {
@@ -48,7 +59,7 @@
 
 		function getInfo () {
 			$scope.noResults = false;
-			
+
 			IndicadoresFactory.getAll()
 				.then(function (response) { // Get indicadores.
 					$scope.indicadores = response;
@@ -143,5 +154,6 @@
 		}
 
 		getPeriodos();
+		getTerritorios();
 	}
 })();

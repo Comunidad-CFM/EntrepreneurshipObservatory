@@ -158,12 +158,12 @@
 			var defered = $q.defer();
 
 			$http.get('api/aplicaciones/personasEncuestas')
-				.success(function(response) {
-					defered.resolve(response);
-				})
-				.error(function(err) {
-					defered.reject(err);
-				});
+			.success(function(response) {
+				defered.resolve(response);
+			})
+			.error(function(err) {
+				defered.reject(err);
+			});
 
 			return defered.promise;
 
@@ -181,12 +181,12 @@
 				url: 'api/aplicaciones/update',
 				data: data
 			})
-				.success(function(response) {
-					defered.resolve(response);
-				})
-				.error(function(err) {
-					defered.reject(err);
-				});
+			.success(function(response) {
+				defered.resolve(response);
+			})
+			.error(function(err) {
+				defered.reject(err);
+			});
 
 			return defered.promise;
 		}
