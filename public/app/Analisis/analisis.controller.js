@@ -59,7 +59,12 @@
                 pir,
                 xir,
                 nsir = [],
-                psir;
+                psir,
+                xsir,
+                indicadoresER,
+                its,
+                iti,
+                prom;
 
             console.log('ICEBySector ->', $scope.ICEBySector);
             console.log("------------------------------");
@@ -83,6 +88,29 @@
 		 	console.log("------------------------------");
 		 	psir = AnalisisFactory.calculatePsir(nsir, ns);
 		 	console.log('psir ->', psir);
+
+
+		 	console.log("------------------------------");
+		 	xsir = AnalisisFactory.calculateXsir(psir);
+		 	console.log('xsir ->', xsir);
+
+		 	console.log("------------------------------");
+		 	indicadoresER = AnalisisFactory.calculateIndicadoresER("Quesada", xsir);
+		 	console.log('Indicadores ER ->', indicadoresER);
+
+
+		 	console.log("------------------------------");
+		 	its = AnalisisFactory.calculateITS(xsir);
+		 	console.log('Indicadores ITS ->', its);
+
+		 	console.log("------------------------------");
+		 	iti = AnalisisFactory.calculateITI(indicadoresER, ps);
+		 	console.log('Indicadores ITI ->', iti);
+
+		 	console.log("------------------------------");
+		 	prom = AnalisisFactory.prom(its, ps);
+		 	console.log('prom ->', prom);
+		 	
 		}
 
  		getSectores();

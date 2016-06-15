@@ -23,7 +23,12 @@
             calculatePir: calculatePir,
             calculateXir: calculateXir,
             calculateNsir: calculateNsir,
-            calculatePsir: calculatePsir
+            calculatePsir: calculatePsir,
+            calculateXsir: calculateXsir,
+            calculateIndicadoresER: calculateIndicadoresER,
+            calculateITS: calculateITS,
+            calculateITI: calculateITI,
+            prom: prom
 		};
 
 		return factory;
@@ -168,7 +173,7 @@
             entrepreneurs.forEach(function(entrepreneur){
                 entrepreneur.scores.forEach(function (score) {
                     if(score.costesTotales !== 0 || score.empleo !== 0 || score.inversiones !== 0
-                        || score.precios !== 0 || score.resultadoNegocios !== 0){
+                        || score.precios !== 0 || score.resultadoNegocios !== 0) {
                         switch(entrepreneur.sector){
                             case 'Agricultura y pesca':
                                 nsResults.agricola ++;
@@ -189,6 +194,7 @@
                     }
                 })
             });
+
             return nsResults;
         }
 
@@ -197,7 +203,6 @@
         * @param{Object} Ns con los valores que indican el numero de encuestas por sector
         * */
         function calculatePs(ns, total){
-
             return {
                 agricola: ns.agricola / total,
             	manufactura: ns.manufactura / total,
@@ -499,8 +504,8 @@
                     value = ns.servicios;
                     break;
             }
-            return value;
-        }
+            return (value === 0 ? 1 : value);
+        }        
 
         function createPsir(sector) {
             return {
@@ -539,12 +544,9 @@
                 psirSector = createPsir(nsirSector.sector);
 
                 nsirSector.values.forEach(function(indicador) {
-                    //console.log('------------->>',scores)
                     for ( ; j < indicador.scores.length; j++) {
-                        //console.log('--->>',psirSector.values[i].scores[j]);
-                        //console.log((indicador.scores[j] * 100) / getNsForSector(nsirSector.sector, ns));
+
                         psirSector.values[i].scores[j] = (indicador.scores[j] * 100) / getNsForSector(nsirSector.sector, ns);
-                        //console.log(psirSector.values.scores[j])
                     }
                     i++;
                     j = 0;
@@ -555,5 +557,147 @@
             
             return psir;
         }
+
+        function calculateXsir(psir){
+            var i = 0,
+                j = 0,
+                xsir = [],
+                xsirSector;
+
+            psir.forEach(function(psirSector){
+                xsirSector = createPsir(psirSector.sector)
+
+                psirSector.values.forEach(function(indicador) {
+                    for ( ; j < indicador.scores.length; j++) {
+                        xsirSector.values[i].scores[j] = (indicador.scores[j] * getPercent(j+1));
+                    }
+                    i++;
+                    j = 0;
+                });
+                i = 0;
+                xsir.push(xsirSector);
+            });
+            
+            return xsir;
+        }
+
+        function calculateIndicadoresER(territorio,xsir){
+            var j = 0,
+                indicadoresER = {
+                    territorio: territorio,
+                    sectores: []                    
+                },
+                tempSector,
+                tempIndicador;
+
+            xsir.forEach(function(xsirSector) {
+                tempSector = {
+                    sector: xsirSector.sector,
+                    indicadores: []
+                };
+
+                xsirSector.values.forEach(function(indicador) {
+                    tempIndicador = {
+                        indicador: indicador.indicador,
+                        value: 0
+                    };
+
+                    for ( ; j < indicador.scores.length; j++) {                        
+                        tempIndicador.value += indicador.scores[j]
+                    }
+                    tempIndicador.value = (tempIndicador.value * 2) - 100;
+
+                    j = 0;
+                    tempSector.indicadores.push(tempIndicador);
+                });
+
+                indicadoresER.sectores.push(tempSector);
+            });
+
+            return indicadoresER;
+        }
+
+        function calculateITS(xsir) {
+            var its = [],
+                j = 0,
+                tempIts;
+
+            xsir.forEach(function(xsirSector) {
+                tempIts = {
+                    sector: xsirSector.sector,
+                    value: 0
+                };
+
+                xsirSector.values.forEach(function(indicador) {                    
+                    for ( ; j < indicador.scores.length; j++) {                        
+                        tempIts.value += indicador.scores[j]
+                    }                    
+                    j = 0;                    
+                });
+                tempIts.value = (2*(tempIts.value/5))-100;
+                its.push(tempIts);
+            });
+
+            return its;
+        }
+
+
+        function calculateITI(ier, ps) {
+            var iti = createITI(ier.sectores[0]),
+                j = 0;
+            ier.sectores.forEach(function(ierSector) {  
+                for(; j < ierSector.indicadores.length; j++){
+                    iti[j].value += ierSector.indicadores[j].value * getPsForSector(ierSector.sector, ps);
+                }
+                
+                j = 0;  
+            });
+
+            return iti;
+        }
+
+        function createITI(ier){
+            var iti = [];
+            ier.indicadores.forEach(function(indicador) {
+                iti.push({indicador: indicador.indicador, value: 0});
+            });
+
+            return iti;
+        }
+
+        function getPsForSector(sector, ps) {
+            var value;
+            
+            switch (sector) {
+                case 'Agricultura y pesca':
+                    value = ps.agricola;
+                    break;
+                case 'Industria manufacturera':
+                    value = ps.manufactura;
+                    break;
+                case 'Comercio y reparación':
+                    value = ps.comercio;
+                    break;
+                case 'Turismo':
+                    value = ps.turismo;
+                    break;
+                case 'Otros servicios':
+                    value = ps.servicios;
+                    break;
+            }
+            
+            return value;
+        }
+
+        function prom(its, ps) {
+            var prom = 0;
+
+            its.forEach((sector) => {
+                prom += sector.value * getPsForSector(sector.sector, ps);
+            });
+
+            return prom;
+        }
+
 	}
 })();
