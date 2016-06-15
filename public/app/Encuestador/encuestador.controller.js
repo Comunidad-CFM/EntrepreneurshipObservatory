@@ -85,27 +85,26 @@
 				.then(function(response) {
 					$scope.personas = groupByPerson(response);
 					$scope.personas.forEach(function(persona) {
-
 						persona.encuestas.forEach(function(encuesta) {
-
 							EncuestasFactory.getNumberOfQuestions(encuesta.id)
-								.then(function (response) {
-									if (encuesta.estado === 0)
-										persona.encuestas = EncuestasFactory.removeItem(encuesta, persona.encuestas);
-									else
-										encuesta.numeroPreguntas = parseInt(response);
-								})
+							.then(function (response) {
+								if (encuesta.estado === 0) {
+									persona.encuestas = EncuestasFactory.removeItem(encuesta, persona.encuestas);
+								}
+								else {
+									encuesta.numeroPreguntas = parseInt(response);
+								}
+							});
 						});
-
 					});
 					$scope.personas.forEach(function(persona) {
-						if (persona.encuestas.length === 0)
+						if (persona.encuestas.length === 0) {
 							$scope.personas = EncuestasFactory.removeItem(persona, $scope.personas);
+						}
 					});					
 				});
 		}
 
 		getAplicaciones();
-
 	}
 })();

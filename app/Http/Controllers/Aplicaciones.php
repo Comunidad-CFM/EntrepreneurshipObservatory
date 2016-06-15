@@ -103,7 +103,6 @@ class Aplicaciones extends Controller
 
 
     public function getAplicacionesPersonasEncuestas() {
-
         $date = $this->getFechaActual();
         $month = $date->month;
         $year = $date->year;
@@ -119,6 +118,7 @@ class Aplicaciones extends Controller
                 'personas.apellido1', 'personas.apellido2', 'personas.tipo')
             ->where('periodos.anio',(int)$year)
             ->where('periodos.cuatrimestre',(int)$periodo)
+            ->where('aplicaciones.encuestador', '=', '')
             ->get();
     }
 
