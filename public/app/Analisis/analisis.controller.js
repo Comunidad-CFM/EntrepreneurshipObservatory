@@ -15,21 +15,49 @@
 	* @param {Object} Servicio que permite la unión entre el HTML y el controlador.
 	* @param {Object} Servicio que brinda funciones del analisis al controlador.
 	*/
-	function AnalisisController ($scope, AnalisisFactory, IndicadoresFactory, SectoresFactory) {		
-		function get() {
-			AnalisisFactory.get(3)
+	function AnalisisController ($scope, AnalisisFactory, IndicadoresFactory, SectoresFactory, PeriodosFactory) {
+		$scope.info;
+		$scope.getInfo = getInfo;
+
+		function getPeriodos() {
+			PeriodosFactory.getAll()
+            .then(function(response) {
+                response.forEach(function(periodo) {
+                    periodo.label = 'Cuatrimestre ' + periodo.cuatrimestre +', ' + periodo.anio;
+                });
+                $scope.periodos = response;
+                $scope.selectedPeriodo = $scope.periodos[0];
+            });
+		}
+
+		function getAplicaciones() {
+			AnalisisFactory.get($scope.selectedPeriodo.id)
 			.then(function(response) {
 				return response;
 			})
 			.then(function (response) {
-				groupByEntrepreneur(response);
+				if (response.length > 0) {
+					groupByEntrepreneur(response);
+				}
+				else {
+					$scope.info = [];
+					$scope.noResults = true;
+				}
 			});
 		}
 
-		function getIndicadores () {
+		function getInfo () {
+			$scope.noResults = false;
+			
 			IndicadoresFactory.getAll()
-				.then(function (response) {
+				.then(function (response) { // Get indicadores.
 					$scope.indicadores = response;
+				})
+				.then(function() { // Get sectores.
+					getSectores();
+				})
+				.then(function() { // Get aplicaciones.
+					getAplicaciones();
 				});
 		}
 
@@ -110,11 +138,10 @@
 		 	console.log("------------------------------");
 		 	prom = AnalisisFactory.prom(its, ps);
 		 	console.log('prom ->', prom);
-		 	
+
+		 	$scope.info = AnalisisFactory.manipulateInfo(indicadoresER, its, iti, prom);
 		}
 
- 		getSectores();
-	 	getIndicadores();
-	 	get();
+		getPeriodos();
 	}
 })();

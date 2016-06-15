@@ -28,7 +28,8 @@
             calculateIndicadoresER: calculateIndicadoresER,
             calculateITS: calculateITS,
             calculateITI: calculateITI,
-            prom: prom
+            prom: prom,
+            manipulateInfo: manipulateInfo
 		};
 
 		return factory;
@@ -534,6 +535,7 @@
                 ]
             };
         }
+
         function calculatePsir(nsir, ns) {
             var i = 0,
                 j = 0,
@@ -697,6 +699,121 @@
             });
 
             return prom;
+        }
+
+        function createInfo(indicadores) {
+            var info = [];
+
+            indicadores.forEach((indicador) => {
+                info.push({
+                    indicador: indicador.indicador,
+                    agricola: 0,
+                    manufactura: 0,
+                    comercio: 0,
+                    turismo: 0,
+                    servicios: 0,
+                    rubro: 0
+                });
+            });
+
+            info.push({
+                indicador: 'Indicador territorial',
+                agricola: 0,
+                manufactura: 0,
+                comercio: 0,
+                turismo: 0,
+                servicios: 0,
+                rubro: 0
+            });
+
+            return info;
+        }
+
+        function insertIntoInfo(info, indicador, sector, value) {
+            var i = 0,
+                length = info.length;
+
+            for ( ; i < length; i++) {
+                if (info[i].indicador === indicador) {
+                    switch (sector) {
+                        case 'Agricultura y pesca':
+                            info[i].agricola = value;
+                            break;
+                        case 'Industria manufacturera':
+                            info[i].manufactura = value;
+                            break;
+                        case 'Comercio y reparación':
+                            info[i].comercio = value;
+                            break;
+                        case 'Turismo':
+                            info[i].turismo = value;
+                            break;
+                        case 'Otros servicios':
+                            info[i].servicios = value;
+                            break;
+                    }
+                    break;
+                }
+            }
+
+            return info;
+        }
+
+        function insertIts(info, its, prom) {
+            its.forEach((sector) => {
+                switch (sector.sector) {
+                    case 'Agricultura y pesca':
+                        info.agricola = sector.value;
+                        break;
+                    case 'Industria manufacturera':
+                        info.manufactura = sector.value;
+                        break;
+                    case 'Comercio y reparación':
+                        info.comercio = sector.value;
+                        break;
+                    case 'Turismo':
+                        info.turismo = sector.value;
+                        break;
+                    case 'Otros servicios':
+                        info.servicios = sector.value;
+                        break;
+                }
+            });
+
+            info.rubro = prom;
+
+            return info;
+        }
+
+        function insertIti(info, iti) {
+            var i = 0,
+                length = iti.length;
+
+            info.forEach((indicador) => {
+                for ( ; i < length; i++) {
+                    if (indicador.indicador === iti[i].indicador) {
+                        indicador.rubro = iti[i].value;
+                    }
+                }
+                i = 0;
+            });
+
+            return info;
+        }
+
+        function manipulateInfo(indicadoresER, its, iti, prom) {
+            var info = createInfo(indicadoresER.sectores[0].indicadores);
+
+            indicadoresER.sectores.forEach((sector) => {
+                sector.indicadores.forEach((indicador) => {
+                    info = insertIntoInfo(info, indicador.indicador, sector.sector, indicador.value);
+                });
+            });
+
+            info[info.length-1] = insertIts(info[info.length-1], its, prom);
+            info = insertIti(info, iti);
+
+            return info;
         }
 
 	}
