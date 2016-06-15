@@ -161,7 +161,7 @@
         * Calcular el Ns de las encuestas
         * @param{Array} encuestas aplicadas, utilizadas para determinar a que sector pertenece cada aplicacion
         * */
-        function calculateNs(entrepreneurs){
+        function calculateNs(ICEBySector){
             var nsResults = {
                 agricola: 0,
                 manufactura: 0,
@@ -169,8 +169,8 @@
                 turismo: 0,
                 servicios: 0
             };
-
-            entrepreneurs.forEach(function(entrepreneur){
+            
+            ICEBySector.forEach(function(entrepreneur){
                 entrepreneur.scores.forEach(function (score) {
                     if(score.costesTotales !== 0 || score.empleo !== 0 || score.inversiones !== 0
                         || score.precios !== 0 || score.resultadoNegocios !== 0) {

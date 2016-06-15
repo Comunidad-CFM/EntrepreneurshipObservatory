@@ -17,7 +17,7 @@
 	*/
 	function AnalisisController ($scope, AnalisisFactory, IndicadoresFactory, SectoresFactory) {		
 		function get() {
-			AnalisisFactory.get(1)
+			AnalisisFactory.get(3)
 			.then(function(response) {
 				return response;
 			})
@@ -49,7 +49,7 @@
 			$scope.answers = AnalisisFactory.groupByEntrepreneur(answers);
 			$scope.ICEBySector = [];
 			$scope.sectores.forEach(function(sector){
-				$scope.ICEBySector.push(AnalisisFactory.calculateICEBySector(sector.nombre,$scope.answers));
+				$scope.ICEBySector.push(AnalisisFactory.calculateICEBySector(sector.nombre, $scope.answers));
 			});
 
 			var ns = AnalisisFactory.calculateNs($scope.ICEBySector),

@@ -36,11 +36,11 @@ class DatabaseSeeder extends Seeder
         
         DB::table('indicadores') -> delete();
         $indicadores = array(
-            ['nombre' => 'Monto de negocio','descripcion' => 'Monto de negocio'],
+            ['nombre' => 'Resultado de negocio','descripcion' => 'Monto de negocio'],
             ['nombre' => 'Empleo','descripcion' => 'Empleo'],
-            ['nombre' => 'Inversion','descripcion' => 'Inversion'],            
-            ['nombre' => 'Precio','descripcion' => 'Precio'],
-            ['nombre' => 'Coste total','descripcion' => 'Coste total']
+            ['nombre' => 'Inversiones','descripcion' => 'Inversion'],            
+            ['nombre' => 'Precios','descripcion' => 'Precio'],
+            ['nombre' => 'Costes totales','descripcion' => 'Coste total']
         );
         
         DB::table('regiones') -> delete();

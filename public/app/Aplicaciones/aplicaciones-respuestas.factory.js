@@ -41,11 +41,9 @@
 				data: data
 			})
 			.success(function(response) {
-				console.log("agrego");
 				defered.resolve(response);
 			})
 			.error(function(err) {
-				console.log(err);
 				defered.reject(err);
 			});
 

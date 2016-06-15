@@ -101,7 +101,7 @@
 					$scope.personas.forEach(function(persona) {
 						if (persona.encuestas.length === 0)
 							$scope.personas = EncuestasFactory.removeItem(persona, $scope.personas);
-					});
+					});					
 				});
 		}
 
