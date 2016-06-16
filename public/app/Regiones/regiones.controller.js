@@ -132,7 +132,7 @@
                 }
 
                 $timeout(function () {
-                   $scope.registro = false
+                   $scope.editar = false
                 },5000);    
 
                 //refrescar información

@@ -289,12 +289,18 @@
                         response.forEach(function(periodo) {
                             periodo.label = 'Cuatrimestre ' + periodo.cuatrimestre +', ' + periodo.anio;
                         });
-                        response.forEach(function(periodo) {
-                            if (periodo.id === aplicacion.periodo_id) {
-                                $scope.selectedPeriodo = periodo;
-                            }
-                        });
                         $scope.periodos = response;
+
+                        if (aplicacion !== undefined) {
+                            $scope.periodos.forEach(function(periodo) {
+                                if (periodo.id === aplicacion.periodo_id) {
+                                    $scope.selectedPeriodo = periodo;
+                                }
+                            });
+                        }
+                        else {
+                            $scope.selectedPeriodo = $scope.periodos[0];
+                        }
                     });
                 });
             });
